@@ -1,0 +1,72 @@
+\newpage
+litterature review,
+compare litterature,
+gap,
+
+\section{Problem Formulation}\label{sec:problem-formulation}
+	\textit{Note: This section is a working draft and may be removed later; 
+    it currently preserves some ideas for potential reuse.}
+The primary objective of this study is to develop a machine learning model
+capable of predicting manual Frequency Restoration Reserves (mFRR) activations
+in the Nordic electricity market, specifically for the bidding zone NO1 in 
+Norway. The problem is formulated as a classification task, where the model 
+aims to classify time intervals into distinct categories based on the occurrence
+of mFRR activations. The classification task is approached in two stages: 
+binary classification and ternary classification. 
+
+\subsection{Binary Classification Problem}
+In the binary classification problem, the model predicts whether an mFRR
+upregulating activation occurs within a given time interval. This is a
+straightforward classification task with two possible outcomes: activation 
+or no activation. This formulation is a good starting point, as it allows 
+for exploration of the model's ability to identify patterns associated with
+upregulating activations specifically. Binary models are also generally easier
+to train and tune, as they focus on a single class of interest, thus 
+providing a base understanding of expected model performance before moving on
+to the more complex ternary classification problem.
+
+\subsection{Ternary Classification Problem}
+In the ternary classification problem, the model extends its predictive
+capabilities to include both upregulating and downregulating mFRR activations.
+This introduces a third class to the classification task, resulting in three
+possible outcomes: upregulating activation, downregulating activation, or no
+activation. This formulation captures the full spectrum of mFRR activation
+dynamics, making it ideal for practical applications in the electricity market.
+This approach, however, is more complex than the binary classification problem,
+as the binary models can be more focused on the specific characteristics of
+upregulating activations. The ternary models, on the other hand, must learn to
+distinguish between three classes, which can be more challenging, possibly
+causing the model to be less certain in its predictions.
+
+\subsection{Restrictions}\label{sec:restrictions}
+In an ideal world, a market participant would be able to choose to bid or
+not in real time. The mFRR activation market, however, is not ideal in
+this sense. Bids are accepted for time slots $t+4$ intervals into the
+future, i.e. one hour into the future. This greatly restricts market
+actors in terms of how fast they can act on recent information. In fact,
+at the time of bid closing for a time slot $t+4$, only mFRR activation
+data from $t-3$ and earlier is available. Thus there are seven 15-minute
+intervals of unavailable data. This data would be the most
+useful for the model, since activation data at time $t$ correlates with
+the system state and activations close to $t$.
+
+It would, for instance, be considerably easier to identify streaks of
+activations, as activations often occur in long contiguous sequences. In the real
+world scenario, data from $t-3$ and before is still useful, but can often be
+misleading and cannot be trusted in isolation. The dataset developed in
+this project investigates ways to provide the model with crucial context
+about the system's state of stress. The intuition is that data such as
+physical cross-zonal flows in and out of NO1 may correlate with NO1 mFRR
+activations. When many such features are combined, the model may develop
+complex relationships between them, enhancing its predictive performance.
+
+Most of the available and useful data are not available in real time. For
+instance, consumption and production data are often published with a delay of
+several hours. The model must therefore rely on features that are available
+in real time, or with minimal delay. Such features often take the form of
+forecasts, which are available ahead of time. Forecasts are inherently
+uncertain, but they still provide valuable information about the expected
+system state.
+
+\subsection{Class Imbalance}\label{sec:class_imbalance}
+

@@ -1,0 +1,118 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "timeLimit",
+      "type": "promptString",
+      "description": "Time limit (seconds)",
+      "default": "60"
+    },
+    {
+      "id": "budgetsList",
+      "type": "promptString",
+      "description": "Budgets (comma-separated seconds)",
+      "default": "60,200"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Fetch NUCS hourly (chunk=50d)",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
+      "args": [
+        "upreg_classify\\scripts\\nucs_fetch.py",
+        "--base-url", "${env:NUCS_BASE_URL}",
+        "--token", "${env:NUCS_TOKEN}",
+        "--start", "202501010000",
+        "--end", "202512162200",
+        "--chunk-days", "50",
+        "--out-csv", "upreg_classify\\reports\\dataframes\\nucs_hourly.csv",
+        "--plots-dir", "upreg_classify\\reports\\plots"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Train (multiclass): time_limit=${input:timeLimit}s",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
+      "args": [
+        "upreg_classify\\src\\models\\train.py",
+        "--task", "multiclass",
+        "--time_limit", "${input:timeLimit}",
+        "--model_preset", "rf_xt_priority",
+        "--tune_up_bias",
+        "--single_persistence",
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Train (multiclass_stack): time_limit=${input:timeLimit}s",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
+      "args": [
+        "upreg_classify\\src\\models\\train.py",
+        "--task", "multiclass_stack",
+        "--time_limit", "${input:timeLimit}",
+        "--model_preset", "rf_xt_boost_stack",
+        "--num_bag_folds", "3",
+        "--num_stack_levels", "1",
+        "--tune_up_bias",
+        "--single_persistence"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Time curve sweep (budgets=${input:budgetsList})",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
+      "args": [
+        "upreg_classify\\scripts\\run_time_curve.py",
+        "--budgets", "${input:budgetsList}",
+  "--tune_up_bias",
+  "--single_persistence",
+        "--python", "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Wipe logs & runs (dry-run, keep results, keep latest=1)",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
+      "args": [
+        "upreg_classify\\scripts\\wipe_logs.py",
+        "--dry-run",
+        "--keep-results",
+        "--keep-latest", "1"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Wipe logs & runs (confirm, destructive)",
+      "type": "shell",
+      "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
+      "args": [
+        "upreg_classify\\scripts\\wipe_logs.py",
+        "--yes"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

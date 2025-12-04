@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Train multiclass (debug, 60s)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/upreg_classify/src/models/train.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--task", "multiclass",
+        "--time_limit", "60",
+        "--model_preset", "rf_xt_priority",
+        "--tune_up_bias",
+        "--single_persistence"
+      ],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python: Time curve sweep (debug, 60,200)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/upreg_classify/scripts/run_time_curve.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--budgets", "60,200",
+        "--tune-up-bias",
+        "--single-persistence",
+        "--python", "${workspaceFolder}\\.venv1\\Scripts\\python.exe"
+      ],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    }
+  ]
+}

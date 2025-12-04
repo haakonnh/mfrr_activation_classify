@@ -1,0 +1,12 @@
+/upreg_classify/models/
+/upreg_classify/AutogluonModels/
+/**/models/
+*.pkl
+*.pt
+*.h5
+*.pickle
+*.joblib
+
+/blackjack/
+/tictactoe/
+/windygridworld/

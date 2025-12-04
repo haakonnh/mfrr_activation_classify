@@ -1,0 +1,171 @@
+\section{Model Results}
+During the project, various models were trained on different dataset iterations
+as new data was added and features were engineered and refined. 
+Models were initially trained on data from 2025 only. This dataset 
+served as the starting point, excluding data from 2024 for simplicity and to establish 
+a baseline. Using a one-year dataset is inherently problematic due to the limited amount
+of data and the fact that the model can not learn from seasonal patterns. It is also
+likely that the model overfits to specific events in the year, which may not generalize
+well to other years. Later, data from 2024 was included to provide more training data
+and to allow the model to learn from seasonal variations. A two-year dataset is,
+however, still problematic, as it only captures two instances of seasonal patterns, 
+which is likely to not be representative of previous or coming years. Ideally, the
+dataset would span multiple years to capture a wider range of seasonal patterns and
+outliers, but this was not possible due to data availability constraints. 
+
+The problem started as a binary classification problem, where the model's task was to 
+predict whether an up-activation would occur in a given hour or not. However, as the 
+project progressed, it was expanded to also include the prediction of down-activations,
+making it a multi-class classification problem with three classes: up-activation,
+down-activation, and no activation. The results presented here touch on both the binary
+and multi-class classification problems, but focuses primarily on the multi-class
+problem, as it is the most comprehensive and relevant to the real-world application.
+
+
+
+\subsection{The 2025 Dataset}
+
+
+
+
+Depending on the 
+specific metrics used for evaluation, different models perform best. It was
+quite early on discovered that Random Forest and Extra Trees models performed
+best overall, so the results focus on these two models. The models were trained
+and evaluated based on F1-score, with raw precision and recall also considered
+after training. The aforemontentioned transition metric is also used to evaluate
+the models, as it provides insight into the model's ability to predict
+activation transitions specifically.
+
+\subsubsection{Extra Trees}
+Figure \ref{fig:xt-2025-highf1} shows the Precision-Recall curve for an Extra Trees
+model trained on the 2025 dataset. Three dots are scattered on the curve, representing
+the precision-recall pairs for three interesting thresholds: the threshold given
+by the predictor leaderboard, the threshold that maximizes F1-score, and the threshold
+that gives a recall of 0.5. It is interesting that the leaderboard threshold gives a
+lower F1-score than the maximum F1-score threshold after training, as one would
+expect the leaderboard threshold to be optimal. Nevertheless, all three thresholds
+provide solid performance, with the maximum F1-score threshold achieving the best balance
+between precision and recall. The threshold that gives a recall of 0.5 sacrifices some 
+precision to achieve higher recall, while simultaneously improving the transition metric. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/2025-highf1_xt.png}
+    \caption{Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}
+    \label{fig:xt-2025-highf1}
+\end{figure}
+
+\begin{table}[H]
+    % So i want a table consisting of the 3 thresholds and their respective precision, recall, f1-score and transition metric
+    % and also transition metric     
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        Threshold & Precision & Recall & F1-score & Transition Metric \\
+        \midrule
+        Leaderboard & 0.65 & 0.31 & 0.42 & 9.49\% \\
+        Max F1-score & 0.49 & 0.45 & 0.47 & 19.76\% \\
+        Recall = 0.5 & 0.41 & 0.50 & 0.45 & 28.06\% \\
+        \bottomrule
+    \end{tabular}
+    \caption{Performance metrics for Extra Trees model on 2025 dataset at different thresholds.}
+    \label{tab:xt-2025-metrics}
+\end{table}
+
+Table \ref{tab:xt-2025-metrics} summarizes the performance metrics for the Extra Trees
+model on the 2025 dataset at the three different thresholds. The transition metric is
+highly correlated with recall, as expected, since higher recall means more activation
+events are correctly identified, leading to better transition detection. The recall-focused
+threshold achieves a transition success rate of 28.06\%, significantly higher than the 
+threshold proposed by the leaderboard, and 10\% higher than the maximum F1-score threshold.
+With a precision of 0.41 at this threshold, the model is relatively precise, not 
+overwhelmingly predicting activations, which is crucial.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/2025-highf1_xt_fi.png}
+    \caption{Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}
+    \label{fig:xt-2025-fI}
+\end{figure}
+
+Figure \ref{fig:xt-2025-fI} shows the feature importance for the Extra Trees model.
+An important concept to note is that feature importance is independent of the
+chosen threshold. The feature importance indicates which features the model
+contribute the most to the underlying probability estimates. Threshold adjustments
+merely shift the decision boundary without altering the relative importance of the features.
+The top three features are in this particular model all lag features, specifically
+persistency and singular activation lag features. This suggests that the model
+relies heavily on historical activation patterns to make its predictions. Although one of
+the goals was to reduce the reliance on lag features, it is still important to catch on
+to activation trends. Other important features include day-ahead price, intraday wind
+forecasts, time-related features such as peak hour and working day indicators, and
+various interaction features. All these features likely contribute to capturing the complex
+dynamics influencing activation events.
+
+\subsection{The 2024-2025 Dataset}
+Some extra preprocessing is necessary when including data from 2024, as data often come
+in yearly batches. Separate CSV (Comma Separated Values) files for 2024 and 2025
+are, therefore, merged into a single dataset before further handling. This dataset was
+used for most of the training and evaluation process, as it provides more data for the models
+to learn from, potentially leading to better generalization and performance. This comes at
+the cost of slightly inconsistent data. mFRR activation data, for instance, transitioned
+from hourly to 15-minute resolution in mid-2024 (\textbf{specify date perhaps}). 
+This introduces inconsistency and noise into the dataset, which could affect model performance.
+However, the benefits of having a larger dataset likely outweigh the this drawback.
+
+\subsubsection{CatBoost Models}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/CatBoost_Tuned-first.png}
+    \caption{Feature importance for CatBoost model trained on 2024-2025 dataset after
+     hyperparameter tuning.}
+    \label{fig:catboost-2024-2025-fI}
+\end{figure}
+
+\textbf{I probably want a kind of sweep over performances on different 
+hyperparamter combinations.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/catboost_first_metrics.png}
+    \caption{Performance metrics for CatBoost model on 2024-2025 dataset at 
+    different thresholds.}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/up-down-price-minus-da-catboost.png}
+    \caption{Up/down price minus day-ahead price distribution for 
+    CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}
+    \label{fig:catboost-2024-2025-updownprice}
+\end{figure}
+
+Figure \ref{fig:catboost-2025-4th-confidence-metrics} shows the performance metrics 
+for a CatBoost model trained on data from March 4th, 2025. The metrics are evaluated
+at specific dataset subsets determined by how confident the model is in its predictions.
+For instance, at a confidence threshold of 0.6, only predictions where the model's
+predicted probability for the chosen class is at least 0.6 are considered. This approach
+allows for an analysis of how the model's performance varies with its confidence level.
+As the confidence threshold increases, accuracy steadily improves. This is expected, as 
+higher confidence predictions should generally be more reliable. F1-macro score dips,
+however, at higher thresholds, especially beyond 0.7. The most likely reason for this is
+that the model rarely is very confident in predicting the less frequent classes (up- and 
+down-activations). Most of these predictions are no-activation predictions, resulting
+in good accruacy (0.778 in this case). Assume that all of these predictions are no-activation
+predictions (\textbf{can probably check this quickly}). Then, 22.2\% of the predictions
+are false negatives for the up- and down-activation classes, leading to low recall (0 
+in this case) and thus low F1-score for these classes. The overall F1-macro score, being
+the average of the F1-scores for all classes, consequently drops as well.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/confidence_thresholds_metrics_cat_short.png}
+    \caption{Performance metrics for CatBoost model on 2025 March 4th dataset
+    at different confidence thresholds.}
+    \label{fig:catboost-2025-4th-confidence-metrics}
+\end{figure}

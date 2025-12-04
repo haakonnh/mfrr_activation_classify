@@ -1,0 +1,216 @@
+\newpage
+\section{Feature Engineering}
+Features are attributes in a dataset that describe each data point. A dataset
+for predicting a person's income could, for instance, have features like
+gender, job type, and age. Then, each data point represents a person and
+relevant information about the person in terms of the target variable
+-- income. In this project, each data point represents a specific time stamp
+in the mFRR activation dataset, and the features describe the system state at
+that time. This includes information such as electricity demand, generation
+capacity, and market prices, all of which can influence mFRR activations.
+
+Already available features can be transformed to create new higher-level
+features that may better capture the underlying patterns in the data. For
+example, if one has features for year of death and year of birth, a new feature
+for age at death can be created by subtracting the year of birth from the
+year of death. This is known as \textit{feature construction} 
+\autocite{liuFeatureSelectionKnowledge2012}. Features can be constructed in 
+various ways, such as through mathematical operations or aggregations. This
+project leverages this concept to create new features that may enhance the model's
+predictive capabilities.
+
+Feature selection is crucial. There are many features that may seem useful
+and relevant in isolation, but sometimes they mislead the models, or they
+work poorly in combination with other seemingly good features. Theoretical
+analysis of the usefulness of certain features can be helpful, but only
+trial-and-error together with feature-importance analysis will uncover the
+features' actual impact on performance. Feature selection will be subject to
+restrictions outlined in Section \ref{sec:restrictions} to ensure that only
+real-time available features are used. 
+
+\subsection{Lag features}
+A lag feature is a feature that represents the value of a variable at a
+previous time step. Lag features are commonly used in time series analysis to
+capture \textit{temporal} dependencies and trends in the data 
+\autocite{brownleeBasicFeatureEngineering2016}. By including lag
+features, the model can leverage historical information to make more informed
+predictions about future mFRR activations. For instance, if there was an
+upregulating activation in the previous time step, it may indicate a higher
+likelihood of another upregulating activation in the current time step.
+
+\paragraph{Activation lag features}
+Activation lag features are the most important lag features for this problem,
+as they convey important information about recent temporal activation trends. 
+They are,
+however, restricted by the real-time limitations, so the model may only use
+activation lag features from $t-3$ and earlier for predicting activations at
+time $t+4$. As a result, lag features for upregulating and downregulating
+activations are created for time steps $t-3$, $t-4$, $t-5$, ..., $t-9$. These
+features are useful by themselves, but they also serve as a basis for creating
+other features that capture activation trends more effectively.
+
+\paragraph{Persistency (streak length)}
+Let $t$ denote the reference time such that the model predicts activation at
+$t+4$. At bid close, only activation data up to and including $t-3$ are
+available. Define binary activation indicators $A^{\uparrow}(\cdot)$ and
+$A^{\downarrow}(\cdot)$ for up- and down-regulating activations, respectively.
+The up- and down-persistency features are the lengths of the most recent
+consecutive activation runs ending at $t-3$: \textbf{TODO: Consider only formulating
+persistency with words, as the mathematical expression is more complex
+than the concept.}
+\[
+  S^{\uparrow}(t) = \sum_{j=0}^{\infty} \prod_{i=0}^{j} A^{\uparrow}(t-3-i),\qquad
+  S^{\downarrow}(t) = \sum_{j=0}^{\infty} \prod_{i=0}^{j} A^{\downarrow}(t-3-i).
+\]
+Here, $j$ is the (zero-based) window length and $i$ is the offset index within
+that window. The product is $1$ only while all the last $j{+}1$ values are $1$,
+so when a $0$ is encountered, the product becomes $0$ for all larger $j$. Thus,
+the sum counts how many consecutive intervals back from $t-3$ remain all
+ones before the first zero. In words, $S^{\uparrow}(t)$ (resp. $S^{\downarrow}(t)$)
+counts how many consecutive up- (resp. down-) activations occurred immediately 
+before $t-3$. If there was no activation at $t-3$, the corresponding streak length
+is $0$.
+
+\paragraph{Design choice: separate vs. signed.} When designing the persistency
+features, a choice had to be made between using two separate non-negative integer
+features or a single signed feature (e.g., $S^{\uparrow}(t)-S^{\downarrow}(t)$). 
+Separate features avoid conflating direction with magnitude and let the
+model learn asymmetric effects. This option may be easier for the model to interpret,
+as it provides a clearer distinction between up- and down-regulating activations.
+The signed variant is more compact, but it may introduce ambiguity in how the model
+interprets the values. It is, however, important to consider the possibility of 
+persistency overreliance. If the model relies too heavily on persistency features,
+it may overlook other important factors influencing activations. This could lead
+to suboptimal predictions, especially in scenarios where activation patterns change.
+Only having one persistency feature may reduce this risk, as persistency is
+encoded in a single column. Both options will be explored and evaluated during
+model development, and the pros and cons of each approach will be assessed based
+on empirical performance.
+
+\paragraph{Importance.} Persistency features are perhaps the single most important 
+features in the dataset. They provide compact and direct information about recent 
+activation trends, making it easier for the model to identify activation streaks. As 
+activations often come in long contiguous runs, and even though there are real-time
+limitations, the persistency features still provide the model with valuable context.
+The longer the streak, the more likely it is that the activation trend will continue.
+In some cases, the model might be able to predict an activation solely based on
+a high persistency value, without needing to consider other features. 
+
+Much of the motivation behind this project is, as outlined in Section 
+\ref{sec:problem-formulation}, to develop models that can predict activations
+based on system state features rather than just relying on past activation trends.
+The reality is, however, that persistency features are extremely dominant, and
+they may overshadow the contributions of other features. 
+
+\subsection{Cross-zonal flow features}
+Cross-zonal flow features capture information about electricity flows between
+different zones or regions in the power grid - in this case, in and out of
+the NO1 bidding zone. These flows can indicate the grid's stress level and
+influence mFRR activations. For instance, high inflows into NO1 may signal
+increased demand or generation shortages, potentially causing upregulating
+activations. Conversely, high outflows may indicate surplus generation,
+potentially causing downregulating activations. It is unlikely, though, that
+cross-zonal flow features alone can predict activations. Combining them with
+available transfer capacity provides a picture of how close the grid is to its
+operational limits. For instance, if the inflow into NO1 is close to the maximum
+available transfer capacity, only a small margin remains for additional inflows,
+which could increase the likelihood of upregulating activations. Such situations
+often occur in zones that are short, i.e. zones where consumption exceeds
+production. In such cases, the grid operator may need to activate expensive
+mFRR reserves to maintain grid stability when no more cheap imports are possible.
+It is important that the models developed in this project are able to capture
+these kind of relationships as they are among the most valuable for a potential
+user of the models.
+
+\paragraph{Capacity-normalized cross-zonal flow.} Raw cross-zonal flow magnitudes are not 
+comparable across interconnections or over time because each line has different capacity 
+and the available transfer capacity (ATC) varies. The same
+absolute flow can be insignificant on a strong interconnection but critical on a 
+constrained one. To obtain a dimensionless, capacity-normalized measure of proximity 
+to operational limits—and to make features comparable across borders and time—
+flows are expressed as a ratio to the relevant directional ATC.
+
+Let $F_i(t)$ be the \emph{signed} flow for interconnection $i$ at time $t$
+(positive into NO1, negative out of NO1). Let $ATC_i(t)\ge 0$ denote the
+available transfer capacity magnitude used for normalization (e.g., a symmetric
+ATC for interconnection $i$ at time $t$). The capacity-normalized ratio is then
+\[
+  F_{\text{ratio}}^{i}(t) \,=\, \frac{F_i(t)}{ATC_i(t)}.
+\] 
+Hence
+$F_{\text{ratio}}^{i}(t)\in[-1,1]$ when flows are within limits, approaching $+1$
+as inflow nears the capacity and $-1$ as outflow nears the capacity.
+
+
+\subsection{Temporal features}
+Temporal features capture time-related patterns in the data. These features help the model
+understand how mFRR activations vary with time, such as daily or weekly cycles. 
+Basic temporal features include hour of the day, day of the week, and month of the year.
+These features allow the model to learn patterns related to specific times. mFRR activations
+could, for instance, be caused by completely different factors during peak hours on weekdays
+compared to off-peak hours on weekends. Temporal features like these are most often
+represented using cyclical encoding to reflect their periodic nature. For example,
+1 AM and 11 PM are close in time, even though their numerical representations (1 and 23)
+are far apart. Cyclical encoding uses sine and cosine transformations to capture this
+periodicity \autocite{pelletierCyclicalEncodingAlternative2024}. 
+Hourly features are, for instance, encoded as:
+\[
+\text{Hour}_{\text{sin}} = \sin\left(2\pi \cdot \frac{\text{Hour}}{24}\right),\qquad
+\text{Hour}_{\text{cos}} = \cos\left(2\pi \cdot \frac{\text{Hour}}{24}\right).
+\]
+Monthly features can be encoded similarly, using 12 as the divisor instead of 24.
+
+\subsection{Price features}
+Price features capture information about the various electricity market prices. 
+The mFRR activaiton market is closely linked to other electricity makets, such as the 
+day-ahead market, the intraday market, and the aFRR market. Most prices may not have 
+direct impacts on activations, but by crafting features that capture important 
+relationships between prices, the model may be able to infer system stress levels
+that could lead to mFRR activations. Large discrepencies between day-ahead prices
+and intraday prices may, for instance, indicate unexpected changes in supply or demand,
+which should correlate with mFRR activations. Similarly, the difference between aFRR prices
+and mFRR prices may provide insights into the relative costs of balancing services, 
+which could influence activation decisions.
+
+\subsection{Load features}
+
+
+\subsection{Production features}
+Production features capture information about electricity generation, particularly
+from renewable sources like wind power. Wind power production features were
+considered promising candidates for predicting mFRR activations, as wind power is
+intermittent and can cause sudden changes in supply. figures
+\ref{fig:wind_actual_to_activation} and \ref{fig:wind_share_to_activation} show 
+values of realized wind production and wind share (wind production as a fraction 
+of total production) plotted against the distribution of mFRR activations. These
+figures indicate that there is no direct correlation between wind production and
+mFRR activations. The existence of such a correlation would have made it easy for
+the model to leverage wind production features for predicting activations. The 
+hope is, however, that wind production features will prove useful when combined
+with other features, as the model captures complex relationships between features.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/actual_wind_doesnt_impact_prediction.png}
+        \caption{Realized wind production plotted against mFRR activation distribution.}
+        \label{fig:wind_actual_to_activation}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/wind_share_impact_activation.png}
+        \caption{Forecasted wind production plotted against mFRR activation distribution.}
+        \label{fig:wind_share_to_activation}
+    \end{subfigure}
+    \caption{Load and production data distributions.}
+    \label{fig:load_and_production_distributions}
+\end{figure}
+
+
+
+
+\subsection{Interaction features}
+Interaction features are created by combining two or more existing features
+to capture complex relationships that may influence mFRR activations.

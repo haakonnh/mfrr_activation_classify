@@ -1,0 +1,195 @@
+\newpage
+\section{Literature Review}\label{sec:literature-review}
+This chapter reviews literature relevant to the prediction of mFRR activations 
+in a top-down approach. The review begins by outlining the broader context of
+balancing activation markets and the challenges they present. It then delves into 
+which methodologies exist for handling these challenges, before finally
+identifying specific research gaps that this study aims to address.
+
+\subsection{mFRR Energy Activation Market Characteristics}
+Balancing markets are by nature unpredictable as their primary function is to
+maintain system stability in the face of unforeseen imbalances between supply
+and demand. This inherent unpredictability is handled in most balancing markets
+by the capacity market mechanism. The mFRR energy activation market distinguishes 
+itself by only compensating participants for actual energy delivered during
+activation events. Participants must also bid in the correct direction of
+activation (upward or downward) to be eligible for activation. When an up-regulating
+activation is required, the up-regulation price is by design higher than the
+day-ahead market price, and vice versa for down-regulating activations 
+\autocite{klaeboeDayaheadMarketBidding2022}. These market
+characteristics make it lucrative to predict activation events accurately, as
+successful predictions can lead to significant financial gains. 
+
+In 2022, Klæboe et al. \autocite{klaeboeDayaheadMarketBidding2022} analyzed 
+day-ahead market bidding strategies for flexible generators
+taking the balancing power market into
+account. They found near-zero gains from incorporating balancing market
+predictions into day-ahead bidding strategies. They discuss, however, that
+the need for balancing services will increase in the future, and that such
+strategies will therefore become more profitable. In Svenska Kraftnät's
+balancing market outlook 2030 \autocite{BalancingMarketOutlook} they present
+that the mFRR capacity demand has and will steadily increase. \textit{Source}
+
+The mFRR energy activation market transitioned from an hourly to a 15-minute
+resolution as of 4th March 2025, an endeavor aimed at enhancing market efficiency
+and integrating renewable energy sources more effectively \autocite{Transition15minuteMarket}.
+An hourly resolution was deemed overly discrete and can miss intra-hour dynamics; a 
+15-minute resolution reduces discretization and better approximates the continuous 
+variation of supply, demand, and balancing needs. A study by Kallset and Farahmand 
+found that increased resolution significantly reduces such structural imbalances and
+achieves about 60\% of the possible reduction in total balancing, compared to a
+5-minute resolution ideal \autocite{kallsetImprovingBalancingActivation2025}. Thus 
+higher resolution make balancing activations align more closely with actual real-
+time system needs, and is less restricted by the coarse time blocks of hourly markets.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Existing Approaches to Balancing Activation Market Forecasting}
+This chapter reviews relevant literature on balancing market forecasting. 
+
+
+\subsubsection{Imbalance Volume and Price Forecasting}
+Imbalance volume forecasting plays a central role in balancing markets 
+\autocite{singhNovelDynamicImbalance2025} \autocite{plakasPredictionImbalancePrices2025}. 
+At the system
+level, transmission system operators (TSOs) rely on accurate imbalance volume forecasts
+to minimize 
+balancing costs and ensure system stability. As market participants, 
+accurate imbalance volume predictions are valuable, as this can inform short-term 
+bidding strategies in balancing markets, particularly in markets with high 
+renewable penetration. Consequently, a substantial body of 
+recent research has focused on developing models that forecast system imbalance over
+short-horizons. 
+
+At the system-operator end of the spectrum, several studies develop point forecasting
+aimed primarily at optimizing TSO operations. One example is the work of 
+Singh et al. \autocite{singhNovelDynamicImbalance2025}, who
+propose a regression-based approach for short-term forecasting of imbalance
+volumes. They argue that increased renewable variability, combined with the
+15-minute activation window, necessitates accurate short-horizon forecasts to
+enable transmission system operators to anticipate and manage imbalances more
+effectively. One of their key findings is that their best-performing model 
+reduces the balancing costs by 44.51\% compared to TSO-based forecasting. The lower
+forecast errors lead to reduced costs of energy not supplied, excess energy, and
+corrections. 
+
+While Singh et al. obtain important results for short-term imbalance forecasting
+in the Belgian power system, related work examines imbalance
+forecasting in the Nordic region, where renewable mixes and activation patterns may
+differ. Edling \& Azarang (2025) analyze short-term mFRR activation volumes across
+the four Swedish bidding zones using LSTM-based (Long Short-Term Memory) regression
+models \autocite{azarangMachineLearningBasedPrediction}. Their study highlights strong
+geographical hetereogeneity in activation patterns, identifying structural differences 
+between bidding zones. Price region SE2 exhibited the best forecasting accuracy, while
+zones SE3 and SE4 showed limited predictability due to high zero-activation frequencies.
+This finding spotlights an important consideration: regions with frequent imbalance,
+for instance due to a high share of wind power, 
+do not necessarily have high activation frequencies. SE2 appears to have
+ high activation frequencies
+due to its significant share of Sweden's flexible hydropower resources, which are often
+called upon to balance the system. Thus, if an imbalance occurs in SE4, the TSO may
+choose to activate reserves in SE2 if it is more economical and transmission constraints
+allow it. Overmaat's study on balancing contributions in the Nordic electricity system,
+though relatively dated (2019), underscores this point further by concluding that SE1
+and SE2 dominate the Swedish balancing contributions on the short and medium time scales
+\autocite{overmaatBalancingContributionsNordic}. 
+
+Both Singh et al. and Edling \& Azarang aim to provide system operators with 
+actionable insights and tools to better forecast and manage imbalances.
+While better TSO forecasting does not alter physical imbalance maggnitudes, it improves
+the timing and precision of activation decisions, making activation volumes more
+closely reflect the real-time system state. For market participants, this suggests
+that accurate system imbalance forecasts may offer predictive power regarding 
+coming activations. This perspective is developed further in participant-oriented
+studies such as Plakas et al. 
+\autocite{plakasPredictionImbalancePrices2025}, who propose a two-stage probabilistic 
+framework for forecasting imbalance
+volumes and prices sequentially in the Greek balancing market. The first stage 
+employs quantile regression to generate probabilistic forecasts of system imbalances.
+The second stage leverages the quantiles to predict imbalance prices. 
+Plakas et al. find that system imbalance volumes are critical predictors of imbalance
+prices, underscoring the correlation between these two variables. By extending 
+from imbalance volume point forecasts to price forecasting, 
+Plakas et al. provide more actionable insights for market participants
+seeking to capitalize on opportunities in the balancing market. Their results show that 
+imbalance volumes strongly influence imbalance prices, indicating that system-state 
+indicators provide valuable information for bidders seeking to anticipate balancing-market 
+outcomes.
+
+\subsubsection{Activation Forecasting}
+Whereas imbalance forecasting aims to estimate the magnitude of system imbalances, 
+activation forecasting focuses on predicting the TSO's decision to activate upward, 
+downward, or no mFRR energy. Activation direction is directly relevant for market 
+participants, as balancing market bids must be placed in the correct direction to be
+eligible for activation. As the Nordic system transitions to a 15-minute market 
+resolution, short-term activation forecasting has become increasingly important, 
+yet the academic literature on this topic remains sparse.
+
+Svedlindh and Yngveson \autocite{svedlindhPriceFormationForecasting2025}
+explore the general price formation in intraday and mFRR markets. Among other
+explorations, they develop logistic regression and ANN (Artificial Neural Network)
+models to predict activation direction in the mFRR activation market. The ANN model
+outperforms the logistic regression, achieving solid \textit{accuracy} and 
+\textit{F1-scores}. They identify, however, that \textit{class imbalance} 
+poses a significant challenge, as no-activation events dominate the dataset. This
+imbalance skews model performance, making it difficult to accurately predict the less 
+frequent upward and downward activations. Despite these acknowledged challenges, Svedlindh
+and Yngveson achieve above expected performance, seemingly sustained by the inclusion
+of mFRR capacity market cleared volumes and prices. Cleared mFRR capacity market data
+is not necessarily
+available to market participants in real-time, and thus limits the practical applicability
+of their models. \textbf{Is this true Jay? As far as I know, we do not have access
+to capacity market data (volumes, prices). They do not explain how the data 
+is gathered.}
+
+A recent study in 2025, Porras
+\autocite{porrasShortTermForecastingMFRR} investigated the use of
+XGBoost for short-term forecasting of mFRR activation direction and imbalance
+prices with a two-stage multi-horizon model. This paper is closely
+related to the present study, as it also focuses on predicting mFRR activations.
+However, Porras leans heavily into XGBoost, while this study explores a broader
+range of models. Additionally, Porras produces predictions at an hourly resolution,
+whereas this study aims for a finer 15-minute resolution - aligning with the recent
+Nordic mFRR market reform. Porras targets the SE2 price area in Sweden, thereby
+incorporating data from different sections of the Nordic power system. The
+dynamics may be similar, but this study focuses exclusively on the NO1 price area
+in Norway, which may exhibit different characteristics. The primal gap in Porras'
+study, which this study aims to address, is the opportunity opened by the recent
+15-minute market reform, which provides more granular data and potentially
+improved prediction capabilities.
+
+\subsubsection{Methodological Distinctions Across Studies}
+In its most basic form, regression can be used to make \textit{point forecasts}
+of future values - providing a single expected value for each time step. Regression
+can also be extended to produce \textit{probabilistic distributions}, thus capturing
+the uncertainty inherent in balancing markets.
+
+
+
+\subsection{Research Gap}
+While existing literature has made significant strides in predicting balancing
+market activations, several gaps remain. Notably, there is a lack of studies
+that leverage and discuss potential impacts of the recent transition to 15-minute 
+time intervals in the Nordic
+mFRR markets. This reform presents an opportunity to enhance prediction accuracy
+by utilizing more granular data. Additionally, while various machine learning
+techniques have been explored, there is a need for a comprehensive comparison
+of different models specifically tailored to the unique characteristics of the
+mFRR energy activation market. Many of the recent studies on this topic have
+focused on regions with high activation volumes and frequencies, such as SE2 in 
+Sweden. However, there is a lack of research focusing on regions like NO1 in Norway,
+where activations are less frequent. While SE2 and other high-activation regions 
+most likely would yield better prediction results due to more balanced classes,
+it is still valuable to explore the challenges and opportunities in regions with
+lower activation frequencies. This study aims to fill these gaps by focusing on
+the NO1 price area in Norway, utilizing the new 15-minute market data, and
+comparing a range of machine learning models to identify the most effective
+approaches for predicting mFRR activations.

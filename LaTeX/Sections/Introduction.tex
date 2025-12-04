@@ -1,0 +1,89 @@
+\section{Introduction}
+\subsection{Background}
+Electric power systems increasingly rely on fast-acting flexible resources to maintain
+frequency quality as renewable energy sources displace traditional synchronous generation 
+\autocite{caiLowInertiaPower2023}.
+In the Nordic power markets, manual Frequency Restoration Reserves (mFRR) are activated
+to correct sustained imbalances after other faster reserves have been utilized, such as
+Frequency Containment Reserves (FCR) and automatic Frequency Restoration Reserves (aFRR).
+This results in a hierarchical reserve structure where mFRR serves as the last line of 
+defense against frequency deviations \autocite{entso-eNoricBalancingPhilosophy2024}. 
+mFRR activations are, therefore, relatively 
+infrequent and often substantial when they do occur. 
+
+\begin{figure}[H]
+    \includegraphics[width=0.8\textwidth]{Images/dnv_electricity_supply_by_source.png}
+    \centering
+    \caption{Norway electricity supply by power station and net imports with 
+    projections to 2050 \
+    \autocite{EnergyTransitionOutlook}}
+\end{figure}
+
+\subsection{Motivation}
+Since mFRR activations are infrequent but significant events in power system operation,
+accurately predicting their occurrence would provide substantial benefits. For aggregators
+of distributed flexible resources, such as home batteries and electric vehicles,
+knowing when mFRR activations are likely to occur can inform bidding strategies in
+the electricity balancing markets. Capacity markets and activation markets exist side by side,
+each with distinct revenue opportunities. Capacity markets reward participants for being available
+to provide reserves, while activation markets compensate for actual reserve activations. 
+Accepted bids in capacity markets guarantees revenue regardless of whether an activation
+occurs, while activation market bids only yield revenue upon actual activations. 
+Bidding strategies involving activation markets are inherently riskier, as revenue 
+realization is uncertain. 
+
+
+    
+
+If an aggregator is able to anticipate when mFRR
+activations are unlikely, the aggregator can confidently bid their resources into
+the capacity markets without the fear of missing out on high-value activation 
+opportunities. Conversely, if an mFRR activation is predicted to be likely, the
+aggregator might prioritize bidding into the activation market to capitalize on
+potential revenues. Thus, a reliable prediction model for mFRR activations can enhance
+market participation strategies and optimize revenue streams for aggregators of
+flexible resources. 
+
+
+
+The recent reform of the mFRR market in March 2025, transitioning to a Nordic-wide
+mFRR activation market with quarter-hourly resolution 
+\autocite{ConfirmationMFRREAM2025}, further motivates the
+development of a data-driven prediction model. The increased granularity provides
+more abundant data points for model training and evaluation, potentially improving
+prediction quality. Additionally, the reform introduces more nuanced price signals,
+which in theory could be captured by a well-designed prediction model. However,
+as the transition is recent at the time of writing, there is limited historical data
+available at the new resolution. This scarcity of data presents a challenge for
+model development, as machine learning models typically require substantial amounts
+of data to learn effectively.
+\textit{bid acceptance not equal to activation}
+\textbf{not only looking into prices and volumes.}
+
+
+
+The aim of this specialization project is, thereby, to provide further work with
+a mFRR activation prediction model that can be applied to comprehensive and
+realistic market strategies for aggregators of distributed flexible resources.
+One possability is to apply reinforcement learning techniques to develop 
+near-optimal bidding strategies based on the predictions from the model. This is
+an interesting avenue for future research as it, if successful, could provide
+significant economic benefits for aggregators and enhance the overall efficiency
+of the electricity balancing markets.
+
+\textbf{handling uncertainty importanf for further work, near real tiem, continuous}
+\subsection{Research Question}
+
+The central research question of this study is: How well can mFRR up- and 
+down-regulation activations be predicted  at 15-minute resolution using only 
+real-time-available system state features and historical activation/price data?
+What is the relative contribution of these systemic features compared to lag-based
+features?
+
+\subsection{Outline}
+
+The remainder of this report is structured as follows: Section 2 provides an overview 
+of the Nordic balancing markets and related work. Section 3 formulates the prediction 
+problem and presents the dataset. Section 4 details the modelling methodology, including 
+feature engineering and model selection. Section 5 presents the results and performance 
+evaluation, while Section 6 discusses implications, limitations, and directions for future work

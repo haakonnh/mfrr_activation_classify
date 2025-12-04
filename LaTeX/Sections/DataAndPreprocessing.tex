@@ -1,0 +1,266 @@
+\newpage
+\section{Data and Preprocessing}
+
+
+
+The gathered data spans a period from January 1, 2024, to December 1, 2025, 
+providing a comprehensive view of the mFRR activation patterns over nearly two
+years. This extensive dataset allows for robust model training and evaluation,
+capturing seasonal variations and other temporal dynamics in the electricity
+market.
+
+\subsection{Data Sources}
+
+\subsection{Data Coverage and Time Span}
+
+\subsection{Nord Pool Data}
+Nord Pool is the leading power market in Europe, facilitating the trading of
+electricity across multiple countries. The data from Nord Pool includes
+information on market prices, trading volumes, and other relevant metrics
+that can influence mFRR activations. Data was obtained manually through the Nord 
+Pool data portal as CSV files and then combined into a single dataset for analysis
+\autocite{PowerMarketData}.
+This tedious manual approach was necessary due to the Nord Pool API not being 
+available for this project. Data API access requires a commercial agreement with
+Nord Pool, which was not feasible within the project's scope. This is not an 
+issue for this project and research as real-time data is not required for
+training and evaluating the models. If the models were to be deployed in a
+real-time setting, however, access to real-time data through the API would be 
+essential. The following subsections describe the specific datasets obtained
+from Nord Pool.
+
+
+\subsubsection{mFRR activation data}
+The primary dataset used in this study consists of manual Frequency
+Restoration Reserves (mFRR) activation data from the Nordic electricity
+market, specifically for the bidding zone NO1. This data includes accepted 
+and activated up- and down-regulation bids at a 15-minute resolution. The 
+activated volumes provide the target variable for the prediction models, indicating
+whether an mFRR activation occurred in a given 15-minute interval. Figure 
+\ref{fig:mFRR_activation_distribution} displays the distribution of mFRR activations
+over the dataset period. The figure especially highlights the infrequent nature 
+of up-activations, which occur far less often than down-activations. This 
+phenomenon induces a \textit{class imbalance} in the prediction task, which 
+in general makes it more challenging for models to accurately predict the minority
+class \autocite{ClassImbalanceProblem}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/mfrr_distribution.png}
+    \caption{mFRR activation distribution.}
+    \label{fig:mFRR_activation_distribution}
+\end{figure}
+
+The distribution also reveals the majority class with 56,9\% of
+all intervals having no activation. Activations occur in 43,1\% of the intervals,
+with down-activations being the most common at 32,5\% and up-activations
+being the least common at 10,6\%. Thus, if one were to consider the binary case
+of activation vs. no activation, the classes would be approximately balanced.
+Distinguishing between up- and down-activations, however, makes the problem
+more nuanced and challenging.
+
+
+\subsubsection{Cross-zonal flows}
+Cross-zonal flows refer to the electricity flows between different
+bidding zones in the Nordic market. In this project, only cross-zonal flows
+involving the NO1 bidding zone are considered: flows between NO1 and SE3, NO1 and
+NO3, NO1 and NO5, and NO1 and SE3. These flows are crucial for maintaining
+grid stability and optimizing the use of available resources. The dataset
+includes information on cross-zonal flows to provide additional context for
+mFRR activations. Figure \ref{fig:cross_zonal_flows_dist} shows the distribution of cross-zonal flow
+directions for the NO1 bidding zone. The figure indicates that flows between NO1
+and NO3, NO5, and SE3 are drastically skewed towards imports into NO1, while flows 
+between NO1 and NO2 are reversely skewed. NO1-NO3 and NO1-NO5 show the most
+pronounced skewness, with very few occurrences of exports from NO1 to these zones.
+\textbf{This might be interesting to talk about later, as imbalance here may
+make the directionality more predictive.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/cross_zonal_flows_distribution_bar.png}
+    \caption{Cross-zonal flow distributions for the NO1 bidding zone.}
+    \label{fig:cross_zonal_flows_dist}
+\end{figure}
+
+Figure \ref{fig:cross_zonal_imports} and \ref{fig:cross_zonal_exports} show the 
+relative utilization of the cross-zonal connections for NO1 as density plots. The
+figures illustrate how heavily the connections are utilized for imports and exports,
+respectively. The utilization is calculated as the ratio between actual flow and
+the NTC (Net Transfer Capacity) capacity of the connection. The export utilization
+figure highlights the lack of exports from NO1, except for the NO2 connection, 
+indicated by the tail thickness between 0.4 and 1.0 utilization. The import
+utilization figure, on the other hand, shows that all connections, except NO2-NO1,
+are heavily utilized for imports, with many thick tails approaching full utilization.
+The NO1-NO2 connection is thus almost exclusively used for exports from NO1 to NO2, 
+whilst the other connections are primarily used for imports into NO1.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/import_utilization.png}
+        \caption{Import utilization.}
+        \label{fig:cross_zonal_imports}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/export_utilization.png}
+        \caption{Export utilization.}
+        \label{fig:cross_zonal_exports}
+    \end{subfigure}
+    \caption{Cross-zonal flow utilizations for the NO1 bidding zone calculated
+    as the ratio between actual flow and NTC capacity.}
+    \label{fig:cross_zonal_flows_side_by_side}
+\end{figure}
+
+
+\subsubsection{Load and production data}
+Load and production forecasts provide insights into the expected
+system state. Forecast may on their own provide valuable information about
+potential mFRR activations, but when combined with actual load and production
+data, the model can learn to identify discrepancies between expected and
+actual system states. Such discrepancies often lead to imbalances that require
+mFRR activations to restore balance. The different production sources 
+(e.g., hydro, wind, thermal) have varying characteristics and impacts on grid
+stability. Among them, wind power is particularly relevant due to its
+intermittent nature, which can lead to sudden changes in generation levels.
+Wind power production data is therefore predicted to have the biggest impact
+on mFRR activations among the different production types.
+
+\begin{table}[ht]
+\centering
+\caption{Summary statistics for wind-related features (2024--2025, NO1)}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Metric & Mean & Std & Min & P10 & P50 & P90 & Max & Count \\
+\midrule
+Wind DA Forecast        & 121.64 & 96.34 & 0.0   & 16.0   & 95.0   & 274.0  & 370.0  & 62,680 \\
+Wind Intraday Forecast  & 135.80 & 104.55 & 0.0  & 15.0   & 111.0  & 294.0  & 376.0  & 38,972 \\
+Wind Actual Production  & 120.38 & 102.72 & 0.0  & 8.0    & 91.0   & 283.0  & 380.0  & 65,568 \\
+Wind Revision (ID--DA)  & 12.59  & 15.27  & 0.0  & 1.0    & 7.0    & 30.0   & 151.0  & 38,972 \\
+DA--Actual Error        & 0.03   & 38.85  & -250.0& -44.0  & -2.0   & 47.0   & 221.0  & 62,680 \\
+ID--Actual Error        & 2.97   & 35.30  & -227.0& -38.0  & 1.0    & 46.0   & 189.7  & 38,972 \\
+Abs DA Error (\%)       & 0.58   & 0.99   & 0.0  & 0.038  & 0.24   & 1.36   & 5.0    & 61,486 \\
+Abs ID Error (\%)       & 0.42   & 0.75   & 0.0  & 0.032  & 0.19   & 0.92   & 5.0    & 38,370 \\
+Wind Share              & 0.054  & 0.047  & 0.0  & 0.0036 & 0.040  & 0.128  & 0.228  & 65,568 \\
+\bottomrule
+\end{tabular}
+\label{tab:wind_feature_stats}
+\end{table}
+
+Load/consumption data is much simpler in nature, as \textit{who} or \textit{what},
+essentially the source of consumption, is not as relevant as the source of production.
+Consumption forecasts and actual consumption data can still be useful, however,
+as sudden changes in consumption patterns can lead to imbalances that
+require mFRR activations. 
+
+\subsection{NUCS}
+NUCS, or the Nordic Unavailability Collection System, is a service for
+collection of data on unavailable data in the Nordic power system. NUCS
+is an important part of this project, as it provides otherwise unavailable
+data that served as features in the models. NUCS is unique from the other 
+data sources used in this project, as it provides data through an API (Application
+Programming Interface) 
+\autocite{StaticContentNordic}. This allows for automated data retrieval, which is
+especially useful for real-time applications. However, as this project does
+not have access to comprehensive real-time data, the NUCS API was only used
+to gather historical data for the training and evaluation of the models.
+
+\subsubsection{aFRR procurement prices}
+aFRR procurement data is generally unavailable. However, through the NUCS API,
+historical aFRR procurement prices and volumes for the NO1 bidding zone 
+were obtained. This data provides insights into the costs associated with
+aFRR activations and can be used as additional features in the models. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/nucs_afrr_hourly_hist.png}
+    \caption{A histogram of hourly aFRR procurement prices for the NO1
+bidding zone from NUCS data.}
+    \label{fig:nucs_afrr_hourly_hist}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/nucs_afrr_hourly_prices.png}
+    \caption{Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}
+    \label{fig:nucs_afrr_hourly_prices}
+\end{figure}
+
+Figure \ref{fig:nucs_afrr_hourly_hist} and \ref{fig:nucs_afrr_hourly_prices} show
+a histogram and time series plot of the hourly NO1 aFRR procurement prices between
+January 1, 2024, and \lastDate. Both figures highlight a problem in the data
+before July 2024, where there are many missing values represented as zeros.
+The data appears complete after this date. Intermittent missing values can be
+handled during preprocessing in multiple ways. In time series data, simply removing
+the rows with missing values is not an option, as it would break the time continuity.
+One approach is to use interpolation to estimate the missing values based on
+the surrounding data points. Another approach is to use forward or backward filling, 
+where missing values are filled with the last known value or the next known value,
+respectively. The choice of method depends on the nature of the data and the
+specific requirements of the analysis or model being used.
+
+\subsection{ENTSO-E}
+ENTSO-E, the European Network of Transmission System Operators for Electricity,
+is a key organization in the European electricity market. ENTSO-E provides
+a wide range of data related to electricity generation, consumption, and grid
+operations across Europe \autocite{DataStandardisation}.
+
+\subsubsection{aFRR Activation Data}
+aFRR prices and capacities are available through NUCS as discussed earlier, but
+aFRR activation data is not. However, ENTSO-E provides detailed data on aFRR 
+regulations via their "Accepted Offers and Activated Balancing Reserves" dataset.
+This dataset is supposed to provide information about up and down regulations from 
+all balancing markets. Only aFRR data seems to be available, however, which is
+sufficient for this project. The data is available at an hourly resolution, which
+is coarser than the 15-minute resolution of the mFRR data. This data is, in the same
+manner as other 1-hour resolution data, resampled with forward filling to match the
+15-minute resolution of the main dataset.
+
+\paragraph{Crucial: Time restriction. (Probably move parts of this to somewhere else
+as these concepts are important.)} aFRR activation data is naturally not
+available at the target time $t+4$ and prediction time $t$ as these 
+activations has not yet occurred or finished. The 1-hour resolution is 
+problematic as it essentially causes the data to become available in clusters
+of four 15-minute intervals at a time. This causes inconsistencies in the 
+what specific lag features are available at different prediction times. For 
+instance, assume data becomes available immediately after the hour. Then, at
+time $t$ = 10:00, the last available aFRR activation data would be from
+09:00-10:00. This means that lag features for $t-1$, $t-2$, $t-3$, and $t-4$
+would be available. However, in the worst case, at a prediction time $t$ = 10:45
+, the last available aFRR activation data would still be from 09:00-10:00. This means
+that only lag features starting at $t-4$ would be available, while $t-1$, $t-2$,
+and $t-3$ would not. This inconsistency in available lag features complicates the
+model training and evaluation process. There are multiple ways to handle this
+issue:
+
+\begin{itemize}
+    \item \textbf{Option 1:} Only use lag features that are always available,
+    i.e., only use lag features starting from $t-4$ and further back. This is
+    the easiest option to implement but it sacrifices potentially valuable
+    information from more recent time steps.
+
+    \item \textbf{Option 2:} Create separate models for different prediction
+    times within the hour (e.g., one model for predictions at 00, 15, 30,
+    and 45 minutes past the hour). Each model would be trained with the
+    each with their own set of available lag features. This approach maximizes
+    the use of available data but requires maintaining multiple models. 
+    The more gathered datasets are of a 1-hour resolution, the more valuable
+    this approach becomes.
+
+    \item \textbf{Option 3:} Use imputation techniques to estimate the missing
+    lag features based on available data. This approach allows for a single
+    model to be used but introduces uncertainty due to the imputation process.
+    
+\end{itemize}
+
+\subsection{Dataset structure}\label{sec:dataset_structure}
+The data is represented as a time series, where each record in the dataset
+consists of a set of attributes connected to one point in time. More
+specifically, the data contains a sequence of 15-minute interval time
+stamps. Each time stamp may or may not have an associated activation, which
+is the target variable the model is trying to predict. The features
+describe the system state at that time stamp, providing context for the
+model to learn from.
+

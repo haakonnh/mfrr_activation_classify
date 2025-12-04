@@ -1,0 +1,119 @@
+\section{Electricity Balancing Market Theory}
+
+Electricity balancing markets are mechanisms designed to ensure the stability
+and reliability of the power grid by managing supply and demand in real-time.
+These markets facilitate the procurement of balancing services, which are
+necessary to maintain the equilibrium between electricity supply and demand.
+Balancing markets operate on the principle of economic efficiency, where
+market participants can offer their flexibility to the grid operator in
+exchange for compensation.
+
+
+\subsection{Nordic Balancing Market Structure}
+In Nordic countries, the balancing hierarchy consists of several layers,
+each serving a specific purpose in maintaining grid stability. Figure
+\ref{fig:nordic_balancing_hierarchy} illustrates the different reserve types, 
+their activation times, and their place in the hierarchy.
+
+\textbf{Not manual anymore}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/reserves_hierarchy_entsoe.png}
+    \caption[The Nordic balancing market hierarchy, illustrating the different reserve types and their activation times.]{The Nordic balancing market hierarchy, illustrating the different
+    reserve types and their activation times \autocite{entso-eNoricBalancingPhilosophy2024}.}
+    \label{fig:nordic_balancing_hierarchy}
+\end{figure}
+
+Frequency Containment Reserves (FCR) were designed to be the first line of
+defense against frequency deviations in the power grid. These reserves are
+activated automatically and respond quickly to counteract sudden imbalances
+between supply and demand. FCR is further divided into two categories: FCR-N
+and FCR-D. FCR-D is specifically intended to address frequency deviations caused by
+disturbances in the distribution network, while FCR-N focuses on normal
+operating conditions in the transmission network. FCR-D should, therefore, be able
+to respond faster than FCR-N to effectively manage these disturbances. 
+
+The Fast Frequency Reserves (FFR) reserve market
+was implemented in the Nordics in May 2020. These reserves are designed to
+respond even more rapidly than FCR, ideally in the span of a single second. The
+need for FFR arises from the increasing penetration of renewable energy sources.
+Wind power is, for instance, not connected synchronously to the grid, leading to
+a reduction in system inertia. Lower inertia means that frequency deviations 
+occur more rapidly, necessitating faster-acting reserves like FFR to maintain
+grid stability. The fast power response provided by FFR is usually sustained
+for a short duration, stabilizing the frequency slightly before FCR-D takes over 
+\autocite{RaskeFrekvensreserverFFR2025}. Figure \ref{fig:entsoe_balancing_philosophy}
+illustrates roughly the activation times and the interplay between the different
+reserve types in the Nordic balancing market. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/reserve_types_graph.png}
+    \caption[Illustration of the different reserve types and their activation times.]{Illustration of the different reserve types and their activation
+    times \autocite{entso-eNoricBalancingPhilosophy2024}.}
+    \label{fig:entsoe_balancing_philosophy}
+\end{figure}
+
+After FFR and FCR has stabilized the frequency, something must bring it back
+to its nominal level. Automatic Frequency Restoration Reserves (aFRR) holds
+this responsibility. These reserves are often kept activated for a couple
+of minutes to ensure that the frequency is restored to its normal operating
+level. Manual Frequency Restoration Reserves (mFRR) then relieves aFRR 
+and maintains the balance until normal operations are restored.
+
+\subsection{Reserve Market Concepts}
+Reserve markets are platforms where market participants can offer their
+balancing services to the grid operator. These markets operate on the principle
+of supply and demand, where participants can bid to provide reserves at
+specific prices. The markets are then cleared based on the bids received, 
+ensuring that the most cost-effective resources are utilized to maintain grid 
+stability. Reserve markets can be broadly categorized into two types:
+activation markets and capacity markets. Only aFRR and mFRR markets will be 
+discussed further, as they are the most relevant for this study.
+
+
+
+\subsubsection{Capacity Markets}
+Capacity is a market mechanism that ensures the availability of sufficient
+resources to maintain grid stability and reliability. Capacities are 
+procured prior to real-time operation to guarantee the availability of
+balancing resources at the time of operation
+\autocite{entso-eNoricBalancingPhilosophy2024}. BSPs can offer their capacities 
+to the grid operator through the Nordic aFRR capacity market or in the 
+national (Statnett in Norway) mFRR capacity markets. Capacity market 
+participants are compensated for making their resources available to the
+grid operator, regardless of whether their resources are activated or not.
+They are, however, obligated to deliver the offered capacity when called upon
+by the grid operator.
+
+\subsubsection{Energy Activation Markets (EAMs)}
+Activation markets operate closer to real-time and are designed to procure
+balancing energy to address immediate imbalances in the power grid. In the Nordic
+region, the aFRR and mFRR activation markets serve this purpose. In the 
+mFRR EAM in Norway, BSPs submit bids to Statnett at least 45 minutes before
+the activation period. These bids specify the amount of up- or down-regulation
+capacity the BSP is willing to provide and the corresponding price. Statnett
+then forwards the bids to the clearing algorithm Nordic Libra AOF, which
+provides the activation volumes for the operational quarter-hour. Statnett
+then activates the selected bids based on the activation volumes provided
+by Nordic Libra AOF \autocite{statnettVilkarMFRRAktiveringsmarked2024}.
+
+The mFRR EAM underwent a significant reform March 4th 2025, transitioning
+from national mFRR activation systems to a Nordic-wide mFRR activation market.
+The previously hourly resolution was also changed to a quarter-hourly resolution.
+This resolution change allows for more precise balancing, introducing more
+nuanced price signals. 
+
+\subsubsection{Imbalance Prices}
+
+
+
+
+\subsubsection{mFRR Market in Norway (will refactor this or remove
+this)}
+In Norway, the mFRR market plays a crucial role in maintaining the
+stability of the power grid. Market participants can offer their
+flexibility to the grid operator through both activation and capacity
+markets. 
+
+
