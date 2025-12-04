@@ -39,6 +39,7 @@ from src.data.features import (
     attach_intraday_hourly_features,
     add_interactions,
     add_core_derived_features,
+    add_ratioized_accepted_price_features,
 )
 
 from src.utils.utils import compute_regclass_series
@@ -71,6 +72,29 @@ def _read_csv(path: str, **kwargs) -> pd.DataFrame:
     if not os.path.exists(path):
         raise FileNotFoundError(f"Missing file: {path}")
     return pd.read_csv(path, **kwargs)
+
+def _ensure_unique_columns(df):
+    """Ensure DataFrame has unique column names by suffixing duplicates.
+    Keeps first occurrence unchanged; subsequent duplicates get _dup{n} appended.
+    """
+    cols = list(df.columns)
+    seen = {}
+    new_cols = []
+    for c in cols:
+        if c not in seen:
+            seen[c] = 0
+            new_cols.append(c)
+        else:
+            seen[c] += 1
+            new_cols.append(f"{c}_dup{seen[c]}")
+    if new_cols != cols:
+        df = df.copy()
+        df.columns = new_cols
+    # Defensive: drop any accidental column literally named 'dtype'
+    if 'dtype' in df.columns:
+        df = df.drop(columns=['dtype'])
+    return df
+
 
 
 def ensure_datetime_index(df: pd.DataFrame, col: str, fmt: str | None = None, slice_str: Tuple[int,int] | None = None) -> pd.DataFrame:
@@ -221,6 +245,26 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     df['Activated Down Volume'] = pd.to_numeric(mfrr_df[down_col], errors='coerce')
     df['Activated'] = df['Activation Volume'].fillna(0).gt(0)
     
+    # Engineered accepted volumes and up/down prices (decision-time aligned, t-1)
+    # Use ratios/skew rather than raw lag stacks
+    accepted_up = pd.to_numeric(mfrr_df[f'{area} Accepted Up Volume (MW)'], errors='coerce').shift(1)
+    accepted_down = pd.to_numeric(mfrr_df[f'{area} Accepted Down Volume (MW)'], errors='coerce').shift(1)
+    vol_denom = (accepted_up.abs() + accepted_down.abs())
+    vol_eps = float(np.nanmedian(vol_denom)) * 1e-3 if np.isfinite(vol_denom).any() else 1.0
+    vol_eps = 1.0 if not np.isfinite(vol_eps) or vol_eps <= 0 else vol_eps
+    df['Accepted Up Share'] = (accepted_up / (accepted_up + accepted_down + vol_eps)).clip(lower=0.0, upper=1.0)
+    df['Accepted Imbalance Ratio'] = (accepted_up - accepted_down) / (accepted_up + accepted_down + vol_eps)
+
+    price_up = pd.to_numeric(mfrr_df[f'{area} Up Price (EUR)'], errors='coerce').shift(1)
+    price_down = pd.to_numeric(mfrr_df[f'{area} Down Price (EUR)'], errors='coerce').shift(1)
+    price_denom = price_up.abs() + price_down.abs()
+    p_eps = float(np.nanmedian(price_denom)) * 1e-3 if np.isfinite(price_denom).any() else 1.0
+    p_eps = 1.0 if not np.isfinite(p_eps) or p_eps <= 0 else p_eps
+    df['Up-Down Price Skew'] = 2.0 * (price_up - price_down) / (price_denom + p_eps)
+    # Keep the shifted raw prices to allow DA comparison later in ratioization helper
+    df['PriceUp_t-1'] = price_up
+    df['PriceDown_t-1'] = price_down
+    
     # Create ternary direction-at-lag features: RegLag-<k> in {-1: down, 0: none, +1: up}
     # Use volume tie-break when both sides are positive
     for lag in (activation_lag_start, 
@@ -269,12 +313,7 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
             if col in df.columns:
                 df.drop(columns=[col], inplace=True)
     
-    df['AcceptedVolUp-1'] = pd.to_numeric(mfrr_df[f'{area} Accepted Up Volume (MW)'].shift(1), errors='coerce')
-    df['AcceptedVolDown-1'] = pd.to_numeric(mfrr_df[f'{area} Accepted Down Volume (MW)'].shift(1), errors='coerce')
-    df['AcceptedVolUp-2'] = df['AcceptedVolUp-1'].shift(1)
-    df['AcceptedVolDown-2'] = df['AcceptedVolDown-1'].shift(1)
-    df['AcceptedVolUp-3'] = df['AcceptedVolUp-2'].shift(1)
-    df['AcceptedVolDown-3'] = df['AcceptedVolDown-2'].shift(1)
+
     
     
     # Add Target column, RegClass+4 column
@@ -614,6 +653,9 @@ def preprocess_all(cfg: Config | None = None,
     
     # Core engineered features (volatility, momentum, calendar, scarcity)
     df = add_core_derived_features(df)
+
+    # Add ratio/normalized features for accepted volumes and prices if present
+    df = add_ratioized_accepted_price_features(df)
     
     # Imports, net imports, residuals and ramps
     df = attach_imports_and_residuals(df, physical_flow_df, area)
@@ -621,7 +663,7 @@ def preprocess_all(cfg: Config | None = None,
 
 
     # Interactions
-    df = add_interactions(df, connected_zones, cfg.heavy_interactions, area)
+    #df = add_interactions(df, connected_zones, cfg.heavy_interactions, area)
     
     """ print('Wind forecast shape:', wind_forecast_df.shape) """
     if 'consumption_df' in locals() and consumption_df is not None:
@@ -633,25 +675,14 @@ def preprocess_all(cfg: Config | None = None,
     print('Intraday hourly stats shape:', id_hourly_df.shape)
     
 
+    # Ensure unique columns for downstream frameworks
+    df = _ensure_unique_columns(df)
+
     # Final NA handling
     if cfg.dropna:
         print("Number of NaNs before dropna:", df.isna().sum().sum())
         df.dropna(inplace=True)
-    # Normalize pandas nullable integer dtypes (Int8/Int64) to numpy int to silence AutoGluon warnings.
-    converted_int_cols = []
-    for c in df.columns:
-        dtype_str = str(df[c].dtype)
-        if dtype_str.startswith('Int'):
-            try:
-                # Safe to convert since we've dropped NaNs; fall back to float if conversion fails
-                df[c] = df[c].astype('int64')
-            except Exception:
-                df[c] = df[c].astype('float64')
-            converted_int_cols.append(c)
-    if converted_int_cols:
-        print('Normalized nullable integer dtypes to int64 for:', converted_int_cols)
     print('Final preprocessed DataFrame shape:', df.shape)
-    print(df.tail(2))
     return df
 
 

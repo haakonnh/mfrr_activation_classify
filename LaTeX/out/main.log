@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  4 DEC 2025 13:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  4 DEC 2025 14:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1195,7 +1195,7 @@ Package pdftex.def Info: Images/reserve_types_graph.png  used on input line 51.
 [8]) (Sections/DataAndPreprocessing.tex
 
 [9]
-<Images/mfrr_distribution.png, id=486, 1040.688pt x 572.3784pt>
+<Images/mfrr_distribution.png, id=488, 1040.688pt x 572.3784pt>
 File: Images/mfrr_distribution.png Graphic file (type png)
 <use Images/mfrr_distribution.png>
 Package pdftex.def Info: Images/mfrr_distribution.png  used on input line 49.
@@ -1203,7 +1203,7 @@ Package pdftex.def Info: Images/mfrr_distribution.png  used on input line 49.
 
 
 [10]
-<Images/cross_zonal_flows_distribution_bar.png, id=494, 722.7pt x 361.35pt>
+<Images/cross_zonal_flows_distribution_bar.png, id=496, 722.7pt x 361.35pt>
 File: Images/cross_zonal_flows_distribution_bar.png Graphic file (type png)
 <use Images/cross_zonal_flows_distribution_bar.png>
 Package pdftex.def Info: Images/cross_zonal_flows_distribution_bar.png  used on input line 80.
@@ -1211,12 +1211,12 @@ Package pdftex.def Info: Images/cross_zonal_flows_distribution_bar.png  used on 
 
 
 [11 <./Images/mfrr_distribution.png>]
-<Images/import_utilization.png, id=502, 722.7pt x 361.35pt>
+<Images/import_utilization.png, id=504, 722.7pt x 361.35pt>
 File: Images/import_utilization.png Graphic file (type png)
 <use Images/import_utilization.png>
 Package pdftex.def Info: Images/import_utilization.png  used on input line 101.
 (pdftex.def)             Requested size: 209.1301pt x 104.56274pt.
-<Images/export_utilization.png, id=503, 722.7pt x 361.35pt>
+<Images/export_utilization.png, id=505, 722.7pt x 361.35pt>
 File: Images/export_utilization.png Graphic file (type png)
 <use Images/export_utilization.png>
 Package pdftex.def Info: Images/export_utilization.png  used on input line 108.
@@ -1224,12 +1224,12 @@ Package pdftex.def Info: Images/export_utilization.png  used on input line 108.
 
 
 [12 <./Images/cross_zonal_flows_distribution_bar.png> <./Images/import_utilization.png> <./Images/export_utilization.png>]
-<Images/nucs_afrr_hourly_hist.png, id=513, 650.43pt x 289.08pt>
+<Images/nucs_afrr_hourly_hist.png, id=515, 650.43pt x 289.08pt>
 File: Images/nucs_afrr_hourly_hist.png Graphic file (type png)
 <use Images/nucs_afrr_hourly_hist.png>
 Package pdftex.def Info: Images/nucs_afrr_hourly_hist.png  used on input line 178.
 (pdftex.def)             Requested size: 426.79134pt x 189.69063pt.
-<Images/nucs_afrr_hourly_prices.png, id=514, 867.24pt x 289.08pt>
+<Images/nucs_afrr_hourly_prices.png, id=516, 867.24pt x 289.08pt>
 File: Images/nucs_afrr_hourly_prices.png Graphic file (type png)
 <use Images/nucs_afrr_hourly_prices.png>
 Package pdftex.def Info: Images/nucs_afrr_hourly_prices.png  used on input line 186.
@@ -1245,12 +1245,12 @@ Package pdftex.def Info: Images/nucs_afrr_hourly_prices.png  used on input line 
 [16]
 
 [17]
-<Images/actual_wind_doesnt_impact_prediction.png, id=563, 1040.688pt x 572.3784pt>
+<Images/actual_wind_doesnt_impact_prediction.png, id=565, 1040.688pt x 572.3784pt>
 File: Images/actual_wind_doesnt_impact_prediction.png Graphic file (type png)
 <use Images/actual_wind_doesnt_impact_prediction.png>
 Package pdftex.def Info: Images/actual_wind_doesnt_impact_prediction.png  used on input line 196.
 (pdftex.def)             Requested size: 209.1301pt x 115.01514pt.
-<Images/wind_share_impact_activation.png, id=564, 1040.688pt x 572.3784pt>
+<Images/wind_share_impact_activation.png, id=566, 1040.688pt x 572.3784pt>
 File: Images/wind_share_impact_activation.png Graphic file (type png)
 <use Images/wind_share_impact_activation.png>
 Package pdftex.def Info: Images/wind_share_impact_activation.png  used on input line 203.
@@ -1269,7 +1269,7 @@ Underfull \hbox (badness 1152) in paragraph at lines 204--204
 [20]
 
 [21]
-<Images/pr-curve.png, id=593, 499.3857pt x 395.3169pt>
+<Images/pr-curve.png, id=595, 499.3857pt x 395.3169pt>
 File: Images/pr-curve.png Graphic file (type png)
 <use Images/pr-curve.png>
 Package pdftex.def Info: Images/pr-curve.png  used on input line 175.
@@ -1284,7 +1284,7 @@ Overfull \hbox (22.0169pt too wide) in paragraph at lines 212--215
 ) (Sections/Results.tex
 
 [23]
-<Images/2025-highf1_xt.png, id=614, 499.3857pt x 395.3169pt>
+<Images/2025-highf1_xt.png, id=616, 499.3857pt x 395.3169pt>
 File: Images/2025-highf1_xt.png Graphic file (type png)
 <use Images/2025-highf1_xt.png>
 Package pdftex.def Info: Images/2025-highf1_xt.png  used on input line 55.
@@ -1292,7 +1292,7 @@ Package pdftex.def Info: Images/2025-highf1_xt.png  used on input line 55.
 
 
 [24 <./Images/2025-highf1_xt.png>]
-<Images/2025-highf1_xt_fi.png, id=621, 950.3505pt x 896.148pt>
+<Images/2025-highf1_xt_fi.png, id=623, 950.3505pt x 896.148pt>
 File: Images/2025-highf1_xt_fi.png Graphic file (type png)
 <use Images/2025-highf1_xt_fi.png>
 Package pdftex.def Info: Images/2025-highf1_xt_fi.png  used on input line 88.
@@ -1300,7 +1300,7 @@ Package pdftex.def Info: Images/2025-highf1_xt_fi.png  used on input line 88.
 
 
 [25 <./Images/2025-highf1_xt_fi.png>]
-<Images/CatBoost_Tuned-first.png, id=628, 716.1957pt x 860.013pt>
+<Images/CatBoost_Tuned-first.png, id=630, 716.1957pt x 860.013pt>
 File: Images/CatBoost_Tuned-first.png Graphic file (type png)
 <use Images/CatBoost_Tuned-first.png>
 Package pdftex.def Info: Images/CatBoost_Tuned-first.png  used on input line 123.
@@ -1308,7 +1308,7 @@ Package pdftex.def Info: Images/CatBoost_Tuned-first.png  used on input line 123
 
 
 [26]
-<Images/catboost_first_metrics.png, id=633, 173.89969pt x 226.59656pt>
+<Images/catboost_first_metrics.png, id=635, 173.89969pt x 226.59656pt>
 File: Images/catboost_first_metrics.png Graphic file (type png)
 <use Images/catboost_first_metrics.png>
 Package pdftex.def Info: Images/catboost_first_metrics.png  used on input line 134.
@@ -1316,7 +1316,7 @@ Package pdftex.def Info: Images/catboost_first_metrics.png  used on input line 1
 
 
 [27 <./Images/CatBoost_Tuned-first.png>]
-<Images/up-down-price-minus-da-catboost.png, id=640, 714.7503pt x 354.123pt>
+<Images/up-down-price-minus-da-catboost.png, id=642, 714.7503pt x 354.123pt>
 File: Images/up-down-price-minus-da-catboost.png Graphic file (type png)
 <use Images/up-down-price-minus-da-catboost.png>
 Package pdftex.def Info: Images/up-down-price-minus-da-catboost.png  used on input line 141.
@@ -1324,7 +1324,7 @@ Package pdftex.def Info: Images/up-down-price-minus-da-catboost.png  used on inp
 
 
 [28 <./Images/catboost_first_metrics.png> <./Images/up-down-price-minus-da-catboost.png>]
-<Images/confidence_thresholds_metrics_cat_short.png, id=648, 247.67531pt x 142.28156pt>
+<Images/confidence_thresholds_metrics_cat_short.png, id=650, 247.67531pt x 142.28156pt>
 File: Images/confidence_thresholds_metrics_cat_short.png Graphic file (type png)
 <use Images/confidence_thresholds_metrics_cat_short.png>
 Package pdftex.def Info: Images/confidence_thresholds_metrics_cat_short.png  used on input line 167.
@@ -1406,7 +1406,7 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4D25880D9AA29201E5B357E51F54B2FD;10255.
+(rerunfilecheck)             Checksum: E9A6DEE97333A94EB5C3D84693F18229;10139.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
@@ -1420,9 +1420,9 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  117i,12n,121p,2963b,3418s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\haako\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (35 pages, 1614944 bytes).
+Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (35 pages, 1615698 bytes).
 PDF statistics:
- 777 PDF objects out of 1000 (max. 8388607)
+ 779 PDF objects out of 1000 (max. 8388607)
  160 named destinations out of 1000 (max. 500000)
  612 words of extra memory for PDF output out of 10000 (max. 10000000)
 

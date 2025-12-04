@@ -166,11 +166,25 @@ study, which this study aims to address, is the opportunity opened by the recent
 15-minute market reform, which provides more granular data and potentially
 improved prediction capabilities.
 
-\subsubsection{Methodological Distinctions Across Studies}
-In its most basic form, regression can be used to make \textit{point forecasts}
-of future values - providing a single expected value for each time step. Regression
-can also be extended to produce \textit{probabilistic distributions}, thus capturing
-the uncertainty inherent in balancing markets.
+\subsubsection{Literature Synthesis}
+The reviewed literature differ in what they aim to predict, how they handle 
+uncertainty, and their target audience.
+
+Regression-based studies (Singh et al. \autocite{singhNovelDynamicImbalance2025};
+Edling \& Azarang \autocite{azarangMachineLearningBasedPrediction}) provide
+deterministic point forecasts of imbalance volumes. These models primarily target
+system operators seeking to optimize activation decisions and minimize balancing costs.
+However, point forecassts do not convey the uncertainty inherent in balancing markets,
+and they do not directly predict activation directions.
+
+
+Singh et al. and Edling \& Azarang both develop regression-based models to
+produce point forecasts of imbalance volumes. Point forecasts are useful for
+system operators seeking to optimize activation decisions, but probabilistic 
+and classification approaches may inform market participant bidding strategies 
+more directly. Plakas et al. extend the regression approach by developing a
+two-stage probabilistic framework that first forecasts imbalance volumes and then
+predicts imbalance prices. This sequential approach captures the dependency
 
 
 

@@ -18,7 +18,7 @@
 \contentsline {subsection}{\numberline {3.2}Existing Approaches to Balancing Activation Market Forecasting}{5}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Imbalance Volume and Price Forecasting}{5}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Activation Forecasting}{6}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}Methodological Distinctions Across Studies}{7}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3}Literature Synthesis}{7}{subsubsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.3}Research Gap}{7}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Problem Formulation}{8}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Binary Classification Problem}{8}{subsection.4.1}%

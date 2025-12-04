@@ -325,35 +325,91 @@ def add_core_derived_features(df: pd.DataFrame) -> pd.DataFrame:
     if 'DA Price' in df.columns:
         q90 = _roll(df['DA Price'], W_1W, 'q90')
         df['DA Scarcity'] = (df['DA Price'] > q90).astype('Int8')
-
-    # aFRR features if present (already aligned in preprocess)
-    """ if 'aFRR Price' in df.columns:
-        # Volatility and momentum (past-only)
-        df['aFRR Price Vol_1h'] = _roll(df['aFRR Price'], W_1H, 'std')
-        df['aFRR Price Mom_1h'] = df['aFRR Price'] - df['aFRR Price'].shift(4)
-        # Spread/ratio vs DA Price if available
-        if 'DA Price' in df.columns:
-            df['aFRR-DA Price Diff'] = df['aFRR Price'] - df['DA Price']
-            eps = float(np.nanmedian(df['DA Price'].abs())) * 0.01 if np.isfinite(df['DA Price'].abs()).any() else 1.0
-            if not np.isfinite(eps) or eps <= 0:
-                eps = 1.0
-            denom = df['DA Price'].copy()
-            small_mask = denom.abs() < eps
-            denom = np.where(small_mask, np.sign(denom.where(denom != 0, 1.0)) * eps, denom)
-            safe_ratio = df['aFRR Price'] / denom
-            df['aFRR/DA Price Ratio'] = np.clip(safe_ratio, -10.0, 10.0)
-        # Scarcity vs its own rolling 90th percentile
-        q90_afrr = _roll(df['aFRR Price'], W_1W, 'q90')
-        df['aFRR Scarcity'] = (df['aFRR Price'] > q90_afrr).astype('Int8')
-
-    if 'aFRR Quantity' in df.columns:
-        df['aFRR Qty Vol_1h'] = _roll(df['aFRR Quantity'], W_1H, 'std')
-        df['aFRR Qty Mom_1h'] = df['aFRR Quantity'] - df['aFRR Quantity'].shift(4)
-
-    if 'aFRR Price' in df.columns and 'aFRR Quantity' in df.columns:
-        df['aFRR Cost'] = df['aFRR Price'] * df['aFRR Quantity']
-        df['aFRR Cost_1h'] = df['aFRR Cost'].rolling(window=W_1H, min_periods=2).sum() """
-
+        
     # Replace inf with NaN to be handled by downstream dropna
+    df.replace([np.inf, -np.inf], np.nan, inplace=True)
+    return df
+
+
+def add_ratioized_accepted_price_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Add ratio/normalized variants for accepted volumes and prices if present.
+
+    Looks for columns matching acceptedvolup/acceptedvoldown/priceup/pricedown
+    in a case- and separator-insensitive manner. Generates:
+      - Accepted Up Share: up/(up+down)
+      - Accepted Imbalance Ratio: (up-down)/(up+down)
+      - PriceUp - DA, PriceDown - DA (if DA Price present)
+      - PriceUp/DA Ratio, PriceDown/DA Ratio (safe denom)
+      - Up-Down Price Skew: 2*(priceUp-priceDown)/(abs(priceUp)+abs(priceDown)+eps)
+    """
+    df = df.copy()
+
+    # Build a lookup for flexible matching
+    def match_col(name_parts):
+        target = ''.join(name_parts).lower()
+        for c in df.columns:
+            key = c.lower().replace(' ', '').replace('_', '')
+            if target in key:
+                return c
+        return None
+
+    up_vol_col = match_col(['accepted', 'vol', 'up']) or match_col(['activated', 'up', 'volume'])
+    down_vol_col = match_col(['accepted', 'vol', 'down']) or match_col(['activated', 'down', 'volume'])
+    up_price_col = match_col(['price', 'up']) or match_col(['accepted', 'up', 'price'])
+    down_price_col = match_col(['price', 'down']) or match_col(['accepted', 'down', 'price'])
+
+    # Attempt canonical BM column names as a fallback
+    if up_vol_col is None:
+        for c in df.columns:
+            if 'activated up volume' in c.lower() or 'accepted up volume' in c.lower():
+                up_vol_col = c
+                break
+    if down_vol_col is None:
+        for c in df.columns:
+            if 'activated down volume' in c.lower() or 'accepted down volume' in c.lower():
+                down_vol_col = c
+                break
+
+    # Volumes: shares and imbalance
+    if up_vol_col is not None and down_vol_col is not None:
+        u = pd.to_numeric(df[up_vol_col], errors='coerce')
+        d = pd.to_numeric(df[down_vol_col], errors='coerce')
+        denom = (u + d).abs()
+        eps = float(np.nanmedian(denom)) * 1e-3 if np.isfinite(denom).any() else 1.0
+        eps = 1.0 if not np.isfinite(eps) or eps <= 0 else eps
+        df['Accepted Up Share'] = (u / (u + d + eps)).clip(lower=0.0, upper=1.0)
+        df['Accepted Imbalance Ratio'] = (u - d) / (u + d + eps)
+
+    # Prices: compare to DA and price skew
+    if up_price_col is not None or down_price_col is not None:
+        da = df.get('DA Price', None)
+        # Safe denom for DA ratio
+        if da is not None:
+            da = pd.to_numeric(da, errors='coerce')
+            da_eps = float(np.nanmedian(da.abs())) * 0.01 if np.isfinite(da).any() else 1.0
+            da_eps = 1.0 if not np.isfinite(da_eps) or da_eps <= 0 else da_eps
+            da_denom = da.copy()
+            small = da_denom.abs() < da_eps
+            da_denom = np.where(small, np.sign(da_denom.where(da_denom != 0, 1.0)) * da_eps, da_denom)
+        if up_price_col is not None:
+            pu = pd.to_numeric(df[up_price_col], errors='coerce')
+            if da is not None:
+                df['PriceUp - DA'] = pu - da
+                df['PriceUp/DA Ratio'] = np.clip(pu / da_denom, -10.0, 10.0)
+        if down_price_col is not None:
+            pdn = pd.to_numeric(df[down_price_col], errors='coerce')
+            if da is not None:
+                df['PriceDown - DA'] = pdn - da
+                df['PriceDown/DA Ratio'] = np.clip(pdn / da_denom, -10.0, 10.0)
+        # Up-Down skew
+        if up_price_col is not None and down_price_col is not None:
+            pu = pd.to_numeric(df[up_price_col], errors='coerce')
+            pdn = pd.to_numeric(df[down_price_col], errors='coerce')
+            denom = pu.abs() + pdn.abs()
+            eps = float(np.nanmedian(denom)) * 1e-3 if np.isfinite(denom).any() else 1.0
+            eps = 1.0 if not np.isfinite(eps) or eps <= 0 else eps
+            df['Up-Down Price Skew'] = 2.0 * (pu - pdn) / (denom + eps)
+
+    # Clean infinities
     df.replace([np.inf, -np.inf], np.nan, inplace=True)
     return df

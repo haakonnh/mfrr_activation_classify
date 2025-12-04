@@ -572,8 +572,8 @@
       \endverb
     \endentry
     \entry{ClassImbalanceProblem}{misc}{}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.sciencedirect.com/topics/computer-science/class-imbalance-problem}
       \field{title}{Class {{Imbalance Problem}} - an Overview |{} {{ScienceDirect Topics}}}
@@ -586,8 +586,8 @@
       \endverb
     \endentry
     \entry{StaticContentNordic}{misc}{}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.nucs.net/content/static\_content/Static\%20content/data\%20repository/DataRepositoryGuide.html}
       \field{title}{Static {{Content}} |{} {{Nordic Unavailability Collection System}}}
