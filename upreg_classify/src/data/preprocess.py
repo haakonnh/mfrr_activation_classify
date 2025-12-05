@@ -572,6 +572,15 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
                                                                 (affr_act_df['aFRR Activated Down'] > 0))
     afrr_act_cat_df = pd.DataFrame(cat_cols, index=affr_act_df.index)
     afrr_df = afrr_df.merge(afrr_act_cat_df, how='left', left_index=True, right_index=True)
+    # Extend to current date and forward-fill gaps
+    try:
+        end_ts = pd.Timestamp.now().floor('15min')
+        start_ts = afrr_df.index.min()
+        if pd.notna(start_ts) and end_ts > start_ts:
+            full_idx = pd.date_range(start=start_ts, end=end_ts, freq='15min')
+            afrr_df = afrr_df.reindex(full_idx).ffill()
+    except Exception:
+        pass
     return afrr_df
 
 

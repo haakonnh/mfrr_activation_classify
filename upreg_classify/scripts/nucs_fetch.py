@@ -460,6 +460,7 @@ def get_nucs_hourly(
     process_type: str = "A51",
     market_agreement_type: str = "A01",
     control_area: str = "10YNO-1--------2",
+    business_type: str | None = None,
     chunk_days: int = 50,
     save_csv: Optional[str] = None,
     plots_dir: Optional[str] = None,
@@ -479,7 +480,12 @@ def get_nucs_hourly(
         market_agreement_type=market_agreement_type,
         control_area=control_area,
     )
+    # Inject businessType if requested (DF09 contracted reserves)
     points_df = fetch_and_parse(config, period_start, period_end, chunk_days)
+    if business_type:
+        # Filter to requested businessType if meta present
+        if 'businessType' in points_df.columns:
+            points_df = points_df[points_df['businessType'].astype(str).str.upper() == str(business_type).upper()]
     hourly_df = points_to_hourly(points_df)
     # Smooth extreme spikes (e.g., single 2500) using robust threshold
     hourly_df = smooth_outliers(hourly_df, price_col="procurement_price", max_price=None, iqr_factor=4.0)
@@ -534,28 +540,82 @@ def get_nucs_price_df(
     return price_df
 
 if __name__ == "__main__":
-    # Optional demo runner (no CLI): uses env vars when present.
-    # Won't run on import; safe to keep as example.
-    try:
-        from dotenv import load_dotenv  # type: ignore
-        from pathlib import Path
-        repo_root = Path(__file__).resolve().parents[1]
-        load_dotenv(repo_root / ".env")
-    except Exception:
-        print("python-dotenv not available; skipping .env load.")
-        pass
+    import argparse
+    parser = argparse.ArgumentParser(description="Fetch NUCS hourly (DF09/DFxx) and save CSV/plots")
+    parser.add_argument("--base-url", nargs="?", const="", required=False)
+    parser.add_argument("--token", nargs="?", const="", required=False)
+    parser.add_argument("--start", required=True, help="YYYYMMDDHHMM")
+    parser.add_argument("--end", required=True, help="YYYYMMDDHHMM")
+    parser.add_argument("--chunk-days", type=int, default=50)
+    parser.add_argument("--control-area", type=str, default="10YNO-1--------2")
+    parser.add_argument("--document-type", type=str, default="A81")
+    parser.add_argument("--process-type", type=str, default="A51", help="A51=aFRR, A47=mFRR")
+    parser.add_argument("--market-agreement-type", type=str, default="A01")
+    parser.add_argument("--business-type", type=str, default=None, help="Optional businessType filter: A96=aFRR, A97=mFRR")
+    parser.add_argument("--out-csv", type=str, default=str(os.path.join("upreg_classify","reports","dataframes","nucs_hourly.csv")))
+    parser.add_argument("--plots-dir", type=str, default=str(os.path.join("upreg_classify","reports","plots")))
+    parser.add_argument("--stem", type=str, default="nucs_hourly")
+    args = parser.parse_args()
 
-    base_url = os.getenv("NUCS_BASE_URL") or ""
-    token = os.getenv("NUCS_API_KEY") or ""
-    if base_url and token:
-        print("Running example fetch via get_nucs_hourly() ...")
-        _points, _hourly = get_nucs_hourly(
-            base_url=base_url,
-            token=token,
-            period_start="202401010000",
-            period_end="202512162200",
-            save_csv="upreg_classify/reports/dataframes/nucs_hourly_example.csv",
-            plots_dir="upreg_classify/reports/plots",
-        )
-    else:
-        print("nucs_fetch module imported/executed without NUCS_BASE_URL/NUCS_TOKEN; skipping demo run.")
+    # Resolve Windows-style %ENV% placeholders or empty values from environment
+    def _resolve_env(val: Optional[str], env_key: str) -> Optional[str]:
+        if not val:
+            return os.environ.get(env_key)
+        v = str(val)
+        # If user passed PowerShell-incompatible %VAR% text, replace from env
+        if v.startswith("%") and v.endswith("%"):
+            return os.environ.get(env_key, v)
+        # If literal placeholder like %NUCS_BASE_URL% appears inside, replace
+        if f"%{env_key}%" in v:
+            return os.environ.get(env_key, v)
+        return v
+
+    # Minimal .env loader: try repo root and upreg_classify/.env
+    def _load_env_file(path: str) -> None:
+        try:
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith("#"):
+                            continue
+                        if "=" in line:
+                            k, v = line.split("=", 1)
+                            k = k.strip()
+                            v = v.strip()
+                            if k and v and k not in os.environ:
+                                os.environ[k] = v
+        except Exception:
+            pass
+
+    cwd = os.getcwd()
+    _load_env_file(os.path.join(cwd, ".env"))
+    _load_env_file(os.path.join(cwd, "upreg_classify", ".env"))
+
+    base_url = _resolve_env(args.base_url, "NUCS_BASE_URL")
+    # Accept either NUCS_TOKEN or NUCS_API_KEY as token source
+    token = _resolve_env(args.token, "NUCS_TOKEN")
+    if not token:
+        token = os.environ.get("NUCS_API_KEY")
+    if not base_url or not token:
+        print("Error: Missing NUCS credentials. Provide --base-url/--token or set NUCS_BASE_URL/NUCS_TOKEN.")
+        print("Tip: You can set NUCS_TOKEN or NUCS_API_KEY. In PowerShell use $env:NUCS_BASE_URL / $env:NUCS_TOKEN; in cmd.exe use %NUCS_BASE_URL%.")
+        sys.exit(1)
+
+    pts, hourly = get_nucs_hourly(
+        base_url=base_url,
+        token=token,
+        period_start=args.start,
+        period_end=args.end,
+        document_type=args.document_type,
+        process_type=args.process_type,
+        market_agreement_type=args.market_agreement_type,
+        control_area=args.control_area,
+        business_type=args.business_type,
+        chunk_days=args.chunk_days,
+        save_csv=args.out_csv,
+        plots_dir=args.plots_dir,
+        stem=args.stem,
+    )
+    print(f"Points rows: {len(pts)} | Hourly rows: {len(hourly)}")
+    print("Saved:", args.out_csv)
