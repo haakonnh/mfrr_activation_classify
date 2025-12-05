@@ -1,0 +1,47 @@
+feature,VIF,bucket
+PriceDown_t-1,inf,infinite
+PriceUp_t-1,inf,infinite
+Wind Production,inf,infinite
+Consumption,inf,infinite
+month_sin,inf,infinite
+month_cos,inf,infinite
+PriceUp - DA,inf,infinite
+PriceDown - DA,inf,infinite
+Residual Load,inf,infinite
+DA Price,inf,infinite
+Accepted Up Share,559111.6340918104,high(>=10)
+Accepted Imbalance Ratio,3017.056958964619,high(>=10)
+Import/Consumption,134.70965809884257,high(>=10)
+Net Import,130.39663156221937,high(>=10)
+Total Production,120.29429806017602,high(>=10)
+Wind Share,110.2622238590665,high(>=10)
+Consumption / Production,82.12779449721995,high(>=10)
+ID Price 3,9.220915593771194,moderate(5-10)
+NO1-NO2_ratio,6.635660043565729,moderate(5-10)
+Total Imports,5.646742832351887,moderate(5-10)
+hour_sin,5.50053336576345,moderate(5-10)
+Up-Down Price Skew,5.30783664456228,moderate(5-10)
+Peak,4.314542380803291,low(<5)
+Working Day,4.22399740059492,low(<5)
+hour_cos,3.8724451425687545,low(<5)
+NO1-SE3_ratio,3.7671238472324196,low(<5)
+PriceUp/DA Ratio,3.726985641552623,low(<5)
+Price Symm Rel Diff,3.530999867550417,low(<5)
+DOW,3.408267432316355,low(<5)
+HOD,3.2649268247289855,low(<5)
+PriceDown/DA Ratio,2.6284513860326237,low(<5)
+NO1-NO5_ratio,2.5254272622159055,low(<5)
+RegLag-8,2.479380075583676,low(<5)
+RegLag-6,2.4255661077262483,low(<5)
+DA/ID Price Ratio,2.419129805659768,low(<5)
+RegLag-10,2.419082135946579,low(<5)
+aFRR_Persistency,2.2008568633001437,low(<5)
+RegLag-4,2.0671719179890125,low(<5)
+RegLag-12,1.9742974041178905,low(<5)
+aFRR Price,1.9074349780938833,low(<5)
+NO1-NO3_ratio,1.7531040709593282,low(<5)
+DA Scarcity,1.7138242598329967,low(<5)
+ID3 Mom_1h,1.5048214210074657,low(<5)
+aFRR Quantity,1.4557148724839837,low(<5)
+Net Import Ramp,1.1531270054056133,low(<5)
+Residual Load Delta,1.0236542079880866,low(<5)

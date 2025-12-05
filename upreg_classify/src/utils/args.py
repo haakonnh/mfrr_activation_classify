@@ -49,4 +49,6 @@ def parse_args():
     # Feature toggles
     p.add_argument('--use_categorical_reglag', action='store_true', help='Use categorical RegLagCat-* features instead of numeric RegLag-*')
     p.add_argument('--disable_persistency_interactions', action='store_true', help='Drop features that are interactions with Persistency/PersistencyDown')
+    p.add_argument('--only_persistency_features', action='store_true', help='Use only PersistenceUp/Down/None features during training')
+    p.add_argument('--exclude_persistency_features', action='store_true', help='Exclude PersistenceUp/Down/None (and legacy Persistency/PersistencyDown) from features')
     return p.parse_args()

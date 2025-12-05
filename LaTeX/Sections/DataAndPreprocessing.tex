@@ -1,6 +1,6 @@
 \newpage
-\section{Data and Preprocessing}
-
+\section{Methodology}
+\subsection{Data Sources and Preprocessing}\label{sec:data-and-preprocessing}
 
 
 The gathered data spans a period from January 1, 2024, to December 1, 2025, 
@@ -9,11 +9,11 @@ years. This extensive dataset allows for robust model training and evaluation,
 capturing seasonal variations and other temporal dynamics in the electricity
 market.
 
-\subsection{Data Sources}
+\subsubsection{Data Sources}
 
-\subsection{Data Coverage and Time Span}
+\subsubsection{Data Coverage and Time Span}
 
-\subsection{Nord Pool Data}
+\subsubsection{Nord Pool Data}
 Nord Pool is the leading power market in Europe, facilitating the trading of
 electricity across multiple countries. The data from Nord Pool includes
 information on market prices, trading volumes, and other relevant metrics
@@ -30,7 +30,7 @@ essential. The following subsections describe the specific datasets obtained
 from Nord Pool.
 
 
-\subsubsection{mFRR activation data}
+\paragraph{mFRR activation data}
 The primary dataset used in this study consists of manual Frequency
 Restoration Reserves (mFRR) activation data from the Nordic electricity
 market, specifically for the bidding zone NO1. This data includes accepted 
@@ -60,7 +60,7 @@ Distinguishing between up- and down-activations, however, makes the problem
 more nuanced and challenging.
 
 
-\subsubsection{Cross-zonal flows}
+\paragraph{Cross-zonal flows}
 Cross-zonal flows refer to the electricity flows between different
 bidding zones in the Nordic market. In this project, only cross-zonal flows
 involving the NO1 bidding zone are considered: flows between NO1 and SE3, NO1 and
@@ -115,7 +115,7 @@ whilst the other connections are primarily used for imports into NO1.
 \end{figure}
 
 
-\subsubsection{Load and production data}
+\paragraph{Load and production data}
 Load and production forecasts provide insights into the expected
 system state. Forecast may on their own provide valuable information about
 potential mFRR activations, but when combined with actual load and production
@@ -155,7 +155,7 @@ Consumption forecasts and actual consumption data can still be useful, however,
 as sudden changes in consumption patterns can lead to imbalances that
 require mFRR activations. 
 
-\subsection{NUCS}
+\subsubsection{NUCS}
 NUCS, or the Nordic Unavailability Collection System, is a service for
 collection of data on unavailable data in the Nordic power system. NUCS
 is an important part of this project, as it provides otherwise unavailable
@@ -167,7 +167,7 @@ especially useful for real-time applications. However, as this project does
 not have access to comprehensive real-time data, the NUCS API was only used
 to gather historical data for the training and evaluation of the models.
 
-\subsubsection{aFRR procurement prices}
+\paragraph{aFRR procurement prices}
 aFRR procurement data is generally unavailable. However, through the NUCS API,
 historical aFRR procurement prices and volumes for the NO1 bidding zone 
 were obtained. This data provides insights into the costs associated with
@@ -201,13 +201,13 @@ where missing values are filled with the last known value or the next known valu
 respectively. The choice of method depends on the nature of the data and the
 specific requirements of the analysis or model being used.
 
-\subsection{ENTSO-E}
+\subsubsection{ENTSO-E}
 ENTSO-E, the European Network of Transmission System Operators for Electricity,
 is a key organization in the European electricity market. ENTSO-E provides
 a wide range of data related to electricity generation, consumption, and grid
 operations across Europe \autocite{DataStandardisation}.
 
-\subsubsection{aFRR Activation Data}
+\paragraph{aFRR Activation Data}
 aFRR prices and capacities are available through NUCS as discussed earlier, but
 aFRR activation data is not. However, ENTSO-E provides detailed data on aFRR 
 regulations via their "Accepted Offers and Activated Balancing Reserves" dataset.
@@ -255,7 +255,7 @@ issue:
     
 \end{itemize}
 
-\subsection{Dataset structure}\label{sec:dataset_structure}
+\subsubsection{Dataset structure}\label{sec:dataset_structure}
 The data is represented as a time series, where each record in the dataset
 consists of a set of attributes connected to one point in time. More
 specifically, the data contains a sequence of 15-minute interval time
@@ -264,3 +264,35 @@ is the target variable the model is trying to predict. The features
 describe the system state at that time stamp, providing context for the
 model to learn from.
 
+
+\subsubsection{Restrictions}\label{sec:restrictions}
+In an ideal world, a market participant would be able to choose to bid or
+not in real time. The mFRR activation market, however, is not ideal in
+this sense. Bids are accepted for time slots $t+4$ intervals into the
+future, i.e. one hour into the future. This greatly restricts market
+actors in terms of how fast they can act on recent information. In fact,
+at the time of bid closing for a time slot $t+4$, only mFRR activation
+data from $t-3$ and earlier is available. Thus there are seven 15-minute
+intervals of unavailable data. This data would be the most
+useful for the model, since activation data at time $t$ correlates with
+the system state and activations close to $t$.
+
+It would, for instance, be considerably easier to identify streaks of
+activations, as activations often occur in long contiguous sequences. In the real
+world scenario, data from $t-3$ and before is still useful, but can often be
+misleading and cannot be trusted in isolation. The dataset developed in
+this project investigates ways to provide the model with crucial context
+about the system's state of stress. The intuition is that data such as
+physical cross-zonal flows in and out of NO1 may correlate with NO1 mFRR
+activations. When many such features are combined, the model may develop
+complex relationships between them, enhancing its predictive performance.
+
+Most of the available and useful data are not available in real time. For
+instance, consumption and production data are often published with a delay of
+several hours. The model must therefore rely on features that are available
+in real time, or with minimal delay. Such features often take the form of
+forecasts, which are available ahead of time. Forecasts are inherently
+uncertain, but they still provide valuable information about the expected
+system state.
+
+\subsubsection{Class Imbalance}\label{sec:class_imbalance}

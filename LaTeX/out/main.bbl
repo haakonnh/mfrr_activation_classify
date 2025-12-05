@@ -340,8 +340,8 @@
       \strng{authornamehash}{88166ee7fa9b69d4f998476b3629f373}
       \strng{authorfullhash}{71fe6858a8d69d1c2ea31d7dc384d96b}
       \strng{authorfullhashraw}{71fe6858a8d69d1c2ea31d7dc384d96b}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Power system balancing becomes ever-challenging due to the increasing penetration of uncertain renewable energy sources. Therefore, balancing markets are implemented in various power markets and such markets play a crucial role in ensuring balanced system operation. The optimal operation of balancing market necessitates accurate imbalance volume forecasts. However, imbalance volume forecasting got less research attention. Also, most of the existing imbalance volume forecasting models do not use specific input selection or data preprocessing techniques. These techniques can help to improve forecasting accuracy. Further, balancing market operations necessitates short-term forecasts. Therefore, this paper proposes a novel dynamic regression-based Trigonometric Seasonal, Yeo-Johnson Transformation, ARMA residuals, Trend, and Seasonality (TYJATS) forecasting model to obtain accurate short-term imbalance volume forecasts. The proposed forecasting model dynamically updates data at each time step, effectively handling seasonality and nonlinearity. It uses Grey Correlation Analysis (GCA) for input data selection and the tsrobprep package for data preprocessing. Further, a Newton--Raphson-based optimizer (NRBO) is proposed to minimize the balancing costs. The proposed model is tested on the data collected from the Belgian market. The forecasting analysis demonstrates that the proposed model improves accuracy by 59.85\%, 42.61\%, and 39.56\% compared to machine learning (long short-term memory), regression (auto-regressive distributed lag), and Transmission System Operator (TSO)-based forecasting, respectively. Furthermore, integrating the proposed forecasting model into balancing market optimization results in the least balancing cost, achieving savings of 44.51\% compared to TSO-based forecasting.}
@@ -557,8 +557,8 @@
       \endverb
     \endentry
     \entry{PowerMarketData}{misc}{}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{abstract}{Access and integrate Nord Pool's Power Market Data for the Nordics, Baltics, CWE and the UK dating back to 1998.}
       \field{howpublished}{https://www.nordpoolgroup.com/en/services/power-market-data-services/}
@@ -720,8 +720,8 @@
       \endverb
     \endentry
     \entry{ClassificationAccuracyRecall}{misc}{}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Learn how to calculate three key classification metrics---accuracy, precision, recall---and how to choose the appropriate metric to evaluate a given binary classification model.}
       \field{howpublished}{https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall}
@@ -766,8 +766,8 @@
       \strng{authornamehash}{870b6a3ec956468a6099c01f8cdefa69}
       \strng{authorfullhash}{fcfc466ab29cc40aee35f1cdfe74eabe}
       \strng{authorfullhashraw}{fcfc466ab29cc40aee35f1cdfe74eabe}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{In this paper we present CatBoost, a new open-sourced gradient boosting library that successfully handles categorical features and outperforms existing publicly available implementations of gradient boosting in terms of quality on a set of popular publicly available datasets. The library has a GPU implementation of learning algorithm and a CPU implementation of scoring algorithm, which are significantly faster than other gradient boosting libraries on ensembles of similar sizes.}

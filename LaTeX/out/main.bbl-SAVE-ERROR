@@ -1,0 +1,799 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{caiLowInertiaPower2023}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=97627dce2f5d463cabb43c8b79bf438a}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod}}}%
+        {{hash=803fb0c7ba592ff2ac5109218a4a8211}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Ning},
+           giveni={N\bibinitperiod}}}%
+        {{hash=8614b45a85a84beae2a3baade7fe9e83}{%
+           family={Du},
+           familyi={D\bibinitperiod},
+           given={Er},
+           giveni={E\bibinitperiod}}}%
+        {{hash=36db8be4566476bcba5b2c66af294c6f}{%
+           family={An},
+           familyi={A\bibinitperiod},
+           given={Zhi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=96fc809869ab8231fca8e2d9a6f81fb7}{%
+           family={Wei},
+           familyi={W\bibinitperiod},
+           given={Nan},
+           giveni={N\bibinitperiod}}}%
+        {{hash=c1fe0d252bb0db79402bf8a487b481a3}{%
+           family={Kang},
+           familyi={K\bibinitperiod},
+           given={Chongqing},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{aa40896ef78ad4b09b41f7dd7a598603}
+      \strng{fullhash}{9cd6430d884447e110aae2206ac1fddd}
+      \strng{fullhashraw}{9cd6430d884447e110aae2206ac1fddd}
+      \strng{bibnamehash}{9cd6430d884447e110aae2206ac1fddd}
+      \strng{authorbibnamehash}{9cd6430d884447e110aae2206ac1fddd}
+      \strng{authornamehash}{aa40896ef78ad4b09b41f7dd7a598603}
+      \strng{authorfullhash}{9cd6430d884447e110aae2206ac1fddd}
+      \strng{authorfullhashraw}{9cd6430d884447e110aae2206ac1fddd}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{With the gradual replacement of synchronous generators by renewable energy sources, the power imbalance in the system is exacerbated by the fluctuations of renewable energy output. Simultaneously, traditional frequency regulation resources will become insufficient with the reduction of online capacity of thermal units. These trends both lead to a decrease in the performance of power system frequency regulation. The planning of power system generation, particularly frequency regulation resources, will significantly influence the future quality of frequency. This paper proposes a frequency-constrained generation planning method under a high-proportion renewable energy system. The performance of power system frequency regulation is analyzed based on the simulation of the load-frequency control dynamics, where both the frequency regulation from conventional generation and renewable energy are taken into consideration. Non-linear frequency constraints are extracted from the generated data set, and then embedded into the power system planning model by utilizing a sparse weighted oblique decision tree. The case study on HRP-38 system validates the effectiveness of the method. The influence of renewable energy frequency regulation on unit commitment is also investigated.}
+      \field{journaltitle}{IEEE Transactions on Power Systems}
+      \field{month}{1}
+      \field{title}{Low {{Inertia Power System Planning Considering Frequency Quality Under High Penetration}} of {{Renewable Energy}}}
+      \field{volume}{PP}
+      \field{year}{2023}
+      \field{pages}{1\bibrangedash 12}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1109/TPWRS.2023.3302515
+      \endverb
+    \endentry
+    \entry{entso-eNoricBalancingPhilosophy2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=f7e45def0ca6a655fe5fe04f557fc749}{%
+           family={{ENTSO-e}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ENTSO-e}%
+      }
+      \strng{namehash}{f7e45def0ca6a655fe5fe04f557fc749}
+      \strng{fullhash}{f7e45def0ca6a655fe5fe04f557fc749}
+      \strng{fullhashraw}{f7e45def0ca6a655fe5fe04f557fc749}
+      \strng{bibnamehash}{f7e45def0ca6a655fe5fe04f557fc749}
+      \strng{authorbibnamehash}{f7e45def0ca6a655fe5fe04f557fc749}
+      \strng{authornamehash}{f7e45def0ca6a655fe5fe04f557fc749}
+      \strng{authorfullhash}{f7e45def0ca6a655fe5fe04f557fc749}
+      \strng{authorfullhashraw}{f7e45def0ca6a655fe5fe04f557fc749}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{langid}{english}
+      \field{shorttitle}{Nordic {{Balancing Philosophy}}}
+      \field{title}{Noric {{Balancing Philosophy ENTSOE}}}
+      \field{urlday}{13}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{EnergyTransitionOutlook}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
+      \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
+      \field{journaltitle}{DNV}
+      \field{langid}{english}
+      \field{title}{Energy {{Transition Outlook Norway}} 2024}
+      \field{urlday}{3}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\NTZ7RFVL\energy-transition-norway-2024.html
+      \endverb
+    \endentry
+    \entry{ConfirmationMFRREAM2025}{misc}{}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
+      \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
+      \field{journaltitle}{Statnett}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\87VQEK5B\confirmation-of-mfrr-eam-go-live-march-4th-2025.html
+      \endverb
+    \endentry
+    \entry{RaskeFrekvensreserverFFR2025}{misc}{}{}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labeltitlesource}{title}
+      \field{abstract}{FFR er en reserve som aktiveres svært raskt for å hindre frekvensfall under 49,0 Hz ved store feil i kraftsystemet. Nordiske systemoperatører har avtalt å anskaffe FFR i nasjonale prosesser for å sikre stabiliteten i det nordiske kraftsys \dots}
+      \field{howpublished}{https://www.statnett.no/for-aktorer-i-kraftbransjen/systemansvaret/kraftmarkedet/reservemarkeder/ffr/}
+      \field{journaltitle}{Statnett}
+      \field{langid}{norsk}
+      \field{month}{11}
+      \field{title}{{Raske frekvensreserver - FFR}}
+      \field{urlday}{13}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\93QR2MXF\ffr.html
+      \endverb
+    \endentry
+    \entry{statnettVilkarMFRRAktiveringsmarked2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e008486c2a54bb45cdfeda629da840c2}{%
+           family={{Statnett}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Statnett}%
+      }
+      \strng{namehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{fullhash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{fullhashraw}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{bibnamehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authorbibnamehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authornamehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authorfullhash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authorfullhashraw}{e008486c2a54bb45cdfeda629da840c2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{norsk}
+      \field{month}{1}
+      \field{title}{{Vilkår for mFRR aktiveringsmarked}}
+      \field{year}{2024}
+    \endentry
+    \entry{klaeboeDayaheadMarketBidding2022}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=69d5ca56234164e8dbe2731e081de2d6}{%
+           family={Kl{æ}boe},
+           familyi={K\bibinitperiod},
+           given={Gro},
+           giveni={G\bibinitperiod}}}%
+        {{hash=4e9aba4bd6dbb060049e34d15ac29730}{%
+           family={Braathen},
+           familyi={B\bibinitperiod},
+           given={J{ø}rgen},
+           giveni={J\bibinitperiod}}}%
+        {{hash=07e6a8bd78b36a554310c01533ba0a36}{%
+           family={Eriksrud},
+           familyi={E\bibinitperiod},
+           given={Anders\bibnamedelima Lund},
+           giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=97e3e035dd75a358cb32b67d8408d1c6}{%
+           family={Fleten},
+           familyi={F\bibinitperiod},
+           given={Stein-Erik},
+           giveni={S\bibinithyphendelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f49600581f782756b950b94d5c62c8f}
+      \strng{fullhash}{6038010cb9db0b0e420c04baa71bc37b}
+      \strng{fullhashraw}{6038010cb9db0b0e420c04baa71bc37b}
+      \strng{bibnamehash}{6038010cb9db0b0e420c04baa71bc37b}
+      \strng{authorbibnamehash}{6038010cb9db0b0e420c04baa71bc37b}
+      \strng{authornamehash}{7f49600581f782756b950b94d5c62c8f}
+      \strng{authorfullhash}{6038010cb9db0b0e420c04baa71bc37b}
+      \strng{authorfullhashraw}{6038010cb9db0b0e420c04baa71bc37b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Generation companies with controllable units put considerable analysis into the process of bidding into the day-ahead markets for electricity. This article investigates the gain of coordinating price-taking bids to the day-ahead electricity market (DA) and sequentially cleared energy-only markets, such as the Nordic balancing market (BM). A technically detailed case study from the Nordic market is presented. We find that coordinated bidding is hardly worthwhile under current market conditions, but that only a modest increase in the demand for balancing energy will make coordination profitable. If the supply curve for balancing energy is convex, so that the cost of balancing energy is asymmetric, the gains will be even higher. Finally, we find that day-ahead market bid curves that result from coordinated instances provide extra supply at low prices, and lower supply at high prices, compared to sequential bids. This is rational given the anticipated opportunities that the balancing market offers; however, it makes day-ahead bidding appear to exploit market power.}
+      \field{issn}{1134-5764, 1863-8279}
+      \field{journaltitle}{TOP}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{number}{3}
+      \field{title}{Day-Ahead Market Bidding Taking the Balancing Power Market into Account}
+      \field{urlday}{1}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{volume}{30}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \field{pages}{683\bibrangedash 703}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1007/s11750-022-00645-1
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\7ZUQDVBI\Klæboe et al. - 2022 - Day-ahead market bidding taking the balancing power market into account.pdf
+      \endverb
+    \endentry
+    \entry{BalancingMarketOutlook}{article}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Balancing Market Outlook 2030}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\WPWRA3BR\Balancing market outlook 2030.pdf
+      \endverb
+    \endentry
+    \entry{Transition15minuteMarket}{misc}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Nord Pool runs the leading power market in Europe, offering day-ahead and intraday markets to our customers. Trade power with us in 16 countries and benefit from related services such as compliance, data and knowledge-sharing.}
+      \field{howpublished}{https://www.nordpoolgroup.com/en/trading/transition-to-15-minute-market-time-unit-mtu/}
+      \field{title}{Transition to 15-Minute {{Market Time Unit}} ({{MTU}})}
+      \field{urlday}{2}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\XS5RJP3X\transition-to-15-minute-market-time-unit-mtu.html
+      \endverb
+    \endentry
+    \entry{kallsetImprovingBalancingActivation2025}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=1bf6dd04e321ddc8ba84aed08fe4e269}{%
+           family={Kallset},
+           familyi={K\bibinitperiod},
+           given={Vegard\bibnamedelima Viken},
+           giveni={V\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=d3730df34e79cd29aa8fa42090dc57b2}{%
+           family={Farahmand},
+           familyi={F\bibinitperiod},
+           given={Hossein},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{a0a0e5d65d0805d857934970b6f21b21}
+      \strng{fullhash}{a0a0e5d65d0805d857934970b6f21b21}
+      \strng{fullhashraw}{a0a0e5d65d0805d857934970b6f21b21}
+      \strng{bibnamehash}{a0a0e5d65d0805d857934970b6f21b21}
+      \strng{authorbibnamehash}{a0a0e5d65d0805d857934970b6f21b21}
+      \strng{authornamehash}{a0a0e5d65d0805d857934970b6f21b21}
+      \strng{authorfullhash}{a0a0e5d65d0805d857934970b6f21b21}
+      \strng{authorfullhashraw}{a0a0e5d65d0805d857934970b6f21b21}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Nordic power system and the Core region in Europe are transitioning from an hourly to a 15 -minute time resolution in the day-ahead electricity market by 2025. This change aims to reduce structural imbalances caused by mismatches between discrete power schedules and continuously varying demand, which lead to inefficient reserve activation, frequency deviations, and increased balancing costs. In this paper, we employ a two-stage stochastic unit commitment model for market clearing and compare the results of the balancing stage with a continuous-time balancing approach. Additionally, we evaluate the impact of increasing time resolution and assess whether further granularity provides additional benefits. Our results show that higher time resolution and continuous modeling reduce the need for balancing reserves by better approximating real load variations. These findings provide valuable insights for system operators to improve power plant ramping strategies and reserve allocation, ultimately enhancing system stability and reducing operational costs in future power systems.}
+      \field{booktitle}{2025 21st {{International Conference}} on the {{European Energy Market}} ({{EEM}})}
+      \field{issn}{2165-4093}
+      \field{month}{5}
+      \field{title}{Improving {{Balancing Activation Through Continuous-Time Optimization}} and {{Increased Market Time-Resolution}}}
+      \field{urlday}{2}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/EEM64765.2025.11050190
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\EMU9AJSB\Kallset and Farahmand - 2025 - Improving Balancing Activation Through Continuous-Time Optimization and Increased Market Time-Resolu.pdf
+      \endverb
+      \keyw{Continuous-time optimization,Europe,Load modeling,Optimization,Optimization models,Power system stability,real-time system balancing,Resource management,Schedules,structural imbalances,Switches,Thermal loading,Thermal stability}
+    \endentry
+    \entry{singhNovelDynamicImbalance2025}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=3fbf14c46383ba0c4401dbda00621cc0}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Chandransh},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c6ec71c7a480a20aa87cd7efed58e6c0}{%
+           family={Sreekumar},
+           familyi={S\bibinitperiod},
+           given={Sreenu},
+           giveni={S\bibinitperiod}}}%
+        {{hash=301c443430e130239afebd978fed9359}{%
+           family={Malakar},
+           familyi={M\bibinitperiod},
+           given={Tanmoy},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{88166ee7fa9b69d4f998476b3629f373}
+      \strng{fullhash}{71fe6858a8d69d1c2ea31d7dc384d96b}
+      \strng{fullhashraw}{71fe6858a8d69d1c2ea31d7dc384d96b}
+      \strng{bibnamehash}{71fe6858a8d69d1c2ea31d7dc384d96b}
+      \strng{authorbibnamehash}{71fe6858a8d69d1c2ea31d7dc384d96b}
+      \strng{authornamehash}{88166ee7fa9b69d4f998476b3629f373}
+      \strng{authorfullhash}{71fe6858a8d69d1c2ea31d7dc384d96b}
+      \strng{authorfullhashraw}{71fe6858a8d69d1c2ea31d7dc384d96b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Power system balancing becomes ever-challenging due to the increasing penetration of uncertain renewable energy sources. Therefore, balancing markets are implemented in various power markets and such markets play a crucial role in ensuring balanced system operation. The optimal operation of balancing market necessitates accurate imbalance volume forecasts. However, imbalance volume forecasting got less research attention. Also, most of the existing imbalance volume forecasting models do not use specific input selection or data preprocessing techniques. These techniques can help to improve forecasting accuracy. Further, balancing market operations necessitates short-term forecasts. Therefore, this paper proposes a novel dynamic regression-based Trigonometric Seasonal, Yeo-Johnson Transformation, ARMA residuals, Trend, and Seasonality (TYJATS) forecasting model to obtain accurate short-term imbalance volume forecasts. The proposed forecasting model dynamically updates data at each time step, effectively handling seasonality and nonlinearity. It uses Grey Correlation Analysis (GCA) for input data selection and the tsrobprep package for data preprocessing. Further, a Newton--Raphson-based optimizer (NRBO) is proposed to minimize the balancing costs. The proposed model is tested on the data collected from the Belgian market. The forecasting analysis demonstrates that the proposed model improves accuracy by 59.85\%, 42.61\%, and 39.56\% compared to machine learning (long short-term memory), regression (auto-regressive distributed lag), and Transmission System Operator (TSO)-based forecasting, respectively. Furthermore, integrating the proposed forecasting model into balancing market optimization results in the least balancing cost, achieving savings of 44.51\% compared to TSO-based forecasting.}
+      \field{issn}{1432-0487}
+      \field{journaltitle}{Electrical Engineering}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{number}{12}
+      \field{title}{A Novel Dynamic Imbalance Volume Forecasting Model for Balancing Market Optimization}
+      \field{urlday}{2}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{volume}{107}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \field{pages}{15375\bibrangedash 15392}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1007/s00202-025-03331-0
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\TSPI3Y9Q\Singh et al. - 2025 - A novel dynamic imbalance volume forecasting model for balancing market optimization.pdf
+      \endverb
+      \keyw{Data preprocessing,Imbalance forecasting,Input selection,Metaheuristic algorithm,Reserve optimization}
+    \endentry
+    \entry{plakasPredictionImbalancePrices2025}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=468fabd3a82de0aa4752cf524a2ca1ae}{%
+           family={Plakas},
+           familyi={P\bibinitperiod},
+           given={Konstantinos},
+           giveni={K\bibinitperiod}}}%
+        {{hash=0f2bd32ab1da68259409269e291d8513}{%
+           family={Andriopoulos},
+           familyi={A\bibinitperiod},
+           given={Nikos},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a899aaaafbe9c3689919a042ceb10f1c}{%
+           family={Papadaskalopoulos},
+           familyi={P\bibinitperiod},
+           given={Dimitrios},
+           giveni={D\bibinitperiod}}}%
+        {{hash=b1f917185c58120d54d69c8edf308a1e}{%
+           family={Birbas},
+           familyi={B\bibinitperiod},
+           given={Alexios},
+           giveni={A\bibinitperiod}}}%
+        {{hash=95d27f316068eee0b04dcba960fd4a3f}{%
+           family={Housos},
+           familyi={H\bibinitperiod},
+           given={Efthymios},
+           giveni={E\bibinitperiod}}}%
+        {{hash=505a35a365af41cda282c930b26b0a27}{%
+           family={Moraitis},
+           familyi={M\bibinitperiod},
+           given={Ioannis},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{522a726ef6868aee72e2b719fc27f618}
+      \strng{fullhash}{2560aa79979c022b741d93bd8a34ee0e}
+      \strng{fullhashraw}{2560aa79979c022b741d93bd8a34ee0e}
+      \strng{bibnamehash}{2560aa79979c022b741d93bd8a34ee0e}
+      \strng{authorbibnamehash}{2560aa79979c022b741d93bd8a34ee0e}
+      \strng{authornamehash}{522a726ef6868aee72e2b719fc27f618}
+      \strng{authorfullhash}{2560aa79979c022b741d93bd8a34ee0e}
+      \strng{authorfullhashraw}{2560aa79979c022b741d93bd8a34ee0e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{An accurate prediction of imbalance prices is crucial for making well-informed decisions within short-term energy markets. This study proposes a two-stage probabilistic framework for the prediction of system imbalance and imbalance price. In the first stage, the quantiles of system imbalance are predicted employing the Quantile Regression Forest algorithm. In the second stage, the quantiles are leveraged to predict the imbalance prices, given the observed correlation between the system imbalance and the imbalance prices. The corresponding imbalance prices for each 15-minute interval are then predicted utilizing a novel methodology that combines Gradient Boosting with Markov switching models. The proposed methodology was evaluated using real data from the Greek balancing market. Comparative analysis with alternative models including a persistence model, Quantile Linear Regression, Long Short-Term Memory, and Quantile Regression Forest reveals that the proposed approach consistently outperforms the rest in terms of forecast accuracy. Specifically, the results demonstrate that the proposed approach outperforms all alternative methods, achieving an 9\% improvement in nMAE and a 10.8\% reduction in CRPS with respect to the second best method (Quantile Regression Forest). The findings suggest that this approach can significantly improve the decision-making process for market participants, helping mitigate the financial risks associated with imbalance prices.}
+      \field{issn}{2169-3536}
+      \field{journaltitle}{IEEE Access}
+      \field{shorttitle}{Prediction of {{Imbalance Prices Through Gradient Boosting Algorithms}}}
+      \field{title}{Prediction of {{Imbalance Prices Through Gradient Boosting Algorithms}}: {{An Application}} to the {{Greek Balancing Market}}}
+      \field{urlday}{3}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{volume}{13}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \field{pages}{103968\bibrangedash 103981}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2025.3580274
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\K7ZYUY4J\Plakas et al. - 2025 - Prediction of Imbalance Prices Through Gradient Boosting Algorithms An Application to the Greek Bal.pdf
+      \endverb
+      \keyw{Accuracy,balancing market,Electricity,Electricity market,Electricity supply industry,Europe,Forecasting,Hidden Markov models,machine learning,power system,Prediction algorithms,Predictive models,probabilistic forecasting,Probabilistic logic,Real-time systems}
+    \endentry
+    \entry{azarangMachineLearningBasedPrediction}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=9f428b81017008a8bfe8b69633889b23}{%
+           family={Azarang},
+           familyi={A\bibinitperiod},
+           given={Dena},
+           giveni={D\bibinitperiod}}}%
+        {{hash=bc9a6686064b9fabfe0f2756d2e3d3d8}{%
+           family={Edling},
+           familyi={E\bibinitperiod},
+           given={Carl},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{e48c0a83c64d1d72a48087f8762ca87a}
+      \strng{fullhash}{e48c0a83c64d1d72a48087f8762ca87a}
+      \strng{fullhashraw}{e48c0a83c64d1d72a48087f8762ca87a}
+      \strng{bibnamehash}{e48c0a83c64d1d72a48087f8762ca87a}
+      \strng{authorbibnamehash}{e48c0a83c64d1d72a48087f8762ca87a}
+      \strng{authornamehash}{e48c0a83c64d1d72a48087f8762ca87a}
+      \strng{authorfullhash}{e48c0a83c64d1d72a48087f8762ca87a}
+      \strng{authorfullhashraw}{e48c0a83c64d1d72a48087f8762ca87a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Swedish electricity market faces increasing complexity driven by variable renewable energy integration. As the system transitions toward carbon neutrality by 2045, accurate forecasting of manual Frequency Restoration Reserve (mFRR) activation volumes has become important for maintaining system stability and efficient market operation. This thesis investigates the predictive capability of machine learning models for mFRR activation volumes across Swedish bidding zones and identifies the key system parameters driving these activations.}
+      \field{langid}{english}
+      \field{title}{Machine {{Learning-Based Prediction}} and {{Key Drivers}} of {{mFRR Activations}}}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\CYC3ZVMR\Azarang and Edling - Machine Learning-Based Prediction and Key Drivers of mFRR Activations.pdf
+      \endverb
+    \endentry
+    \entry{overmaatBalancingContributionsNordic}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=a4c6849f8305833f0bf72dade3a58c6b}{%
+           family={Overmaat},
+           familyi={O\bibinitperiod},
+           given={Eduard\bibnamedelimb Reinier\bibnamedelima Antoine},
+           giveni={E\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a4c6849f8305833f0bf72dade3a58c6b}
+      \strng{fullhash}{a4c6849f8305833f0bf72dade3a58c6b}
+      \strng{fullhashraw}{a4c6849f8305833f0bf72dade3a58c6b}
+      \strng{bibnamehash}{a4c6849f8305833f0bf72dade3a58c6b}
+      \strng{authorbibnamehash}{a4c6849f8305833f0bf72dade3a58c6b}
+      \strng{authornamehash}{a4c6849f8305833f0bf72dade3a58c6b}
+      \strng{authorfullhash}{a4c6849f8305833f0bf72dade3a58c6b}
+      \strng{authorfullhashraw}{a4c6849f8305833f0bf72dade3a58c6b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Balancing {{Contributions}} in the {{Nordic Electricity System}}}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\EN69YVIM\Overmaat - Balancing Contributions in the Nordic Electricity System.pdf
+      \endverb
+    \endentry
+    \entry{svedlindhPriceFormationForecasting2025}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=743d963bef75aef2354cb616ddcbd7c8}{%
+           family={Svedlindh},
+           familyi={S\bibinitperiod},
+           given={Tone},
+           giveni={T\bibinitperiod}}}%
+        {{hash=01013758db632d7bb007bffe956aa224}{%
+           family={Yngvesson},
+           familyi={Y\bibinitperiod},
+           given={Karolina},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \strng{fullhash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \strng{fullhashraw}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \strng{bibnamehash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \strng{authorbibnamehash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \strng{authornamehash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \strng{authorfullhash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \strng{authorfullhashraw}{3dfe7406c9a0ba09fc3e7a0074d0afee}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{DiVA portal is a finding tool for research publications and student theses written at the following 50 universities and research institutions.}
+      \field{langid}{english}
+      \field{shorttitle}{Price {{Formation}} and {{Forecasting Models}} in the {{Electricity Market}}}
+      \field{title}{Price {{Formation}} and {{Forecasting Models}} in the {{Electricity Market}} : {{An Analysis}} of the {{Intraday}} and {{mFRR Markets}}}
+      \field{urlday}{29}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\UUMTN4B7\Svedlindh and Yngvesson - 2025 - Price Formation and Forecasting Models in the Electricity Market An Analysis of the Intraday and m.pdf
+      \endverb
+    \endentry
+    \entry{porrasShortTermForecastingMFRR}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=871b0d75619b2c162493e0599c9af067}{%
+           family={Porras},
+           familyi={P\bibinitperiod},
+           given={Rosamelia\bibnamedelima Carioni},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{871b0d75619b2c162493e0599c9af067}
+      \strng{fullhash}{871b0d75619b2c162493e0599c9af067}
+      \strng{fullhashraw}{871b0d75619b2c162493e0599c9af067}
+      \strng{bibnamehash}{871b0d75619b2c162493e0599c9af067}
+      \strng{authorbibnamehash}{871b0d75619b2c162493e0599c9af067}
+      \strng{authornamehash}{871b0d75619b2c162493e0599c9af067}
+      \strng{authorfullhash}{871b0d75619b2c162493e0599c9af067}
+      \strng{authorfullhashraw}{871b0d75619b2c162493e0599c9af067}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This study investigates the use of Extreme Gradient Boosting (XGBoost), an ensemble-tree-based machine learning (ML) algorithm, for short-term forecasting of manual Frequency Restoration Reserve (mFRR) activation direction and imbalance prices in the SE2 price area of the Nordic electricity market. With growing electrification, a rising share of renewables and strain from the ongoing energy crisis, the ability to anticipate balancing needs has become both more critical and more complex. Despite its practical importance, this problem has been relatively underexplored in the academic literature. The objective of this study is to assess how ML can support Intraday (ID) decision-making and improve predictive capabilities. To achieve this, a two-stage forecasting framework was developed using XGBoost, with the first stage classifying the expected direction of mFRR activation (upregulated, downregulated or unregulated), and the second stage predicting the corresponding imbalance price. The models were trained on data collected between May 2022 and February 2025 and evaluated across multiple forecasting horizons. By systematically testing preprocessing techniques, data availability, model configurations and feature sets and validating assumptions through domain knowledge, this study makes valuable contributions to the field. The results demonstrate that creating a model with normalized transmission flows, including forecasting error features, and data from SE1, SE2, SE3 and NO4 yielded the best results. Forward filling for missing values, avoiding outlier removal, applying simple ordinal time encoding, and relying on Recursive Feature Elimination (RFE) for feature selection further improved performance. Leveraging a wide set of features and optimizing hyperparameters through Bayesian optimization, enhanced model performance. More specifically, the classification model achieved {$FF$}1{$mmmmmmmmmm$} scores of 0.805, 0.611 and 0.531 for one-, two- and three-hour ahead forecasts. While predictive performance declined at longer horizons, class-specific Area Under the Receiver Operating Characteristic (ROC) Curve (AUC) scores indicated that meaningful signals were retained up to five hours into the future and that prediction thresholds could be further optimized per class. With regards to the imbalance price model, one-hour forecasts yielded acceptable results. This model reached a Normalized Mean Absolute Error (NMAE) of 0.366 and a Coefficient of Determination ({$RR$}2) of 0.667 for the one-hour ahead forecast. Overall, the study concludes that XGBoost models, supported by rigorous data preprocessing, feature engineering, feature selection and hyperparameter optimization, can provide valuable short-term forecasts in the context of imbalance prediction.}
+      \field{langid}{english}
+      \field{title}{Short-{{Term Forecasting}} of {{mFRR Activation Direction}} and {{Imbalance Price}} Using {{XGBoost}}}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\S5ZGDEWX\Porras - Short-Term Forecasting of mFRR Activation Direction and Imbalance Price using XGBoost.pdf
+      \endverb
+    \endentry
+    \entry{PowerMarketData}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Access and integrate Nord Pool's Power Market Data for the Nordics, Baltics, CWE and the UK dating back to 1998.}
+      \field{howpublished}{https://www.nordpoolgroup.com/en/services/power-market-data-services/}
+      \field{title}{Power {{Market Data}}}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\63C9ZCR3\power-market-data-services.html
+      \endverb
+    \endentry
+    \entry{ClassImbalanceProblem}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.sciencedirect.com/topics/computer-science/class-imbalance-problem}
+      \field{title}{Class {{Imbalance Problem}} - an Overview |{} {{ScienceDirect Topics}}}
+      \field{urlday}{26}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\5FKAUHBX\class-imbalance-problem.html
+      \endverb
+    \endentry
+    \entry{StaticContentNordic}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.nucs.net/content/static\_content/Static\%20content/data\%20repository/DataRepositoryGuide.html}
+      \field{title}{Static {{Content}} |{} {{Nordic Unavailability Collection System}}}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\99NMWXKF\DataRepositoryGuide.html
+      \endverb
+    \endentry
+    \entry{DataStandardisation}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.entsoe.eu/data/}
+      \field{langid}{american}
+      \field{title}{Data \& {{Standardisation}}}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\DLZB5CD7\data.html
+      \endverb
+    \endentry
+    \entry{liuFeatureSelectionKnowledge2012}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=a83f8cd28a9f36e43dd5d017cd7fc8f4}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Huan},
+           giveni={H\bibinitperiod}}}%
+        {{hash=d26f438bb203e0655769b9af6932fe72}{%
+           family={Motoda},
+           familyi={M\bibinitperiod},
+           given={Hiroshi},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Science \& Business Media}%
+      }
+      \strng{namehash}{e649e30e6a1d8d09b6de44946371b2da}
+      \strng{fullhash}{e649e30e6a1d8d09b6de44946371b2da}
+      \strng{fullhashraw}{e649e30e6a1d8d09b6de44946371b2da}
+      \strng{bibnamehash}{e649e30e6a1d8d09b6de44946371b2da}
+      \strng{authorbibnamehash}{e649e30e6a1d8d09b6de44946371b2da}
+      \strng{authornamehash}{e649e30e6a1d8d09b6de44946371b2da}
+      \strng{authorfullhash}{e649e30e6a1d8d09b6de44946371b2da}
+      \strng{authorfullhashraw}{e649e30e6a1d8d09b6de44946371b2da}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{As computer power grows and data collection technologies advance, a plethora of data is generated in almost every field where computers are used. The com puter generated data should be analyzed by computers; without the aid of computing technologies, it is certain that huge amounts of data collected will not ever be examined, let alone be used to our advantages. Even with today's advanced computer technologies (e. g. , machine learning and data mining sys tems), discovering knowledge from data can still be fiendishly hard due to the characteristics of the computer generated data. Taking its simplest form, raw data are represented in feature-values. The size of a dataset can be measUJ{$\cdot$}ed in two dimensions, number of features (N) and number of instances (P). Both Nand P can be enormously large. This enormity may cause serious problems to many data mining systems. Feature selection is one of the long existing methods that deal with these problems. Its objective is to select a minimal subset of features according to some reasonable criteria so that the original task can be achieved equally well, if not better. By choosing a minimal subset offeatures, irrelevant and redundant features are removed according to the criterion. When N is reduced, the data space shrinks and in a sense, the data set is now a better representative of the whole data population. If necessary, the reduction of N can also give rise to the reduction of P by eliminating duplicates.}
+      \field{isbn}{978-1-4615-5689-3}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{title}{Feature {{Selection}} for {{Knowledge Discovery}} and {{Data Mining}}}
+      \field{year}{2012}
+      \keyw{Computers / Artificial Intelligence / General,Computers / Database Administration & Management,Computers / Information Technology,Computers / Information Theory,Computers / Programming / Algorithms,Language Arts & Disciplines / Library & Information Science / General}
+    \endentry
+    \entry{brownleeBasicFeatureEngineering2016}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=915af163e2107106fced5dd3164d9a8e}{%
+           family={Brownlee},
+           familyi={B\bibinitperiod},
+           given={Jason},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{915af163e2107106fced5dd3164d9a8e}
+      \strng{fullhash}{915af163e2107106fced5dd3164d9a8e}
+      \strng{fullhashraw}{915af163e2107106fced5dd3164d9a8e}
+      \strng{bibnamehash}{915af163e2107106fced5dd3164d9a8e}
+      \strng{authorbibnamehash}{915af163e2107106fced5dd3164d9a8e}
+      \strng{authornamehash}{915af163e2107106fced5dd3164d9a8e}
+      \strng{authorfullhash}{915af163e2107106fced5dd3164d9a8e}
+      \strng{authorfullhashraw}{915af163e2107106fced5dd3164d9a8e}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Time Series data must be re-framed as a supervised learning dataset before we can start using machine learning algorithms. There is no concept of input and output features in time series. Instead, we must choose the variable to be predicted and use feature engineering to construct all of the inputs that will be used to [\dots ]}
+      \field{journaltitle}{MachineLearningMastery.com}
+      \field{langid}{american}
+      \field{month}{12}
+      \field{title}{Basic {{Feature Engineering With Time Series Data}} in {{Python}}}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\7DCEN77D\basic-feature-engineering-time-series-data-python.html
+      \endverb
+    \endentry
+    \entry{pelletierCyclicalEncodingAlternative2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=3929533b5989d9638348e0f5bc4398e5}{%
+           family={Pelletier},
+           familyi={P\bibinitperiod},
+           given={Haden},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{3929533b5989d9638348e0f5bc4398e5}
+      \strng{fullhash}{3929533b5989d9638348e0f5bc4398e5}
+      \strng{fullhashraw}{3929533b5989d9638348e0f5bc4398e5}
+      \strng{bibnamehash}{3929533b5989d9638348e0f5bc4398e5}
+      \strng{authorbibnamehash}{3929533b5989d9638348e0f5bc4398e5}
+      \strng{authornamehash}{3929533b5989d9638348e0f5bc4398e5}
+      \strng{authorfullhash}{3929533b5989d9638348e0f5bc4398e5}
+      \strng{authorfullhashraw}{3929533b5989d9638348e0f5bc4398e5}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Cyclical encoding provides your model with the same information using significantly fewer features}
+      \field{journaltitle}{Towards Data Science}
+      \field{langid}{american}
+      \field{month}{5}
+      \field{shorttitle}{Cyclical {{Encoding}}}
+      \field{title}{Cyclical {{Encoding}}: {{An Alternative}} to {{One-Hot Encoding}} for {{Time Series Features}}}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\S843C73Q\cyclical-encoding-an-alternative-to-one-hot-encoding-for-time-series-features-4db46248ebba.html
+      \endverb
+    \endentry
+    \entry{ClassificationAccuracyRecall}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Learn how to calculate three key classification metrics---accuracy, precision, recall---and how to choose the appropriate metric to evaluate a given binary classification model.}
+      \field{howpublished}{https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall}
+      \field{journaltitle}{Google for Developers}
+      \field{langid}{english}
+      \field{shorttitle}{Classification}
+      \field{title}{Classification: {{Accuracy}}, Recall, Precision, and Related Metrics |{} {{Machine Learning}}}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\A8GV9YZP\accuracy-precision-recall.html
+      \endverb
+    \endentry
+    \entry{dorogushCatBoostGradientBoosting2018}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=a2bbc57c5fa93135342ee3c846b63db3}{%
+           family={Dorogush},
+           familyi={D\bibinitperiod},
+           given={Anna\bibnamedelima Veronika},
+           giveni={A\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=d50d7325255d65c95c743b05f848d0e8}{%
+           family={Ershov},
+           familyi={E\bibinitperiod},
+           given={Vasily},
+           giveni={V\bibinitperiod}}}%
+        {{hash=b0bbfa15913cf76eff37e68538d3927e}{%
+           family={Gulin},
+           familyi={G\bibinitperiod},
+           given={Andrey},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{870b6a3ec956468a6099c01f8cdefa69}
+      \strng{fullhash}{fcfc466ab29cc40aee35f1cdfe74eabe}
+      \strng{fullhashraw}{fcfc466ab29cc40aee35f1cdfe74eabe}
+      \strng{bibnamehash}{fcfc466ab29cc40aee35f1cdfe74eabe}
+      \strng{authorbibnamehash}{fcfc466ab29cc40aee35f1cdfe74eabe}
+      \strng{authornamehash}{870b6a3ec956468a6099c01f8cdefa69}
+      \strng{authorfullhash}{fcfc466ab29cc40aee35f1cdfe74eabe}
+      \strng{authorfullhashraw}{fcfc466ab29cc40aee35f1cdfe74eabe}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{In this paper we present CatBoost, a new open-sourced gradient boosting library that successfully handles categorical features and outperforms existing publicly available implementations of gradient boosting in terms of quality on a set of popular publicly available datasets. The library has a GPU implementation of learning algorithm and a CPU implementation of scoring algorithm, which are significantly faster than other gradient boosting libraries on ensembles of similar sizes.}
+      \field{eprintclass}{cs}
+      \field{eprinttype}{arXiv}
+      \field{month}{10}
+      \field{number}{arXiv:1810.11363}
+      \field{shorttitle}{{{CatBoost}}}
+      \field{title}{{{CatBoost}}: Gradient Boosting with Categorical Features Support}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.1810.11363
+      \endverb
+      \verb{eprint}
+      \verb 1810.11363
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\haako\\Zotero\\storage\\YJMN57TB\\Dorogush et al. - 2018 - CatBoost gradient boosting with categorical features support.pdf;C\:\\Users\\haako\\Zotero\\storage\\S2QZQDPE\\1810.html
+      \endverb
+      \keyw{Computer Science - Machine Learning,Computer Science - Mathematical Software,Statistics - Machine Learning}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

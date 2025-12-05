@@ -1,0 +1,47 @@
+,cluster
+NO1-NO2_ratio,12
+NO1-NO3_ratio,8
+NO1-NO5_ratio,17
+NO1-SE3_ratio,12
+Accepted Up Share,14
+Accepted Imbalance Ratio,14
+Up-Down Price Skew,2
+PriceUp_t-1,3
+PriceDown_t-1,2
+RegLag-4,13
+RegLag-6,13
+RegLag-8,13
+RegLag-10,13
+RegLag-12,13
+hour_sin,19
+hour_cos,18
+month_sin,1
+month_cos,1
+Working Day,16
+Peak,18
+Consumption,7
+Wind Production,11
+Total Production,15
+Wind Share,11
+Consumption / Production,15
+DA Price,3
+ID Price 3,3
+Price Symm Rel Diff,4
+DA/ID Price Ratio,4
+aFRR Price,9
+aFRR Quantity,10
+aFRR_Persistency,15
+ID3 Mom_1h,6
+HOD,19
+DOW,16
+DA Scarcity,3
+PriceUp - DA,5
+PriceUp/DA Ratio,5
+PriceDown - DA,5
+PriceDown/DA Ratio,5
+Total Imports,12
+Net Import,19
+Import/Consumption,19
+Residual Load,7
+Residual Load Delta,20
+Net Import Ramp,21

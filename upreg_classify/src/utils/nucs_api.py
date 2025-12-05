@@ -209,7 +209,7 @@ def fetch_df09_points(
             "documentType": "A81",  # DF09
             "type_marketagreement.type": cfg.market_agreement_type,
             "controlArea_domain": cfg.control_area,
-            "businessType": cfg.business_type,
+            "processType": "A47",
             **win,
         }
         try:
@@ -261,7 +261,7 @@ def get_mfrr_contracted_hourly(
     period_end: str,
     control_area: str = "10YNO-1--------2",
     market_agreement_type: str = "A01",
-    business_type: str = "A96",
+    business_type: str = "A97",
     chunk_days: int = 50,
     save_csv: Optional[str] = None,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:

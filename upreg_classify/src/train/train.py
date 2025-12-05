@@ -37,7 +37,7 @@ from autogluon.tabular import TabularPredictor
 from src.data.preprocess import build_dataset, Config
 from src.utils.args import parse_args
 from src.train.hyperparameters import build_hyperparameters
-from src.train.evaluation import evaluate_and_report
+from src.evaluation.evaluation import evaluate_and_report
 
 ###############################################################################
 # paths & small utilities
@@ -187,7 +187,10 @@ def train_and_evaluate(
     use_categorical_reglag: bool = False,
     data_start: Optional[str] = None,
     disable_persistency_interactions: bool = False,
+    only_persistency_features: bool = False,
+    exclude_persistency_features: bool = False,
 ):
+        
     # 1) Build dataset
     # Set default values
     if not num_bag_folds:
@@ -260,9 +263,27 @@ def train_and_evaluate(
             patterns = [
                 ' x Persistency', 'Persistency x ',
                 ' x PersistencyDown', 'PersistencyDown x ',
+                ' x PersistenceUp', 'PersistenceUp x ',
+                ' x PersistenceDown', 'PersistenceDown x ',
+                ' x PersistenceNone', 'PersistenceNone x ',
             ]
             return not any(p in name for p in patterns)
         features = [f for f in features if _keep_feature(f)]
+
+    # Optional: restrict to Persistency-only features, overriding all others
+    if only_persistency_features:
+        allowed = [c for c in ['PersistenceUp', 'PersistenceDown', 'PersistenceNone'] if c in df.columns]
+        if not allowed:
+            raise ValueError('Persistency-only flag enabled, but no Persistence* columns exist in dataset.')
+        features = allowed
+        # Trim frames to just allowed features + label
+        keep_cols = features + [label]
+        train_df = train_df[keep_cols]
+        val_df = val_df[keep_cols]
+        test_df = test_df[keep_cols]
+    elif exclude_persistency_features:
+        persistency_cols = {'PersistenceUp','PersistenceDown','PersistenceNone','Persistency','PersistencyDown'}
+        features = [c for c in features if c not in persistency_cols]
 
     # 2) Output dirs
     os.makedirs(output_dir, exist_ok=True)
@@ -340,4 +361,6 @@ if __name__ == '__main__':
         use_categorical_reglag=args.use_categorical_reglag,
         data_start=args.data_start,
         disable_persistency_interactions=args.disable_persistency_interactions,
+        only_persistency_features=args.only_persistency_features,
+        exclude_persistency_features=args.exclude_persistency_features,
     )

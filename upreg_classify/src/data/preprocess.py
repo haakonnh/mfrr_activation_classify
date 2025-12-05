@@ -110,13 +110,20 @@ def ensure_datetime_index(df: pd.DataFrame, col: str, fmt: str | None = None, sl
 
 
 def _persistency_from_activated(activated: pd.Series) -> pd.Series:
-    """Vectorized persistency: number of consecutive previous True activations.
-    persistency at t equals the number of consecutive Trues immediately BEFORE t.
-    """
+    """Legacy helper: consecutive previous True activations shifted by 1."""
     s = activated.astype(float).fillna(0.0).astype(int)
-    groups = (s == 0).cumsum()  # increments at zeros; ones between zeros share a group
+    groups = (s == 0).cumsum()
     consec = s.groupby(groups).cumsum()
     return consec.shift(1).fillna(0).astype(int)
+
+def _persistency_from_bool(series: pd.Series, shift_lag: int = 4) -> pd.Series:
+    """Consecutive previous True values, reported at t using values strictly before t.
+    The run-length counter is built per block of Trues separated by Falses and shifted by `shift_lag`.
+    """
+    s = series.fillna(False).astype(bool).astype(int)
+    groups = (s == 0).cumsum()
+    consec = s.groupby(groups).cumsum()
+    return consec.shift(shift_lag).fillna(0).astype(int)
 
 
 # ---------------- Segmented loaders and feature builders ----------------
@@ -292,16 +299,15 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     # Retain a single numeric up-volume lag for potential interactions/scale
     #df['Activation Volume-3'] = df['Activation Volume'].shift(3)
     
-    if not single_persistence:
-        # Two separate non-negative persistency counters
-        df['Persistency'] = _persistency_from_activated(df['Activated'])
-        df['PersistencyDown'] = _persistency_from_activated(df['Activated Down Volume'].gt(0))
-    else:
-        # Single signed persistency: positive for consecutive UPs, negative for consecutive DOWNs
-        up_persist = _persistency_from_activated(df['Activated'])
-        down_persist = _persistency_from_activated(df['Activated Down Volume'].gt(0))
-        # If both were somehow positive at once, difference prioritizes the stronger streak
-        df['Persistency'] = (up_persist - down_persist).astype(int)
+    # New unified persistency features shifted by 4:
+    df['PersistenceUp'] = _persistency_from_bool(df['Activated'], shift_lag=cfg.horizon)
+    df['PersistenceDown'] = _persistency_from_bool(df['Activated Down Volume'].gt(0), shift_lag=cfg.horizon)
+    # None = no activation (both up and down are zero). Build boolean for none at t-1 and beyond
+    none_bool = (~df['Activated']) & (~df['Activated Down Volume'].gt(0))
+    df['PersistenceNone'] = _persistency_from_bool(none_bool, shift_lag=cfg.horizon)
+    # Backward-compatible aliases if downstream expects old names
+    df['Persistency'] = df['PersistenceUp']
+    df['PersistencyDown'] = df['PersistenceDown']
 
     
     # Drop raw volumes after constructing features to avoid accidental leakage as features

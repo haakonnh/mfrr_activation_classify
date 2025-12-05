@@ -1,5 +1,5 @@
 \newpage
-\section{Feature Engineering}
+\subsection{Feature Engineering}
 Features are attributes in a dataset that describe each data point. A dataset
 for predicting a person's income could, for instance, have features like
 gender, job type, and age. Then, each data point represents a person and
@@ -28,7 +28,7 @@ features' actual impact on performance. Feature selection will be subject to
 restrictions outlined in Section \ref{sec:restrictions} to ensure that only
 real-time available features are used. 
 
-\subsection{Lag features}
+\subsubsection{Lag features}
 A lag feature is a feature that represents the value of a variable at a
 previous time step. Lag features are commonly used in time series analysis to
 capture \textit{temporal} dependencies and trends in the data 
@@ -96,8 +96,7 @@ The longer the streak, the more likely it is that the activation trend will cont
 In some cases, the model might be able to predict an activation solely based on
 a high persistency value, without needing to consider other features. 
 
-Much of the motivation behind this project is, as outlined in Section 
-\ref{sec:problem-formulation}, to develop models that can predict activations
+Much of the motivation behind this project is to develop models that can predict activations
 based on system state features rather than just relying on past activation trends.
 The reality is, however, that persistency features are extremely dominant, and
 they may overshadow the contributions of other features. 
@@ -142,7 +141,7 @@ $F_{\text{ratio}}^{i}(t)\in[-1,1]$ when flows are within limits, approaching $+1
 as inflow nears the capacity and $-1$ as outflow nears the capacity.
 
 
-\subsection{Temporal features}
+\subsubsection{Temporal features}
 Temporal features capture time-related patterns in the data. These features help the model
 understand how mFRR activations vary with time, such as daily or weekly cycles. 
 Basic temporal features include hour of the day, day of the week, and month of the year.
@@ -160,7 +159,7 @@ Hourly features are, for instance, encoded as:
 \]
 Monthly features can be encoded similarly, using 12 as the divisor instead of 24.
 
-\subsection{Price features}
+\subsubsection{Price features}
 Price features capture information about the various electricity market prices. 
 The mFRR activaiton market is closely linked to other electricity makets, such as the 
 day-ahead market, the intraday market, and the aFRR market. Most prices may not have 
@@ -172,10 +171,10 @@ which should correlate with mFRR activations. Similarly, the difference between 
 and mFRR prices may provide insights into the relative costs of balancing services, 
 which could influence activation decisions.
 
-\subsection{Load features}
+\subsubsection{Load features}
 
 
-\subsection{Production features}
+\subsubsection{Production features}
 Production features capture information about electricity generation, particularly
 from renewable sources like wind power. Wind power production features were
 considered promising candidates for predicting mFRR activations, as wind power is
@@ -211,6 +210,6 @@ with other features, as the model captures complex relationships between feature
 
 
 
-\subsection{Interaction features}
+\subsubsection{Interaction features}
 Interaction features are created by combining two or more existing features
 to capture complex relationships that may influence mFRR activations.

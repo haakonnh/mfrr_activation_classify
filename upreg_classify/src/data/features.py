@@ -122,7 +122,7 @@ def attach_price_features(df: pd.DataFrame, da_df: pd.DataFrame, id_df: pd.DataF
     price_id = df['ID Price 3']
 
     # 1) Plain difference (stable, sign-aware)
-    df['Price Diff'] = price_id - price_da
+    #df['Price Diff'] = price_id - price_da
 
     # 2) Symmetric relative difference in [-2, 2] (bounded, scale-free)
     #    2*(x-y)/(abs(x)+abs(y)+eps)

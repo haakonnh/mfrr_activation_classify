@@ -1,23 +1,24 @@
 \newpage
 \section{Literature Review}\label{sec:literature-review}
-This chapter reviews literature relevant to the prediction of mFRR activations 
-in a top-down approach. The review begins by outlining the broader context of
-balancing activation markets and the challenges they present. It then delves into 
-which methodologies exist for handling these challenges, before finally
-identifying specific research gaps that this study aims to address.
+This chapter reviews literature relevant to balancing market forcasting, first 
+outlining the unique characteristics of 
+balancing activation markets and the challenges they present. Then existing methodologies  
+for handling these challenges are presented, before finally
+identifying specific research gaps that this study and future work can address.
 
 \subsection{mFRR Energy Activation Market Characteristics}
-Balancing markets are by nature unpredictable as their primary function is to
+Balancing markets are by nature unpredictable, as their primary function is to
 maintain system stability in the face of unforeseen imbalances between supply
-and demand. This inherent unpredictability is handled in most balancing markets
-by the capacity market mechanism. The mFRR energy activation market distinguishes 
+and demand. This inherent unpredictability is in most balancing markets handled
+through the capacity market mechanism. The mFRR energy activation market distinguishes 
 itself by only compensating participants for actual energy delivered during
 activation events. Participants must also bid in the correct direction of
 activation (upward or downward) to be eligible for activation. When an up-regulating
 activation is required, the up-regulation price is by design higher than the
 day-ahead market price, and vice versa for down-regulating activations 
 \autocite{klaeboeDayaheadMarketBidding2022}. These market
-characteristics make it lucrative to predict activation events accurately, as
+characteristics make it lucrative for participants to predict activation events 
+accurately, as
 successful predictions can lead to significant financial gains. 
 
 In 2022, Klæboe et al. \autocite{klaeboeDayaheadMarketBidding2022} analyzed 
@@ -26,35 +27,43 @@ taking the balancing power market into
 account. They found near-zero gains from incorporating balancing market
 predictions into day-ahead bidding strategies. They discuss, however, that
 the need for balancing services will increase in the future, and that such
-strategies will therefore become more profitable. In Svenska Kraftnät's
+strategies will therefore become more relevant and profitable. In Svenska Kraftnät's
 balancing market outlook 2030 \autocite{BalancingMarketOutlook} they present
-that the mFRR capacity demand has and will steadily increase. \textit{Source}
+that the mFRR capacity demand has and will steadily increase. The report also suggests
+that since the automated mFRR EAM is only an intermediate step for connecting to MARI
+(Manually Activated Reserves Initiative), which is an upcoming European-wide mFRR 
+market, further increases in mFRR demand are to be expected. This suggests that
+predicting mFRR activations will become increasingly important for market participants
+seeking to optimize their market strategies.
 
 The mFRR energy activation market transitioned from an hourly to a 15-minute
 resolution as of 4th March 2025, an endeavor aimed at enhancing market efficiency
 and integrating renewable energy sources more effectively \autocite{Transition15minuteMarket}.
-An hourly resolution was deemed overly discrete and can miss intra-hour dynamics; a 
-15-minute resolution reduces discretization and better approximates the continuous 
-variation of supply, demand, and balancing needs. A study by Kallset and Farahmand 
+Under the previous hourly structure, activation signals were constrained to coarse
+discrete time blocks. Thus, short-lived imbalances or, for instance, rapid ramps in
+renewable generation could not be reflected optimally in activation decisions. moving
+to a 15-minute resolution reduces this discretization effect 
+\autocite{kallsetImprovingBalancingActivation2025}.
+
+A study by Kallset and Farahmand 
 found that increased resolution significantly reduces such structural imbalances and
 achieves about 60\% of the possible reduction in total balancing, compared to a
-5-minute resolution ideal \autocite{kallsetImprovingBalancingActivation2025}. Thus 
-higher resolution make balancing activations align more closely with actual real-
-time system needs, and is less restricted by the coarse time blocks of hourly markets.
-
-
-
-
-
-
-
-
-
-
+5-minute resolution ideal \autocite{kallsetImprovingBalancingActivation2025}. Their
+findings imply that imbalances are now corrected more accurately and efficiently on
+shorteer time scales, making activation patterns more sensitive to rapid system changes.
+Consequently, the dynamics of the mFRR energy activation market have become more 
+granular and potentially more volatile, increasing the relevance, but also the difficulty,
+of short-term activation forecasting. 
 
 \subsection{Existing Approaches to Balancing Activation Market Forecasting}
-This chapter reviews relevant literature on balancing market forecasting. 
-
+Forecasting in balancing markets has developed along two main methodological paths. 
+The first focuses on predicting continuous system variables such as imbalance volumes 
+or imbalance prices, mostly appealing to system operators. The second 
+path targets the discrete activation decisions made in the mFRR energy activation 
+market, which are directly relevant for market participants who must place bids in the 
+correct direction. The following sections review key contributions in both areas, 
+highlighting their methodological approaches, limitations, and relevance for short-term 
+activation forecasting under the current 15-minute Nordic market design.
 
 \subsubsection{Imbalance Volume and Price Forecasting}
 Imbalance volume forecasting plays a central role in balancing markets 
@@ -125,8 +134,8 @@ indicators provide valuable information for bidders seeking to anticipate balanc
 outcomes.
 
 \subsubsection{Activation Forecasting}
-Whereas imbalance forecasting aims to estimate the magnitude of system imbalances, 
-activation forecasting focuses on predicting the TSO's decision to activate upward, 
+Whereas imbalance forecasting estimates system imbalance magnitudes, 
+activation forecasting predicts TSO's decision to activate upward, 
 downward, or no mFRR energy. Activation direction is directly relevant for market 
 participants, as balancing market bids must be placed in the correct direction to be
 eligible for activation. As the Nordic system transitions to a 15-minute market 
@@ -134,7 +143,7 @@ resolution, short-term activation forecasting has become increasingly important,
 yet the academic literature on this topic remains sparse.
 
 Svedlindh and Yngveson \autocite{svedlindhPriceFormationForecasting2025}
-explore the general price formation in intraday and mFRR markets. Among other
+examine the general price formation in intraday and mFRR markets. Among other
 explorations, they develop logistic regression and ANN (Artificial Neural Network)
 models to predict activation direction in the mFRR activation market. The ANN model
 outperforms the logistic regression, achieving solid \textit{accuracy} and 
@@ -142,13 +151,10 @@ outperforms the logistic regression, achieving solid \textit{accuracy} and
 poses a significant challenge, as no-activation events dominate the dataset. This
 imbalance skews model performance, making it difficult to accurately predict the less 
 frequent upward and downward activations. Despite these acknowledged challenges, Svedlindh
-and Yngveson achieve above expected performance, seemingly sustained by the inclusion
-of mFRR capacity market cleared volumes and prices. Cleared mFRR capacity market data
-is not necessarily
-available to market participants in real-time, and thus limits the practical applicability
-of their models. \textbf{Is this true Jay? As far as I know, we do not have access
-to capacity market data (volumes, prices). They do not explain how the data 
-is gathered.}
+and Yngveson achieve promising results. They find that mFRR capacity market prices 
+and procured volumes are informative predictors of activation direction. Since the 
+capacity market is cleared a day ahead with hourly procurement, its outcomes appear to 
+correlate with subsequent activation behaviour.
 
 A recent study in 2025, Porras
 \autocite{porrasShortTermForecastingMFRR} investigated the use of
@@ -167,43 +173,95 @@ study, which this study aims to address, is the opportunity opened by the recent
 improved prediction capabilities.
 
 \subsubsection{Literature Synthesis}
-The reviewed literature differ in what they aim to predict, how they handle 
-uncertainty, and their target audience.
+The reviewed studies differ in their forecasting targets, 
+methodological approaches, and intended users. Regression-based studies such 
+as Singh et al. \autocite{singhNovelDynamicImbalance2025} and Edling \& Azarang 
+\autocite{azarangMachineLearningBasedPrediction} focus on point forecasts of 
+system imbalance volumes. These models primarily serve system operators and rely 
+on data streams that are not always available to market participants. While such 
+point forecasts provide valuable information about the magnitude of expected 
+imbalances, they do not directly predict activation direction and do not quantify 
+uncertainty.
 
-Regression-based studies (Singh et al. \autocite{singhNovelDynamicImbalance2025};
-Edling \& Azarang \autocite{azarangMachineLearningBasedPrediction}) provide
-deterministic point forecasts of imbalance volumes. These models primarily target
-system operators seeking to optimize activation decisions and minimize balancing costs.
-However, point forecassts do not convey the uncertainty inherent in balancing markets,
-and they do not directly predict activation directions.
+Probabilistic approaches, exemplified by Plakas et al. 
+\autocite{plakasPredictionImbalancePrices2025}, attempt to characterize 
+uncertainty explicitly by producing distributions over imbalance volumes and 
+prices. This is more directly useful for market participants, but their framework 
+till does not address the discrete up/down/none decision that governs mFRR 
+activations.
+
+Only a small number of studies examine activation direction itself. Svedlindh and 
+Yngveson \autocite{svedlindhPriceFormationForecasting2025} develop logistic 
+regression and ANN classifiers, showing that activation direction is in principle 
+predictable but heavily constrained by class imbalance and the use of 
+capacity-market features that are not available in real-time to market participants.
+Porras \autocite{porrasShortTermForecastingMFRR} investigates activation 
+direction using XGBoost at an hourly resolution in SE2, demonstrating the potential 
+of machine-learning classification but leaving open questions regarding finer 
+temporal resolution and the feasibility of predictions outside high-activation 
+regions.
+
+Taken together, the literature indicates that imbalance information carries 
+predictive value for prices and activations, but existing approaches either 
+(i) focus on continuous volume forecasting, (ii) rely on non-participant data, 
+or (iii) operate at coarser temporal scales than current Nordic market design. 
+There remains limited evidence on whether activation direction can be predicted 
+reliably using only features available to market participants and at the new 
+15-minute resolution.
+
+\begin{table}[!htbp]
+\centering
+\caption{Comparison of key studies on balancing market forecasting}
+\label{tab:literature-comparison}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{l l c c}
+\toprule
+\textbf{Study} & \textbf{Target Variable} & \textbf{Resolution} & \textbf{Model Type} \\
+\midrule
+Singh et al.\ (2025) & Imbalance volume & 15-min & Regression \\
+Edling \& Azarang (2025) & mFRR activation volume & 1-hour & LSTM \\
+Plakas et al.\ (2025) & Imbalance volume + price & 1-hour & Probabilistic / QR \\
+Svedlindh \& Yngveson (2025) & Activation direction & 1-hour & Logistic / ANN \\
+Porras (2025) & Activation direction + price & 1-hour & XGBoost \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+Table \ref{tab:literature-comparison} summarizes the key characteristics of the reviewed studies,
+reviewed studies, highlighting their differing targets, resolutions, and model types.
 
 
-Singh et al. and Edling \& Azarang both develop regression-based models to
-produce point forecasts of imbalance volumes. Point forecasts are useful for
-system operators seeking to optimize activation decisions, but probabilistic 
-and classification approaches may inform market participant bidding strategies 
-more directly. Plakas et al. extend the regression approach by developing a
-two-stage probabilistic framework that first forecasts imbalance volumes and then
-predicts imbalance prices. This sequential approach captures the dependency
+\subsubsection{Research Gap}
+Despite notable progress in balancing-market forecasting, several gaps remain in the 
+existing literature.
+Most existing studies focus on continuous imbalance or activation volume forecasting 
+at an hourly resolution. While these approaches provide valuable insights for system 
+operators, they do not address the discrete up/down/none activation decisions faced 
+by market participants, especially under the newer 15-minute market design.
 
+Studies that do consider activation direction (Svedlindh \& 
+Yngveson and Porras) do so at an hourly resolution. With the transition to 15-minute
+activation intervals, however, finer temporal patterns and short-lived imbalances 
+may become more relevant. Investigating whether higher time resolution can improve 
+prediction performance is therefore of interest.
 
+Geographically, relatively little work has focused on the Norwegian bidding zones. 
+The reviewed studies investigate the Belgian and Greek systems (Singh et al. and 
+Plakas et al.) or Swedish bidding zones (Edling \& Azarang, Svedlindh \& Yngveson,
+and Porras). Swedish bidding zones naturally share similarities with Norwegian zones,
+as both are part of the Nordic system. However, differences in generation mixes,
+cross-zonal flows, and local balancing tendencies
+ may lead to distinct activation patterns.
 
-\subsection{Research Gap}
-While existing literature has made significant strides in predicting balancing
-market activations, several gaps remain. Notably, there is a lack of studies
-that leverage and discuss potential impacts of the recent transition to 15-minute 
-time intervals in the Nordic
-mFRR markets. This reform presents an opportunity to enhance prediction accuracy
-by utilizing more granular data. Additionally, while various machine learning
-techniques have been explored, there is a need for a comprehensive comparison
-of different models specifically tailored to the unique characteristics of the
-mFRR energy activation market. Many of the recent studies on this topic have
-focused on regions with high activation volumes and frequencies, such as SE2 in 
-Sweden. However, there is a lack of research focusing on regions like NO1 in Norway,
-where activations are less frequent. While SE2 and other high-activation regions 
-most likely would yield better prediction results due to more balanced classes,
-it is still valuable to explore the challenges and opportunities in regions with
-lower activation frequencies. This study aims to fill these gaps by focusing on
-the NO1 price area in Norway, utilizing the new 15-minute market data, and
-comparing a range of machine learning models to identify the most effective
-approaches for predicting mFRR activations.
+A further consideration is that few studies robustly address the data availability
+constraints faced by market participants. Some studies incorporate TSO-only data, 
+while others do not explicitly evaluate whether their chosen features would be accessible
+to market participants at decision time.
+As a result, the extent to which activation direction can be predicted 
+under participant-feasible information constraints remains relatively open.
+
+Taken together, these observations suggest the value of a systematic evaluation of 
+activation-direction forecasting in the NO1 bidding zone, using features available to
+market participants and operating at the updated 15-minute resolution. This study 
+contributes to this area by comparing a range of machine-learning models and assessing 
+their performance under realistic data and operational constraints.

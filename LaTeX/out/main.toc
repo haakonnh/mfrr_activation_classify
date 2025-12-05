@@ -1,76 +1,75 @@
 \babel@toc {british}{}\relax 
-\contentsline {section}{List of Figures}{iii}{section*.2}%
+\contentsline {section}{List of Figures}{ii}{section*.2}%
 \contentsline {section}{List of Tables}{iii}{section*.3}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Background}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Motivation}{1}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Research Question}{2}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Outline}{2}{subsection.1.4}%
-\contentsline {section}{\numberline {2}Electricity Balancing Market Theory}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Nordic Balancing Market Structure}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Reserve Market Concepts}{4}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Capacity Markets}{4}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Energy Activation Markets (EAMs)}{4}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Imbalance Prices}{4}{subsubsection.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}mFRR Market in Norway (will refactor this or remove this)}{4}{subsubsection.2.2.4}%
+\contentsline {section}{\numberline {2}Theory}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Electricity Balancing Market}{2}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Nordic Balancing Market Structure}{2}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Reserve Market Concepts}{4}{subsubsection.2.1.2}%
+\contentsline {paragraph}{Capacity Markets}{4}{section*.7}%
+\contentsline {paragraph}{Energy Activation Markets (EAMs)}{4}{section*.8}%
+\contentsline {paragraph}{Imbalance Prices}{4}{section*.9}%
+\contentsline {paragraph}{mFRR Market in Norway (will refactor this or remove this)}{4}{section*.10}%
+\contentsline {subsection}{\numberline {2.2}Machine Learning Theory}{4}{subsection.2.2}%
 \contentsline {section}{\numberline {3}Literature Review}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}mFRR Energy Activation Market Characteristics}{5}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Existing Approaches to Balancing Activation Market Forecasting}{5}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}Imbalance Volume and Price Forecasting}{5}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.1}Imbalance Volume and Price Forecasting}{6}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Activation Forecasting}{6}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Literature Synthesis}{7}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}Research Gap}{7}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Problem Formulation}{8}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Binary Classification Problem}{8}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Ternary Classification Problem}{8}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Restrictions}{8}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Class Imbalance}{9}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Data and Preprocessing}{10}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Data Sources}{10}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Data Coverage and Time Span}{10}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Nord Pool Data}{10}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}mFRR activation data}{10}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}Cross-zonal flows}{11}{subsubsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3}Load and production data}{12}{subsubsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.4}NUCS}{13}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}aFRR procurement prices}{13}{subsubsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.5}ENTSO-E}{14}{subsection.5.5}%
-\contentsline {subsubsection}{\numberline {5.5.1}aFRR Activation Data}{14}{subsubsection.5.5.1}%
-\contentsline {paragraph}{Crucial: Time restriction. (Probably move parts of this to somewhere else as these concepts are important.)}{14}{section*.13}%
-\contentsline {subsection}{\numberline {5.6}Dataset structure}{15}{subsection.5.6}%
-\contentsline {section}{\numberline {6}Feature Engineering}{16}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Lag features}{16}{subsection.6.1}%
-\contentsline {paragraph}{Activation lag features}{16}{section*.14}%
-\contentsline {paragraph}{Persistency (streak length)}{16}{section*.15}%
-\contentsline {paragraph}{Design choice: separate vs. signed.}{17}{section*.16}%
-\contentsline {paragraph}{Importance.}{17}{section*.17}%
-\contentsline {subsection}{\numberline {6.2}Cross-zonal flow features}{17}{subsection.6.2}%
-\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{17}{section*.18}%
-\contentsline {subsection}{\numberline {6.3}Temporal features}{18}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Price features}{18}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Load features}{18}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Production features}{18}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Interaction features}{19}{subsection.6.7}%
-\contentsline {section}{\numberline {7}Methodology}{19}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Problem Setup}{19}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Metrics}{19}{subsection.7.2}%
-\contentsline {paragraph}{Precision-recall trade-off}{20}{section*.20}%
-\contentsline {paragraph}{The transition metric}{21}{section*.21}%
-\contentsline {paragraph}{Probability correctness.}{21}{section*.22}%
-\contentsline {subsection}{\numberline {7.3}Data Splitting}{21}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Model Selection}{21}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Random Forest and Extra Trees}{21}{subsubsection.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.4.2}CatBoost}{21}{subsubsection.7.4.2}%
-\contentsline {subsubsection}{\numberline {7.4.3}XGBoost and LightGBM}{22}{subsubsection.7.4.3}%
-\contentsline {subsection}{\numberline {7.5}Adjusting Classification Thresholds}{22}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Decision-bias tuning}{22}{subsection.7.6}%
-\contentsline {paragraph}{Class-specific decision bias for ``up''.}{23}{section*.24}%
-\contentsline {paragraph}{Validation-based selection of $\alpha $.}{23}{section*.25}%
-\contentsline {paragraph}{Intuition and benefits.}{23}{section*.26}%
-\contentsline {subsection}{\numberline {7.7}AutoGluon}{23}{subsection.7.7}%
-\contentsline {section}{\numberline {8}Model Results}{23}{section.8}%
-\contentsline {subsection}{\numberline {8.1}The 2025 Dataset}{24}{subsection.8.1}%
-\contentsline {subsubsection}{\numberline {8.1.1}Extra Trees}{24}{subsubsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.2}The 2024-2025 Dataset}{26}{subsection.8.2}%
-\contentsline {subsubsection}{\numberline {8.2.1}CatBoost Models}{27}{subsubsection.8.2.1}%
-\contentsline {section}{Bibliography}{30}{section*.34}%
+\contentsline {subsubsection}{\numberline {3.2.4}Research Gap}{8}{subsubsection.3.2.4}%
+\contentsline {section}{\numberline {4}Methodology}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Data Sources and Preprocessing}{9}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Data Sources}{9}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}Data Coverage and Time Span}{9}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}Nord Pool Data}{9}{subsubsection.4.1.3}%
+\contentsline {paragraph}{mFRR activation data}{9}{section*.12}%
+\contentsline {paragraph}{Cross-zonal flows}{10}{section*.14}%
+\contentsline {paragraph}{Load and production data}{11}{section*.17}%
+\contentsline {subsubsection}{\numberline {4.1.4}NUCS}{12}{subsubsection.4.1.4}%
+\contentsline {paragraph}{aFRR procurement prices}{12}{section*.19}%
+\contentsline {subsubsection}{\numberline {4.1.5}ENTSO-E}{13}{subsubsection.4.1.5}%
+\contentsline {paragraph}{aFRR Activation Data}{13}{section*.22}%
+\contentsline {paragraph}{Crucial: Time restriction. (Probably move parts of this to somewhere else as these concepts are important.)}{13}{section*.23}%
+\contentsline {subsubsection}{\numberline {4.1.6}Dataset structure}{14}{subsubsection.4.1.6}%
+\contentsline {subsubsection}{\numberline {4.1.7}Restrictions}{14}{subsubsection.4.1.7}%
+\contentsline {subsubsection}{\numberline {4.1.8}Class Imbalance}{14}{subsubsection.4.1.8}%
+\contentsline {subsection}{\numberline {4.2}Feature Engineering}{15}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Lag features}{15}{subsubsection.4.2.1}%
+\contentsline {paragraph}{Activation lag features}{15}{section*.24}%
+\contentsline {paragraph}{Persistency (streak length)}{15}{section*.25}%
+\contentsline {paragraph}{Design choice: separate vs. signed.}{16}{section*.26}%
+\contentsline {paragraph}{Importance.}{16}{section*.27}%
+\contentsline {subsection}{\numberline {4.3}Cross-zonal flow features}{16}{subsection.4.3}%
+\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{16}{section*.28}%
+\contentsline {subsubsection}{\numberline {4.3.1}Temporal features}{17}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Price features}{17}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Load features}{17}{subsubsection.4.3.3}%
+\contentsline {subsubsection}{\numberline {4.3.4}Production features}{17}{subsubsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.5}Interaction features}{18}{subsubsection.4.3.5}%
+\contentsline {subsection}{\numberline {4.4}Evaluation Framework}{18}{subsection.4.4}%
+\contentsline {paragraph}{Precision-recall trade-off}{19}{section*.30}%
+\contentsline {paragraph}{The transition metric}{19}{section*.31}%
+\contentsline {paragraph}{Probability correctness.}{20}{section*.32}%
+\contentsline {subsubsection}{\numberline {4.4.1}Data Splitting}{20}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Model Selection}{20}{subsubsection.4.4.2}%
+\contentsline {paragraph}{Random Forest and Extra Trees}{20}{section*.33}%
+\contentsline {paragraph}{CatBoost}{20}{section*.34}%
+\contentsline {paragraph}{XGBoost and LightGBM}{20}{section*.35}%
+\contentsline {subsubsection}{\numberline {4.4.3}Adjusting Classification Thresholds}{20}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Decision-bias tuning}{21}{subsubsection.4.4.4}%
+\contentsline {paragraph}{Class-specific decision bias for ``up''.}{21}{section*.37}%
+\contentsline {paragraph}{Validation-based selection of $\alpha $.}{22}{section*.38}%
+\contentsline {paragraph}{Intuition and benefits.}{22}{section*.39}%
+\contentsline {subsubsection}{\numberline {4.4.5}AutoGluon}{22}{subsubsection.4.4.5}%
+\contentsline {section}{\numberline {5}Model Results}{22}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The 2025 Dataset}{22}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Extra Trees}{23}{subsubsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.2}The 2024-2025 Dataset}{24}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}CatBoost Models}{25}{subsubsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.3}Correlation}{27}{subsection.5.3}%
+\contentsline {section}{Bibliography}{28}{section*.47}%
