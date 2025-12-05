@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber out/main"] 1764936999.95517 "out/main.bcf" "out/main.bbl" "out/main" 1764937006.97385 0
-  "out/main.bcf" 1764937006 111280 d89d8e8e57e5bdeada29e90b1df1bc81 "pdflatex"
+["biber out/main"] 1764938347.40186 "out/main.bcf" "out/main.bbl" "out/main" 1764939075.9571 0
+  "out/main.bcf" 1764939075 111268 e4f57b753c00b47b99daa2c8e5423701 "pdflatex"
   "zotero_project.bib" 1764849869 36019 a3141ba172825539b6ef1e5de43d77bb ""
   (generated)
   "out/main.bbl"
   "out/main.blg"
   (rewritten before read)
-["pdflatex"] 1764937002.29548 "c:/PythonProjects/rl_reserve_markets/LaTeX/main.tex" "out/main.pdf" "main" 1764937006.97478 0
+["pdflatex"] 1764939068.56918 "c:/PythonProjects/rl_reserve_markets/LaTeX/main.tex" "out/main.pdf" "main" 1764939075.95813 0
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm0500.tfm" 993062506 1452 d4e3b17acac08070a568f62f3c020c49 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm0700.tfm" 993062506 1452 97bdc98984cb373fbcd868e2fa55f5f2 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
@@ -276,19 +276,19 @@
   "Sections/DataAndPreprocessing.tex" 1764935479 16834 182c44936099b70d465b8f28ea925ca0 ""
   "Sections/Evaluation.tex" 1764936994 15164 2cd628b97a3bc7b1e8c707cff80115ff ""
   "Sections/FeatureEngineering.tex" 1764935779 13235 be46e270dcdfb68a02a5491820c5b02f ""
-  "Sections/Introduction.tex" 1764931356 5230 e1c65b382fab0a36f07c7a705854b19b ""
+  "Sections/Introduction.tex" 1764939067 5621 849998d130df1d635e02790677cd92d7 ""
   "Sections/LiteratureReview.tex" 1764930495 17385 296ab2e3068a0e01c3247bb74c6533e7 ""
   "Sections/Results.tex" 1764863340 9918 0e89509928980a2b16a9f41879e3c7df ""
   "Sections/Theory.tex" 1764931414 6685 3862c629cca723d04a45b94e7e5b4bb2 ""
   "c:/PythonProjects/rl_reserve_markets/LaTeX/main.tex" 1764935608 1323 d4a5f23127e3d00f4b48a7e730728242 ""
   "main.tex" 1764935608 1323 d4a5f23127e3d00f4b48a7e730728242 ""
-  "out/main.aux" 1764937006 24206 c8f9bc76f813382fbcea84753d605c54 "pdflatex"
-  "out/main.bbl" 1764937002 48851 27355f101112b03882033a0804ffd174 "biber out/main"
-  "out/main.lof" 1764937006 2686 3b81b7e6679227280001db3523680cb6 "pdflatex"
-  "out/main.lot" 1764937006 464 06d8d35898de4d22aecd8bdcb6cdf349 "pdflatex"
-  "out/main.out" 1764937006 7821 c465fc27071078a35055d4e6e07d68ba "pdflatex"
-  "out/main.run.xml" 1764937006 2437 d0683fc33ce667481d3755a63776fc9b "pdflatex"
-  "out/main.toc" 1764937006 6214 f90e85bfb041d9c0d9759cb2a402ff7c "pdflatex"
+  "out/main.aux" 1764939075 24189 64da22f48e3aee0b20252fc0661eddfc "pdflatex"
+  "out/main.bbl" 1764938350 48851 1937243438927ac02fd37f00168e7833 "biber out/main"
+  "out/main.lof" 1764939075 2686 9c4dbbe0c9c2146edc5104550018cef3 "pdflatex"
+  "out/main.lot" 1764939075 464 acc569a367410ba4e64794c7070f6d74 "pdflatex"
+  "out/main.out" 1764939075 7821 c465fc27071078a35055d4e6e07d68ba "pdflatex"
+  "out/main.run.xml" 1764939075 2437 d0683fc33ce667481d3755a63776fc9b "pdflatex"
+  "out/main.toc" 1764939075 6220 7113f99937b9f956400d4f74fba442dc "pdflatex"
   "packages.sty" 1764927656 6167 e95171015962129d9719c5a1efed5459 ""
   "title.tex" 1764849869 658 75465ef1996437632c277661044a302a ""
   (generated)

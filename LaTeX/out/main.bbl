@@ -76,6 +76,42 @@
       \verb 10.1109/TPWRS.2023.3302515
       \endverb
     \endentry
+    \entry{EnergyTransitionOutlook}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
+      \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
+      \field{journaltitle}{DNV}
+      \field{langid}{english}
+      \field{title}{Energy {{Transition Outlook Norway}} 2024}
+      \field{urlday}{3}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\NTZ7RFVL\energy-transition-norway-2024.html
+      \endverb
+    \endentry
+    \entry{ConfirmationMFRREAM2025}{misc}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
+      \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
+      \field{journaltitle}{Statnett}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\87VQEK5B\confirmation-of-mfrr-eam-go-live-march-4th-2025.html
+      \endverb
+    \endentry
     \entry{entso-eNoricBalancingPhilosophy2024}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=f7e45def0ca6a655fe5fe04f557fc749}{%
@@ -93,8 +129,8 @@
       \strng{authornamehash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhashraw}{f7e45def0ca6a655fe5fe04f557fc749}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{langid}{english}
@@ -105,42 +141,6 @@
       \field{urlyear}{2025}
       \field{year}{2024}
       \field{urldateera}{ce}
-    \endentry
-    \entry{EnergyTransitionOutlook}{misc}{}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
-      \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
-      \field{journaltitle}{DNV}
-      \field{langid}{english}
-      \field{title}{Energy {{Transition Outlook Norway}} 2024}
-      \field{urlday}{3}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\NTZ7RFVL\energy-transition-norway-2024.html
-      \endverb
-    \endentry
-    \entry{ConfirmationMFRREAM2025}{misc}{}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labeltitlesource}{title}
-      \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
-      \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
-      \field{journaltitle}{Statnett}
-      \field{langid}{english}
-      \field{month}{10}
-      \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
-      \field{urlday}{22}
-      \field{urlmonth}{11}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\87VQEK5B\confirmation-of-mfrr-eam-go-live-march-4th-2025.html
-      \endverb
     \endentry
     \entry{RaskeFrekvensreserverFFR2025}{misc}{}{}
       \field{sortinit}{9}

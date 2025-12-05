@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  5 DEC 2025 13:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  5 DEC 2025 13:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1199,10 +1199,10 @@ Overfull \hbox (0.34828pt too wide) in paragraph at lines 7--7
 
 
 [3] (Sections/Introduction.tex
-<Images/dnv_electricity_supply_by_source.png, id=335, 551.81157pt x 417.05812pt>
+<Images/dnv_electricity_supply_by_source.png, id=334, 551.81157pt x 417.05812pt>
 File: Images/dnv_electricity_supply_by_source.png Graphic file (type png)
 <use Images/dnv_electricity_supply_by_source.png>
-Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on input line 15.
+Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on input line 14.
 (pdftex.def)             Requested size: 341.43436pt x 258.06425pt.
 
 
@@ -1210,94 +1210,95 @@ Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on in
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.63 
+l.55 
       [1 <./Images/dnv_electricity_supply_by_source.png>]) (Sections/Theory.tex
-<Images/reserves_hierarchy_entsoe.png, id=346, 455.45157pt x 255.95625pt>
+
+[2]
+<Images/reserves_hierarchy_entsoe.png, id=351, 455.45157pt x 255.95625pt>
 File: Images/reserves_hierarchy_entsoe.png Graphic file (type png)
 <use Images/reserves_hierarchy_entsoe.png>
 Package pdftex.def Info: Images/reserves_hierarchy_entsoe.png  used on input line 22.
 (pdftex.def)             Requested size: 341.43436pt x 191.88469pt.
-
-
-[2]
-<Images/reserve_types_graph.png, id=357, 508.14844pt x 208.52907pt>
+<Images/reserve_types_graph.png, id=356, 508.14844pt x 208.52907pt>
 File: Images/reserve_types_graph.png Graphic file (type png)
 <use Images/reserve_types_graph.png>
 Package pdftex.def Info: Images/reserve_types_graph.png  used on input line 52.
 (pdftex.def)             Requested size: 341.43436pt x 140.11784pt.
 
 
-[3 <./Images/reserves_hierarchy_entsoe.png> <./Images/reserve_types_graph.png>]) (Sections/LiteratureReview.tex
+[3 <./Images/reserves_hierarchy_entsoe.png>]
 
-[4]
+[4 <./Images/reserve_types_graph.png>]) (Sections/LiteratureReview.tex
 
 [5]
 
 [6]
 
-[7]) (Sections/DataAndPreprocessing.tex
+[7]
 
-[8]
-<Images/mfrr_distribution.png, id=428, 1040.688pt x 572.3784pt>
+[8]) (Sections/DataAndPreprocessing.tex
+
+[9]
+<Images/mfrr_distribution.png, id=433, 1040.688pt x 572.3784pt>
 File: Images/mfrr_distribution.png Graphic file (type png)
 <use Images/mfrr_distribution.png>
 Package pdftex.def Info: Images/mfrr_distribution.png  used on input line 49.
 (pdftex.def)             Requested size: 426.79134pt x 234.7378pt.
 
 
-[9]
-<Images/cross_zonal_flows_distribution_bar.png, id=438, 722.7pt x 361.35pt>
+[10]
+<Images/cross_zonal_flows_distribution_bar.png, id=442, 722.7pt x 361.35pt>
 File: Images/cross_zonal_flows_distribution_bar.png Graphic file (type png)
 <use Images/cross_zonal_flows_distribution_bar.png>
 Package pdftex.def Info: Images/cross_zonal_flows_distribution_bar.png  used on input line 80.
 (pdftex.def)             Requested size: 426.79134pt x 213.39867pt.
 
 
-[10 <./Images/mfrr_distribution.png>]
-<Images/import_utilization.png, id=447, 722.7pt x 361.35pt>
+[11 <./Images/mfrr_distribution.png>]
+<Images/import_utilization.png, id=451, 722.7pt x 361.35pt>
 File: Images/import_utilization.png Graphic file (type png)
 <use Images/import_utilization.png>
 Package pdftex.def Info: Images/import_utilization.png  used on input line 101.
 (pdftex.def)             Requested size: 209.1301pt x 104.56274pt.
-<Images/export_utilization.png, id=448, 722.7pt x 361.35pt>
+<Images/export_utilization.png, id=452, 722.7pt x 361.35pt>
 File: Images/export_utilization.png Graphic file (type png)
 <use Images/export_utilization.png>
 Package pdftex.def Info: Images/export_utilization.png  used on input line 108.
 (pdftex.def)             Requested size: 209.1301pt x 104.56274pt.
 
 
-[11 <./Images/cross_zonal_flows_distribution_bar.png> <./Images/import_utilization.png> <./Images/export_utilization.png>]
+[12 <./Images/cross_zonal_flows_distribution_bar.png> <./Images/import_utilization.png> <./Images/export_utilization.png>]
 Overfull \hbox (1.91362pt too wide) in paragraph at lines 171--175
  []\OT1/cmr/bx/n/10 aFRR pro-cure-ment prices[] \OT1/cmr/m/n/10 aFRR pro-cure-ment data is gen-er-ally un-avail-able. How-ever, through
  []
 
-<Images/nucs_afrr_hourly_hist.png, id=459, 650.43pt x 289.08pt>
+<Images/nucs_afrr_hourly_hist.png, id=463, 650.43pt x 289.08pt>
 File: Images/nucs_afrr_hourly_hist.png Graphic file (type png)
 <use Images/nucs_afrr_hourly_hist.png>
 Package pdftex.def Info: Images/nucs_afrr_hourly_hist.png  used on input line 178.
 (pdftex.def)             Requested size: 426.79134pt x 189.69063pt.
-<Images/nucs_afrr_hourly_prices.png, id=460, 867.24pt x 289.08pt>
+<Images/nucs_afrr_hourly_prices.png, id=464, 867.24pt x 289.08pt>
 File: Images/nucs_afrr_hourly_prices.png Graphic file (type png)
 <use Images/nucs_afrr_hourly_prices.png>
 Package pdftex.def Info: Images/nucs_afrr_hourly_prices.png  used on input line 186.
 (pdftex.def)             Requested size: 426.79134pt x 142.26357pt.
 
 
-[12 <./Images/nucs_afrr_hourly_hist.png>]
+[13 <./Images/nucs_afrr_hourly_hist.png>]
 
-[13 <./Images/nucs_afrr_hourly_prices.png>]) (Sections/FeatureEngineering.tex
-
-[14]
+[14 <./Images/nucs_afrr_hourly_prices.png>]) (Sections/FeatureEngineering.tex
 
 [15]
 
 [16]
-<Images/actual_wind_doesnt_impact_prediction.png, id=512, 1040.688pt x 572.3784pt>
+
+[17]
+<Images/actual_wind_doesnt_impact_prediction.png, id=516, 1040.688pt x 572.3784pt>
 File: Images/actual_wind_doesnt_impact_prediction.png Graphic file (type png)
 <use Images/actual_wind_doesnt_impact_prediction.png>
 Package pdftex.def Info: Images/actual_wind_doesnt_impact_prediction.png  used on input line 195.
 (pdftex.def)             Requested size: 209.1301pt x 115.01514pt.
-<Images/wind_share_impact_activation.png, id=513, 1040.688pt x 572.3784pt>
+<Images/wind_share_impact_activation.png, id=517, 1040.688pt x 572.3784pt>
 File: Images/wind_share_impact_activation.png Graphic file (type png)
 <use Images/wind_share_impact_activation.png>
 Package pdftex.def Info: Images/wind_share_impact_activation.png  used on input line 202.
@@ -1309,14 +1310,14 @@ Underfull \hbox (badness 1152) in paragraph at lines 203--203
 
 
 
-[17]) (Sections/Evaluation.tex
+[18]) (Sections/Evaluation.tex
 
-[18 <./Images/actual_wind_doesnt_impact_prediction.png> <./Images/wind_share_impact_activation.png>]
-
-[19]
+[19 <./Images/actual_wind_doesnt_impact_prediction.png> <./Images/wind_share_impact_activation.png>]
 
 [20]
-<Images/pr-curve.png, id=544, 499.3857pt x 395.3169pt>
+
+[21]
+<Images/pr-curve.png, id=549, 499.3857pt x 395.3169pt>
 File: Images/pr-curve.png Graphic file (type png)
 <use Images/pr-curve.png>
 Package pdftex.def Info: Images/pr-curve.png  used on input line 168.
@@ -1328,53 +1329,53 @@ Overfull \hbox (22.0169pt too wide) in paragraph at lines 206--209
 
 
 
-[21 <./Images/pr-curve.png>]) (Sections/Results.tex
+[22 <./Images/pr-curve.png>]) (Sections/Results.tex
 
-[22]
-<Images/2025-highf1_xt.png, id=566, 499.3857pt x 395.3169pt>
+[23]
+<Images/2025-highf1_xt.png, id=570, 499.3857pt x 395.3169pt>
 File: Images/2025-highf1_xt.png Graphic file (type png)
 <use Images/2025-highf1_xt.png>
 Package pdftex.def Info: Images/2025-highf1_xt.png  used on input line 55.
 (pdftex.def)             Requested size: 341.43436pt x 270.28374pt.
-<Images/2025-highf1_xt_fi.png, id=568, 950.3505pt x 896.148pt>
+<Images/2025-highf1_xt_fi.png, id=572, 950.3505pt x 896.148pt>
 File: Images/2025-highf1_xt_fi.png Graphic file (type png)
 <use Images/2025-highf1_xt_fi.png>
 Package pdftex.def Info: Images/2025-highf1_xt_fi.png  used on input line 88.
 (pdftex.def)             Requested size: 426.79134pt x 402.44241pt.
 
 
-[23 <./Images/2025-highf1_xt.png>]
+[24 <./Images/2025-highf1_xt.png>]
 
-[24 <./Images/2025-highf1_xt_fi.png>]
-<Images/CatBoost_Tuned-first.png, id=580, 716.1957pt x 860.013pt>
+[25 <./Images/2025-highf1_xt_fi.png>]
+<Images/CatBoost_Tuned-first.png, id=584, 716.1957pt x 860.013pt>
 File: Images/CatBoost_Tuned-first.png Graphic file (type png)
 <use Images/CatBoost_Tuned-first.png>
 Package pdftex.def Info: Images/CatBoost_Tuned-first.png  used on input line 123.
 (pdftex.def)             Requested size: 341.43436pt x 409.99329pt.
-<Images/catboost_first_metrics.png, id=581, 173.89969pt x 226.59656pt>
+<Images/catboost_first_metrics.png, id=585, 173.89969pt x 226.59656pt>
 File: Images/catboost_first_metrics.png Graphic file (type png)
 <use Images/catboost_first_metrics.png>
 Package pdftex.def Info: Images/catboost_first_metrics.png  used on input line 134.
 (pdftex.def)             Requested size: 341.43436pt x 444.95947pt.
 
 
-[25 <./Images/CatBoost_Tuned-first.png>]
-<Images/up-down-price-minus-da-catboost.png, id=587, 714.7503pt x 354.123pt>
+[26 <./Images/CatBoost_Tuned-first.png>]
+<Images/up-down-price-minus-da-catboost.png, id=591, 714.7503pt x 354.123pt>
 File: Images/up-down-price-minus-da-catboost.png Graphic file (type png)
 <use Images/up-down-price-minus-da-catboost.png>
 Package pdftex.def Info: Images/up-down-price-minus-da-catboost.png  used on input line 141.
 (pdftex.def)             Requested size: 341.43436pt x 169.16658pt.
 
 
-[26 <./Images/catboost_first_metrics.png> <./Images/up-down-price-minus-da-catboost.png>]
-<Images/confidence_thresholds_metrics_cat_short.png, id=595, 247.67531pt x 142.28156pt>
+[27 <./Images/catboost_first_metrics.png> <./Images/up-down-price-minus-da-catboost.png>]
+<Images/confidence_thresholds_metrics_cat_short.png, id=600, 247.67531pt x 142.28156pt>
 File: Images/confidence_thresholds_metrics_cat_short.png Graphic file (type png)
 <use Images/confidence_thresholds_metrics_cat_short.png>
 Package pdftex.def Info: Images/confidence_thresholds_metrics_cat_short.png  used on input line 167.
 (pdftex.def)             Requested size: 341.43436pt x 196.1577pt.
 )
 
-[27 <./Images/confidence_thresholds_metrics_cat_short.png>]
+[28 <./Images/confidence_thresholds_metrics_cat_short.png>]
 Overfull \hbox (58.80038pt too wide) in paragraph at lines 56--56
 []\OT1/cmr/m/it/10 Energy Trans-ition Out-look Nor-way 2024\OT1/cmr/m/n/10 , https://www.norskindustri.no/siteassets/dokumenter/rapporter-
  []
@@ -1431,7 +1432,7 @@ Overfull \hbox (81.12921pt too wide) in paragraph at lines 56--56
 
 
 
-[28]
+[29]
 Underfull \hbox (badness 3758) in paragraph at lines 56--56
 []\OT1/cmr/m/it/10 Classification: Ac-cur-acy, re-call, pre-ci-sion, and re-lated met-rics | Ma-chine Learn-
  []
@@ -1443,7 +1444,7 @@ Underfull \hbox (badness 4819) in paragraph at lines 56--56
 
 
 
-[29] (c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux)
+[30] (c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
@@ -1455,17 +1456,17 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42342 strings out of 468081
- 868537 string characters out of 5435855
- 1687453 words of memory out of 5000000
+ 42343 strings out of 468081
+ 868544 string characters out of 5435855
+ 1687454 words of memory out of 5000000
  70177 multiletter control sequences out of 15000+600000
  637374 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,12n,121p,2963b,3418s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\haako\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (33 pages, 1607917 bytes).
+Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (34 pages, 1609203 bytes).
 PDF statistics:
- 725 PDF objects out of 1000 (max. 8388607)
- 158 named destinations out of 1000 (max. 500000)
+ 729 PDF objects out of 1000 (max. 8388607)
+ 159 named destinations out of 1000 (max. 500000)
  508 words of extra memory for PDF output out of 10000 (max. 10000000)
 
