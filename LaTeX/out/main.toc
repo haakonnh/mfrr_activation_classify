@@ -38,51 +38,50 @@
 \contentsline {paragraph}{aFRR procurement prices and volumes data}{11}{section*.18}%
 \contentsline {subsubsection}{\numberline {4.2.3}ENTSO-E}{12}{subsubsection.4.2.3}%
 \contentsline {paragraph}{aFRR Activation Data}{12}{section*.19}%
-\contentsline {paragraph}{Crucial: Time restriction. (Probably move parts of this to somewhere else as these concepts are important.)}{12}{section*.20}%
-\contentsline {subsubsection}{\numberline {4.2.4}Restrictions}{12}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}Data Preprocessing and Analysis}{13}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Dataset structure}{13}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}Alignment, Resampling, and Merging}{13}{subsubsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.3}Handling Missing Data}{13}{subsubsection.4.3.3}%
-\contentsline {subsubsection}{\numberline {4.3.4}Exploratory Data Analysis}{13}{subsubsection.4.3.4}%
-\contentsline {paragraph}{Activation Class Distribution.}{13}{section*.21}%
-\contentsline {paragraph}{Temporal Activation Patterns}{14}{section*.23}%
-\contentsline {paragraph}{Feature Distributions.}{14}{section*.24}%
-\contentsline {paragraph}{aFRR.}{15}{section*.28}%
-\contentsline {paragraph}{Correlation Analysis}{16}{section*.31}%
-\contentsline {paragraph}{Lag Features/Information Availability}{16}{section*.32}%
-\contentsline {subsection}{\numberline {4.4}Feature Engineering}{17}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Lag features}{17}{subsubsection.4.4.1}%
-\contentsline {paragraph}{Activation lag features}{17}{section*.33}%
-\contentsline {paragraph}{Persistency (streak length)}{17}{section*.34}%
-\contentsline {paragraph}{Design choice: separate vs. signed.}{18}{section*.35}%
-\contentsline {paragraph}{Importance.}{18}{section*.36}%
-\contentsline {subsubsection}{\numberline {4.4.2}Cross-zonal flow features}{18}{subsubsection.4.4.2}%
-\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{18}{section*.37}%
-\contentsline {subsubsection}{\numberline {4.4.3}Temporal features}{19}{subsubsection.4.4.3}%
-\contentsline {subsubsection}{\numberline {4.4.4}Price features}{19}{subsubsection.4.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.5}Load features}{19}{subsubsection.4.4.5}%
-\contentsline {subsubsection}{\numberline {4.4.6}Production features}{19}{subsubsection.4.4.6}%
-\contentsline {subsubsection}{\numberline {4.4.7}Interaction features}{20}{subsubsection.4.4.7}%
-\contentsline {subsection}{\numberline {4.5}Evaluation Framework}{20}{subsection.4.5}%
-\contentsline {paragraph}{Precision-recall trade-off}{21}{section*.39}%
-\contentsline {paragraph}{The transition metric}{21}{section*.40}%
-\contentsline {paragraph}{Probability correctness.}{22}{section*.41}%
-\contentsline {subsubsection}{\numberline {4.5.1}Data Splitting}{22}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}Model Selection}{22}{subsubsection.4.5.2}%
-\contentsline {paragraph}{Random Forest and Extra Trees}{22}{section*.42}%
-\contentsline {paragraph}{CatBoost}{22}{section*.43}%
-\contentsline {paragraph}{XGBoost and LightGBM}{22}{section*.44}%
-\contentsline {subsubsection}{\numberline {4.5.3}Adjusting Classification Thresholds}{22}{subsubsection.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}Decision-bias tuning}{23}{subsubsection.4.5.4}%
-\contentsline {paragraph}{Class-specific decision bias for ``up''.}{23}{section*.46}%
-\contentsline {paragraph}{Validation-based selection of $\alpha $.}{24}{section*.47}%
-\contentsline {paragraph}{Intuition and benefits.}{24}{section*.48}%
-\contentsline {subsubsection}{\numberline {4.5.5}AutoGluon}{24}{subsubsection.4.5.5}%
-\contentsline {section}{\numberline {5}Model Results}{24}{section.5}%
-\contentsline {subsection}{\numberline {5.1}The 2025 Dataset}{24}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Extra Trees}{25}{subsubsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.2}The 2024-2025 Dataset}{26}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}CatBoost Models}{27}{subsubsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.3}Correlation}{29}{subsection.5.3}%
-\contentsline {section}{Bibliography}{30}{section*.56}%
+\contentsline {subsection}{\numberline {4.3}Data Preprocessing and Analysis}{12}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Dataset structure}{12}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Resampling, Imputation, and Merging}{12}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Time Restrictions}{13}{subsubsection.4.3.3}%
+\contentsline {paragraph}{Restrictions}{13}{section*.21}%
+\contentsline {subsubsection}{\numberline {4.3.4}Exploratory Data Analysis}{14}{subsubsection.4.3.4}%
+\contentsline {paragraph}{Activation Class Distribution.}{14}{section*.22}%
+\contentsline {paragraph}{Temporal Activation Patterns}{14}{section*.24}%
+\contentsline {paragraph}{Feature Distributions.}{14}{section*.25}%
+\contentsline {paragraph}{aFRR.}{16}{section*.29}%
+\contentsline {paragraph}{Correlation Analysis}{17}{section*.32}%
+\contentsline {paragraph}{Lag Features/Information Availability}{17}{section*.33}%
+\contentsline {subsection}{\numberline {4.4}Feature Engineering}{18}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Lag features}{18}{subsubsection.4.4.1}%
+\contentsline {paragraph}{Activation lag features}{18}{section*.34}%
+\contentsline {paragraph}{Persistency (streak length)}{18}{section*.35}%
+\contentsline {paragraph}{Design choice: separate vs. signed.}{19}{section*.36}%
+\contentsline {paragraph}{Importance.}{19}{section*.37}%
+\contentsline {subsubsection}{\numberline {4.4.2}Cross-zonal flow features}{19}{subsubsection.4.4.2}%
+\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{19}{section*.38}%
+\contentsline {subsubsection}{\numberline {4.4.3}Temporal features}{20}{subsubsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.4}Price features}{20}{subsubsection.4.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.5}Load features}{20}{subsubsection.4.4.5}%
+\contentsline {subsubsection}{\numberline {4.4.6}Production features}{20}{subsubsection.4.4.6}%
+\contentsline {subsubsection}{\numberline {4.4.7}Interaction features}{21}{subsubsection.4.4.7}%
+\contentsline {subsection}{\numberline {4.5}Evaluation Framework}{21}{subsection.4.5}%
+\contentsline {paragraph}{Precision-recall trade-off}{22}{section*.40}%
+\contentsline {paragraph}{The transition metric}{22}{section*.41}%
+\contentsline {paragraph}{Probability correctness.}{23}{section*.42}%
+\contentsline {subsubsection}{\numberline {4.5.1}Data Splitting}{23}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Model Selection}{23}{subsubsection.4.5.2}%
+\contentsline {paragraph}{Random Forest and Extra Trees}{23}{section*.43}%
+\contentsline {paragraph}{CatBoost}{23}{section*.44}%
+\contentsline {paragraph}{XGBoost and LightGBM}{23}{section*.45}%
+\contentsline {subsubsection}{\numberline {4.5.3}Adjusting Classification Thresholds}{23}{subsubsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}Decision-bias tuning}{24}{subsubsection.4.5.4}%
+\contentsline {paragraph}{Class-specific decision bias for ``up''.}{24}{section*.47}%
+\contentsline {paragraph}{Validation-based selection of $\alpha $.}{25}{section*.48}%
+\contentsline {paragraph}{Intuition and benefits.}{25}{section*.49}%
+\contentsline {subsubsection}{\numberline {4.5.5}AutoGluon}{25}{subsubsection.4.5.5}%
+\contentsline {section}{\numberline {5}Model Results}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The 2025 Dataset}{25}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Extra Trees}{26}{subsubsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.2}The 2024-2025 Dataset}{27}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}CatBoost Models}{28}{subsubsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.3}Correlation}{30}{subsection.5.3}%
+\contentsline {section}{Bibliography}{31}{section*.57}%

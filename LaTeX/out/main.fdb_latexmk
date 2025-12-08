@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber out/main"] 1765182950.17265 "out/main.bcf" "out/main.bbl" "out/main" 1765185932.96562 0
-  "out/main.bcf" 1765185932 111350 88ab9b70e76403a88eced1d3ce05e3c9 "pdflatex"
-  "zotero_project.bib" 1765180526 38509 f51d66a275b7b9f5706f1cfd397fafad ""
+["biber out/main"] 1765189542.68225 "out/main.bcf" "out/main.bbl" "out/main" 1765197670.81769 0
+  "out/main.bcf" 1765197670 111510 278c979c79202da0254f15fc85ea9958 "pdflatex"
+  "zotero_project.bib" 1765187493 39089 3ab9cde705be8200df08241848d939e5 ""
   (generated)
   "out/main.bbl"
   "out/main.blg"
   (rewritten before read)
-["pdflatex"] 1765185925.6953 "c:/PythonProjects/rl_reserve_markets/LaTeX/main.tex" "out/main.pdf" "main" 1765185932.96649 0
+["pdflatex"] 1765197665.75627 "c:/PythonProjects/rl_reserve_markets/LaTeX/main.tex" "out/main.pdf" "main" 1765197670.81856 0
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm0500.tfm" 993062506 1452 d4e3b17acac08070a568f62f3c020c49 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm0700.tfm" 993062506 1452 97bdc98984cb373fbcd868e2fa55f5f2 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
@@ -270,11 +270,12 @@
   "Images/nucs_afrr_hourly_hist.png" 1764849869 29300 0fb3e4ad4b7c180155dbb40fd7bd2afd ""
   "Images/nucs_afrr_hourly_prices.png" 1764849869 113315 8bc4189c0148da19dccd18081fe86757 ""
   "Images/pr-curve.png" 1764849869 30557 279c8895f15ce9b717eaffa0a2712f9b ""
+  "Images/resampling_viz.png" 1765189498 82498 5e8d9a1cf9c695953b689eec709058af ""
   "Images/reserve_types_graph.png" 1764849869 172428 1695b2db7f6f7aad0a4cbadaa225bb26 ""
   "Images/reserves_hierarchy_entsoe.png" 1764849869 135169 e76c7cf89bdade74f707f8d812a4807c ""
   "Images/up-down-price-minus-da-catboost.png" 1764849869 36503 e654542668885163a686fc6e09dd0a41 ""
   "Images/wind_share_impact_activation.png" 1764849869 81755 e8efd54325f6aa87af681a18f1e36b2c ""
-  "Sections/DataAndPreprocessing.tex" 1765185923 17957 b47248c99b9bc0fb8555e0424a800474 ""
+  "Sections/DataAndPreprocessing.tex" 1765197665 20786 8e85ea1feb5783333fd4410f05879f25 ""
   "Sections/Evaluation.tex" 1764936994 15164 2cd628b97a3bc7b1e8c707cff80115ff ""
   "Sections/FeatureEngineering.tex" 1765116256 13238 3290a2050231f47ad82b6b2417c1fb77 ""
   "Sections/Introduction.tex" 1765116224 5622 79edea30885a00b31f35def2336a36b0 ""
@@ -283,13 +284,13 @@
   "Sections/Theory.tex" 1765180672 10052 8d473d608d46f0a2f52329dc687a698f ""
   "c:/PythonProjects/rl_reserve_markets/LaTeX/main.tex" 1764935608 1323 d4a5f23127e3d00f4b48a7e730728242 ""
   "main.tex" 1764935608 1323 d4a5f23127e3d00f4b48a7e730728242 ""
-  "out/main.aux" 1765185932 26324 173798db6f2de365c6f3485c594e7d21 "pdflatex"
-  "out/main.bbl" 1765182952 52926 3c8725a2151c991e45d631bfb190c0c4 "biber out/main"
-  "out/main.lof" 1765185932 2828 c0a0c455d9ebbec4bd32073debf3185e "pdflatex"
-  "out/main.lot" 1765185932 464 03eda6042e4ec8cc7005cf8b0d1d6152 "pdflatex"
-  "out/main.out" 1765185932 8951 82c5b9e7a77f2ca30d95a8ad19c5effe "pdflatex"
-  "out/main.run.xml" 1765185932 2437 d0683fc33ce667481d3755a63776fc9b "pdflatex"
-  "out/main.toc" 1765185932 7315 e0772a15ff98c1a934997d5f11161b05 "pdflatex"
+  "out/main.aux" 1765197670 26714 1747489471e28503c412588a3d062ef3 "pdflatex"
+  "out/main.bbl" 1765189544 53812 64c355e99f6a98b6ffce59c263c2b100 "biber out/main"
+  "out/main.lof" 1765197670 2995 e822b99c5117a70cd88589f1f6270a4f "pdflatex"
+  "out/main.lot" 1765197670 464 c566ab294dde3fd9c7cad333b23bae78 "pdflatex"
+  "out/main.out" 1765197670 8805 7816a5439a894a13308870c11673b1b7 "pdflatex"
+  "out/main.run.xml" 1765197670 2437 d0683fc33ce667481d3755a63776fc9b "pdflatex"
+  "out/main.toc" 1765197670 7128 5d620bf706f7bd5cad5883b63b32b5a1 "pdflatex"
   "packages.sty" 1764927656 6167 e95171015962129d9719c5a1efed5459 ""
   "title.tex" 1764849869 658 75465ef1996437632c277661044a302a ""
   (generated)

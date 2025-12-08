@@ -643,6 +643,21 @@
       \verb C:\Users\haako\Zotero\storage\DLZB5CD7\data.html
       \endverb
     \endentry
+    \entry{Transition15minuteMarketa}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Nord Pool runs the leading power market in Europe, offering day-ahead and intraday markets to our customers. Trade power with us in 16 countries and benefit from related services such as compliance, data and knowledge-sharing.}
+      \field{howpublished}{https://www.nordpoolgroup.com/en/trading/transition-to-15-minute-market-time-unit-mtu/}
+      \field{title}{Transition to 15-Minute {{Market Time Unit}} ({{MTU}})}
+      \field{urlday}{8}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\DRI5FEF9\transition-to-15-minute-market-time-unit-mtu.html
+      \endverb
+    \endentry
     \entry{ClassImbalanceProblem}{misc}{}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
@@ -681,8 +696,8 @@
       \strng{authornamehash}{e649e30e6a1d8d09b6de44946371b2da}
       \strng{authorfullhash}{e649e30e6a1d8d09b6de44946371b2da}
       \strng{authorfullhashraw}{e649e30e6a1d8d09b6de44946371b2da}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{As computer power grows and data collection technologies advance, a plethora of data is generated in almost every field where computers are used. The com puter generated data should be analyzed by computers; without the aid of computing technologies, it is certain that huge amounts of data collected will not ever be examined, let alone be used to our advantages. Even with today's advanced computer technologies (e. g. , machine learning and data mining sys tems), discovering knowledge from data can still be fiendishly hard due to the characteristics of the computer generated data. Taking its simplest form, raw data are represented in feature-values. The size of a dataset can be measUJ{$\cdot$}ed in two dimensions, number of features (N) and number of instances (P). Both Nand P can be enormously large. This enormity may cause serious problems to many data mining systems. Feature selection is one of the long existing methods that deal with these problems. Its objective is to select a minimal subset of features according to some reasonable criteria so that the original task can be achieved equally well, if not better. By choosing a minimal subset offeatures, irrelevant and redundant features are removed according to the criterion. When N is reduced, the data space shrinks and in a sense, the data set is now a better representative of the whole data population. If necessary, the reduction of N can also give rise to the reduction of P by eliminating duplicates.}
@@ -709,8 +724,8 @@
       \strng{authornamehash}{915af163e2107106fced5dd3164d9a8e}
       \strng{authorfullhash}{915af163e2107106fced5dd3164d9a8e}
       \strng{authorfullhashraw}{915af163e2107106fced5dd3164d9a8e}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Time Series data must be re-framed as a supervised learning dataset before we can start using machine learning algorithms. There is no concept of input and output features in time series. Instead, we must choose the variable to be predicted and use feature engineering to construct all of the inputs that will be used to [\dots ]}

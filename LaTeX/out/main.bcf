@@ -2409,12 +2409,14 @@
     <bcf:citekey order="34" intorder="1">PowerMarketData</bcf:citekey>
     <bcf:citekey order="35" intorder="1">StaticContentNordic</bcf:citekey>
     <bcf:citekey order="36" intorder="1">DataStandardisation</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">ClassImbalanceProblem</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">liuFeatureSelectionKnowledge2012</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">brownleeBasicFeatureEngineering2016</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">pelletierCyclicalEncodingAlternative2024</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">ClassificationAccuracyRecall</bcf:citekey>
-    <bcf:citekey order="42" intorder="1">dorogushCatBoostGradientBoosting2018</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">Transition15minuteMarketa</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">ConfirmationMFRREAM2025</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">ClassImbalanceProblem</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">liuFeatureSelectionKnowledge2012</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">brownleeBasicFeatureEngineering2016</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">pelletierCyclicalEncodingAlternative2024</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">ClassificationAccuracyRecall</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">dorogushCatBoostGradientBoosting2018</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

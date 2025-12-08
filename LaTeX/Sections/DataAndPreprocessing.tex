@@ -98,7 +98,7 @@ for potential future real-time applications.
 is difficult to obtain. However, through the NUCS API,
 historical aFRR procurement prices and volumes for the NO1 bidding zone 
 are accessible. The data is available at an hourly resolution, with separate
-values for up- and down-regulation. This data provides some insights into the amount 
+values for up- and down-regulation. This data provides insights into the amount 
 of balancing that is expected to be needed in the system. 
 
 
@@ -120,8 +120,75 @@ is coarser than the 15-minute resolution of the mFRR data. This data is, in the 
 manner as other 1-hour resolution data, resampled with forward filling to match the
 15-minute resolution of the main dataset.
 
-\paragraph{Crucial: Time restriction. (Probably move parts of this to somewhere else
-as these concepts are important.)} aFRR activation data is naturally not
+
+
+
+
+\subsection{Data Preprocessing and Analysis}\label{sec:data_preprocessing_and_analysis}
+
+\subsubsection{Dataset structure}\label{sec:dataset_structure}
+The data is represented as a time series, where each record in the dataset
+consists of a set of attributes connected to one point in time. More
+specifically, the data contains a sequence of 15-minute interval time
+stamps. Each time stamp may or may not have an associated activation, which
+is the target variable the model is trying to predict. The features
+describe the system state at that time stamp, providing context for the
+model to learn from.
+
+\subsubsection{Resampling, Imputation, and Merging}
+Nordic power market data is transitioning from hourly to 15-minute
+resolution. However, many datasets are still only available at an hourly
+resolution, and some datasets have mixed resolutions over the past years.
+Day ahead price data, for instance, transitioned to 15-minute market time units 
+(MTU) on September 30th 2025 \autocite{Transition15minuteMarketa}. Consequently, 
+data before this date is at an hourly resolution, while data after this date is at a
+15-minute resolution. mFRR activation data transitioned to 15-minute MTU on
+March 4th 2025 \autocite{ConfirmationMFRREAM2025}, but Nord Pool has updated 
+their historical data to be at a 15-minute resolution for the entire dataset
+period. 
+
+To ensure consistency across all datasets, all data with hourly 
+resolution data subsets are resampled to a 15-minute resolution. This is done using
+the built-in Pandas \texttt{resample()} function with forward filling. Forward filling
+entails propagating the last valid observation forward to fill gaps. For instance,
+if the day-ahead price between 10:00 and 11:00 is 50 EUR/MWh, then after resampling,
+the price for 10:00, 10:15, 10:30, and 10:45 will all be set to 50 EUR/MWh, as 
+illustrated in Figure \ref{fig:resampling_viz}. Thus, the data still remains 
+constant within the hour, but is now available at the desired 15-minute resolution.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Images/resampling_viz.png}
+    \caption{Visualization of resampling from 1-hour to 15-minute resolution using
+    forward filling.}
+    \label{fig:resampling_viz}
+\end{figure}
+
+The handling, or \textit{imputation}, of missing values, is an important step in
+data preprocessing. In time-dependent data, simply removing the rows with missing values
+is problematic, as it would break the time continuity. Most of the datasets used in this
+project do not have significant issues with missing values, but for the few that do,
+interpolation or forward/backward filling techniques are used to estimate the
+missing values based on surrounding data points. Interpolation is often preferred, as it
+can provide smoother estimates, as it considers both previous and subsequent data points.
+Backward filling is used when missing values are at the beginning of the dataset, 
+as there are no previous data points to reference. Otherwise, forward filling is
+used as the default method, as it maintains the most recent known value, thus 
+preventing time leakage from future data points.
+
+After resampling and handling missing values, the various datasets are merged
+into a single dataset. A successful merge requires that all datasets share a common
+time index format and resolution. Datasets from different sources often differ 
+in time zone and how time stamps are encoded. Therefore, all time stamps are converted to
+a common time zone (CET/CEST) and format (Pandas \texttt{to\_datetime()} function) before  
+merging. The final merged dataset contains all data aligned at a 15-minute resolution, 
+ready for feature engineering and model training.
+
+
+\subsubsection{Time Restrictions}
+
+aFRR activation data is naturally not
 available at the target time $t+4$ and prediction time $t$ as these 
 activations has not yet occurred or finished. The 1-hour resolution is 
 problematic as it essentially causes the data to become available in clusters
@@ -157,10 +224,7 @@ issue:
     
 \end{itemize}
 
-
-
-
-\subsubsection{Restrictions}\label{sec:restrictions}
+\paragraph{Restrictions}\label{sec:restrictions}
 In an ideal world, a market participant would be able to choose to bid or
 not in real time. The mFRR activation market, however, is not ideal in
 this sense. Bids are accepted for time slots $t+4$ intervals into the
@@ -190,21 +254,6 @@ forecasts, which are available ahead of time. Forecasts are inherently
 uncertain, but they still provide valuable information about the expected
 system state.
 
-
-\subsection{Data Preprocessing and Analysis}\label{sec:data_preprocessing_and_analysis}
-
-\subsubsection{Dataset structure}\label{sec:dataset_structure}
-The data is represented as a time series, where each record in the dataset
-consists of a set of attributes connected to one point in time. More
-specifically, the data contains a sequence of 15-minute interval time
-stamps. Each time stamp may or may not have an associated activation, which
-is the target variable the model is trying to predict. The features
-describe the system state at that time stamp, providing context for the
-model to learn from.
-
-\subsubsection{Alignment, Resampling, and Merging}
-
-\subsubsection{Handling Missing Data}
 
 \subsubsection{Exploratory Data Analysis}
 
@@ -284,7 +333,7 @@ whilst the other connections are primarily used for imports into NO1.
 \end{figure}
 
 \textbf{Production}
-\begin{table}[ht]
+\begin{table}[H]
 \centering
 \caption{Summary statistics for wind-related features (2024--2025, NO1)}
 \begin{tabular}{lrrrrrrrr}
@@ -310,16 +359,14 @@ Wind Share              & 0.054  & 0.047  & 0.0  & 0.0036 & 0.040  & 0.128  & 0.
 
 Figure \ref{fig:nucs_afrr_hourly_hist} and \ref{fig:nucs_afrr_hourly_prices} show
 a histogram and time series plot of the hourly NO1 aFRR procurement prices between
-January 1, 2024, and \lastDate. Both figures highlight a problem in the data
-before July 2024, where there are many missing values represented as zeros.
-The data appears complete after this date. Intermittent missing values can be
-handled during preprocessing in multiple ways. In time series data, simply removing
-the rows with missing values is not an option, as it would break the time continuity.
-One approach is to use interpolation to estimate the missing values based on
-the surrounding data points. Another approach is to use forward or backward filling, 
-where missing values are filled with the last known value or the next known value,
-respectively. The choice of method depends on the nature of the data and the
-specific requirements of the analysis or model being used.
+January 1, 2024, and \lastDate. Both figures highlight a problem in pre-July 2024
+data, as this period contains many missing values. The problem seeems to be 
+intermittent missing values rather than large gaps of missing data, indicated by the 
+time series plot. Interpolation is thus a suitable imputation method, as it can estimate
+the missing values based on surrounding data points. This may miss out on some 
+extreme price spikes, but is still expected to provide a reasonable estimate.
+The data appears complete after this date. \textbf{Short discussion on price levels
+and patterns here would be good. ALSO be specific on up/down.} 
 
 \begin{figure}[H]
     \centering

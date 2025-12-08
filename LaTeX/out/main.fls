@@ -537,6 +537,14 @@ INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sa
 INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
 INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
 INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
+INPUT .\Images\resampling_viz.png
+INPUT .\Images\resampling_viz.png
+INPUT Images\resampling_viz.png
+INPUT .\Images\resampling_viz.png
+INPUT .\Images\resampling_viz.png
+INPUT .\Images\resampling_viz.png
+INPUT .\Images\resampling_viz.png
 INPUT .\Images\mfrr_distribution.png
 INPUT .\Images\mfrr_distribution.png
 INPUT Images\mfrr_distribution.png
@@ -662,7 +670,6 @@ INPUT .\Images\confidence_thresholds_metrics_cat_short.png
 INPUT .\Images\confidence_thresholds_metrics_cat_short.png
 INPUT .\Images\confidence_thresholds_metrics_cat_short.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmss10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.out
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.out

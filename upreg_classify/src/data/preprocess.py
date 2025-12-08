@@ -187,7 +187,7 @@ def load_and_prepare_flows(data_dir: str, include_2024: bool, area: str) -> tupl
         physical_flow_df[c] = pd.to_numeric(physical_flow_df[c], errors='coerce')
     # Resample to 15-min grid
     physical_flow_df = physical_flow_df.resample('15min').ffill()
-
+    
     # Create ratios vs NTC per direction when known (NO1-only defaults); otherwise keep raw
     df_flows = physical_flow_df.copy()
     ntc_no1 = {'NO1-NO2': 2200, 'NO1-NO3': 500, 'NO1-NO5': 600, 'NO1-SE3': 2145,
@@ -274,10 +274,7 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     
     # Create ternary direction-at-lag features: RegLag-<k> in {-1: down, 0: none, +1: up}
     # Use volume tie-break when both sides are positive
-    for lag in (activation_lag_start, 
-                activation_lag_start + 2,
-                activation_lag_start + 4, 
-                activation_lag_start + 6, activation_lag_start + 8):
+    for lag in range(activation_lag_start, activation_lag_start + 11, 1):
         up_vol_lag = df['Activation Volume'].shift(lag).fillna(0)
         down_vol_lag = df['Activated Down Volume'].shift(lag).fillna(0)
         has_up = up_vol_lag.gt(0)

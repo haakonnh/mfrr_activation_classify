@@ -3,16 +3,17 @@
 \contentsline {figure}{\numberline {2}{\ignorespaces The Nordic balancing market hierarchy, illustrating the different reserve types and their activation times.}}{3}{figure.caption.5}%
 \contentsline {figure}{\numberline {3}{\ignorespaces Illustration of the different reserve types and their activation times.}}{4}{figure.caption.6}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Overview of the methodological approach used in this project.}}{10}{figure.caption.14}%
-\contentsline {figure}{\numberline {5}{\ignorespaces mFRR activation distribution.}}{13}{figure.caption.22}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Cross-zonal flow distributions for the NO1 bidding zone.}}{14}{figure.caption.25}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Cross-zonal flow utilizations for the NO1 bidding zone calculated as the ratio between actual flow and NTC capacity.}}{15}{figure.caption.26}%
-\contentsline {figure}{\numberline {8}{\ignorespaces A histogram of hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.29}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.30}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Load and production data distributions.}}{20}{figure.caption.38}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Typical Precision-Recall Curve with F1-score maximization point indicated.}}{23}{figure.caption.45}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}}{25}{figure.caption.49}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}}{26}{figure.caption.51}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning.}}{27}{figure.caption.52}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Performance metrics for CatBoost model on 2024-2025 dataset at different thresholds.}}{28}{figure.caption.53}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}}{28}{figure.caption.54}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds.}}{29}{figure.caption.55}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Visualization of resampling from 1-hour to 15-minute resolution using forward filling.}}{12}{figure.caption.20}%
+\contentsline {figure}{\numberline {6}{\ignorespaces mFRR activation distribution.}}{14}{figure.caption.23}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Cross-zonal flow distributions for the NO1 bidding zone.}}{15}{figure.caption.26}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Cross-zonal flow utilizations for the NO1 bidding zone calculated as the ratio between actual flow and NTC capacity.}}{15}{figure.caption.27}%
+\contentsline {figure}{\numberline {9}{\ignorespaces A histogram of hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.30}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.31}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Load and production data distributions.}}{21}{figure.caption.39}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Typical Precision-Recall Curve with F1-score maximization point indicated.}}{24}{figure.caption.46}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}}{26}{figure.caption.50}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}}{27}{figure.caption.52}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning.}}{28}{figure.caption.53}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Performance metrics for CatBoost model on 2024-2025 dataset at different thresholds.}}{29}{figure.caption.54}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}}{29}{figure.caption.55}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds.}}{30}{figure.caption.56}%
