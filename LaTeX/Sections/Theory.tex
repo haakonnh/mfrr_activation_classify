@@ -119,3 +119,56 @@ markets.
 
 \subsection{Machine Learning Theory}
 
+Machine learning (ML) is a subset of artificial intelligence (AI) that focuses
+on developing algorithms and statistical models that enable computers to perform
+specific tasks without explicit instructions. Instead, these algorithms learn
+from data, identifying patterns and making decisions based on the information
+provided. In this project, machine learning techniques are employed to predict the
+occurrence of mFRR activations in NO1 based on historical data and relevant system 
+state indicators.
+
+\subsubsection{Supervised Learning for Time-Dependent Classification}
+Supervised learning is a machine learning paradigm where models are trained
+to map input data to specific outputs based on example input-output pairs. In 
+this project, the input data consists of information about the current state
+relevant to the occurence mFRR activations. The output is a ternary
+label indicating whether an up-regulation, down-regulation, or no activation
+occurs. Thus, the output variable is categorical, making this a classification task,
+where the goal is to assign input data points to one of several predefined classes.
+However, the problem at hand is not a standard supervised learning task, as
+the data is ordered and time-dependent. This is often referred to as \textit{event
+prediction}, where \textit{events} are defined as nontrivial occurrences in specific 
+locations and time \autocite{zhaoEventPredictionBig2022}. In this project, location 
+is fixed to the NO1 bidding zone, while time is discretized into quarter-hourly
+intervals. 
+
+The chronological structure has wideranging implications for model training and
+evaluation. Standard supervised learning techniques often assume that data points
+are independent and identically distributed (i.i.d.), which is not the case
+for time-dependent data. Temporal dependencies must be accounted for, as past events can
+influence future outcomes. This calls for specialized model and data engineering
+techniques that can effectively capture and leverage these relationships.
+Perhaps most importantly, the evaluation methodology must respect the temporal order
+of the data to avoid data leakage and ensure that the model's performance is assessed
+in a realistic manner. The model would, for instance, produce over-optimistic results 
+if it has access to future data points when making predictions for a given time step.
+
+\subsubsection{Class Imbalance}
+\textbf{Perhaps not introduce this yet? It is quite an important topic, though, 
+as it introduces one of the biggest challenges.}
+mFRR up activations are particularly rare events in the NO1 bidding zone compared 
+to down activations and non-activations. This \textit{class imbalance} presents a 
+significant challenge for model training and evaluation. Most ML algorithms are designed
+to optimize overall accuracy, which can lead to models that are biased towards the
+majority class, since correctly predicting the majority class contributes more to 
+overall performance. If the minority class is important, as is the case with mFRR up 
+activations, special considerations must be taken to ensure that the model learns to
+effectively recognize and predict these rare events.
+
+\subsubsection{Tree-Based Models}
+
+\paragraph{Random Forest / Extra Trees}
+
+\paragraph{Gradient Boosting}
+
+\textbf{Metrics introduction?}

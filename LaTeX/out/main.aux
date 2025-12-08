@@ -52,8 +52,15 @@
 \@writefile{toc}{\contentsline {paragraph}{Capacity Markets}{4}{section*.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Energy Activation Markets (EAMs)}{4}{section*.8}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Imbalance Prices}{4}{section*.9}\protected@file@percent }
+\abx@aux@cite{0}{zhaoEventPredictionBig2022}
+\abx@aux@segm{0}{0}{zhaoEventPredictionBig2022}
 \@writefile{toc}{\contentsline {paragraph}{mFRR Market in Norway (will refactor this or remove this)}{5}{section*.10}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Machine Learning Theory}{5}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}Supervised Learning for Time-Dependent Classification}{5}{subsubsection.2.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}Class Imbalance}{5}{subsubsection.2.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}Tree-Based Models}{5}{subsubsection.2.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Random Forest / Extra Trees}{5}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Gradient Boosting}{5}{section*.12}\protected@file@percent }
 \abx@aux@cite{0}{klaeboeDayaheadMarketBidding2022}
 \abx@aux@segm{0}{0}{klaeboeDayaheadMarketBidding2022}
 \abx@aux@cite{0}{klaeboeDayaheadMarketBidding2022}
@@ -99,126 +106,137 @@
 \abx@aux@cite{0}{porrasShortTermForecastingMFRR}
 \abx@aux@segm{0}{0}{porrasShortTermForecastingMFRR}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Literature Synthesis}{8}{subsubsection.3.2.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of key studies on balancing market forecasting}}{9}{table.caption.11}\protected@file@percent }
-\newlabel{tab:literature-comparison}{{1}{9}{Comparison of key studies on balancing market forecasting}{table.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of key studies on balancing market forecasting}}{9}{table.caption.13}\protected@file@percent }
+\newlabel{tab:literature-comparison}{{1}{9}{Comparison of key studies on balancing market forecasting}{table.caption.13}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Research Gap}{9}{subsubsection.3.2.4}\protected@file@percent }
 \abx@aux@cite{0}{PowerMarketData}
 \abx@aux@segm{0}{0}{PowerMarketData}
-\abx@aux@cite{0}{ClassImbalanceProblem}
-\abx@aux@segm{0}{0}{ClassImbalanceProblem}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Methodology}{10}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data Sources and Preprocessing}{10}{subsection.4.1}\protected@file@percent }
-\newlabel{sec:data-and-preprocessing}{{4.1}{10}{Data Sources and Preprocessing}{subsection.4.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Data Sources}{10}{subsubsection.4.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Data Coverage and Time Span}{10}{subsubsection.4.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Nord Pool Data}{10}{subsubsection.4.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{mFRR activation data}{10}{section*.12}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces mFRR activation distribution.}}{11}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:mFRR_activation_distribution}{{4}{11}{mFRR activation distribution}{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {paragraph}{Cross-zonal flows}{11}{section*.14}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Cross-zonal flow distributions for the NO1 bidding zone.}}{12}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:cross_zonal_flows_dist}{{5}{12}{Cross-zonal flow distributions for the NO1 bidding zone}{figure.caption.15}{}}
-\newlabel{fig:cross_zonal_imports}{{6a}{12}{Import utilization}{figure.caption.16}{}}
-\newlabel{sub@fig:cross_zonal_imports}{{a}{12}{Import utilization}{figure.caption.16}{}}
-\newlabel{fig:cross_zonal_exports}{{6b}{12}{Export utilization}{figure.caption.16}{}}
-\newlabel{sub@fig:cross_zonal_exports}{{b}{12}{Export utilization}{figure.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Cross-zonal flow utilizations for the NO1 bidding zone calculated as the ratio between actual flow and NTC capacity.}}{12}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:cross_zonal_flows_side_by_side}{{6}{12}{Cross-zonal flow utilizations for the NO1 bidding zone calculated as the ratio between actual flow and NTC capacity}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {paragraph}{Load and production data}{12}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overview of Methodological Approach}{10}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Overview of the methodological approach used in this project.}}{10}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:methodology_overview}{{4}{10}{Overview of the methodological approach used in this project}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Data Sources}{10}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:data-and-preprocessing}{{4.2}{10}{Data Sources}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Nord Pool}{10}{subsubsection.4.2.1}\protected@file@percent }
 \abx@aux@cite{0}{StaticContentNordic}
 \abx@aux@segm{0}{0}{StaticContentNordic}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summary statistics for wind-related features (2024--2025, NO1)}}{13}{table.caption.18}\protected@file@percent }
-\newlabel{tab:wind_feature_stats}{{2}{13}{Summary statistics for wind-related features (2024--2025, NO1)}{table.caption.18}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.4}NUCS}{13}{subsubsection.4.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{aFRR procurement prices}{13}{section*.19}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A histogram of hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{13}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:nucs_afrr_hourly_hist}{{7}{13}{A histogram of hourly aFRR procurement prices for the NO1 bidding zone from NUCS data}{figure.caption.20}{}}
 \abx@aux@cite{0}{DataStandardisation}
 \abx@aux@segm{0}{0}{DataStandardisation}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{14}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:nucs_afrr_hourly_prices}{{8}{14}{Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data}{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.5}ENTSO-E}{14}{subsubsection.4.1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{aFRR Activation Data}{14}{section*.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Crucial: Time restriction. (Probably move parts of this to somewhere else as these concepts are important.)}{14}{section*.23}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.6}Dataset structure}{15}{subsubsection.4.1.6}\protected@file@percent }
-\newlabel{sec:dataset_structure}{{4.1.6}{15}{Dataset structure}{subsubsection.4.1.6}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.7}Restrictions}{15}{subsubsection.4.1.7}\protected@file@percent }
-\newlabel{sec:restrictions}{{4.1.7}{15}{Restrictions}{subsubsection.4.1.7}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.8}Class Imbalance}{15}{subsubsection.4.1.8}\protected@file@percent }
-\newlabel{sec:class_imbalance}{{4.1.8}{15}{Class Imbalance}{subsubsection.4.1.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{mFRR activation data}{11}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cross-zonal flows}{11}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Load and production data}{11}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}NUCS}{11}{subsubsection.4.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{aFRR procurement prices and volumes data}{11}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}ENTSO-E}{12}{subsubsection.4.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{aFRR Activation Data}{12}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Crucial: Time restriction. (Probably move parts of this to somewhere else as these concepts are important.)}{12}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Restrictions}{12}{subsubsection.4.2.4}\protected@file@percent }
+\newlabel{sec:restrictions}{{4.2.4}{12}{Restrictions}{subsubsection.4.2.4}{}}
+\abx@aux@cite{0}{ClassImbalanceProblem}
+\abx@aux@segm{0}{0}{ClassImbalanceProblem}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Data Preprocessing and Analysis}{13}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:data_preprocessing_and_analysis}{{4.3}{13}{Data Preprocessing and Analysis}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Dataset structure}{13}{subsubsection.4.3.1}\protected@file@percent }
+\newlabel{sec:dataset_structure}{{4.3.1}{13}{Dataset structure}{subsubsection.4.3.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Alignment, Resampling, and Merging}{13}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Handling Missing Data}{13}{subsubsection.4.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Exploratory Data Analysis}{13}{subsubsection.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Activation Class Distribution.}{13}{section*.21}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces mFRR activation distribution.}}{13}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:mFRR_activation_distribution}{{5}{13}{mFRR activation distribution}{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {paragraph}{Temporal Activation Patterns}{14}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Feature Distributions.}{14}{section*.24}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Cross-zonal flow distributions for the NO1 bidding zone.}}{14}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:cross_zonal_flows_dist}{{6}{14}{Cross-zonal flow distributions for the NO1 bidding zone}{figure.caption.25}{}}
+\newlabel{fig:cross_zonal_imports}{{7a}{15}{Import utilization}{figure.caption.26}{}}
+\newlabel{sub@fig:cross_zonal_imports}{{a}{15}{Import utilization}{figure.caption.26}{}}
+\newlabel{fig:cross_zonal_exports}{{7b}{15}{Export utilization}{figure.caption.26}{}}
+\newlabel{sub@fig:cross_zonal_exports}{{b}{15}{Export utilization}{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cross-zonal flow utilizations for the NO1 bidding zone calculated as the ratio between actual flow and NTC capacity.}}{15}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:cross_zonal_flows_side_by_side}{{7}{15}{Cross-zonal flow utilizations for the NO1 bidding zone calculated as the ratio between actual flow and NTC capacity}{figure.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Summary statistics for wind-related features (2024--2025, NO1)}}{15}{table.caption.27}\protected@file@percent }
+\newlabel{tab:wind_feature_stats}{{2}{15}{Summary statistics for wind-related features (2024--2025, NO1)}{table.caption.27}{}}
+\@writefile{toc}{\contentsline {paragraph}{aFRR.}{15}{section*.28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces A histogram of hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:nucs_afrr_hourly_hist}{{8}{16}{A histogram of hourly aFRR procurement prices for the NO1 bidding zone from NUCS data}{figure.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:nucs_afrr_hourly_prices}{{9}{16}{Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data}{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {paragraph}{Correlation Analysis}{16}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Lag Features/Information Availability}{16}{section*.32}\protected@file@percent }
 \abx@aux@cite{0}{liuFeatureSelectionKnowledge2012}
 \abx@aux@segm{0}{0}{liuFeatureSelectionKnowledge2012}
 \abx@aux@cite{0}{brownleeBasicFeatureEngineering2016}
 \abx@aux@segm{0}{0}{brownleeBasicFeatureEngineering2016}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Feature Engineering}{16}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Lag features}{16}{subsubsection.4.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Activation lag features}{16}{section*.24}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Persistency (streak length)}{16}{section*.25}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Design choice: separate vs. signed.}{17}{section*.26}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Importance.}{17}{section*.27}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Cross-zonal flow features}{17}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{17}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Feature Engineering}{17}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Lag features}{17}{subsubsection.4.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Activation lag features}{17}{section*.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Persistency (streak length)}{17}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Design choice: separate vs. signed.}{18}{section*.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Importance.}{18}{section*.36}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Cross-zonal flow features}{18}{subsubsection.4.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{18}{section*.37}\protected@file@percent }
 \abx@aux@cite{0}{pelletierCyclicalEncodingAlternative2024}
 \abx@aux@segm{0}{0}{pelletierCyclicalEncodingAlternative2024}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Temporal features}{18}{subsubsection.4.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Price features}{18}{subsubsection.4.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Load features}{18}{subsubsection.4.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.4}Production features}{18}{subsubsection.4.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Temporal features}{19}{subsubsection.4.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.4}Price features}{19}{subsubsection.4.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.5}Load features}{19}{subsubsection.4.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.6}Production features}{19}{subsubsection.4.4.6}\protected@file@percent }
 \abx@aux@cite{0}{ClassificationAccuracyRecall}
 \abx@aux@segm{0}{0}{ClassificationAccuracyRecall}
-\newlabel{fig:wind_actual_to_activation}{{9a}{19}{Realized wind production plotted against mFRR activation distribution}{figure.caption.29}{}}
-\newlabel{sub@fig:wind_actual_to_activation}{{a}{19}{Realized wind production plotted against mFRR activation distribution}{figure.caption.29}{}}
-\newlabel{fig:wind_share_to_activation}{{9b}{19}{Forecasted wind production plotted against mFRR activation distribution}{figure.caption.29}{}}
-\newlabel{sub@fig:wind_share_to_activation}{{b}{19}{Forecasted wind production plotted against mFRR activation distribution}{figure.caption.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Load and production data distributions.}}{19}{figure.caption.29}\protected@file@percent }
-\newlabel{fig:load_and_production_distributions}{{9}{19}{Load and production data distributions}{figure.caption.29}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.5}Interaction features}{19}{subsubsection.4.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Evaluation Framework}{19}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Precision-recall trade-off}{20}{section*.30}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The transition metric}{20}{section*.31}\protected@file@percent }
+\newlabel{fig:wind_actual_to_activation}{{10a}{20}{Realized wind production plotted against mFRR activation distribution}{figure.caption.38}{}}
+\newlabel{sub@fig:wind_actual_to_activation}{{a}{20}{Realized wind production plotted against mFRR activation distribution}{figure.caption.38}{}}
+\newlabel{fig:wind_share_to_activation}{{10b}{20}{Forecasted wind production plotted against mFRR activation distribution}{figure.caption.38}{}}
+\newlabel{sub@fig:wind_share_to_activation}{{b}{20}{Forecasted wind production plotted against mFRR activation distribution}{figure.caption.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Load and production data distributions.}}{20}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:load_and_production_distributions}{{10}{20}{Load and production data distributions}{figure.caption.38}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.7}Interaction features}{20}{subsubsection.4.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Evaluation Framework}{20}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Precision-recall trade-off}{21}{section*.39}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The transition metric}{21}{section*.40}\protected@file@percent }
 \abx@aux@cite{0}{dorogushCatBoostGradientBoosting2018}
 \abx@aux@segm{0}{0}{dorogushCatBoostGradientBoosting2018}
-\@writefile{toc}{\contentsline {paragraph}{Probability correctness.}{21}{section*.32}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}Data Splitting}{21}{subsubsection.4.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Model Selection}{21}{subsubsection.4.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Random Forest and Extra Trees}{21}{section*.33}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{CatBoost}{21}{section*.34}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{XGBoost and LightGBM}{21}{section*.35}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.3}Adjusting Classification Thresholds}{21}{subsubsection.4.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Typical Precision-Recall Curve with F1-score maximization point indicated.}}{22}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:pr-curve}{{10}{22}{Typical Precision-Recall Curve with F1-score maximization point indicated}{figure.caption.36}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.4}Decision-bias tuning}{22}{subsubsection.4.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Class-specific decision bias for ``up''.}{22}{section*.37}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Validation-based selection of $\alpha $.}{23}{section*.38}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Intuition and benefits.}{23}{section*.39}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.5}AutoGluon}{23}{subsubsection.4.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Model Results}{23}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The 2025 Dataset}{23}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Extra Trees}{24}{subsubsection.5.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}}{24}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:xt-2025-highf1}{{11}{24}{Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score}{figure.caption.40}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Performance metrics for Extra Trees model on 2025 dataset at different thresholds.}}{24}{table.caption.41}\protected@file@percent }
-\newlabel{tab:xt-2025-metrics}{{3}{24}{Performance metrics for Extra Trees model on 2025 dataset at different thresholds}{table.caption.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}}{25}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:xt-2025-fI}{{12}{25}{Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score}{figure.caption.42}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The 2024-2025 Dataset}{25}{subsection.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}CatBoost Models}{26}{subsubsection.5.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning.}}{26}{figure.caption.43}\protected@file@percent }
-\newlabel{fig:catboost-2024-2025-fI}{{13}{26}{Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning}{figure.caption.43}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Performance metrics for CatBoost model on 2024-2025 dataset at different thresholds.}}{27}{figure.caption.44}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}}{27}{figure.caption.45}\protected@file@percent }
-\newlabel{fig:catboost-2024-2025-updownprice}{{15}{27}{Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}{figure.caption.45}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds.}}{28}{figure.caption.46}\protected@file@percent }
-\newlabel{fig:catboost-2025-4th-confidence-metrics}{{16}{28}{Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds}{figure.caption.46}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Correlation}{28}{subsection.5.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{Bibliography}{29}{section*.47}\protected@file@percent }
-\abx@aux@read@bbl@mdfivesum{37733A1544A9EBF63C643B71C96A69D9}
+\@writefile{toc}{\contentsline {paragraph}{Probability correctness.}{22}{section*.41}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1}Data Splitting}{22}{subsubsection.4.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2}Model Selection}{22}{subsubsection.4.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Random Forest and Extra Trees}{22}{section*.42}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{CatBoost}{22}{section*.43}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{XGBoost and LightGBM}{22}{section*.44}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3}Adjusting Classification Thresholds}{22}{subsubsection.4.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Typical Precision-Recall Curve with F1-score maximization point indicated.}}{23}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:pr-curve}{{11}{23}{Typical Precision-Recall Curve with F1-score maximization point indicated}{figure.caption.45}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.4}Decision-bias tuning}{23}{subsubsection.4.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Class-specific decision bias for ``up''.}{23}{section*.46}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Validation-based selection of $\alpha $.}{24}{section*.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Intuition and benefits.}{24}{section*.48}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.5}AutoGluon}{24}{subsubsection.4.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Model Results}{24}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The 2025 Dataset}{24}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Extra Trees}{25}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}}{25}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:xt-2025-highf1}{{12}{25}{Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score}{figure.caption.49}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Performance metrics for Extra Trees model on 2025 dataset at different thresholds.}}{25}{table.caption.50}\protected@file@percent }
+\newlabel{tab:xt-2025-metrics}{{3}{25}{Performance metrics for Extra Trees model on 2025 dataset at different thresholds}{table.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}}{26}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:xt-2025-fI}{{13}{26}{Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score}{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The 2024-2025 Dataset}{26}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}CatBoost Models}{27}{subsubsection.5.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning.}}{27}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:catboost-2024-2025-fI}{{14}{27}{Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning}{figure.caption.52}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Performance metrics for CatBoost model on 2024-2025 dataset at different thresholds.}}{28}{figure.caption.53}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}}{28}{figure.caption.54}\protected@file@percent }
+\newlabel{fig:catboost-2024-2025-updownprice}{{16}{28}{Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}{figure.caption.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds.}}{29}{figure.caption.55}\protected@file@percent }
+\newlabel{fig:catboost-2025-4th-confidence-metrics}{{17}{29}{Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds}{figure.caption.55}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Correlation}{29}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Bibliography}{30}{section*.56}\protected@file@percent }
+\abx@aux@read@bbl@mdfivesum{EF46685D12322216AA1064ECF3FB03B2}
 \abx@aux@defaultrefcontext{0}{caiLowInertiaPower2023}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{EnergyTransitionOutlook}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{ConfirmationMFRREAM2025}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{entso-eNoricBalancingPhilosophy2024}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{RaskeFrekvensreserverFFR2025}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{statnettVilkarMFRRAktiveringsmarked2024}{none/global//global/global/global}
+\abx@aux@defaultrefcontext{0}{zhaoEventPredictionBig2022}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{klaeboeDayaheadMarketBidding2022}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{BalancingMarketOutlook}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{Transition15minuteMarket}{none/global//global/global/global}
@@ -230,12 +248,12 @@
 \abx@aux@defaultrefcontext{0}{svedlindhPriceFormationForecasting2025}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{porrasShortTermForecastingMFRR}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{PowerMarketData}{none/global//global/global/global}
-\abx@aux@defaultrefcontext{0}{ClassImbalanceProblem}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{StaticContentNordic}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{DataStandardisation}{none/global//global/global/global}
+\abx@aux@defaultrefcontext{0}{ClassImbalanceProblem}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{liuFeatureSelectionKnowledge2012}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{brownleeBasicFeatureEngineering2016}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{pelletierCyclicalEncodingAlternative2024}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{ClassificationAccuracyRecall}{none/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{dorogushCatBoostGradientBoosting2018}{none/global//global/global/global}
-\gdef \@abspage@last{34}
+\gdef \@abspage@last{35}

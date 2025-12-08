@@ -187,6 +187,49 @@
       \field{title}{{Vilkår for mFRR aktiveringsmarked}}
       \field{year}{2024}
     \endentry
+    \entry{zhaoEventPredictionBig2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1f1b5a611871b013dd18b84a54bbb23f}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Liang},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{fullhash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{fullhashraw}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{bibnamehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authorbibnamehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authornamehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authorfullhash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authorfullhashraw}{1f1b5a611871b013dd18b84a54bbb23f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Events are occurrences in specific locations, time, and semantics that nontrivially impact either our society or the nature, such as earthquakes, civil unrest, system failures, pandemics, and crimes. It is highly desirable to be able to anticipate the occurrence of such events in advance to reduce the potential social upheaval and damage caused. Event prediction, which has traditionally been prohibitively challenging, is now becoming a viable option in the big data era and is thus experiencing rapid growth, also thanks to advances in high performance computers and new Artificial Intelligence techniques. There is a large amount of existing work that focuses on addressing the challenges involved, including heterogeneous multi-faceted outputs, complex (e.g., spatial, temporal, and semantic) dependencies, and streaming data feeds. Due to the strong interdisciplinary nature of event prediction problems, most existing event prediction methods were initially designed to deal with specific application domains, though the techniques and evaluation procedures utilized are usually generalizable across different domains. However, it is imperative yet difficult to cross-reference the techniques across different domains, given the absence of a comprehensive literature survey for event prediction. This article aims to provide a systematic and comprehensive survey of the technologies, applications, and evaluations of event prediction in the big data era. First, systematic categorization and summary of existing techniques are presented, which facilitate domain experts' searches for suitable techniques and help model developers consolidate their research at the frontiers. Then, comprehensive categorization and summary of major application domains are provided to introduce wider applications to model developers to help them expand the impacts of their research. Evaluation metrics and procedures are summarized and standardized to unify the understanding of model performance among stakeholders, model developers, and domain experts in various application domains. Finally, open problems and future directions are discussed. Additional resources related to event prediction are included in the paper website: http://cs.emory.edu/{$\sim$}lzhao41/projects/event\_prediction\_site.html.}
+      \field{issn}{0360-0300, 1557-7341}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{number}{5}
+      \field{shorttitle}{Event {{Prediction}} in the {{Big Data Era}}}
+      \field{title}{Event {{Prediction}} in the {{Big Data Era}}: {{A Systematic Survey}}}
+      \field{urlday}{8}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{volume}{54}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 37}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1145/3450287
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\HS6URIN4\Zhao - 2022 - Event Prediction in the Big Data Era A Systematic Survey.pdf
+      \endverb
+    \endentry
     \entry{klaeboeDayaheadMarketBidding2022}{article}{}{}
       \name{author}{4}{}{%
         {{hash=69d5ca56234164e8dbe2731e081de2d6}{%
@@ -571,20 +614,6 @@
       \verb C:\Users\haako\Zotero\storage\63C9ZCR3\power-market-data-services.html
       \endverb
     \endentry
-    \entry{ClassImbalanceProblem}{misc}{}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.sciencedirect.com/topics/computer-science/class-imbalance-problem}
-      \field{title}{Class {{Imbalance Problem}} - an Overview |{} {{ScienceDirect Topics}}}
-      \field{urlday}{26}
-      \field{urlmonth}{11}
-      \field{urlyear}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\5FKAUHBX\class-imbalance-problem.html
-      \endverb
-    \endentry
     \entry{StaticContentNordic}{misc}{}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
@@ -612,6 +641,20 @@
       \field{urldateera}{ce}
       \verb{file}
       \verb C:\Users\haako\Zotero\storage\DLZB5CD7\data.html
+      \endverb
+    \endentry
+    \entry{ClassImbalanceProblem}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.sciencedirect.com/topics/computer-science/class-imbalance-problem}
+      \field{title}{Class {{Imbalance Problem}} - an Overview |{} {{ScienceDirect Topics}}}
+      \field{urlday}{26}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\5FKAUHBX\class-imbalance-problem.html
       \endverb
     \endentry
     \entry{liuFeatureSelectionKnowledge2012}{book}{}{}
@@ -700,8 +743,8 @@
       \strng{authornamehash}{3929533b5989d9638348e0f5bc4398e5}
       \strng{authorfullhash}{3929533b5989d9638348e0f5bc4398e5}
       \strng{authorfullhashraw}{3929533b5989d9638348e0f5bc4398e5}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Cyclical encoding provides your model with the same information using significantly fewer features}

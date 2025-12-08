@@ -509,7 +509,7 @@ def load_intraday_hourly_stats(data_dir: str, include_2024: bool, area: str) -> 
     return id_hourly_df
 
 def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame:
-    afrr = os.path.join(data_dir, 'afrr', 'nucs_afrr_hourly.csv')
+    afrr = os.path.join(data_dir, 'afrr', 'nucs_hourly_2024_2025_updown.csv')
     afrr_df = _read_csv(afrr)
     afrr_df.rename(columns={"ts": "Time"}, inplace=True)
     # its +00:00 time format
@@ -518,12 +518,45 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
     # Ensure strictly monotonic increasing index before resample
     afrr_df.sort_index(inplace=True)
     afrr_df = afrr_df[~afrr_df.index.duplicated(keep='first')].resample('15min').ffill()
-    # fill zeros with interpolation
-    afrr_df['procurement_price'] = afrr_df['procurement_price'].replace(0, np.nan).interpolate(method='time').ffill().bfill()
-    afrr_df['quantity'] = afrr_df['quantity'].replace(0, np.nan).interpolate(method='time').ffill().bfill()
+    # Directional aFRR prices/volumes: up/down
+    # Clean zeros and interpolate separately for each side
+    for col in ['up_price', 'down_price']:
+        if col in afrr_df.columns:
+            afrr_df[col] = (
+                afrr_df[col]
+                .replace(0, np.nan)
+                .interpolate(method='time')
+                .ffill()
+                .bfill()
+            )
+    for col in ['up_quantity', 'down_quantity']:
+        if col in afrr_df.columns:
+            afrr_df[col] = (
+                afrr_df[col]
+                .replace(0, np.nan)
+                .interpolate(method='time')
+                .ffill()
+                .bfill()
+            )
+
+    # Align to decision time: shift future aFRR state back by horizon (4*15min)
     afrr_df = afrr_df.shift(-4)
+
+    # Drop any legacy smoothing marker if present
     afrr_df.drop(columns=['_smoothed'], inplace=True, errors='ignore')
-    afrr_df.rename(columns={'procurement_price': 'aFRR Price', 'quantity': 'aFRR Quantity'}, inplace=True)
+
+    # Rename to model-facing feature names
+    rename_map = {}
+    if 'up_price' in afrr_df.columns:
+        rename_map['up_price'] = 'aFRR Up Price'
+    if 'down_price' in afrr_df.columns:
+        rename_map['down_price'] = 'aFRR Down Price'
+    if 'up_quantity' in afrr_df.columns:
+        rename_map['up_quantity'] = 'aFRR Up Quantity'
+    if 'down_quantity' in afrr_df.columns:
+        rename_map['down_quantity'] = 'aFRR Down Quantity'
+    if rename_map:
+        afrr_df.rename(columns=rename_map, inplace=True)
     
     
     affr_act = os.path.join(data_dir, 'afrr', f'GUI_BALANCING_OFFERS_AND_RESERVES_202401010000-202501010000_{area}.csv')
@@ -532,7 +565,8 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
         affr_act_24 = os.path.join(data_dir, 'afrr', f'GUI_BALANCING_OFFERS_AND_RESERVES_202501010000-202601010000_{area}.csv')
         affr_act_24_df = pd.read_csv(affr_act_24, delimiter=',')
         affr_act_df = pd.concat([affr_act_24_df, affr_act_df], ignore_index=True)
-
+    print(f"aFRR activation data rows before processing: {len(affr_act_df)}")
+    print(f'aFRR price data rows before processing: {len(afrr_df)}')
     affr_act_df.rename(columns={'ISP (UTC)': 'Time'}, inplace=True)
     affr_act_df['Time'] = pd.to_datetime(affr_act_df['Time'].astype(str).str[:16], format='%d/%m/%Y %H:%M', errors='coerce')
     # Drop rows with invalid timestamps and ensure chronological order before indexing
@@ -572,15 +606,7 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
                                                                 (affr_act_df['aFRR Activated Down'] > 0))
     afrr_act_cat_df = pd.DataFrame(cat_cols, index=affr_act_df.index)
     afrr_df = afrr_df.merge(afrr_act_cat_df, how='left', left_index=True, right_index=True)
-    # Extend to current date and forward-fill gaps
-    try:
-        end_ts = pd.Timestamp.now().floor('15min')
-        start_ts = afrr_df.index.min()
-        if pd.notna(start_ts) and end_ts > start_ts:
-            full_idx = pd.date_range(start=start_ts, end=end_ts, freq='15min')
-            afrr_df = afrr_df.reindex(full_idx).ffill()
-    except Exception:
-        pass
+    
     return afrr_df
 
 
@@ -688,6 +714,8 @@ def preprocess_all(cfg: Config | None = None,
     print('Day-ahead prices shape:', da_df.shape)
     # print('Intraday prices shape:', id_df.shape)
     print('Intraday hourly stats shape:', id_hourly_df.shape)
+    print('aFRR data shape:', affr_df.shape)
+    print('flows shape:', physical_flow_df.shape)
     
 
     # Ensure unique columns for downstream frameworks

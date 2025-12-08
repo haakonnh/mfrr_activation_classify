@@ -76,6 +76,42 @@
       \verb 10.1109/TPWRS.2023.3302515
       \endverb
     \endentry
+    \entry{EnergyTransitionOutlook}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
+      \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
+      \field{journaltitle}{DNV}
+      \field{langid}{english}
+      \field{title}{Energy {{Transition Outlook Norway}} 2024}
+      \field{urlday}{3}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\NTZ7RFVL\energy-transition-norway-2024.html
+      \endverb
+    \endentry
+    \entry{ConfirmationMFRREAM2025}{misc}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
+      \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
+      \field{journaltitle}{Statnett}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\87VQEK5B\confirmation-of-mfrr-eam-go-live-march-4th-2025.html
+      \endverb
+    \endentry
     \entry{entso-eNoricBalancingPhilosophy2024}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=f7e45def0ca6a655fe5fe04f557fc749}{%
@@ -93,8 +129,8 @@
       \strng{authornamehash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhashraw}{f7e45def0ca6a655fe5fe04f557fc749}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{langid}{english}
@@ -105,42 +141,6 @@
       \field{urlyear}{2025}
       \field{year}{2024}
       \field{urldateera}{ce}
-    \endentry
-    \entry{EnergyTransitionOutlook}{misc}{}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
-      \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
-      \field{journaltitle}{DNV}
-      \field{langid}{english}
-      \field{title}{Energy {{Transition Outlook Norway}} 2024}
-      \field{urlday}{3}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\NTZ7RFVL\energy-transition-norway-2024.html
-      \endverb
-    \endentry
-    \entry{ConfirmationMFRREAM2025}{misc}{}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
-      \field{labeltitlesource}{title}
-      \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
-      \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
-      \field{journaltitle}{Statnett}
-      \field{langid}{english}
-      \field{month}{10}
-      \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
-      \field{urlday}{22}
-      \field{urlmonth}{11}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\87VQEK5B\confirmation-of-mfrr-eam-go-live-march-4th-2025.html
-      \endverb
     \endentry
     \entry{RaskeFrekvensreserverFFR2025}{misc}{}{}
       \field{sortinit}{9}
@@ -186,6 +186,49 @@
       \field{month}{1}
       \field{title}{{Vilkår for mFRR aktiveringsmarked}}
       \field{year}{2024}
+    \endentry
+    \entry{zhaoEventPredictionBig2022}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1f1b5a611871b013dd18b84a54bbb23f}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Liang},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{fullhash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{fullhashraw}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{bibnamehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authorbibnamehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authornamehash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authorfullhash}{1f1b5a611871b013dd18b84a54bbb23f}
+      \strng{authorfullhashraw}{1f1b5a611871b013dd18b84a54bbb23f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Events are occurrences in specific locations, time, and semantics that nontrivially impact either our society or the nature, such as earthquakes, civil unrest, system failures, pandemics, and crimes. It is highly desirable to be able to anticipate the occurrence of such events in advance to reduce the potential social upheaval and damage caused. Event prediction, which has traditionally been prohibitively challenging, is now becoming a viable option in the big data era and is thus experiencing rapid growth, also thanks to advances in high performance computers and new Artificial Intelligence techniques. There is a large amount of existing work that focuses on addressing the challenges involved, including heterogeneous multi-faceted outputs, complex (e.g., spatial, temporal, and semantic) dependencies, and streaming data feeds. Due to the strong interdisciplinary nature of event prediction problems, most existing event prediction methods were initially designed to deal with specific application domains, though the techniques and evaluation procedures utilized are usually generalizable across different domains. However, it is imperative yet difficult to cross-reference the techniques across different domains, given the absence of a comprehensive literature survey for event prediction. This article aims to provide a systematic and comprehensive survey of the technologies, applications, and evaluations of event prediction in the big data era. First, systematic categorization and summary of existing techniques are presented, which facilitate domain experts' searches for suitable techniques and help model developers consolidate their research at the frontiers. Then, comprehensive categorization and summary of major application domains are provided to introduce wider applications to model developers to help them expand the impacts of their research. Evaluation metrics and procedures are summarized and standardized to unify the understanding of model performance among stakeholders, model developers, and domain experts in various application domains. Finally, open problems and future directions are discussed. Additional resources related to event prediction are included in the paper website: http://cs.emory.edu/{$\sim$}lzhao41/projects/event\_prediction\_site.html.}
+      \field{issn}{0360-0300, 1557-7341}
+      \field{journaltitle}{ACM Computing Surveys}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{number}{5}
+      \field{shorttitle}{Event {{Prediction}} in the {{Big Data Era}}}
+      \field{title}{Event {{Prediction}} in the {{Big Data Era}}: {{A Systematic Survey}}}
+      \field{urlday}{8}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{volume}{54}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 37}
+      \range{pages}{37}
+      \verb{doi}
+      \verb 10.1145/3450287
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\HS6URIN4\Zhao - 2022 - Event Prediction in the Big Data Era A Systematic Survey.pdf
+      \endverb
     \endentry
     \entry{klaeboeDayaheadMarketBidding2022}{article}{}{}
       \name{author}{4}{}{%
@@ -340,8 +383,8 @@
       \strng{authornamehash}{88166ee7fa9b69d4f998476b3629f373}
       \strng{authorfullhash}{71fe6858a8d69d1c2ea31d7dc384d96b}
       \strng{authorfullhashraw}{71fe6858a8d69d1c2ea31d7dc384d96b}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Power system balancing becomes ever-challenging due to the increasing penetration of uncertain renewable energy sources. Therefore, balancing markets are implemented in various power markets and such markets play a crucial role in ensuring balanced system operation. The optimal operation of balancing market necessitates accurate imbalance volume forecasts. However, imbalance volume forecasting got less research attention. Also, most of the existing imbalance volume forecasting models do not use specific input selection or data preprocessing techniques. These techniques can help to improve forecasting accuracy. Further, balancing market operations necessitates short-term forecasts. Therefore, this paper proposes a novel dynamic regression-based Trigonometric Seasonal, Yeo-Johnson Transformation, ARMA residuals, Trend, and Seasonality (TYJATS) forecasting model to obtain accurate short-term imbalance volume forecasts. The proposed forecasting model dynamically updates data at each time step, effectively handling seasonality and nonlinearity. It uses Grey Correlation Analysis (GCA) for input data selection and the tsrobprep package for data preprocessing. Further, a Newton--Raphson-based optimizer (NRBO) is proposed to minimize the balancing costs. The proposed model is tested on the data collected from the Belgian market. The forecasting analysis demonstrates that the proposed model improves accuracy by 59.85\%, 42.61\%, and 39.56\% compared to machine learning (long short-term memory), regression (auto-regressive distributed lag), and Transmission System Operator (TSO)-based forecasting, respectively. Furthermore, integrating the proposed forecasting model into balancing market optimization results in the least balancing cost, achieving savings of 44.51\% compared to TSO-based forecasting.}
@@ -571,20 +614,6 @@
       \verb C:\Users\haako\Zotero\storage\63C9ZCR3\power-market-data-services.html
       \endverb
     \endentry
-    \entry{ClassImbalanceProblem}{misc}{}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{https://www.sciencedirect.com/topics/computer-science/class-imbalance-problem}
-      \field{title}{Class {{Imbalance Problem}} - an Overview |{} {{ScienceDirect Topics}}}
-      \field{urlday}{26}
-      \field{urlmonth}{11}
-      \field{urlyear}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\5FKAUHBX\class-imbalance-problem.html
-      \endverb
-    \endentry
     \entry{StaticContentNordic}{misc}{}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
@@ -720,8 +749,8 @@
       \endverb
     \endentry
     \entry{ClassificationAccuracyRecall}{misc}{}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Learn how to calculate three key classification metrics---accuracy, precision, recall---and how to choose the appropriate metric to evaluate a given binary classification model.}
       \field{howpublished}{https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall}

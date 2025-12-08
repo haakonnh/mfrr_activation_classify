@@ -239,6 +239,12 @@ def add_interactions(df: pd.DataFrame, connected_zones: List[str], heavy_interac
         df['PersistencyDown x DA Scarcity'] = (df['PersistencyDown'] * df['DA Scarcity'].astype(int))
 
     # - Persistency x aFRR context: streaks in mFRR often co-occur with elevated aFRR stress
+    # If directional aFRR prices are available, build separate up/down interactions;
+    # fall back to legacy aggregate price if present.
+    if 'Persistency' in df.columns and 'aFRR Up Price' in df.columns:
+        df['Persistency x aFRR Up Price'] = df['Persistency'] * df['aFRR Up Price']
+    if 'PersistencyDown' in df.columns and 'aFRR Down Price' in df.columns:
+        df['PersistencyDown x aFRR Down Price'] = df['PersistencyDown'] * df['aFRR Down Price']
     if 'Persistency' in df.columns and 'aFRR Price' in df.columns:
         df['Persistency x aFRR Price'] = df['Persistency'] * df['aFRR Price']
     if 'PersistencyDown' in df.columns and 'aFRR Price' in df.columns:

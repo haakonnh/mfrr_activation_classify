@@ -181,62 +181,142 @@ def parse_nucs_points(xml_bytes: bytes) -> List[Dict[str, Any]]:
 
 
 def points_to_hourly(df_points: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate NUCS point-level data to hourly up/down volumes and prices.
+
+    The NUCS XML contains two records per timeslot distinguished by
+    ``flowDirection.direction``:
+
+    - ``A01``: up
+    - ``A02``: down
+
+    This function pivots those into separate hourly columns:
+
+    - ``up_price``, ``up_quantity``
+    - ``down_price``, ``down_quantity``
+    """
     if df_points.empty:
         return df_points
-    hourly = (
-        df_points.dropna(subset=['ts'])
-                 .set_index('ts')
-                 .sort_index()
-                 .resample('1h')
-                 .agg(
-                     procurement_price=('procurement_price', 'mean'),
-                     quantity=('quantity', 'sum'),
-                 )
-                 .reset_index()
+
+    df = df_points.copy()
+    # Normalize direction labels
+    if 'flowDirection.direction' in df.columns:
+        df['direction'] = df['flowDirection.direction'].astype(str).str.upper()
+    else:
+        df['direction'] = None
+
+    # Split into up / down subsets
+    up_mask = df['direction'] == 'A01'
+    down_mask = df['direction'] == 'A02'
+
+    hourly_up = (
+        df[up_mask]
+        .dropna(subset=['ts'])
+        .set_index('ts')
+        .sort_index()
+        .resample('1h')
+        .agg(
+            up_price=('procurement_price', 'mean'),
+            up_quantity=('quantity', 'sum'),
+        )
     )
+
+    hourly_down = (
+        df[down_mask]
+        .dropna(subset=['ts'])
+        .set_index('ts')
+        .sort_index()
+        .resample('1h')
+        .agg(
+            down_price=('procurement_price', 'mean'),
+            down_quantity=('quantity', 'sum'),
+        )
+    )
+
+    # Outer-join to keep any hour that appears in either direction
+    hourly = (
+        hourly_up.join(hourly_down, how='outer')
+        .reset_index()
+        .rename(columns={'ts': 'ts'})
+        .sort_values('ts')
+    )
+
     return hourly
 
 
 def plot_outputs(hourly: pd.DataFrame, plots_dir: str, stem: str = 'nucs_hourly') -> Tuple[str, str, str]:
     os.makedirs(plots_dir, exist_ok=True)
-    # line
+
+    # line: plot up and down prices if available, else fall back
     plt.figure(figsize=(12, 4))
-    sns.lineplot(data=hourly, x='ts', y='procurement_price', linewidth=0.8)
-    plt.title('NUCS aFRR hourly procurement price')
+    if {'up_price', 'down_price'}.issubset(hourly.columns):
+        sns.lineplot(data=hourly, x='ts', y='up_price', linewidth=0.8, label='up_price')
+        sns.lineplot(data=hourly, x='ts', y='down_price', linewidth=0.8, label='down_price')
+        plt.ylabel('Price (up/down)')
+    elif 'up_price' in hourly.columns:
+        sns.lineplot(data=hourly, x='ts', y='up_price', linewidth=0.8, label='up_price')
+        plt.ylabel('Price')
+    elif 'procurement_price' in hourly.columns:
+        sns.lineplot(data=hourly, x='ts', y='procurement_price', linewidth=0.8, label='price')
+        plt.ylabel('Price')
+    else:
+        sns.lineplot(data=hourly, x='ts', y=hourly.columns[1], linewidth=0.8)
+        plt.ylabel('Value')
+    plt.title('NUCS aFRR hourly prices')
     plt.xlabel('Time')
-    plt.ylabel('Price')
     plt.tight_layout()
     p1 = os.path.join(plots_dir, f'{stem}.png')
     plt.savefig(p1, dpi=150)
 
-    # hist
-    plt.figure(figsize=(9, 4))
-    sns.histplot(hourly['procurement_price'].dropna(), bins=50)
-    plt.title('NUCS aFRR hourly procurement price distribution')
-    plt.xlabel('Price')
-    plt.ylabel('Count')
-    plt.tight_layout()
+    # histogram of prices: prefer up_price, then procurement_price, else first numeric
+    price_series = None
+    if 'up_price' in hourly.columns:
+        price_series = hourly['up_price']
+    elif 'procurement_price' in hourly.columns:
+        price_series = hourly['procurement_price']
+    else:
+        num_cols = hourly.select_dtypes(include='number').columns
+        if len(num_cols) > 0:
+            price_series = hourly[num_cols[0]]
+
     p2 = os.path.join(plots_dir, f'{stem}_hist.png')
-    plt.savefig(p2, dpi=150)
+    if price_series is not None:
+        plt.figure(figsize=(9, 4))
+        sns.histplot(price_series.dropna(), bins=50)
+        plt.title('NUCS aFRR hourly price distribution')
+        plt.xlabel('Price')
+        plt.ylabel('Count')
+        plt.tight_layout()
+        plt.savefig(p2, dpi=150)
 
     # box by hour-of-day
     h = hourly.copy()
     h['_hour'] = pd.to_datetime(h['ts']).dt.hour
-    plt.figure(figsize=(12, 4))
-    sns.boxplot(data=h, x='_hour', y='procurement_price')
-    plt.title('NUCS hourly procurement price by hour-of-day')
-    plt.xlabel('Hour of day')
-    plt.ylabel('Price')
-    plt.tight_layout()
-    p3 = os.path.join(plots_dir, f'{stem}_by_hour.png')
-    plt.savefig(p3, dpi=150)
+    price_col = None
+    if 'up_price' in h.columns:
+        price_col = 'up_price'
+    elif 'procurement_price' in h.columns:
+        price_col = 'procurement_price'
+    else:
+        num_cols = [c for c in h.columns if c not in ['ts', '_hour'] and pd.api.types.is_numeric_dtype(h[c])]
+        if num_cols:
+            price_col = num_cols[0]
+
+    if price_col is not None:
+        plt.figure(figsize=(12, 4))
+        sns.boxplot(data=h, x='_hour', y=price_col)
+        plt.title('NUCS hourly price by hour-of-day')
+        plt.xlabel('Hour of day')
+        plt.ylabel('Price')
+        plt.tight_layout()
+        p3 = os.path.join(plots_dir, f'{stem}_by_hour.png')
+        plt.savefig(p3, dpi=150)
 
     return p1, p2, p3
 
 
 def smooth_outliers(
     hourly_df: pd.DataFrame,
-    price_col: str = "procurement_price",
+    price_col: str = "up_price",
     max_price: Optional[float] = None,
     iqr_factor: float = 4.0,
 ) -> pd.DataFrame:
@@ -441,9 +521,19 @@ def to_price_df(
     """
     if hourly_df is None or hourly_df.empty:
         return pd.DataFrame(columns=[time_col, price_col])
+    # Prefer up_price if available, otherwise fall back to a generic price column
+    src_col = None
+    if 'up_price' in hourly_df.columns:
+        src_col = 'up_price'
+    elif 'procurement_price' in hourly_df.columns:
+        src_col = 'procurement_price'
+    else:
+        # take the second column as a best-effort fallback
+        src_col = hourly_df.columns[1]
+
     out = (
-        hourly_df.loc[:, ["ts", "procurement_price"]]
-        .rename(columns={"ts": time_col, "procurement_price": price_col})
+        hourly_df.loc[:, ["ts", src_col]]
+        .rename(columns={"ts": time_col, src_col: price_col})
         .dropna(subset=[time_col, price_col])
         .sort_values(time_col)
         .reset_index(drop=True)

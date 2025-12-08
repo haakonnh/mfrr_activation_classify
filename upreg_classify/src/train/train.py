@@ -243,7 +243,7 @@ def train_and_evaluate(
         test_df = df_filtered.iloc[v_end:].copy() if test_frac > 0 else df_filtered.iloc[v_end:v_end].copy()
         df = df_filtered
         print(f"Applied dataset start filter: from {data_start} -> rows: {len(df)} (train {len(train_df)}, val {len(val_df)}, test {len(test_df)})")
-
+        print(f"Last timestamp in dataset: {df.index.max()}")
     # Optionally swap numeric RegLag-* for categorical RegLagCat-* in the feature set
     if use_categorical_reglag:
         # Identify available lags
