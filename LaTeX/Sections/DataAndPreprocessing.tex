@@ -1,21 +1,41 @@
 \newpage
 \section{Methodology}
 \subsection{Overview of Methodological Approach}
+The methodological approach adopted in this project is visualized in Figure
+\ref{fig:methodology_overview}. The first step, data collection, involves gathering
+relevant datasets from various sources, including Nord Pool, NUCS, and ENTSO-E. The
+collected data is then preprocessed and cleaned in the second step. These first steps
+are uniquely colored red in the figure to indicate that they are mostly one-time
+efforts required to set up the dataset for further.
 
-\textbf{Figure is a stand-in. I was thinking of including a flow chart of some
-kind here to introduce the workflow/approach to the project in this section.}
-\begin{itemize}
-    \item Data collection from various sources (Nord Pool, NUCS, ENTSO-E)
-    \item Data preprocessing and feature engineering
-    \item Model selection and training
-    \item Model evaluation and validation
-\end{itemize}
+The third step, feature engineering, involves creating and selecting relevant
+(\textbf{either introduce features here or make sure it has been introduced}) features,
+i.e. attributes in the dataset that help the model learn patterns related to
+mFRR activations. The feature-engineered dataset is subsequently sent to the model training
+algorithm. Here, machine learning techniques are applied to train classification models
+using the prepared dataset. Then, the trained models are evaluated with the relevant
+metrics to assess their predictive performance. These three steps are colored purple,
+indicating that they are iterative processes that make up the bulk of the work invested 
+in this project. 
+
+Evaluation results are interpreted 
+in the last step indicated by the blue box. This step is unique as it only involves deriving
+insights and conclusions from the previous steps. Methodological feedback loops flow
+from the interpretation step back to the feature engineering, model training,
+and evaluation steps. These feedback loops represent the iterative nature of the
+methodology, where insights gained from interpretation inform further refinements
+and improvements in the earlier stages of the process.
+
+
+
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Images/Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png}
+    \includegraphics[width=\textwidth]{Images/MethodologyDiagram.png}
     \caption{Overview of the methodological approach used in this project.}
     \label{fig:methodology_overview}
 \end{figure}
+
 
 
 \subsection{Data Sources}\label{sec:data-and-preprocessing}
@@ -42,7 +62,7 @@ from Nord Pool. \textbf{This is not really relevant right here, but it is
 an important point to make somewhere.}
 
 
-\paragraph{mFRR activation data}
+\paragraph{mFRR activation data.}
 The primary dataset used in this study consists of manual Frequency
 Restoration Reserves (mFRR) activation data from the Nordic electricity
 market, specifically for the bidding zone NO1. This data includes accepted 
@@ -50,7 +70,7 @@ and activated up- and down-regulation bids at a 15-minute resolution. The
 activated volumes provide the target variable for the prediction models, indicating
 whether an mFRR activation occurred in a given 15-minute interval. 
 
-\paragraph{Cross-zonal flows}
+\paragraph{Cross-zonal flows.}
 Cross-zonal flows refer to the electricity flows between different
 bidding zones in the Nordic market. In this project, only cross-zonal flows
 involving the NO1 bidding zone are considered: flows between NO1 and SE3, NO1 and
@@ -59,7 +79,7 @@ grid stability and optimizing the use of available resources. The dataset
 includes information on cross-zonal flows to provide additional context for
 mFRR activations. 
 
-\paragraph{Load and production data}
+\paragraph{Load and production data.}
 Load and production forecasts provide insights into the expected
 system state. Forecast may on their own provide valuable information about
 potential mFRR activations, but when combined with actual load and production
@@ -94,8 +114,8 @@ to gather historical data for the training and evaluation of the models. An algo
 was developed, however, to automatically retrieve up-to-date data from the NUCS API
 for potential future real-time applications.
 
-\paragraph{aFRR procurement prices and volumes data}
-is difficult to obtain. However, through the NUCS API,
+\paragraph{aFRR data.} aFRR data is not available through Nord Pool, but
+ through the NUCS API,
 historical aFRR procurement prices and volumes for the NO1 bidding zone 
 are accessible. The data is available at an hourly resolution, with separate
 values for up- and down-regulation. This data provides insights into the amount 
@@ -187,6 +207,7 @@ ready for feature engineering and model training.
 
 
 \subsubsection{Time Restrictions}
+Short-term prediction is heavily reliant on the availability of recent data. 
 
 aFRR activation data is naturally not
 available at the target time $t+4$ and prediction time $t$ as these 
@@ -257,7 +278,7 @@ system state.
 
 \subsubsection{Exploratory Data Analysis}
 
-\paragraph{Activation Class Distribution.}
+\paragraph{Target Class Imbalance.}\label{sec:class_imbalance}
 Figure 
 \ref{fig:mFRR_activation_distribution} displays the distribution of mFRR activations
 over the dataset period. The figure especially highlights the infrequent nature 
@@ -386,4 +407,4 @@ bidding zone from NUCS data.}
 
 \paragraph{Correlation Analysis}
 
-\paragraph{Lag Features/Information Availability}
+\paragraph{Information Availability}

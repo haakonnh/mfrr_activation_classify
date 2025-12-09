@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  8 DEC 2025 13:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  9 DEC 2025 14:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1158,7 +1158,7 @@ Package gensymb Info: Using \textmu for \micro on input line 11.
 
 \c@lstlisting=\count516
 (./title.tex
-<./Images/NTNU_logo.png, id=222, 426.393pt x 110.5731pt>
+<./Images/NTNU_logo.png, id=230, 426.393pt x 110.5731pt>
 File: ./Images/NTNU_logo.png Graphic file (type png)
 <use ./Images/NTNU_logo.png>
 Package pdftex.def Info: ./Images/NTNU_logo.png  used on input line 9.
@@ -1182,13 +1182,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout7 = `main.toc'.
 
  (c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.lof
+
+[2]
 Overfull \hbox (0.34828pt too wide) in paragraph at lines 9--9
  [][] [][][]\OT1/cmr/m/n/10 Cross-zonal flow util-iz-a-tions for the NO1 bid-ding zone cal-cu-lated as the ra-tio between 
  []
 
-
-
-[2])
+)
 \tf@lof=\write8
 \openout8 = `main.lof'.
 
@@ -1199,10 +1199,10 @@ Overfull \hbox (0.34828pt too wide) in paragraph at lines 9--9
 
 
 [3] (Sections/Introduction.tex
-<Images/dnv_electricity_supply_by_source.png, id=358, 551.81157pt x 417.05812pt>
+<Images/dnv_electricity_supply_by_source.png, id=372, 551.81157pt x 417.05812pt>
 File: Images/dnv_electricity_supply_by_source.png Graphic file (type png)
 <use Images/dnv_electricity_supply_by_source.png>
-Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on input line 14.
+Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on input line 23.
 (pdftex.def)             Requested size: 341.43436pt x 258.06425pt.
 
 
@@ -1210,16 +1210,16 @@ Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on in
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.55 
+l.57 
       [1 <./Images/dnv_electricity_supply_by_source.png>]) (Sections/Theory.tex
 
 [2]
-<Images/reserves_hierarchy_entsoe.png, id=375, 455.45157pt x 255.95625pt>
+<Images/reserves_hierarchy_entsoe.png, id=388, 455.45157pt x 255.95625pt>
 File: Images/reserves_hierarchy_entsoe.png Graphic file (type png)
 <use Images/reserves_hierarchy_entsoe.png>
 Package pdftex.def Info: Images/reserves_hierarchy_entsoe.png  used on input line 22.
 (pdftex.def)             Requested size: 341.43436pt x 191.88469pt.
-<Images/reserve_types_graph.png, id=380, 508.14844pt x 208.52907pt>
+<Images/reserve_types_graph.png, id=393, 508.14844pt x 208.52907pt>
 File: Images/reserve_types_graph.png Graphic file (type png)
 <use Images/reserve_types_graph.png>
 Package pdftex.def Info: Images/reserve_types_graph.png  used on input line 52.
@@ -1231,6 +1231,11 @@ Package pdftex.def Info: Images/reserve_types_graph.png  used on input line 52.
 [4 <./Images/reserve_types_graph.png>]) (Sections/LiteratureReview.tex
 
 [5]
+Overfull \hbox (5.14561pt too wide) in paragraph at lines 10--10
+[]\OT1/cmr/bx/n/12 LOOKING AT PRO-POSED AC-TIV-A-TION UN-CER-TAINTY VARI-
+ []
+
+
 
 [6]
 
@@ -1239,61 +1244,61 @@ Package pdftex.def Info: Images/reserve_types_graph.png  used on input line 52.
 [8]) (Sections/DataAndPreprocessing.tex
 
 [9]
-<Images/Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png, id=458, 1094.0875pt x 772.8875pt>
-File: Images/Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png Graphic file (type png)
-<use Images/Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png>
-Package pdftex.def Info: Images/Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png  used on input line 15.
-(pdftex.def)             Requested size: 426.79134pt x 301.49567pt.
+<Images/MethodologyDiagram.png, id=479, 2168.62946pt x 384.2355pt>
+File: Images/MethodologyDiagram.png Graphic file (type png)
+<use Images/MethodologyDiagram.png>
+Package pdftex.def Info: Images/MethodologyDiagram.png  used on input line 34.
+(pdftex.def)             Requested size: 426.79134pt x 75.61452pt.
 
 
-[10 <./Images/Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png>]
+[10 <./Images/MethodologyDiagram.png>]
 
 [11]
-<Images/resampling_viz.png, id=480, 1259.907pt x 231.0231pt>
+<Images/resampling_viz.png, id=503, 1259.907pt x 231.0231pt>
 File: Images/resampling_viz.png Graphic file (type png)
 <use Images/resampling_viz.png>
-Package pdftex.def Info: Images/resampling_viz.png  used on input line 162.
+Package pdftex.def Info: Images/resampling_viz.png  used on input line 182.
 (pdftex.def)             Requested size: 426.79134pt x 78.25774pt.
 
 
 [12 <./Images/resampling_viz.png>]
 
 [13]
-<Images/mfrr_distribution.png, id=499, 1040.688pt x 572.3784pt>
+<Images/mfrr_distribution.png, id=520, 1040.688pt x 572.3784pt>
 File: Images/mfrr_distribution.png Graphic file (type png)
 <use Images/mfrr_distribution.png>
-Package pdftex.def Info: Images/mfrr_distribution.png  used on input line 271.
+Package pdftex.def Info: Images/mfrr_distribution.png  used on input line 292.
 (pdftex.def)             Requested size: 426.79134pt x 234.7378pt.
-<Images/cross_zonal_flows_distribution_bar.png, id=501, 722.7pt x 361.35pt>
+<Images/cross_zonal_flows_distribution_bar.png, id=522, 722.7pt x 361.35pt>
 File: Images/cross_zonal_flows_distribution_bar.png Graphic file (type png)
 <use Images/cross_zonal_flows_distribution_bar.png>
-Package pdftex.def Info: Images/cross_zonal_flows_distribution_bar.png  used on input line 298.
+Package pdftex.def Info: Images/cross_zonal_flows_distribution_bar.png  used on input line 319.
 (pdftex.def)             Requested size: 426.79134pt x 213.39867pt.
 
 
 [14 <./Images/mfrr_distribution.png>]
-<Images/import_utilization.png, id=513, 722.7pt x 361.35pt>
+<Images/import_utilization.png, id=534, 722.7pt x 361.35pt>
 File: Images/import_utilization.png Graphic file (type png)
 <use Images/import_utilization.png>
-Package pdftex.def Info: Images/import_utilization.png  used on input line 319.
+Package pdftex.def Info: Images/import_utilization.png  used on input line 340.
 (pdftex.def)             Requested size: 209.1301pt x 104.56274pt.
-<Images/export_utilization.png, id=514, 722.7pt x 361.35pt>
+<Images/export_utilization.png, id=535, 722.7pt x 361.35pt>
 File: Images/export_utilization.png Graphic file (type png)
 <use Images/export_utilization.png>
-Package pdftex.def Info: Images/export_utilization.png  used on input line 326.
+Package pdftex.def Info: Images/export_utilization.png  used on input line 347.
 (pdftex.def)             Requested size: 209.1301pt x 104.56274pt.
 
 
 [15 <./Images/cross_zonal_flows_distribution_bar.png> <./Images/import_utilization.png> <./Images/export_utilization.png>]
-<Images/nucs_afrr_hourly_hist.png, id=526, 650.43pt x 289.08pt>
+<Images/nucs_afrr_hourly_hist.png, id=547, 650.43pt x 289.08pt>
 File: Images/nucs_afrr_hourly_hist.png Graphic file (type png)
 <use Images/nucs_afrr_hourly_hist.png>
-Package pdftex.def Info: Images/nucs_afrr_hourly_hist.png  used on input line 373.
+Package pdftex.def Info: Images/nucs_afrr_hourly_hist.png  used on input line 394.
 (pdftex.def)             Requested size: 426.79134pt x 189.69063pt.
-<Images/nucs_afrr_hourly_prices.png, id=527, 867.24pt x 289.08pt>
+<Images/nucs_afrr_hourly_prices.png, id=548, 867.24pt x 289.08pt>
 File: Images/nucs_afrr_hourly_prices.png Graphic file (type png)
 <use Images/nucs_afrr_hourly_prices.png>
-Package pdftex.def Info: Images/nucs_afrr_hourly_prices.png  used on input line 381.
+Package pdftex.def Info: Images/nucs_afrr_hourly_prices.png  used on input line 402.
 (pdftex.def)             Requested size: 426.79134pt x 142.26357pt.
 
 
@@ -1302,14 +1307,12 @@ Package pdftex.def Info: Images/nucs_afrr_hourly_prices.png  used on input line 
 [17]
 
 [18]
-
-[19]
-<Images/actual_wind_doesnt_impact_prediction.png, id=566, 1040.688pt x 572.3784pt>
+<Images/actual_wind_doesnt_impact_prediction.png, id=583, 1040.688pt x 572.3784pt>
 File: Images/actual_wind_doesnt_impact_prediction.png Graphic file (type png)
 <use Images/actual_wind_doesnt_impact_prediction.png>
 Package pdftex.def Info: Images/actual_wind_doesnt_impact_prediction.png  used on input line 195.
 (pdftex.def)             Requested size: 209.1301pt x 115.01514pt.
-<Images/wind_share_impact_activation.png, id=567, 1040.688pt x 572.3784pt>
+<Images/wind_share_impact_activation.png, id=584, 1040.688pt x 572.3784pt>
 File: Images/wind_share_impact_activation.png Graphic file (type png)
 <use Images/wind_share_impact_activation.png>
 Package pdftex.def Info: Images/wind_share_impact_activation.png  used on input line 202.
@@ -1321,76 +1324,91 @@ Underfull \hbox (badness 1152) in paragraph at lines 203--203
 
 
 
-[20]) (Sections/Evaluation.tex
+[19]) (Sections/Evaluation.tex
 
-[21 <./Images/actual_wind_doesnt_impact_prediction.png> <./Images/wind_share_impact_activation.png>]
+[20 <./Images/actual_wind_doesnt_impact_prediction.png> <./Images/wind_share_impact_activation.png>]
+<Images/ConfusionMatrix.png, id=600, 1105.731pt x 744.381pt>
+File: Images/ConfusionMatrix.png Graphic file (type png)
+<use Images/ConfusionMatrix.png>
+Package pdftex.def Info: Images/ConfusionMatrix.png  used on input line 71.
+(pdftex.def)             Requested size: 256.0774pt x 172.38528pt.
+
+
+[21 <./Images/ConfusionMatrix.png>]
 
 [22]
-
-[23]
-<Images/pr-curve.png, id=599, 499.3857pt x 395.3169pt>
+<Images/pr-curve.png, id=619, 499.3857pt x 395.3169pt>
 File: Images/pr-curve.png Graphic file (type png)
 <use Images/pr-curve.png>
-Package pdftex.def Info: Images/pr-curve.png  used on input line 168.
+Package pdftex.def Info: Images/pr-curve.png  used on input line 211.
 (pdftex.def)             Requested size: 341.43436pt x 270.28374pt.
 
 
-LaTeX Warning: Reference `sec:class_imbalance' on page 24 undefined on input line 178.
+[23]) (Sections/Results.tex
 
-
-Overfull \hbox (22.0169pt too wide) in paragraph at lines 206--209
- []\OT1/cmr/bx/n/10 Validation-based se-lec-tion of $\OML/cmm/m/it/10 $\OT1/cmr/bx/n/10 .[] \OT1/cmr/m/n/10 Let $\OMS/cmsy/m/n/10 A$ \OT1/cmr/m/n/10 be a fi-nite can-did-ate set (e.g., $\OMS/cmsy/m/n/10 A \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 25\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ;  \OT1/cmr/m/n/10 3\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OMS/cmsy/m/n/10 g$\OT1/cmr/m/n/10 ).
- []
-
-
-
-[24 <./Images/pr-curve.png>]) (Sections/Results.tex
-
-[25]
-<Images/2025-highf1_xt.png, id=619, 499.3857pt x 395.3169pt>
+[24 <./Images/pr-curve.png>]
+<Images/2025-highf1_xt.png, id=636, 499.3857pt x 395.3169pt>
 File: Images/2025-highf1_xt.png Graphic file (type png)
 <use Images/2025-highf1_xt.png>
-Package pdftex.def Info: Images/2025-highf1_xt.png  used on input line 55.
+Package pdftex.def Info: Images/2025-highf1_xt.png  used on input line 60.
 (pdftex.def)             Requested size: 341.43436pt x 270.28374pt.
-<Images/2025-highf1_xt_fi.png, id=621, 950.3505pt x 896.148pt>
+
+
+[25]
+<Images/2025-highf1_xt_fi.png, id=642, 950.3505pt x 896.148pt>
 File: Images/2025-highf1_xt_fi.png Graphic file (type png)
 <use Images/2025-highf1_xt_fi.png>
-Package pdftex.def Info: Images/2025-highf1_xt_fi.png  used on input line 88.
+Package pdftex.def Info: Images/2025-highf1_xt_fi.png  used on input line 93.
 (pdftex.def)             Requested size: 426.79134pt x 402.44241pt.
 
 
 [26 <./Images/2025-highf1_xt.png>]
 
 [27 <./Images/2025-highf1_xt_fi.png>]
-<Images/CatBoost_Tuned-first.png, id=634, 716.1957pt x 860.013pt>
+<Images/CatBoost_Tuned-first.png, id=655, 716.1957pt x 860.013pt>
 File: Images/CatBoost_Tuned-first.png Graphic file (type png)
 <use Images/CatBoost_Tuned-first.png>
-Package pdftex.def Info: Images/CatBoost_Tuned-first.png  used on input line 123.
+Package pdftex.def Info: Images/CatBoost_Tuned-first.png  used on input line 128.
 (pdftex.def)             Requested size: 341.43436pt x 409.99329pt.
-<Images/catboost_first_metrics.png, id=635, 173.89969pt x 226.59656pt>
+<Images/catboost_first_metrics.png, id=656, 173.89969pt x 226.59656pt>
 File: Images/catboost_first_metrics.png Graphic file (type png)
 <use Images/catboost_first_metrics.png>
-Package pdftex.def Info: Images/catboost_first_metrics.png  used on input line 134.
+Package pdftex.def Info: Images/catboost_first_metrics.png  used on input line 139.
 (pdftex.def)             Requested size: 341.43436pt x 444.95947pt.
 
 
 [28 <./Images/CatBoost_Tuned-first.png>]
-<Images/up-down-price-minus-da-catboost.png, id=641, 714.7503pt x 354.123pt>
+<Images/up-down-price-minus-da-catboost.png, id=662, 714.7503pt x 354.123pt>
 File: Images/up-down-price-minus-da-catboost.png Graphic file (type png)
 <use Images/up-down-price-minus-da-catboost.png>
-Package pdftex.def Info: Images/up-down-price-minus-da-catboost.png  used on input line 141.
+Package pdftex.def Info: Images/up-down-price-minus-da-catboost.png  used on input line 146.
 (pdftex.def)             Requested size: 341.43436pt x 169.16658pt.
 
 
 [29 <./Images/catboost_first_metrics.png> <./Images/up-down-price-minus-da-catboost.png>]
-<Images/confidence_thresholds_metrics_cat_short.png, id=649, 247.67531pt x 142.28156pt>
+<Images/confidence_thresholds_metrics_cat_short.png, id=670, 247.67531pt x 142.28156pt>
 File: Images/confidence_thresholds_metrics_cat_short.png Graphic file (type png)
 <use Images/confidence_thresholds_metrics_cat_short.png>
-Package pdftex.def Info: Images/confidence_thresholds_metrics_cat_short.png  used on input line 167.
+Package pdftex.def Info: Images/confidence_thresholds_metrics_cat_short.png  used on input line 172.
 (pdftex.def)             Requested size: 341.43436pt x 196.1577pt.
 )
 
 [30 <./Images/confidence_thresholds_metrics_cat_short.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+\OT1/cmr/m/n/10 stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--56
+[]\OT1/cmr/m/it/10 The Nor-dic power mar-ket in-tro-duces 15-minute bal-an-cing\OT1/cmr/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 3701) in paragraph at lines 56--56
+\OT1/cmr/m/n/10 https://www.volue.com/news/nordic-power-market-introduces-15min-balancing. Ac-cessed:
+ []
+
+
 Overfull \hbox (58.80038pt too wide) in paragraph at lines 56--56
 []\OT1/cmr/m/it/10 Energy Trans-ition Out-look Nor-way 2024\OT1/cmr/m/n/10 , https://www.norskindustri.no/siteassets/dokumenter/rapporter-
  []
@@ -1398,11 +1416,6 @@ Overfull \hbox (58.80038pt too wide) in paragraph at lines 56--56
 
 Underfull \hbox (badness 10000) in paragraph at lines 56--56
 \OT1/cmr/m/n/10 og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf. Ac-cessed:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--56
-\OT1/cmr/m/n/10 stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-
  []
 
 
@@ -1421,6 +1434,8 @@ Overfull \hbox (68.20012pt too wide) in paragraph at lines 56--56
  []
 
 
+
+[31]
 Underfull \hbox (badness 7907) in paragraph at lines 56--56
 []\OT1/cmr/m/it/10 Power Mar-ket Data\OT1/cmr/m/n/10 , https://www.nordpoolgroup.com/en/services/power-market-data-
  []
@@ -1451,8 +1466,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--56
  []
 
 
-
-[31]
 Underfull \hbox (badness 3758) in paragraph at lines 56--56
 []\OT1/cmr/m/it/10 Classification: Ac-cur-acy, re-call, pre-ci-sion, and re-lated met-rics | Ma-chine Learn-
  []
@@ -1469,28 +1482,24 @@ Underfull \hbox (badness 4819) in paragraph at lines 56--56
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 7816A5439A894A13308870C11673B1B7;8805.
+(rerunfilecheck)             Checksum: 161FB7F96638BACC29E75F54CFA2CB63;9249.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42390 strings out of 468081
- 870255 string characters out of 5435855
- 1687826 words of memory out of 5000000
- 70204 multiletter control sequences out of 15000+600000
+ 42438 strings out of 468081
+ 871931 string characters out of 5435855
+ 1689514 words of memory out of 5000000
+ 70249 multiletter control sequences out of 15000+600000
  637374 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,12n,121p,2963b,3418s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\haako\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (36 pages, 1771141 bytes).
+Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (36 pages, 2118331 bytes).
 PDF statistics:
- 781 PDF objects out of 1000 (max. 8388607)
- 177 named destinations out of 1000 (max. 500000)
- 550 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 806 PDF objects out of 1000 (max. 8388607)
+ 179 named destinations out of 1000 (max. 500000)
+ 571 words of extra memory for PDF output out of 10000 (max. 10000000)
 

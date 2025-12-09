@@ -497,7 +497,6 @@ INPUT .\Images\dnv_electricity_supply_by_source.png
 INPUT .\Images\dnv_electricity_supply_by_source.png
 INPUT .\Images\dnv_electricity_supply_by_source.png
 INPUT .\Images\dnv_electricity_supply_by_source.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT .\Sections\Theory.tex
 INPUT .\Sections\Theory.tex
 INPUT Sections\Theory.tex
@@ -518,6 +517,7 @@ INPUT .\Images\reserve_types_graph.png
 INPUT .\Images\reserve_types_graph.png
 INPUT .\Images\reserve_types_graph.png
 INPUT .\Images\reserve_types_graph.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT .\Sections\LiteratureReview.tex
 INPUT .\Sections\LiteratureReview.tex
 INPUT Sections\LiteratureReview.tex
@@ -530,13 +530,13 @@ INPUT Sections\DataAndPreprocessing.tex
 INPUT .\Sections\DataAndPreprocessing.tex
 INPUT .\Sections\DataAndPreprocessing.tex
 INPUT Sections\DataAndPreprocessing.tex
-INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
-INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
-INPUT Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
-INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
-INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
-INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
-INPUT .\Images\Business-processes-Cross-Functional-Flowcharts-Trading-process-Sample.png
+INPUT .\Images\MethodologyDiagram.png
+INPUT .\Images\MethodologyDiagram.png
+INPUT Images\MethodologyDiagram.png
+INPUT .\Images\MethodologyDiagram.png
+INPUT .\Images\MethodologyDiagram.png
+INPUT .\Images\MethodologyDiagram.png
+INPUT .\Images\MethodologyDiagram.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT .\Images\resampling_viz.png
 INPUT .\Images\resampling_viz.png
@@ -614,6 +614,13 @@ INPUT Sections\Evaluation.tex
 INPUT .\Sections\Evaluation.tex
 INPUT .\Sections\Evaluation.tex
 INPUT Sections\Evaluation.tex
+INPUT .\Images\ConfusionMatrix.png
+INPUT .\Images\ConfusionMatrix.png
+INPUT Images\ConfusionMatrix.png
+INPUT .\Images\ConfusionMatrix.png
+INPUT .\Images\ConfusionMatrix.png
+INPUT .\Images\ConfusionMatrix.png
+INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\pr-curve.png
 INPUT .\Images\pr-curve.png
 INPUT Images\pr-curve.png

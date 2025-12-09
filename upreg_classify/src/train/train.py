@@ -175,7 +175,7 @@ def train_and_evaluate(
     weight_factor_up: float = 1.0,
     weight_factor_down: float = 1.0,
     weight_factor_none: float = 1.0,
-    tune_up_bias: bool = False,
+    tune_up_bias: bool = True,
     num_bag_folds: int = 0,
     num_stack_levels: int = 0,
     min_up_volume: Optional[float] = None,

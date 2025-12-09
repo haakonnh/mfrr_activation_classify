@@ -49,7 +49,7 @@ from src.utils.dataprocessing_utils import resample_to_15min
 @dataclass
 class Config:
     # Default to the repo's raw data directory to match PreprocessConfig
-    data_dir: str = os.path.join('data', 'raw')
+    data_dir: str = os.path.join('..','data', 'raw')
     area: str = 'NO1'
     include_2024: bool = True
     drop_future: bool = True
@@ -291,7 +291,7 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
             reglag[both] = np.where(up_vol_lag[both] >= down_vol_lag[both], 1, -1)
         df[f'RegLag-{lag}'] = reglag
         # Also provide a categorical version for experiments
-        df[f'RegLagCat-{lag}'] = reglag.map({1: 'up', -1: 'down', 0: 'none'}).astype('category')
+        #df[f'RegLagCat-{lag}'] = reglag.map({1: 'up', -1: 'down', 0: 'none'}).astype('category')
 
     # Retain a single numeric up-volume lag for potential interactions/scale
     #df['Activation Volume-3'] = df['Activation Volume'].shift(3)

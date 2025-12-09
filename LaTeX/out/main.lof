@@ -9,11 +9,12 @@
 \contentsline {figure}{\numberline {8}{\ignorespaces Cross-zonal flow utilizations for the NO1 bidding zone calculated as the ratio between actual flow and NTC capacity.}}{15}{figure.caption.27}%
 \contentsline {figure}{\numberline {9}{\ignorespaces A histogram of hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.30}%
 \contentsline {figure}{\numberline {10}{\ignorespaces Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}}{16}{figure.caption.31}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Load and production data distributions.}}{21}{figure.caption.39}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Typical Precision-Recall Curve with F1-score maximization point indicated.}}{24}{figure.caption.46}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}}{26}{figure.caption.50}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}}{27}{figure.caption.52}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning.}}{28}{figure.caption.53}%
-\contentsline {figure}{\numberline {16}{\ignorespaces Performance metrics for CatBoost model on 2024-2025 dataset at different thresholds.}}{29}{figure.caption.54}%
-\contentsline {figure}{\numberline {17}{\ignorespaces Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}}{29}{figure.caption.55}%
-\contentsline {figure}{\numberline {18}{\ignorespaces Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds.}}{30}{figure.caption.56}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Load and production data distributions.}}{20}{figure.caption.39}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Example of a confusion matrix for a three-class classification problem.}}{21}{figure.caption.42}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Typical Precision-Recall Curve with F1-score maximization point indicated.}}{24}{figure.caption.49}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}}{26}{figure.caption.51}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}}{27}{figure.caption.53}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Feature importance for CatBoost model trained on 2024-2025 dataset after hyperparameter tuning.}}{28}{figure.caption.54}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Performance metrics for CatBoost model on 2024-2025 dataset at different thresholds.}}{29}{figure.caption.55}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Up/down price minus day-ahead price distribution for CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}}{29}{figure.caption.56}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Performance metrics for CatBoost model on 2025 March 4th dataset at different confidence thresholds.}}{30}{figure.caption.57}%

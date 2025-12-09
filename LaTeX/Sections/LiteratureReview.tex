@@ -6,6 +6,24 @@ balancing activation markets and the challenges they present. Then existing meth
 for handling these challenges are presented, before finally
 identifying specific research gaps that this study and future work can address.
 
+
+\subsection{LOOKING AT PROPOSED ACTIVATION UNCERTAINTY VARIANTS}
+
+\begin{itemize}
+    \item \textbf{Scenario-Based Activation Models}: Model uncertainty as scenarios.
+    Stochastic optimization. Håberg \& Doorman (2017) - reserve dimensioning, TSO
+    perspective \autocite{habergStochasticMixedInteger2017}.
+    \\ Chance-constrained, imbalance scenario simulations, reserve allocation and
+    dimensioning \autocite{khodadadiInvestigatingReserveDimensioning}.
+    \\ Looks at introducing mFRR capacity market participation for hydropower
+    as it was new at the time. Two-stage stochastic participation in day-ahead market,
+    mFRR capacity and energy. Uncertainty in prices modelled with scenarios
+    \autocite{khodadadiOptimalCoordinatedHydropower2021}.
+    \item \textbf{Activation Ratio or Expected Activation}:
+    
+
+\end{itemize}
+
 \subsection{mFRR Energy Activation Market Characteristics}
 Balancing markets are by nature unpredictable, as their primary function is to
 maintain system stability in the face of unforeseen imbalances between supply
@@ -18,8 +36,8 @@ activation is required, the up-regulation price is by design higher than the
 day-ahead market price, and vice versa for down-regulating activations 
 \autocite{klaeboeDayaheadMarketBidding2022}. These market
 characteristics make it lucrative for participants to predict activation events 
-accurately, as
-successful predictions can lead to significant financial gains. 
+accurately, as successful predictions can lead to significant financial gains. 
+
 
 In 2022, Klæboe et al. \autocite{klaeboeDayaheadMarketBidding2022} analyzed 
 day-ahead market bidding strategies for flexible generators
@@ -36,6 +54,7 @@ market, further increases in mFRR demand are to be expected. This suggests that
 predicting mFRR activations will become increasingly important for market participants
 seeking to optimize their market strategies.
 
+
 The mFRR energy activation market transitioned from an hourly to a 15-minute
 resolution as of 4th March 2025, an endeavor aimed at enhancing market efficiency
 and integrating renewable energy sources more effectively \autocite{Transition15minuteMarket}.
@@ -44,6 +63,7 @@ discrete time blocks. Thus, short-lived imbalances or, for instance, rapid ramps
 renewable generation could not be reflected optimally in activation decisions. moving
 to a 15-minute resolution reduces this discretization effect 
 \autocite{kallsetImprovingBalancingActivation2025}.
+
 
 A study by Kallset and Farahmand 
 found that increased resolution significantly reduces such structural imbalances and
@@ -54,6 +74,7 @@ shorteer time scales, making activation patterns more sensitive to rapid system 
 Consequently, the dynamics of the mFRR energy activation market have become more 
 granular and potentially more volatile, increasing the relevance, but also the difficulty,
 of short-term activation forecasting. 
+
 
 \subsection{Existing Approaches to Balancing Activation Market Forecasting}
 Forecasting in balancing markets has developed along two main methodological paths. 

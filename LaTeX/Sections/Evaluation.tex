@@ -19,6 +19,7 @@ recall, and F1-score. These metrics are defined as follows
     \item \textbf{F1-score}: The weighted average of Precision and Recall. It is
     calculated as:  
     \[ \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} \]   
+
 \end{itemize}
 
 While accuracy is a commonly used metric, it can be misleading in cases of
@@ -34,9 +35,47 @@ may lead to missed opportunities for market participation, while false positives
 costs or penalties. Therefore, a balanced consideration of these metrics is
 essential for developing an effective classification model. 
 
+\paragraph{Multiclass evaluation.} When the classification is no longer binary,
+but multiclass (three or more classes) which is the focus 
+of this project, evaluation metrics must be adapted. 
+Common approaches include macro-averaging, micro-averaging, and weighted
+averaging. The weighted-averaged F1-score is calculated by taking the mean of all 
+per-class F1-scores, weighted by their \textit{support}, i.e., the number of true 
+instances for each class. This approach is appropriate if the class distribution 
+is imbalanced, and it is desired to give more importance to the performance on the more
+frequent classes. This is not the case in this project, as minority classes are of
+great importance. Therefore, the macro-averaged F1-score is used, which treats all classes
+equally regardless of their frequency. Macro-averaged F1-scores are calculated by 
+computing the F1-score for each class independently and then taking the average of 
+these scores. Micro-averaging, which aggregates the contributions of all classes to 
+compute the average metric, is less commonly used for imbalanced datasets. 
+Micro-averaging is analogous to
+accuracy in binary classification, which is not suitable for this problem due to
+class imbalance \autocite{grandiniMetricsMultiClassClassification2020}.
+
+\paragraph{Confusion matrix.} The confusion matrix is a cross tabulation of 
+predicted versus actual class labels. It provides a breakdown of correct and incorrect
+predictions for each class, aligning correct predictions along the diagonal. What 
+stands out in a confusion matrix is not just the overall accuracy, but also
+the specific types of errors the model makes. For instance, in a three-class
+classification problem, the confusion matrix can reveal if the model tends to
+confuse certain classes more than others. 
+An example confusion matrix for a three-class classification problem is shown in
+figure \ref{fig:confusion-matrix}. In this example, the model performs well on the 
+'down' class and 'none' class, capturing most of the true instances while making few
+false predictions. The 'up' class has four correct predictions but also three 
+misclassifications as 'none' and one as 'down', indicating that the model struggles
+to differentiate the 'up' class from the others.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/ConfusionMatrix.png}
+    \caption{Example of a confusion matrix for a three-class classification problem.}
+    \label{fig:confusion-matrix}
+\end{figure}
 
 
-\paragraph{Precision-recall trade-off}.
+
+\paragraph{Precision-recall trade-off.}
 This project primarily focuses on maximizing the F1-score, as it
 balances precision and recall, providing a comprehensive measure of the
 model's performance in predicting mFRR activations. Accuracy is essentially 
@@ -122,8 +161,12 @@ Proper data splitting is crucial for evaluating the performance of machine learn
 In this study, the dataset is divided into training, validation, and test sets based on
 temporal order to prevent data leakage and ensure that the model is evaluated on
 unseen data. The training set is used to train the model, the validation set is used
-for hyperparameter tuning and model selection, and the test set is reserved for the final
-evaluation of the model's performance. \textbf{Explain more.}
+for internal hyperparameter tuning and model evaluation during development, while 
+the test set is reserved for the final evaluation of the model's performance.
+
+
+
+\textbf{Explain more.}
 
 \subsubsection{Model Selection}
 Many different models were considered and tested during the project. The main models
@@ -171,79 +214,43 @@ either precision or recall more heavily.
 \end{figure}
 
 \subsubsection{Decision-bias tuning}
-\textbf{PLATT SCALING}
-Simply adjusting the classification threshold to maximize F1-score is simple in a binary
-classification setting, but in a ternary classification setting, where there are three classes,
-such a straightforward approach is not possible. The 'up' class is, as discussed in 
-section \ref{sec:class_imbalance}, a heavily imbalanced class. Imbalanced classes are often
-more difficult for models to learn, as crucial information about the minority class is more
-sparse. After the switch from binary to ternary classification, it was observed that the model's
-performance on the 'up' class degraded significantly. To mitigate this, a decision-bias tuning
-approach was implemented. 
 
-Decision-bias tuning is very similar to adjusting classification thresholds, as both methodologies
-tune the model's decision-making process post-training. Decision-bias tuning specifically focuses on
-modifying the decision boundary for the 'up' class to improve its F1 score. 
-% --- Multiclass "up" decision-bias and validation-based tuning ---
+After extending the prediction task from binary (up vs.\ none) to ternary
+(up, down, none), the model performance on the ``up'' class dropped
+substantially. This was expected, as discussed in Section~\ref{sec:class_imbalance},
+because ``up'' activations are rare and therefore provide the model with far fewer
+examples to learn from. As a result, the model became overly conservative and
+almost always favoured predicting the majority classes.
 
-\paragraph{Class-specific decision bias for ``up''.}
-Given predicted class probabilities $p_c(x)$ for \\ $c \in \{\text{up}, \text{down}, \text{none}\}$,
-we adjust the score for the ``up'' class by a multiplicative factor $\alpha > 1$:
-\[
-  p'_{\text{up}}(x) \;=\; \alpha \, p_{\text{up}}(x), \qquad
-  p'_k(x) \;=\; p_k(x)\ \ \text{for}\ k \neq \text{up},
-\]
-and predict
-\[
-  \hat{y}(x) \;=\; \arg\max_{c} \; p'_c(x).
-\]
-For $\alpha > 1$, the effective decision threshold for predicting ``up'' is lowered:
-\[
-  p_{\text{up}}(x) \;\ge\; \max_{k \neq \text{up}} \frac{p_k(x)}{\alpha}.
-\]
+To address this issue, a simple post-processing method—here referred to as
+\emph{decision-bias tuning}—was applied. The idea is similar in spirit to
+adjusting the decision threshold in binary classification, but adapted to the
+three-class setting. Instead of changing the model itself, we gently shift its
+decision boundary so that it becomes more willing to predict the ``up'' class.
 
-\paragraph{Validation-based selection of $\alpha$.}
-Let $\mathcal{A}$ be a finite candidate set (e.g., $\mathcal{A} = \{1.0,\,1.25,\,1.5,\,2.0,\,3.0\}$).
-We select $\alpha$ by grid search on a validation set $\mathcal{D}_{\mathrm{val}}$ to maximize the
-$\mathrm{F1}$ score for the ``up'' class:
-\begin{enumerate}
-  \item For each $\alpha \in \mathcal{A}$:
-  \begin{enumerate}
-    \item Compute adjusted scores $p'(x;\alpha)$ by multiplying $p_{\text{up}}(x)$ by $\alpha$ and leaving other classes unchanged.
-    \item Predict $\hat{y}(x;\alpha) = \arg\max_{c} p'_c(x;\alpha)$ for $x \in \mathcal{D}_{\mathrm{val}}$.
-    \item Compute $\mathrm{F1}_{\text{up}}(\alpha)$ by treating ``up'' as positive and $\{\text{down}, \text{none}\}$ as negative.
-  \end{enumerate}
-  \item Choose
-  \[
-    \alpha^{*} \;\in\; \arg\max_{\alpha \in \mathcal{A}} \;\mathrm{F1}_{\text{up}}(\alpha).
-  \]
-  \item Use $\alpha^{*}$ at inference time to adjust $p_{\text{up}}(x)$ before the final $\arg\max$.
-\end{enumerate}
+The procedure is straightforward. After the model outputs its class
+probabilities, the predicted probability for the ``up'' class is multiplied by a
+bias factor (greater than one). This does not change the underlying model or its
+learned parameters; it only adjusts how the final class label is chosen. If the
+model was previously hesitating to predict ``up'' even when it assigned a
+moderate probability to it, this adjustment makes such predictions more likely.
 
-% --- Optional: Algorithm float (requires \usepackage[ruled,vlined]{algorithm2e}) ---
-% \begin{algorithm}[H]
-% \caption{Validation-based tuning of the ``up'' bias multiplier $\alpha$}
-% \KwIn{Validation data $\mathcal{D}_{\mathrm{val}}$, candidate set $\mathcal{A}$, class posteriors $p_c(x)$}
-% \KwOut{$\alpha^\*$}
-% $\text{bestF1} \leftarrow -\infty$, $\alpha^\* \leftarrow 1.0$\;
-% \ForEach{$\alpha \in \mathcal{A}$}{
-%   \ForEach{$x \in \mathcal{D}_{\mathrm{val}}$}{
-%     $p'_{\text{up}}(x) \leftarrow \alpha \cdot p_{\text{up}}(x)$; \quad $p'_k(x) \leftarrow p_k(x)$ for $k \neq \text{up}$\;
-%     $\hat{y}(x;\alpha) \leftarrow \arg\max_c p'_c(x)$\;
-%   }
-%   $\text{F1}_{\text{up}}(\alpha) \leftarrow \text{F1}(\{\hat{y}(x;\alpha)\}, \{y(x)\}; \text{up vs not-up})$\;
-%   \If{$\text{F1}_{\text{up}}(\alpha) > \text{bestF1}$}{
-%     $\text{bestF1} \leftarrow \text{F1}_{\text{up}}(\alpha)$; \quad $\alpha^\* \leftarrow \alpha$\;
-%   }
-% }
-% \Return{$\alpha^\*$}\;
-% \end{algorithm}
+The strength of the bias is selected using the validation dataset. Several
+candidate bias levels are tested, and for each of them we compute the resulting
+F1-score for the ``up'' class by keeping the other classes unchanged. The bias
+factor that gives the best validation performance is then used when making
+predictions on the test set. This tuning process helps correct the model’s
+natural tendency to favour the majority classes and provides a controlled way of
+improving recall and overall F1-score for the under-represented ``up'' class,
+without degrading the performance on the remaining classes more than necessary.
+
 
 \paragraph{Intuition and benefits.}
 This method effectively lowers the decision threshold for predicting the ``up'' class,
 making the model more inclined to predict ``up'' when there is uncertainty. This will
 improve recall for the ``up'' class, at the cost of precision. By selecting $\alpha$ based on
-F1 score, we ensure that the trade-off between precision and recall is optimized for practical
+F1-macro score, we ensure that the trade-off between precision and recall across
+all classes is optimized for practical
 performance. 
 
 \subsubsection{AutoGluon}
