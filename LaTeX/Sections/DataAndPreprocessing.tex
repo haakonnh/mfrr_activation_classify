@@ -206,74 +206,6 @@ merging. The final merged dataset contains all data aligned at a 15-minute resol
 ready for feature engineering and model training.
 
 
-\subsubsection{Time Restrictions}
-Short-term prediction is heavily reliant on the availability of recent data. 
-
-aFRR activation data is naturally not
-available at the target time $t+4$ and prediction time $t$ as these 
-activations has not yet occurred or finished. The 1-hour resolution is 
-problematic as it essentially causes the data to become available in clusters
-of four 15-minute intervals at a time. This causes inconsistencies in the 
-what specific lag features are available at different prediction times. For 
-instance, assume data becomes available immediately after the hour. Then, at
-time $t$ = 10:00, the last available aFRR activation data would be from
-09:00-10:00. This means that lag features for $t-1$, $t-2$, $t-3$, and $t-4$
-would be available. However, in the worst case, at a prediction time $t$ = 10:45
-, the last available aFRR activation data would still be from 09:00-10:00. This means
-that only lag features starting at $t-4$ would be available, while $t-1$, $t-2$,
-and $t-3$ would not. This inconsistency in available lag features complicates the
-model training and evaluation process. There are multiple ways to handle this
-issue:
-
-\begin{itemize}
-    \item \textbf{Option 1:} Only use lag features that are always available,
-    i.e., only use lag features starting from $t-4$ and further back. This is
-    the easiest option to implement but it sacrifices potentially valuable
-    information from more recent time steps.
-
-    \item \textbf{Option 2:} Create separate models for different prediction
-    times within the hour (e.g., one model for predictions at 00, 15, 30,
-    and 45 minutes past the hour). Each model would be trained with the
-    each with their own set of available lag features. This approach maximizes
-    the use of available data but requires maintaining multiple models. 
-    The more gathered datasets are of a 1-hour resolution, the more valuable
-    this approach becomes.
-
-    \item \textbf{Option 3:} Use imputation techniques to estimate the missing
-    lag features based on available data. This approach allows for a single
-    model to be used but introduces uncertainty due to the imputation process.
-    
-\end{itemize}
-
-\paragraph{Restrictions}\label{sec:restrictions}
-In an ideal world, a market participant would be able to choose to bid or
-not in real time. The mFRR activation market, however, is not ideal in
-this sense. Bids are accepted for time slots $t+4$ intervals into the
-future, i.e. one hour into the future. This greatly restricts market
-actors in terms of how fast they can act on recent information. In fact,
-at the time of bid closing for a time slot $t+4$, only mFRR activation
-data from $t-3$ and earlier is available. Thus there are seven 15-minute
-intervals of unavailable data. This data would be the most
-useful for the model, since activation data at time $t$ correlates with
-the system state and activations close to $t$.
-
-It would, for instance, be considerably easier to identify streaks of
-activations, as activations often occur in long contiguous sequences. In the real
-world scenario, data from $t-3$ and before is still useful, but can often be
-misleading and cannot be trusted in isolation. The dataset developed in
-this project investigates ways to provide the model with crucial context
-about the system's state of stress. The intuition is that data such as
-physical cross-zonal flows in and out of NO1 may correlate with NO1 mFRR
-activations. When many such features are combined, the model may develop
-complex relationships between them, enhancing its predictive performance.
-
-Most of the available and useful data are not available in real time. For
-instance, consumption and production data are often published with a delay of
-several hours. The model must therefore rely on features that are available
-in real time, or with minimal delay. Such features often take the form of
-forecasts, which are available ahead of time. Forecasts are inherently
-uncertain, but they still provide valuable information about the expected
-system state.
 
 
 \subsubsection{Exploratory Data Analysis}
@@ -354,6 +286,7 @@ whilst the other connections are primarily used for imports into NO1.
 \end{figure}
 
 \textbf{Production}
+May or may not include production data EDA here.
 \begin{table}[H]
 \centering
 \caption{Summary statistics for wind-related features (2024--2025, NO1)}

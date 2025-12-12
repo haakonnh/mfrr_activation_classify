@@ -524,6 +524,20 @@ INPUT Sections\LiteratureReview.tex
 INPUT .\Sections\LiteratureReview.tex
 INPUT .\Sections\LiteratureReview.tex
 INPUT Sections\LiteratureReview.tex
+INPUT .\Images\imbalance_scenarios_so.png
+INPUT .\Images\imbalance_scenarios_so.png
+INPUT Images\imbalance_scenarios_so.png
+INPUT .\Images\imbalance_scenarios_so.png
+INPUT .\Images\imbalance_scenarios_so.png
+INPUT .\Images\imbalance_scenarios_so.png
+INPUT .\Images\imbalance_scenarios_so.png
+INPUT .\Images\uncertainty_ranges.png
+INPUT .\Images\uncertainty_ranges.png
+INPUT Images\uncertainty_ranges.png
+INPUT .\Images\uncertainty_ranges.png
+INPUT .\Images\uncertainty_ranges.png
+INPUT .\Images\uncertainty_ranges.png
+INPUT .\Images\uncertainty_ranges.png
 INPUT .\Sections\DataAndPreprocessing.tex
 INPUT .\Sections\DataAndPreprocessing.tex
 INPUT Sections\DataAndPreprocessing.tex
@@ -594,6 +608,13 @@ INPUT Sections\FeatureEngineering.tex
 INPUT .\Sections\FeatureEngineering.tex
 INPUT .\Sections\FeatureEngineering.tex
 INPUT Sections\FeatureEngineering.tex
+INPUT .\Images\Persistence.png
+INPUT .\Images\Persistence.png
+INPUT Images\Persistence.png
+INPUT .\Images\Persistence.png
+INPUT .\Images\Persistence.png
+INPUT .\Images\Persistence.png
+INPUT .\Images\Persistence.png
 INPUT .\Images\actual_wind_doesnt_impact_prediction.png
 INPUT .\Images\actual_wind_doesnt_impact_prediction.png
 INPUT Images\actual_wind_doesnt_impact_prediction.png
@@ -708,8 +729,6 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmss10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmss10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb

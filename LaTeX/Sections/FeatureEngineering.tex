@@ -28,78 +28,100 @@ features' actual impact on performance. Feature selection will be subject to
 restrictions outlined in Section \ref{sec:restrictions} to ensure that only
 real-time available features are used. 
 
+\subsubsection{Time Restrictions and Data Availability}
+Short-term activation prediction is constrained by the limited availability of
+recent system data at prediction time. mFRR EAM bidding for a specific MTU closes 45
+minutes prior, so at time $t$ we can only act on predictions for the interval
+$t+4$ and later. This restriction causes a great amount of uncertainty. Even 
+the best approximation of the current system state is several 15-minute intervals old
+at the target delievery time. 
+
+Many data sources have reporting delays, meaning that the most recent data points
+are not yet published at prediction time. For example, mFRR EAM activation data is
+available with a delay of approximately one hour. This means that at time $t$, the
+most recent activation data available is from time $t-4$. However, since mFRR EAM 
+activations
+are known to be highly autocorrelated 
+(\autocite{backePredictionsPricesVolumes2023}\textbf{source or maybe not here?}), so 
+even delayed activation data can provide valuable information about current trends.
+
+
+\textbf{Time delay figure?}
+
+Additional challenges arise from data sources published at lower resolutions
+resolutions. For example, aFRR activation data is released hourly, causing new
+information to arrive in batches rather than continuously. Depending on the
+prediction time within the hour, some recent lagged values may not yet exist,
+leading to inconsistencies in which features are available in real time.
+
+Similar delays affect other system indicators such as consumption, production,
+and wind forecasts, many of which are published with reporting lags. As a
+consequence, the prediction task must rely primarily on features that are
+available at or before time $t$, including forecasts and lagged values that are
+consistently observable. These constraints shape both the feature engineering
+process and the achievable model performance, as the model cannot learn from
+information that would not be accessible to market participants in practice.
+
+
 \subsubsection{Lag features}
 A lag feature is a feature that represents the value of a variable at a
 previous time step. Lag features are commonly used in time series analysis to
 capture \textit{temporal} dependencies and trends in the data 
 \autocite{brownleeBasicFeatureEngineering2016}. By including lag
 features, the model can leverage historical information to make more informed
-predictions about future mFRR activations. For instance, if there was an
-upregulating activation in the previous time step, it may indicate a higher
-likelihood of another upregulating activation in the current time step.
+predictions about future mFRR activations. This becomes increasingly important
+when real-time data is limited, as lag features can provide context about recent
+system states and patterns.
+d
+\textbf{Lag feature figure?}
 
 \paragraph{Activation lag features}
 Activation lag features are the most important lag features for this problem,
 as they convey important information about recent temporal activation trends. 
 They are,
 however, restricted by the real-time limitations, so the model may only use
-activation lag features from $t-3$ and earlier for predicting activations at
+activation lag features from $t-4$ and earlier for predicting activations at
 time $t+4$. As a result, lag features for upregulating and downregulating
-activations are created for time steps $t-3$, $t-4$, $t-5$, ..., $t-9$. These
+activations are created for time steps $t-4$, $t-5$, $t-6$, ..., $t-9$. These
 features are useful by themselves, but they also serve as a basis for creating
 other features that capture activation trends more effectively.
 
-\paragraph{Persistency (streak length)}
-Let $t$ denote the reference time such that the model predicts activation at
-$t+4$. At bid close, only activation data up to and including $t-3$ are
-available. Define binary activation indicators $A^{\uparrow}(\cdot)$ and
-$A^{\downarrow}(\cdot)$ for up- and down-regulating activations, respectively.
-The up- and down-persistency features are the lengths of the most recent
-consecutive activation runs ending at $t-3$: \textbf{TODO: Consider only formulating
-persistency with words, as the mathematical expression is more complex
-than the concept.}
-\[
-  S^{\uparrow}(t) = \sum_{j=0}^{\infty} \prod_{i=0}^{j} A^{\uparrow}(t-3-i),\qquad
-  S^{\downarrow}(t) = \sum_{j=0}^{\infty} \prod_{i=0}^{j} A^{\downarrow}(t-3-i).
-\]
-Here, $j$ is the (zero-based) window length and $i$ is the offset index within
-that window. The product is $1$ only while all the last $j{+}1$ values are $1$,
-so when a $0$ is encountered, the product becomes $0$ for all larger $j$. Thus,
-the sum counts how many consecutive intervals back from $t-3$ remain all
-ones before the first zero. In words, $S^{\uparrow}(t)$ (resp. $S^{\downarrow}(t)$)
-counts how many consecutive up- (resp. down-) activations occurred immediately 
-before $t-3$. If there was no activation at $t-3$, the corresponding streak length
-is $0$.
+\paragraph{Persistence (activation streak length)}
+Lag features indicate what happened in the most recent intervals, but they do
+not express whether the system has been in a sustained activation phase. For the
+model to understand such trends, it would need to look at several lagged
+activation features simultaneously and infer whether there has been a streak of
+up- or down-activations. To capture this behaviour succinctly, a set of
+persistence features is included. These measure how long the latest sequence of
+up-, down-, or no-activations has lasted, based only on the activation data that
+are available at bid time.  The idea is straightforward: if down-activations
+occurred in several consecutive intervals leading up to and including $t-4$, the
+down-persistence value reflects the length of that streak, as visualized in
+figure \ref{fig:persistence_illustration}. The same applies for
+up-activations and no-activations. These persistence features aim to
+capture the tendency for mFRR activations to occur in clusters, as periods of
+system stress often lead to repeated activations. By condensing this pattern
+into a single value for each direction, the model is given a clearer
+representation of ongoing activation dynamics than lagged indicators alone can
+provide.
 
-\paragraph{Design choice: separate vs. signed.} When designing the persistency
-features, a choice had to be made between using two separate non-negative integer
-features or a single signed feature (e.g., $S^{\uparrow}(t)-S^{\downarrow}(t)$). 
-Separate features avoid conflating direction with magnitude and let the
-model learn asymmetric effects. This option may be easier for the model to interpret,
-as it provides a clearer distinction between up- and down-regulating activations.
-The signed variant is more compact, but it may introduce ambiguity in how the model
-interprets the values. It is, however, important to consider the possibility of 
-persistency overreliance. If the model relies too heavily on persistency features,
-it may overlook other important factors influencing activations. This could lead
-to suboptimal predictions, especially in scenarios where activation patterns change.
-Only having one persistency feature may reduce this risk, as persistency is
-encoded in a single column. Both options will be explored and evaluated during
-model development, and the pros and cons of each approach will be assessed based
-on empirical performance.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/Persistence.png}
+    \caption{Illustration of down persistence feature calculation based on lagged
+    activation features. Here, the down persistence at time $t$ is 2, as there have 
+    been down-activations in the two most recent intervals ($t-4$ and $t-5$),
+    before an interval with no activation at $t-6$.}
+    \label{fig:persistence_illustration}
+\end{figure}
 
-\paragraph{Importance.} Persistency features are perhaps the single most important 
-features in the dataset. They provide compact and direct information about recent 
-activation trends, making it easier for the model to identify activation streaks. As 
-activations often come in long contiguous runs, and even though there are real-time
-limitations, the persistency features still provide the model with valuable context.
-The longer the streak, the more likely it is that the activation trend will continue.
-In some cases, the model might be able to predict an activation solely based on
-a high persistency value, without needing to consider other features. 
+Persistence feature capture consecutive activation trends effectively, but
+they do have limitations. Singular lagged activation featurs are still useful 
+in the case of intermittent activations that do not form long streaks. Additionally,
+persistence features do not convey the magnitude of recent activations, only
+their occurrence. How all mFRR activation-related features are used in conjunction 
+will be subject to experimentation and analysis during model development.
 
-Much of the motivation behind this project is to develop models that can predict activations
-based on system state features rather than just relying on past activation trends.
-The reality is, however, that persistency features are extremely dominant, and
-they may overshadow the contributions of other features. 
 
 \subsubsection{Cross-zonal flow features}
 Cross-zonal flow features capture information about electricity flows between
@@ -213,3 +235,20 @@ with other features, as the model captures complex relationships between feature
 \subsubsection{Interaction features}
 Interaction features are created by combining two or more existing features
 to capture complex relationships that may influence mFRR activations.
+
+\subsubsection{Feature Correlation}
+\textbf{I put this here only to highlight that it might be appropriate to discuss
+the possibility that many of the included features correlate with eachother:
+eg. changes in cross-zonal flows may correlate with wind forecast errors etc., and
+of course the many activation features.}
+
+\textbf{Balancing vs reserve(activaiton vs capacity)}
+
+\textbf{Activation volumes mostly zero, so predicting volumes maybe not
+good to predict directly. Two stage.
+}
+
+\textbf{Demand side flexibility, dont care about price, marginal costs
+zero}
+
+First step towards regression.

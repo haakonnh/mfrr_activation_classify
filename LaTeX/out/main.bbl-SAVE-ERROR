@@ -60,8 +60,8 @@
       \strng{authornamehash}{aa40896ef78ad4b09b41f7dd7a598603}
       \strng{authorfullhash}{9cd6430d884447e110aae2206ac1fddd}
       \strng{authorfullhashraw}{9cd6430d884447e110aae2206ac1fddd}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{With the gradual replacement of synchronous generators by renewable energy sources, the power imbalance in the system is exacerbated by the fluctuations of renewable energy output. Simultaneously, traditional frequency regulation resources will become insufficient with the reduction of online capacity of thermal units. These trends both lead to a decrease in the performance of power system frequency regulation. The planning of power system generation, particularly frequency regulation resources, will significantly influence the future quality of frequency. This paper proposes a frequency-constrained generation planning method under a high-proportion renewable energy system. The performance of power system frequency regulation is analyzed based on the simulation of the load-frequency control dynamics, where both the frequency regulation from conventional generation and renewable energy are taken into consideration. Non-linear frequency constraints are extracted from the generated data set, and then embedded into the power system planning model by utilizing a sparse weighted oblique decision tree. The case study on HRP-38 system validates the effectiveness of the method. The influence of renewable energy frequency regulation on unit commitment is also investigated.}
@@ -74,42 +74,6 @@
       \range{pages}{12}
       \verb{doi}
       \verb 10.1109/TPWRS.2023.3302515
-      \endverb
-    \endentry
-    \entry{EnergyTransitionOutlook}{misc}{}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
-      \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
-      \field{journaltitle}{DNV}
-      \field{langid}{english}
-      \field{title}{Energy {{Transition Outlook Norway}} 2024}
-      \field{urlday}{3}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\NTZ7RFVL\energy-transition-norway-2024.html
-      \endverb
-    \endentry
-    \entry{ConfirmationMFRREAM2025}{misc}{}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
-      \field{labeltitlesource}{title}
-      \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
-      \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
-      \field{journaltitle}{Statnett}
-      \field{langid}{english}
-      \field{month}{10}
-      \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
-      \field{urlday}{22}
-      \field{urlmonth}{11}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\87VQEK5B\confirmation-of-mfrr-eam-go-live-march-4th-2025.html
       \endverb
     \endentry
     \entry{entso-eNoricBalancingPhilosophy2024}{misc}{}{}
@@ -129,8 +93,8 @@
       \strng{authornamehash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhashraw}{f7e45def0ca6a655fe5fe04f557fc749}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{langid}{english}
@@ -141,6 +105,56 @@
       \field{urlyear}{2025}
       \field{year}{2024}
       \field{urldateera}{ce}
+    \endentry
+    \entry{ConfirmationMFRREAM2025}{misc}{}{}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
+      \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
+      \field{journaltitle}{Statnett}
+      \field{langid}{english}
+      \field{month}{10}
+      \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
+      \field{urlday}{22}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\87VQEK5B\confirmation-of-mfrr-eam-go-live-march-4th-2025.html
+      \endverb
+    \endentry
+    \entry{NordicPowerMarket}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This presents significant opportunities for flexible market participants, while also heightening risks for those less adaptable. Are you ready?}
+      \field{howpublished}{https://www.volue.com/news/nordic-power-market-introduces-15min-balancing}
+      \field{journaltitle}{Volue}
+      \field{langid}{english}
+      \field{title}{The {{Nordic}} Power Market Introduces 15-Minute Balancing}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{EnergyTransitionOutlook}{misc}{}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
+      \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
+      \field{journaltitle}{DNV}
+      \field{langid}{english}
+      \field{title}{Energy {{Transition Outlook Norway}} 2024}
+      \field{urlday}{3}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\NTZ7RFVL\energy-transition-norway-2024.html
+      \endverb
     \endentry
     \entry{RaskeFrekvensreserverFFR2025}{misc}{}{}
       \field{sortinit}{9}
@@ -230,6 +244,140 @@
       \verb C:\Users\haako\Zotero\storage\HS6URIN4\Zhao - 2022 - Event Prediction in the Big Data Era A Systematic Survey.pdf
       \endverb
     \endentry
+    \entry{habergStochasticMixedInteger2017}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=05d1ca6ecf644d733dac94a2b649c28a}{%
+           family={H{å}berg},
+           familyi={H\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9f19613826e1a2c3848b7d5c09aa6ae7}{%
+           family={Doorman},
+           familyi={D\bibinitperiod},
+           given={Gerard},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{81cfb15e9f556d688a6467632986ec00}
+      \strng{fullhash}{81cfb15e9f556d688a6467632986ec00}
+      \strng{fullhashraw}{81cfb15e9f556d688a6467632986ec00}
+      \strng{bibnamehash}{81cfb15e9f556d688a6467632986ec00}
+      \strng{authorbibnamehash}{81cfb15e9f556d688a6467632986ec00}
+      \strng{authornamehash}{81cfb15e9f556d688a6467632986ec00}
+      \strng{authorfullhash}{81cfb15e9f556d688a6467632986ec00}
+      \strng{authorfullhashraw}{81cfb15e9f556d688a6467632986ec00}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In the activation market, the Transmission System Operator selects and activates balancing energy bids to cover the system imbalance. Growing use of intermittent energy sources increases uncertainty in system operation and new EU regulations, including a so-called Activation Optimization Function and new Standard Products for manual frequency restoration reserves (mFRR), will change the activation process significantly. However, commonly used price-based bid selection approaches are incapable of taking intertemporal constraints and uncertainty into account in the activation process. This paper presents a new optimization formulation, built on stochastic unit commitment principles, using imbalance forecast scenarios to propose bid activation schedules minimizing expected activation costs. Unlike earlier approaches, intertemporal characteristics of the proposed mFRR product are modeled in detail. The optimization procedure is implemented in a rolling horizon simulation and demonstrated using Norwegian imbalance and market data. Compared to a corresponding deterministic approach, the stochastic strategy significantly reduces activation costs.}
+      \field{booktitle}{2017 {{IEEE Manchester PowerTech}}}
+      \field{month}{6}
+      \field{title}{A Stochastic Mixed Integer Linear Programming Formulation for the Balancing Energy Activation Problem under Uncertainty}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/PTC.2017.7980980
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\KLJMV9U4\Håberg and Doorman - 2017 - A stochastic mixed integer linear programming formulation for the balancing energy activation proble.pdf
+      \endverb
+      \keyw{Europe,optimal scheduling,Optimal scheduling,power generation dispatch,power system modeling,Predictive models,Standards,stochastic processes,Stochastic processes,Uncertainty}
+    \endentry
+    \entry{khodadadiInvestigatingReserveDimensioning}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=a679466e550a0b3108ed920ab03e9d91}{%
+           family={Khodadadi},
+           familyi={K\bibinitperiod},
+           given={Abolfazl},
+           giveni={A\bibinitperiod}}}%
+        {{hash=cbc9ecec49049b39ef80947a355ec10a}{%
+           family={Nordström},
+           familyi={N\bibinitperiod},
+           given={Henrik},
+           giveni={H\bibinitperiod}}}%
+        {{hash=3b111de9bbd0dc7782c1a718e786a395}{%
+           family={Eriksson},
+           familyi={E\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=875673a38530281444931dfac16c62be}{%
+           family={Söder},
+           familyi={S\bibinitperiod},
+           given={Lennart},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{9096c1a5850dbfd6b6f2d388d8fdb322}
+      \strng{fullhash}{cda50e258b8d19e2410fef052afa86e9}
+      \strng{fullhashraw}{cda50e258b8d19e2410fef052afa86e9}
+      \strng{bibnamehash}{cda50e258b8d19e2410fef052afa86e9}
+      \strng{authorbibnamehash}{cda50e258b8d19e2410fef052afa86e9}
+      \strng{authornamehash}{9096c1a5850dbfd6b6f2d388d8fdb322}
+      \strng{authorfullhash}{cda50e258b8d19e2410fef052afa86e9}
+      \strng{authorfullhashraw}{cda50e258b8d19e2410fef052afa86e9}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{This paper investigates Frequency Restoration Reserve (FRR) allocation and dimensioning approaches in a multi-area context, focusing on the Nordic Load-Frequency Control (LFC) block. We aim to (i) provide a framework for multi-area FRR dimensioning ap}
+      \field{shorttitle}{Investigating {{Reserve Dimensioning Approaches}} for {{Multi-Area Reserve Capacity Markets}}}
+      \field{title}{Investigating {{Reserve Dimensioning Approaches}} for {{Multi-Area Reserve Capacity Markets}}: {{A Nordic Case Study}}}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\D6B9FR88\Khodadadi et al. - Investigating Reserve Dimensioning Approaches for Multi-Area Reserve Capacity Markets A Nordic Case.pdf
+      \endverb
+    \endentry
+    \entry{khodadadiOptimalCoordinatedHydropower2021}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=a679466e550a0b3108ed920ab03e9d91}{%
+           family={Khodadadi},
+           familyi={K\bibinitperiod},
+           given={Abolfazl},
+           giveni={A\bibinitperiod}}}%
+        {{hash=875673a38530281444931dfac16c62be}{%
+           family={Söder},
+           familyi={S\bibinitperiod},
+           given={Lennart},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{58e56ed04f66b900b8268d779f8fbfa1}
+      \strng{fullhash}{58e56ed04f66b900b8268d779f8fbfa1}
+      \strng{fullhashraw}{58e56ed04f66b900b8268d779f8fbfa1}
+      \strng{bibnamehash}{58e56ed04f66b900b8268d779f8fbfa1}
+      \strng{authorbibnamehash}{58e56ed04f66b900b8268d779f8fbfa1}
+      \strng{authornamehash}{58e56ed04f66b900b8268d779f8fbfa1}
+      \strng{authorfullhash}{58e56ed04f66b900b8268d779f8fbfa1}
+      \strng{authorfullhashraw}{58e56ed04f66b900b8268d779f8fbfa1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Hydropower plants (HPs) is an important source of flexibility in the electricity market and need operation and planning strategies to participate in various market setups. Due to lacking enough bids in the balancing market, manual frequency restoration reserve (mFRR) capacity market is going to be announced in the near future in Nordic electricity market. This paper develops a two-stage stochastic optimization framework that maximizes the revenue of the HP owners participating in mFRR capacity market beside their bidding in day-ahead and mFRR energy market. The impact of various mFRR capacity and future electricity prices have been considered. Furthermore, we show the influence of active time of mFFR energy bids on the revenue obtained from different markets. The results show a moderate increase in total revenue when participating in mFRR capacity market and considerable impacts from variable active time on the revenue obtained from each market setups.}
+      \field{booktitle}{2021 {{IEEE Madrid PowerTech}}}
+      \field{month}{6}
+      \field{title}{On the {{Optimal Coordinated Hydropower Bidding Strategy}} in {{Day-Ahead Energy}} and {{Manual Frequency Restoration Reserve Markets}}}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/PowerTech46648.2021.9494813
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\NPNDJUUY\Khodadadi and Söder - 2021 - On the Optimal Coordinated Hydropower Bidding Strategy in Day-Ahead Energy and Manual Frequency Rest.pdf
+      \endverb
+      \keyw{capacity market,coordinated bidding,Electricity supply industry,Hydroelectric power generation,Hydropower plant,manual frequency restoration reserve (mFRR),Manuals,Nordic electricity market,Optimization,Planning,Regulation,Time-frequency analysis}
+    \endentry
     \entry{klaeboeDayaheadMarketBidding2022}{article}{}{}
       \name{author}{4}{}{%
         {{hash=69d5ca56234164e8dbe2731e081de2d6}{%
@@ -288,8 +436,8 @@
       \endverb
     \endentry
     \entry{BalancingMarketOutlook}{article}{}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{langid}{english}
       \field{title}{Balancing Market Outlook 2030}
@@ -298,8 +446,8 @@
       \endverb
     \endentry
     \entry{Transition15minuteMarket}{misc}{}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
       \field{abstract}{Nord Pool runs the leading power market in Europe, offering day-ahead and intraday markets to our customers. Trade power with us in 16 countries and benefit from related services such as compliance, data and knowledge-sharing.}
       \field{howpublished}{https://www.nordpoolgroup.com/en/trading/transition-to-15-minute-market-time-unit-mtu/}
@@ -333,8 +481,8 @@
       \strng{authornamehash}{a0a0e5d65d0805d857934970b6f21b21}
       \strng{authorfullhash}{a0a0e5d65d0805d857934970b6f21b21}
       \strng{authorfullhashraw}{a0a0e5d65d0805d857934970b6f21b21}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The Nordic power system and the Core region in Europe are transitioning from an hourly to a 15 -minute time resolution in the day-ahead electricity market by 2025. This change aims to reduce structural imbalances caused by mismatches between discrete power schedules and continuously varying demand, which lead to inefficient reserve activation, frequency deviations, and increased balancing costs. In this paper, we employ a two-stage stochastic unit commitment model for market clearing and compare the results of the balancing stage with a continuous-time balancing approach. Additionally, we evaluate the impact of increasing time resolution and assess whether further granularity provides additional benefits. Our results show that higher time resolution and continuous modeling reduce the need for balancing reserves by better approximating real load variations. These findings provide valuable insights for system operators to improve power plant ramping strategies and reserve allocation, ultimately enhancing system stability and reducing operational costs in future power systems.}
@@ -555,8 +703,8 @@
       \strng{authornamehash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
       \strng{authorfullhash}{3dfe7406c9a0ba09fc3e7a0074d0afee}
       \strng{authorfullhashraw}{3dfe7406c9a0ba09fc3e7a0074d0afee}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{DiVA portal is a finding tool for research publications and student theses written at the following 50 universities and research institutions.}
@@ -588,8 +736,8 @@
       \strng{authornamehash}{871b0d75619b2c162493e0599c9af067}
       \strng{authorfullhash}{871b0d75619b2c162493e0599c9af067}
       \strng{authorfullhashraw}{871b0d75619b2c162493e0599c9af067}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This study investigates the use of Extreme Gradient Boosting (XGBoost), an ensemble-tree-based machine learning (ML) algorithm, for short-term forecasting of manual Frequency Restoration Reserve (mFRR) activation direction and imbalance prices in the SE2 price area of the Nordic electricity market. With growing electrification, a rising share of renewables and strain from the ongoing energy crisis, the ability to anticipate balancing needs has become both more critical and more complex. Despite its practical importance, this problem has been relatively underexplored in the academic literature. The objective of this study is to assess how ML can support Intraday (ID) decision-making and improve predictive capabilities. To achieve this, a two-stage forecasting framework was developed using XGBoost, with the first stage classifying the expected direction of mFRR activation (upregulated, downregulated or unregulated), and the second stage predicting the corresponding imbalance price. The models were trained on data collected between May 2022 and February 2025 and evaluated across multiple forecasting horizons. By systematically testing preprocessing techniques, data availability, model configurations and feature sets and validating assumptions through domain knowledge, this study makes valuable contributions to the field. The results demonstrate that creating a model with normalized transmission flows, including forecasting error features, and data from SE1, SE2, SE3 and NO4 yielded the best results. Forward filling for missing values, avoiding outlier removal, applying simple ordinal time encoding, and relying on Recursive Feature Elimination (RFE) for feature selection further improved performance. Leveraging a wide set of features and optimizing hyperparameters through Bayesian optimization, enhanced model performance. More specifically, the classification model achieved {$FF$}1{$mmmmmmmmmm$} scores of 0.805, 0.611 and 0.531 for one-, two- and three-hour ahead forecasts. While predictive performance declined at longer horizons, class-specific Area Under the Receiver Operating Characteristic (ROC) Curve (AUC) scores indicated that meaningful signals were retained up to five hours into the future and that prediction thresholds could be further optimized per class. With regards to the imbalance price model, one-hour forecasts yielded acceptable results. This model reached a Normalized Mean Absolute Error (NMAE) of 0.366 and a Coefficient of Determination ({$RR$}2) of 0.667 for the one-hour ahead forecast. Overall, the study concludes that XGBoost models, supported by rigorous data preprocessing, feature engineering, feature selection and hyperparameter optimization, can provide valuable short-term forecasts in the context of imbalance prediction.}
@@ -643,6 +791,35 @@
       \verb C:\Users\haako\Zotero\storage\DLZB5CD7\data.html
       \endverb
     \endentry
+    \entry{Transition15minuteMarketa}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Nord Pool runs the leading power market in Europe, offering day-ahead and intraday markets to our customers. Trade power with us in 16 countries and benefit from related services such as compliance, data and knowledge-sharing.}
+      \field{howpublished}{https://www.nordpoolgroup.com/en/trading/transition-to-15-minute-market-time-unit-mtu/}
+      \field{title}{Transition to 15-Minute {{Market Time Unit}} ({{MTU}})}
+      \field{urlday}{8}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\DRI5FEF9\transition-to-15-minute-market-time-unit-mtu.html
+      \endverb
+    \endentry
+    \entry{ClassImbalanceProblem}{misc}{}{}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{https://www.sciencedirect.com/topics/computer-science/class-imbalance-problem}
+      \field{title}{Class {{Imbalance Problem}} - an Overview |{} {{ScienceDirect Topics}}}
+      \field{urlday}{26}
+      \field{urlmonth}{11}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\5FKAUHBX\class-imbalance-problem.html
+      \endverb
+    \endentry
     \entry{liuFeatureSelectionKnowledge2012}{book}{}{}
       \name{author}{2}{}{%
         {{hash=a83f8cd28a9f36e43dd5d017cd7fc8f4}{%
@@ -667,8 +844,8 @@
       \strng{authornamehash}{e649e30e6a1d8d09b6de44946371b2da}
       \strng{authorfullhash}{e649e30e6a1d8d09b6de44946371b2da}
       \strng{authorfullhashraw}{e649e30e6a1d8d09b6de44946371b2da}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{As computer power grows and data collection technologies advance, a plethora of data is generated in almost every field where computers are used. The com puter generated data should be analyzed by computers; without the aid of computing technologies, it is certain that huge amounts of data collected will not ever be examined, let alone be used to our advantages. Even with today's advanced computer technologies (e. g. , machine learning and data mining sys tems), discovering knowledge from data can still be fiendishly hard due to the characteristics of the computer generated data. Taking its simplest form, raw data are represented in feature-values. The size of a dataset can be measUJ{$\cdot$}ed in two dimensions, number of features (N) and number of instances (P). Both Nand P can be enormously large. This enormity may cause serious problems to many data mining systems. Feature selection is one of the long existing methods that deal with these problems. Its objective is to select a minimal subset of features according to some reasonable criteria so that the original task can be achieved equally well, if not better. By choosing a minimal subset offeatures, irrelevant and redundant features are removed according to the criterion. When N is reduced, the data space shrinks and in a sense, the data set is now a better representative of the whole data population. If necessary, the reduction of N can also give rise to the reduction of P by eliminating duplicates.}
@@ -678,6 +855,66 @@
       \field{title}{Feature {{Selection}} for {{Knowledge Discovery}} and {{Data Mining}}}
       \field{year}{2012}
       \keyw{Computers / Artificial Intelligence / General,Computers / Database Administration & Management,Computers / Information Technology,Computers / Information Theory,Computers / Programming / Algorithms,Language Arts & Disciplines / Library & Information Science / General}
+    \endentry
+    \entry{backePredictionsPricesVolumes2023}{inproceedings}{}{}
+      \name{author}{5}{}{%
+        {{hash=e008ce26a81b4c78c0e1802285c9d506}{%
+           family={Backe},
+           familyi={B\bibinitperiod},
+           given={Stian},
+           giveni={S\bibinitperiod}}}%
+        {{hash=706c3cc5947c64a07a00740861dce1a4}{%
+           family={{Riemer-S{ø}rensen}},
+           familyi={R\bibinitperiod},
+           given={Signe},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e761e373119d0d3d4b0a0fb14f701a23}{%
+           family={Bordvik},
+           familyi={B\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=e9d29fe2764efed96189eb0497038bec}{%
+           family={Tiwari},
+           familyi={T\bibinitperiod},
+           given={Shweta},
+           giveni={S\bibinitperiod}}}%
+        {{hash=8878fb035a5df3d39076129d9f68cb06}{%
+           family={Andresen},
+           familyi={A\bibinitperiod},
+           given={Christian\bibnamedelima Andre},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{0d7818a3e72e4e58746c7e00b440c475}
+      \strng{fullhash}{911fc018ee68eae43c5b9fbff0d5816e}
+      \strng{fullhashraw}{911fc018ee68eae43c5b9fbff0d5816e}
+      \strng{bibnamehash}{911fc018ee68eae43c5b9fbff0d5816e}
+      \strng{authorbibnamehash}{911fc018ee68eae43c5b9fbff0d5816e}
+      \strng{authornamehash}{0d7818a3e72e4e58746c7e00b440c475}
+      \strng{authorfullhash}{911fc018ee68eae43c5b9fbff0d5816e}
+      \strng{authorfullhashraw}{911fc018ee68eae43c5b9fbff0d5816e}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The electricity market is driven by complicated interactions that are hard to model analytically. This is particularly the case for the balancing market, where imbalances between supply and demand after the day-ahead market clearance are balanced. The balancing market bridges the gap between the day-ahead market and the actual power system operations. Being able to predict the necessary balancing volumes and prices some hours in advance of the operational hour will allow power producers to plan their production and trading in a more optimal way. There exist large amounts of open data that could contain predictive information about the balancing market, including day-ahead market data and climatic data. However, the literature on forecasting volume and prices in the balancing market is sparse compared to the rich literature on forecasting for the day-ahead market. Neural networks are powerful functional approximators and well-suited to model the complex relationships in the power market. It may also be used to study the predictability of the balancing volumes and prices forward in time. In this paper, we develop a model based on long short-term memory (LSTM) recurrent neural networks to predict volumes and prices in the Nordic balancing market based on public accessible data. Results show that the LSTM model performs well when compared to the two baselines selected. However, the performance is not significantly better, which indicates that the market data does not hold significant predictive information.}
+      \field{booktitle}{2023 19th {{International Conference}} on the {{European Energy Market}} ({{EEM}})}
+      \field{issn}{2165-4093}
+      \field{month}{6}
+      \field{title}{Predictions of Prices and Volumes in the {{Nordic}} Balancing Markets for Electricity}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2023}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/EEM58374.2023.10161961
+      \endverb
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\QWRVSBIJ\Backe et al. - 2023 - Predictions of prices and volumes in the Nordic balancing markets for electricity.pdf
+      \endverb
+      \keyw{balancing market,forecasting,Forecasting,machine learning,power generation planning,Power markets,Power systems,Predictive models,Production,recurrent neural networks,Recurrent neural networks,Supply and demand}
     \endentry
     \entry{brownleeBasicFeatureEngineering2016}{misc}{}{}
       \name{author}{1}{}{%
@@ -695,8 +932,8 @@
       \strng{authornamehash}{915af163e2107106fced5dd3164d9a8e}
       \strng{authorfullhash}{915af163e2107106fced5dd3164d9a8e}
       \strng{authorfullhashraw}{915af163e2107106fced5dd3164d9a8e}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Time Series data must be re-framed as a supervised learning dataset before we can start using machine learning algorithms. There is no concept of input and output features in time series. Instead, we must choose the variable to be predicted and use feature engineering to construct all of the inputs that will be used to [\dots ]}
@@ -729,8 +966,8 @@
       \strng{authornamehash}{3929533b5989d9638348e0f5bc4398e5}
       \strng{authorfullhash}{3929533b5989d9638348e0f5bc4398e5}
       \strng{authorfullhashraw}{3929533b5989d9638348e0f5bc4398e5}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Cyclical encoding provides your model with the same information using significantly fewer features}
@@ -765,6 +1002,62 @@
       \verb{file}
       \verb C:\Users\haako\Zotero\storage\A8GV9YZP\accuracy-precision-recall.html
       \endverb
+    \endentry
+    \entry{grandiniMetricsMultiClassClassification2020}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=c8c1c1396f97f41792e7bb0d0577137a}{%
+           family={Grandini},
+           familyi={G\bibinitperiod},
+           given={Margherita},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cf2519048095256e237b859ec49c164f}{%
+           family={Bagli},
+           familyi={B\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod}}}%
+        {{hash=7bd1e08972a524bcff90700e59b881b0}{%
+           family={Visani},
+           familyi={V\bibinitperiod},
+           given={Giorgio},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{acbdc2c70dff8b7c63160f4e7597a26f}
+      \strng{fullhash}{6221934c6fbf1b66ad11c3f44ba13304}
+      \strng{fullhashraw}{6221934c6fbf1b66ad11c3f44ba13304}
+      \strng{bibnamehash}{6221934c6fbf1b66ad11c3f44ba13304}
+      \strng{authorbibnamehash}{6221934c6fbf1b66ad11c3f44ba13304}
+      \strng{authornamehash}{acbdc2c70dff8b7c63160f4e7597a26f}
+      \strng{authorfullhash}{6221934c6fbf1b66ad11c3f44ba13304}
+      \strng{authorfullhashraw}{6221934c6fbf1b66ad11c3f44ba13304}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{Classification tasks in machine learning involving more than two classes are known by the name of "multi-class classification". Performance indicators are very useful when the aim is to evaluate and compare different classification models or machine learning techniques. Many metrics come in handy to test the ability of a multi-class classifier. Those metrics turn out to be useful at different stage of the development process, e.g. comparing the performance of two different models or analysing the behaviour of the same model by tuning different parameters. In this white paper we review a list of the most promising multi-class metrics, we highlight their advantages and disadvantages and show their possible usages during the development of a classification model.}
+      \field{eprintclass}{stat}
+      \field{eprinttype}{arXiv}
+      \field{month}{8}
+      \field{number}{arXiv:2008.05756}
+      \field{shorttitle}{Metrics for {{Multi-Class Classification}}}
+      \field{title}{Metrics for {{Multi-Class Classification}}: An {{Overview}}}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2008.05756
+      \endverb
+      \verb{eprint}
+      \verb 2008.05756
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\haako\\Zotero\\storage\\JIL6HYH8\\Grandini et al. - 2020 - Metrics for Multi-Class Classification an Overview.pdf;C\:\\Users\\haako\\Zotero\\storage\\TNGF8AQM\\2008.html
+      \endverb
+      \keyw{Computer Science - Machine Learning,Statistics - Machine Learning}
     \endentry
     \entry{dorogushCatBoostGradientBoosting2018}{misc}{}{}
       \name{author}{3}{}{%
