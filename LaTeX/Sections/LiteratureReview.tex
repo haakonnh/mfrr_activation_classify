@@ -69,19 +69,6 @@ conditional on the discrete activation direction—upward, downward, or
 none—because volume magnitudes reflect both the sign and size of the underlying
 imbalance. When activation direction is not modelled explicitly, directional
 uncertainty becomes embedded in the volume forecast itself, contributing to
-higher forecast errors precisely around directional switches. This section
-reviews the main approaches to imbalance-volume forecasting, highlighting their
-strengths and limitations before discussing how the literature has attempted to
-treat activation-direction uncertainty explicitly or implicitly.
-
-Most forecasting studies in the balancing-market literature focus on predicting
-continuous system variables such as imbalance volumes or imbalance prices. These
-quantities are natural targets for system operators, who must minimize balancing
-costs and anticipate system stress. However, imbalance volumes are inherently
-conditional on the discrete activation direction—upward, downward, or
-none—because volume magnitudes reflect both the sign and size of the underlying
-imbalance. When activation direction is not modelled explicitly, directional
-uncertainty becomes embedded in the volume forecast itself, contributing to
 noisy forecasts. 
 
 To address this challenge, the literature proposes various modelling approaches
@@ -134,29 +121,29 @@ scales.
 
 While Edling and Azarang approach the problem from a TSO perspective, Backe et
 al. in the KoBas project \autocite{backePredictionsPricesVolumes2023} examine
-imbalance-volume forecasting from a market-participant-oriented standpoint. They
-also develop a LSTM model, including several Nordic bidding zones. Their
-analysis yields three relevant insights. First, balancing volumes are relatively
-auto-correlated: past imbalances contain predictive information about short-term
-imbalances. Second, they note that forecast accuracy could likely be improved by
-incorporating weather-related variables. Third, they stress that zero-regulation
-dominates the dataset, meaning the model must infer relatively infrequent
-activation events from a mostly inactive baseline. This is an inherent
-limitation when direction is not modelled explicitly.
+imbalance-volume forecasting from a market-participant-oriented standpoint.
+Additionally, they develop a LSTM model, including several Nordic bidding zones.
+Their analysis yields three relevant insights. First, balancing volumes are
+relatively auto-correlated: past imbalances contain predictive information about
+short-term imbalances. Second, they note that forecast accuracy could likely be
+improved by incorporating weather-related variables. Third, they stress that
+zero-regulation dominates the dataset, meaning the model must infer relatively
+infrequent activation events from a mostly inactive baseline. This is an
+inherent limitation when direction is not modelled explicitly.
 
-Plakas et al. \autocite{plakasPredictionImbalancePrices2025} also focus on
-market-participant perspectives, proposing a two-stage probabilistic framework
-for forecasting imbalance volumes and prices sequentially in the Greek balancing
-market. The first stage employs quantile regression to generate probabilistic
-forecasts of system imbalances. The second stage leverages the quantiles to
-predict imbalance prices. Plakas et al. find that system imbalance volumes are
-critical predictors of imbalance prices, underscoring the correlation between
-these two variables. By extending from imbalance volume point forecasts to price
-forecasting, Plakas et al. provide more actionable insights for market
-participants seeking to capitalize on opportunities in the balancing market.
-Their results show that imbalance volumes strongly influence imbalance prices,
-indicating that system-state indicators provide valuable information for bidders
-seeking to anticipate balancing-market outcomes.
+Plakas et al. \autocite{plakasPredictionImbalancePrices2025} focus on
+market-participant perspectives as well, proposing a two-stage probabilistic
+framework for forecasting imbalance volumes and prices sequentially in the Greek
+balancing market. The first stage employs quantile regression to generate
+probabilistic forecasts of system imbalances. The second stage leverages the
+quantiles to predict imbalance prices. Plakas et al. find that system imbalance
+volumes are critical predictors of imbalance prices, underscoring the
+correlation between these two variables. By extending from imbalance volume
+point forecasts to price forecasting, Plakas et al. provide more actionable
+insights for market participants seeking to capitalize on opportunities in the
+balancing market. Their results show that imbalance volumes strongly influence
+imbalance prices, indicating that system-state indicators provide valuable
+information for bidders seeking to anticipate balancing-market outcomes.
 
 In a similar vein, Bankefors (2024) applies linear machine-learning-based time
 series models (ARIMAX, SARIMAX) to predict signed mFRR activation volumes
@@ -212,11 +199,14 @@ imbalance forecasting models, which is, as outlined in this literature review, a
 challenging task in itself. All in all, scenario-based approaches seem to be
 useful only when highly accurate imbalance forecasts are available. Therefore,
 they do not directly address the challenge of modelling activation direction
-uncertainty. \textbf{Hmm, actually I do not really feel like this section fits
-here in the structure. I may have misunderstood what you mean by scenario-based
-approach, but it seems it is not really a modeling of activation uncertainty,
-activation direction is simply implied by the sign of imbalance scenarios which
-arise from imbalance forecasting. }
+uncertainty. 
+
+\textbf{Hmm, actually I do not really feel like this section fits here in the
+structure. I may have misunderstood what you mean by scenario-based approach,
+but it seems it is not really a modeling of activation uncertainty, activation
+direction is simply implied by the sign of imbalance scenarios which arise from
+imbalance forecasting. This example study probably is not relevant as it applies
+imbalance forecasts, instead of helping create them.}
 
 
 
@@ -343,7 +333,7 @@ that is used as inspiration for the model development in this study. It captures
 persistence in activation patterns, which are known to be important
 \autocite{backePredictionsPricesVolumes2023a}.
 
-\subsubsection{Regressor-Based Activation Models }
+\subsubsection{Activation Direction Classification Models}
 
 Whereas imbalance forecasting estimates continuous system imbalance magnitudes,
 activation-direction forecasting seeks to predict the discrete TSO decision to
@@ -387,100 +377,93 @@ The present study addresses these questions by evaluating multiple classifier
 families under strict participant-feasible information constraints and at the
 updated 15-minute resolution.
 
-\subsubsection{Literature Synthesis}
-The reviewed studies differ in their forecasting targets, methodological
-approaches, and intended users. Regression-based studies such as Singh et al.
-\autocite{singhNovelDynamicImbalance2025} and Edling \& Azarang
-\autocite{azarangMachineLearningBasedPrediction} focus on point forecasts of
-system imbalance volumes. These models primarily serve system operators and rely
-on data streams that are not always available to market participants. While such
-point forecasts provide valuable information about the magnitude of expected
-imbalances, they do not directly predict activation direction and do not
-quantify uncertainty.
+\subsection{Literature Synthesis}
 
-Probabilistic approaches, exemplified by Plakas et al.
-\autocite{plakasPredictionImbalancePrices2025}, attempt to characterize
-uncertainty explicitly by producing distributions over imbalance volumes and
-prices. This is more directly useful for market participants, but their
-framework till does not address the discrete up/down/none decision that governs
-mFRR activations.
 
-Only a small number of studies examine activation direction itself. Svedlindh
-and Yngveson \autocite{svedlindhPriceFormationForecasting2025} develop logistic
-regression and ANN classifiers, showing that activation direction is in
-principle predictable but heavily constrained by class imbalance and the use of
-capacity-market features that are not available in real-time to market
-participants. Porras \autocite{porrasShortTermForecastingMFRR} investigates
-activation direction using XGBoost at an hourly resolution in SE2, demonstrating
-the potential of machine-learning classification but leaving open questions
-regarding finer temporal resolution and the feasibility of predictions outside
-high-activation regions.
+Table \ref{tab:literature-overview} summarizes the studies reviewed in this
+literature review that are most relevant to balancing-market forecasting and
+uncertainty modelling. Literature is organized by authors, target variable,
+temporal resolution, and uncertainty-modelling approach. 
 
-Taken together, the literature indicates that imbalance information carries
-predictive value for prices and activations, but existing approaches either (i)
-focus on continuous volume forecasting, (ii) rely on non-participant data, or
-(iii) operate at coarser temporal scales than current Nordic market design.
-There remains limited evidence on whether activation direction can be predicted
-reliably using only features available to market participants and at the new
-15-minute resolution.
 
 \begin{table}[!htbp]
 \centering
-\caption{Comparison of key studies on balancing market forecasting}
-\label{tab:literature-comparison}
-\begin{adjustbox}{width=\textwidth}
-\begin{tabular}{l l c c}
+\caption{Overview of key forecasting and uncertainty-modelling studies}
+\label{tab:literature-overview}
+\begin{tabular}{p{3.2cm} p{3.2cm} p{1.8cm} p{4.0cm}}
 \toprule
-\textbf{Study} & \textbf{Target Variable} & \textbf{Resolution} & \textbf{Model
-Type} \\
+\textbf{Study} & \textbf{Target Variable} & \textbf{Resolution} &
+\textbf{Uncertainty Model} \\
 \midrule
-Singh et al.\ (2025) & Imbalance volume & 15-min & Regression \\
-Edling \& Azarang (2025) & mFRR activation volume & 1-hour & LSTM \\
-Plakas et al.\ (2025) & Imbalance volume + price & 1-hour & Probabilistic / QR
+Singh et al.\ (2025) & Imbalance volume & 15-min & Point forecast (regression)
 \\
-Svedlindh \& Yngveson (2025) & Activation direction & 1-hour & Logistic / ANN \\
-Porras (2025) & Activation direction + price & 1-hour & XGBoost \\
+\midrule
+Edling \& Azarang (2025) & mFRR activation volume & 1-hour & ML point forecast
+(LSTM) \\
+\midrule
+Backe et al.\ (KoBas) (2023) & Imbalance volume & 1-hour & Probabilistic LSTM;
+implicit direction \\
+\midrule
+Plakas et al.\ (2025) & Imbalance volume and price & 1-hour & Probabilistic
+(quantile regression) \\
+\midrule
+Bankefors (2024) & Signed activation volume & 1-hour & Linear ML time-series;
+implicit direction \\
+%\midrule
+%Håberg \& Doorman (2017) & Imbalance scenarios; reserve needs & 40-min horizon &
+%Scenario-based uncertainty (discrete imbalance trajectories) \\
+\midrule
+Irrmann (2023) & Direction and volumes & 1-hour & Expected activation ratios;
+sampled regulation states \\
+\midrule
+Papavasiliou et al.\ (2022) & Reserve sufficiency & Scenario-based & Chance
+constraints on imbalance scenarios \\
+\midrule
+Browell (2018) & System length (direction) & 1-hour & Probabilistic logistic
+model with risk constraints \\
+\midrule
+Pavić et al.\ (2023) & Reserve activation (RA ratio) & 30-min (FCR/aFRR) &
+Activation ranges / bounded uncertainty sets \\
+\midrule
+Klæboe et al.\ (2015) & Balancing state (up/down/none) & 1-hour & Markov
+transition probabilities (duration/hour-specific) \\
+\midrule
+Svedlindh \& Yngveson (2025) & Activation direction & 1-hour & Classification
+(logistic, ANN) \\
+\midrule
+Porras (2025) & Activation direction and price & 1-hour & Classification
+(XGBoost); sequential predictive model \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
-Table \ref{tab:literature-comparison} summarizes the key characteristics of the
-reviewed studies, reviewed studies, highlighting their differing targets,
-resolutions, and model types.
+
+\newpage
+\subsection{Research Gap}
+Despite notable progress and coverage of balancing-market forecasting,
+a couple of gaps emerge from the literature. The simplest observation is that
+most studies were conducted before the Nordic system's transition to 15-minute 
+mFRR MTU in March 2025. As discussed, this change alters the market dynamics 
+and activation patterns. While hourly forecasts remain relevant, it remains 
+unclear how well existing models perform at the higher resolution.
+
+The literature focuses predominantly on continuous imbalance volumes or prices 
+as target variables. These quantities are of great importance, but they 
+are conditonal on activation direction, which is not modelled explicitly in most
+studies. Results are therefore affected by directional uncertainty, making 
+predictions noisier. This study argues that explicit direction modelling is
+useful for market participants by itself, but also as a stepping stone towards
+improved volume and price forecasting. 
 
 
-\subsubsection{Research Gap}
-Despite notable progress in balancing-market forecasting, several gaps remain in
-the existing literature. Most existing studies focus on continuous imbalance or
-activation volume forecasting at an hourly resolution. While these approaches
-provide valuable insights for system operators, they do not address the discrete
-up/down/none activation decisions faced by market participants, especially under
-the newer 15-minute market design.
-
-Studies that do consider activation direction (Svedlindh \& Yngveson and Porras)
-do so at an hourly resolution. With the transition to 15-minute activation
-intervals, however, finer temporal patterns and short-lived imbalances may
-become more relevant. Investigating whether higher time resolution can improve
-prediction performance is therefore of interest.
-
-Geographically, relatively little work has focused on the Norwegian bidding
-zones. The reviewed studies investigate the Belgian and Greek systems (Singh et
-al. and Plakas et al.) or Swedish bidding zones (Edling \& Azarang, Svedlindh \&
-Yngveson, and Porras). Swedish bidding zones naturally share similarities with
-Norwegian zones, as both are part of the Nordic system. However, differences in
-generation mixes, cross-zonal flows, and local balancing tendencies may lead to
-distinct activation patterns.
-
-A further consideration is that few studies robustly address the data
+A further consideration is that not all studies robustly address the data
 availability constraints faced by market participants. Some studies incorporate
 TSO-only data, while others do not explicitly evaluate whether their chosen
-features would be accessible to market participants at decision time. As a
-result, the extent to which activation direction can be predicted under
-participant-feasible information constraints remains relatively open.
+features would be accessible to market participants at decision time. Porras'
+study \autocite{porrasShortTermForecastingMFRR}, for instance, predicts
+activation direction directly, but relies on not-yet-available features, likely
+inflating performance. This study emphasizes strict adherence to 
+participant-feasible information sets to ensure practical relevance.
 
-Taken together, these observations suggest the value of a systematic evaluation
-of activation-direction forecasting in the NO1 bidding zone, using features
-available to market participants and operating at the updated 15-minute
-resolution. This study contributes to this area by comparing a range of
-machine-learning models and assessing their performance under realistic data and
-operational constraints.
+This study aims to fill these gaps by systematically evaluating machine
+learning-based activation-direction forecasting in the NO1 bidding zone at
+15-minute resolution, using only features available to market participants. 

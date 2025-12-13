@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import json
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional
 
 from autogluon.tabular import TabularPredictor
 from sklearn.metrics import f1_score, accuracy_score, classification_report, confusion_matrix
@@ -47,12 +47,14 @@ def _tune_up_multiplier_obj(
     features: List[str],
     label: str,
     candidates: List[float] = [0.75, 0.9, 1, 1.1, 1.175, 1.25, 1.3, 1.375, 1.45, 1.5, 1.75, 2.0, 2.5, 3.0, 3.5, 4, 5.0],
-    optimize_for: str = 'macro',  # 'macro' | 'up'
+    optimize_for: str = 'up',  # 'macro' | 'up'
 ) -> tuple[float, Dict[str, float | str]]:
     """Grid-search a bias multiplier for 'up'. Optimizes for macro F1 by default.
 
     Returns (best_alpha, policy) where policy={'type': 'multiplier', 'up': alpha}.
     """
+    
+    optimize_for = 'up'
     if val_df is None or len(val_df) == 0:
         return 1.0, {}
     X = val_df[features]
@@ -94,7 +96,7 @@ def evaluate_and_report(
     importance_subsample: int,
     importance_top_n: int,
     tune_up_bias: bool = True,
-    tune_up_objective: str = 'macro',  # 'macro' or 'up'
+    tune_up_objective: str = 'up',  # 'macro' or 'up'
 ):
     """Run evaluation on val/test, save artifacts, compute feature importance."""
     # Persist dataset snapshot for notebooks

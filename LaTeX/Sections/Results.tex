@@ -1,37 +1,194 @@
 \section{Model Results}
-During the project, various models were trained on different dataset iterations
-as new data was added and features were engineered and refined. 
-Models were initially trained on data from 2025 only. This dataset 
-served as the starting point, excluding data from 2024 for simplicity and to establish 
-a baseline. Using a one-year dataset is inherently problematic due to the limited amount
-of data and the fact that the model can not learn from seasonal patterns. It is also
-likely that the model overfits to specific events in the year, which may not generalize
-well to other years. Later, data from 2024 was included to provide more training data
-and to allow the model to learn from seasonal variations. A two-year dataset is,
-however, still problematic, as it only captures two instances of seasonal patterns, 
-which is likely to not be representative of previous or coming years. Ideally, the
-dataset would span multiple years to capture a wider range of seasonal patterns and
-outliers, but this was not possible due to data availability constraints. 
+During the project's course, various models were developed and trained on
+differing datasets and feature sets. Much experimentation went into determining
+the best combination of factors to optimize practical performance and utility.
+Model iterations are evaluated based on practical metrics as well as comparisons
+to a naive baseline model. \textbf{Should naive model be mentioned earlier?}  This model
+serves as a benchmark, providing a reference point against which more complex
+models can be compared. 
 
-The problem started as a binary classification problem, where the model's task was to 
-predict whether an up-activation would occur in a given hour or not. However, as the 
-project progressed, it was expanded to also include the prediction of down-activations,
-making it a multi-class classification problem with three classes: up-activation,
-down-activation, and no activation. The results presented here touch on both the binary
-and multi-class classification problems, but focuses primarily on the multi-class
-problem, as it is the most comprehensive and relevant to the real-world application.
+Two dataset timeframes were primarily used for model training and evaluation:
+a post-March 4th 2025 dataset and a combined 2024-2025 dataset. The two-year 
+dataset provides more data for training, potentially improving model performance
+and generalization. However, it also introduces some inconsistencies due to
+changes in data resolution over time, and the March 4th 2025 mFRR market transition 
+\autocite{ConfirmationMFRREAM2025}. The shorter dataset avoids these issues but
+offers less data for training. Both datasets have their advantages and drawbacks,
+and during the project, models were trained and evaluated on both to assess their
+performance under different conditions. 
 
-\subsection{Naive Model}
-\textbf{Naive model predicts the same class for $t+4$ as $t-4$. Sadly, with current 
-models - this approach seems to be performing better or similarly to advanced models.
-40.63\%. 60.35\%, 63.59\% for up, down, no-activation respectively.}
 
+\subsection{Naive Model}\label{sec:naive-model-results}
+The naive model simply predicts that the activation state at time $t+4$ is the
+same as at time $t-4$, representing a strictly persistence-based approach. This
+approach is inspired by findings in literature discussed in Section
+\ref{sec:literature-review}, which highlight the auto-correlated nature of
+activation patterns \autocite{backePredictionsPricesVolumes2023}. Much of the 
+motivation for this project is to explore whether more sophisticated models
+can outperform auto-correlation-based baselines by capturing additional relevant
+information from various features.
+
+
+Table \ref{tab:naive_baseline} shows the classification report for the naive
+model on the post-March 4th 2025 dataset test split. The model performs well,
+with a F1-macro score of 0.55. One can directly infer from the metrics that, in
+the test split at least, 62\% of down-activations, 61\% of no-activations, and
+43\% of up-activations are persistent from $t-4$ to $t+4$. This does not
+guarantee that it is persistent between these two time steps, but it is a strong
+auto-correlation indicator. Similar persistence values were observed in the
+entire dataset with 66\%, 64\%, and 39\%, respectively. Down and no-activations
+are more persistent than up-activations, which makes up-activations even more
+challenging to predict. The "up" class is already the least frequent class, so
+the model has less data to learn from, and the lower persistence further
+complicates accurate predictions. 
+
+Interestingly, precision and recall are equal for all
+classes. This can also be seen in the confusion matrix in Figure
+\ref{fig:naive-model-confusion-matrix}, as it is close to being symmetric and
+respective rows and columns have similar sums. This phenomenon occurs because
+the confusion matrix basically represents a transition matrix for the activation
+states ($t-4$ to $t+4$). The symmetry reflects that, for instance, the number of
+none $\rightarrow$ up transitions is similar to up $\rightarrow$ none
+transitions over the dataset. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\hline
+Class & Precision & Recall & F1-score & Support \\
+\hline
+down         & 0.62 & 0.62 & 0.62 & 1961 \\
+none         & 0.61 & 0.61 & 0.61 & 2519 \\
+up           & 0.43 & 0.43 & 0.43 &  792 \\
+\hline
+accuracy     &      &      & 0.59 & 5272 \\
+macro avg    & 0.55 & 0.55 & 0.55 & 5272 \\
+weighted avg & 0.59 & 0.59 & 0.59 & 5272 \\
+\hline
+\end{tabular}
+\caption{Classification report for the naive last-observed-class baseline model.}
+\label{tab:naive_baseline}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/naive_model_confusion.png}
+    \caption{Confusion matrix (row-normalized) for naive model on post-March 4th 
+    2025 dataset.}
+    \label{fig:naive-model-confusion-matrix}
+\end{figure}
+
+
+\subsection{Machine Learning Model Results}
+Models were trained using the open-source AutoML framework AutoGluon-Tabular
+\autocite{ericksonAutoGluonTabularRobustAccurate2020}. Much of the appeal of
+AutoGluon lies in its method of ensembling multiple models and stacking them in
+multiple layers. Thus, individual models do not need to be considered in
+isolation, as the ensemble model often outperforms any single model. As a
+consequence, it is difficult to present results for individual model runs, as
+each iteration may consist of different features and model parameters. However,
+model performance remained relatively consistent across different runs, not
+improving drastically with new feature additions or model tuning. As a matter of
+fact, in the final model iterations, singular CatBoost models performed
+consistently on par with complex ensembles. Thus, since singular models are
+faster to train and evaluate, CatBoost models were used to explore various data
+and model configurations more extensively. Performance and evaluation of these
+models are presented in the following sections.
+
+\subsubsection{Model Performance}
+Table \ref{tab:catboost-val-test} and Figure
+\ref{fig:catboost-confusion-val-test} show a classifcation report and confusion
+matrices for a CatBoost model trained on the final featured post-March 4th 2025
+dataset. Although scores improved slightly during model development, test set
+F1-macro scores consistently remained around 0.5-0.6. Across all model
+iterations, F1-macro scores never deviated significantly from the naive baseline
+model. The model does manage to catch notably more down-activations than the
+naive model, with a recall of 0.69 compared to 0.62. However, up-activation
+F1-scores are lowered. This highlights the imbalance challenge, and the
+up-class's lower predictability. No model iteration managed to significantly
+outperform the naive baseline on up-activation predictions.
+
+
+\begin{table}[ht]
+\centering
+\caption{CatBoost performance on validation and test sets (classes: down, none, up).}
+\label{tab:catboost-val-test}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Split / Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
+\hline
+\multicolumn{5}{l}{\textbf{Validation}} \\
+down & 0.59 & 0.71 & 0.64 & 1873 \\
+none & 0.72 & 0.63 & 0.67 & 2653 \\
+up   & 0.48 & 0.45 & 0.46 & 746 \\
+\cmidrule(lr){1-5}
+accuracy    &       &       & 0.63 & 5272 \\
+macro avg   & 0.59  & 0.59  & 0.59 & 5272 \\
+weighted avg& 0.64  & 0.63  & 0.62 & 5272 \\
+\hline
+\multicolumn{5}{l}{\textbf{Test}} \\
+down & 0.62 & 0.69 & 0.65 & 1961 \\
+none & 0.62 & 0.62 & 0.62 & 2519 \\
+up   & 0.48 & 0.35 & 0.40 & 792 \\
+\cmidrule(lr){1-5}
+accuracy    &       &       & 0.61 & 5272 \\
+macro avg   & 0.57  & 0.55  & 0.56 & 5272 \\
+weighted avg& 0.60  & 0.61  & 0.60 & 5272 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/cat_confusion_val.png}
+        \caption{Validation set}
+        \label{fig:catboost-confusion-val}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/cat_confusion_test.png}
+        \caption{Test set}
+        \label{fig:catboost-confusion-test}
+    \end{subfigure}
+    \caption{Row-normalized confusion matrices for the CatBoost model on the
+    validation and test splits of the post-March 4th 2025 dataset.}
+    \label{fig:catboost-confusion-val-test}
+\end{figure}
+
+Although macro metrics indicate that the model performs only slightly better
+than the naive baseline, there is evidence suggesting that the model not only
+relies on persistence patterns. Precision and recall vary across classes, unlike
+the naive model. Higher recall and same precision for down-activations indicates
+that the model captures some down-activations that occur non-persistently, while
+maintaining precision. This is promising as it indicates that the dataset
+contain useful information beyond persistence patterns. Figure
+\ref{fig:catboost-prev-to-pred-confusion-matrix} shows a cross-tabulation of
+predicted classes at $t+4$ against actual classes at $t-4$, with accuracies for
+each entry in parantheses. This visualization essentially shows how many
+predictions the model makes based on persistence versus non-persistence, and how
+accurate these predictions are. Most predictions are indeed based on
+persistence, as indicated by the high values along the diagonal. However, there
+are cases where the model predicts a different class than the one observed at
+$t-4$. It is clear to see that the model struggles most with predicting
+up-activations, as many of its attempt to predict transitions from none/down to
+up fail (0.23 and 0.19 accuracy, respectively). However, the model manages to,
+for instance, catch transitions from down to none with 0.66 accuracy. This is
+promising, but it is clear that more work is needed to improve the model's
+ability to predict non-persistent activation events.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Images/cat_prev_to_pred.png}
+    \caption{Confusion matrix (row-normalized) for CatBoost model on post-March 4th
+    2025 dataset.}
+    \label{fig:catboost-prev-to-pred-confusion-matrix}
+\end{figure}
 
 
 \subsection{The 2025 Dataset}
-
-
-
 
 Depending on the 
 specific metrics used for evaluation, different models perform best. It was

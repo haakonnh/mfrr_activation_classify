@@ -16,9 +16,7 @@ Outputs:
   - Console prints: top clusters, VIF table head, permutation/shap top features
 """
 
-import os
 from pathlib import Path
-import json
 import warnings
 
 import numpy as np

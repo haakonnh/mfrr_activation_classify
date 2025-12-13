@@ -143,24 +143,26 @@ It is important that the models developed in this project are able to capture
 these kind of relationships as they are among the most valuable for a potential
 user of the models.
 
-\paragraph{Capacity-normalized cross-zonal flow.} Raw cross-zonal flow magnitudes are not 
-comparable across interconnections or over time because each line has different capacity 
-and the available transfer capacity (ATC) varies. The same
-absolute flow can be insignificant on a strong interconnection but critical on a 
-constrained one. To obtain a dimensionless, capacity-normalized measure of proximity 
-to operational limits—and to make features comparable across borders and time—
-flows are expressed as a ratio to the relevant directional ATC.
+\paragraph{Capacity-normalized cross-zonal flow.} Raw cross-zonal flow
+magnitudes are not comparable across interconnections or over time because each
+line has different capacity and the available transfer capacity (ATC) varies.
+The same absolute flow can be insignificant on a high-capacity interconnection
+but critical on a constrained one. To obtain a dimensionless,
+capacity-normalized measure of proximity to operational limits, and to make
+features comparable across borders and time, flows are expressed as a ratio to
+the relevant directional ATC.
 
-Let $F_i(t)$ be the \emph{signed} flow for interconnection $i$ at time $t$
-(positive into NO1, negative out of NO1). Let $ATC_i(t)\ge 0$ denote the
-available transfer capacity magnitude used for normalization (e.g., a symmetric
-ATC for interconnection $i$ at time $t$). The capacity-normalized ratio is then
+Let $F_i(t)$ be the flow on interconnection $i$ at time $t$, taken as positive
+when power flows into NO1 and negative when it flows out. Let $ATC_i(t)$ be the
+available transfer capacity for that interconnection at time $t$. The
+capacity-normalized flow is then
 \[
-  F_{\text{ratio}}^{i}(t) \,=\, \frac{F_i(t)}{ATC_i(t)}.
-\] 
-Hence
-$F_{\text{ratio}}^{i}(t)\in[-1,1]$ when flows are within limits, approaching $+1$
-as inflow nears the capacity and $-1$ as outflow nears the capacity.
+    F_{\text{ratio}}^{i}(t) = \frac{F_i(t)}{ATC_i(t)}.
+\]
+Values of $F_{\text{ratio}}^{i}(t)$ close to $1$ mean that the inflow is close
+to the capacity, values close to $-1$ mean that the outflow is close to the
+capacity, and values near $0$ mean that the net flow is small compared to the
+available capacity.
 
 
 \subsubsection{Temporal features}
@@ -193,7 +195,6 @@ which should correlate with mFRR activations. Similarly, the difference between 
 and mFRR prices may provide insights into the relative costs of balancing services, 
 which could influence activation decisions.
 
-\subsubsection{Load features}
 
 
 \subsubsection{Production features}
@@ -225,11 +226,19 @@ with other features, as the model captures complex relationships between feature
         \caption{Forecasted wind production plotted against mFRR activation distribution.}
         \label{fig:wind_share_to_activation}
     \end{subfigure}
-    \caption{Load and production data distributions.}
+    \caption{Production data distributions.}
     \label{fig:load_and_production_distributions}
 \end{figure}
 
-
+\subsubsection{Load features}
+Load features capture information about electricity consumption patterns.
+Absolute consumption magnitude for NO1 is included as a feature, but there are
+many ways to encode consumption in normalized or relative terms. For instance,
+consumption can be expressed as a ratio to forecasted consumption, to capture
+forecast errors. Consumption can also be expressed as a ratio to relevant
+historical consumption values. For the final feature set, a ratio between
+current consumption and the average consumption at the same hour throughout the
+dataset is used as a feature to capture deviations from typical patterns. 
 
 
 \subsubsection{Interaction features}

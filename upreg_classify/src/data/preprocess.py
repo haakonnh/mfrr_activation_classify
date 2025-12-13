@@ -37,7 +37,6 @@ from src.data.features import (
     attach_imports_and_residuals,
     attach_price_features,
     attach_intraday_hourly_features,
-    add_interactions,
     add_core_derived_features,
     add_ratioized_accepted_price_features,
 )
@@ -310,11 +309,10 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     # Drop raw volumes after constructing features to avoid accidental leakage as features
     df.drop(columns=['Activation Volume', 'Activated Down Volume'], inplace=True)
 
-    # Remove previous boolean lag columns if present to avoid duplication
+    # Remove previous boolean lag columns (assumed to exist if generated upstream)
     for lag in (3, 4, 5, 6, 7, 8, 9):
         for col in (f'Activated-{lag}', f'ActivatedDown-{lag}'):
-            if col in df.columns:
-                df.drop(columns=[col], inplace=True)
+            df.drop(columns=[col], inplace=True, errors='ignore')
     
 
     
@@ -505,36 +503,75 @@ def load_intraday_hourly_stats(data_dir: str, include_2024: bool, area: str) -> 
     id_hourly_df = id_hourly_df.shift(-4)
     return id_hourly_df
 
+
+def load_mfrr_capacity_data(data_dir: str) -> pd.DataFrame:
+    """Load directional mFRR capacity (contracted reserves) from NUCS hourly CSV.
+
+    Expects a file like
+        data/raw/capacity_market/nucs_mfrr_contracted_hourly_directional.csv
+
+    with columns:
+        ts, up_price, down_price, up_quantity, down_quantity
+
+    The data are hourly; we resample to 15-min and forward-fill, then
+    shift by -4 steps (1 hour) so that at time t we see capacity for
+    the next hour, consistent with other t+4 aligned features.
+    """
+    cap_path = os.path.join(data_dir, 'capacity_market', 'nucs_mfrr_contracted_hourly_directional.csv')
+   
+    cap_df = _read_csv(cap_path)
+
+    cap_df = cap_df.rename(columns={'ts': 'Time'})
+    cap_df['Time'] = pd.to_datetime(cap_df['Time'], format='%Y-%m-%d %H:%M:%S+00:00')
+    cap_df.set_index('Time', inplace=True)
+    cap_df.sort_index(inplace=True)
+    cap_df = cap_df[~cap_df.index.duplicated(keep='first')]
+
+    # Hourly -> 15-min, forward-fill within gaps
+    cap_df = cap_df.resample('15min').ffill()
+
+    # Align to decision time: show capacity one hour ahead at current index
+    cap_df = cap_df.shift(-4)
+
+    # Rename to model-facing feature names (assume expected directional columns exist)
+    cap_df.rename(columns={
+        'up_price': 'mFRR Cap Up Price',
+        'down_price': 'mFRR Cap Down Price',
+        'up_quantity': 'mFRR Cap Up Quantity',
+        'down_quantity': 'mFRR Cap Down Quantity',
+    }, inplace=True)
+
+    # Lag features for up/down quantities at t-1 to t-9 and their average
+    for lag in range(1, 10):
+        cap_df[f'mFRR Cap Up Quantity Lag-{lag}'] = cap_df['mFRR Cap Up Quantity'].shift(lag)
+        cap_df[f'mFRR Cap Down Quantity Lag-{lag}'] = cap_df['mFRR Cap Down Quantity'].shift(lag)
+        cap_df[f'mFRR Cap Quantity Lag-{lag}'] = (
+            cap_df[f'mFRR Cap Up Quantity Lag-{lag}']
+            + cap_df[f'mFRR Cap Down Quantity Lag-{lag}']
+        ) / 2
+
+    return cap_df
+
 def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame:
     afrr = os.path.join(data_dir, 'afrr', 'nucs_hourly_2024_2025_updown.csv')
     afrr_df = _read_csv(afrr)
     afrr_df.rename(columns={"ts": "Time"}, inplace=True)
     # its +00:00 time format
     afrr_df['Time'] = pd.to_datetime(afrr_df['Time'], format='%Y-%m-%d %H:%M:%S+00:00')
-    afrr_df.set_index('Time', inplace=True)
+    afrr_df.set_index('Time',  inplace=True)
     # Ensure strictly monotonic increasing index before resample
     afrr_df.sort_index(inplace=True)
     afrr_df = afrr_df[~afrr_df.index.duplicated(keep='first')].resample('15min').ffill()
     # Directional aFRR prices/volumes: up/down
-    # Clean zeros and interpolate separately for each side
-    for col in ['up_price', 'down_price']:
-        if col in afrr_df.columns:
-            afrr_df[col] = (
-                afrr_df[col]
-                .replace(0, np.nan)
-                .interpolate(method='time')
-                .ffill()
-                .bfill()
-            )
-    for col in ['up_quantity', 'down_quantity']:
-        if col in afrr_df.columns:
-            afrr_df[col] = (
-                afrr_df[col]
-                .replace(0, np.nan)
-                .interpolate(method='time')
-                .ffill()
-                .bfill()
-            )
+    # Clean zeros and interpolate separately for each side (assume columns exist)
+    for col in ['up_price', 'down_price', 'up_quantity', 'down_quantity']:
+        afrr_df[col] = (
+            afrr_df[col]
+            .replace(0, np.nan)
+            .interpolate(method='time')
+            .ffill()
+            .bfill()
+        )
 
     # Align to decision time: shift future aFRR state back by horizon (4*15min)
     afrr_df = afrr_df.shift(-4)
@@ -542,18 +579,13 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
     # Drop any legacy smoothing marker if present
     afrr_df.drop(columns=['_smoothed'], inplace=True, errors='ignore')
 
-    # Rename to model-facing feature names
-    rename_map = {}
-    if 'up_price' in afrr_df.columns:
-        rename_map['up_price'] = 'aFRR Up Price'
-    if 'down_price' in afrr_df.columns:
-        rename_map['down_price'] = 'aFRR Down Price'
-    if 'up_quantity' in afrr_df.columns:
-        rename_map['up_quantity'] = 'aFRR Up Quantity'
-    if 'down_quantity' in afrr_df.columns:
-        rename_map['down_quantity'] = 'aFRR Down Quantity'
-    if rename_map:
-        afrr_df.rename(columns=rename_map, inplace=True)
+    # Rename to model-facing feature names (assume expected directional columns exist)
+    afrr_df.rename(columns={
+        'up_price': 'aFRR Up Price',
+        'down_price': 'aFRR Down Price',
+        'up_quantity': 'aFRR Up Quantity',
+        'down_quantity': 'aFRR Down Quantity',
+    }, inplace=True)
     
     
     affr_act = os.path.join(data_dir, 'afrr', f'GUI_BALANCING_OFFERS_AND_RESERVES_202401010000-202501010000_{area}.csv')
@@ -640,10 +672,7 @@ def preprocess_all(cfg: Config | None = None,
     area = cfg.area
     # Flows and ratios
     physical_flow_df, df, connected_zones = load_and_prepare_flows(ddir, cfg.include_2024, area)
-    try:
-        print(f"Flow index range: {physical_flow_df.index.min()} -> {physical_flow_df.index.max()} (rows={len(physical_flow_df)})")
-    except Exception:
-        pass
+    print(f"Flow index range: {physical_flow_df.index.min()} -> {physical_flow_df.index.max()} (rows={len(physical_flow_df)})")
 
     # mFRR activations and lags/persistency
     df = attach_mfrr_features(df, ddir, cfg.include_2024,
@@ -655,17 +684,16 @@ def preprocess_all(cfg: Config | None = None,
 
     # Wind forecasts (t+4) and derived errors
     # TODO: ADD WIND FORECAST FOR NEW 2025 DATA
-    try:
-        wind_forecast_df = load_wind_forecasts(ddir, cfg.include_2024, area)
-        # Validate required columns exist
-        need_cols = [f'Generation - Wind Onshore [MW] Day Ahead/ BZN|{area}',
-                     f'Generation - Wind Onshore [MW] Intraday / BZN|{area}']
-        if all(c in wind_forecast_df.columns for c in need_cols):
-            df = attach_wind_features(df, wind_forecast_df, area)
-        else:
-            print('Skipping wind features: required columns missing for area', area)
-    except Exception as e:
-        print('Skipping wind features for area', area, 'due to error:', e)
+    wind_forecast_df = load_wind_forecasts(ddir, cfg.include_2024, area)
+    need_cols = [
+        f'Generation - Wind Onshore [MW] Day Ahead/ BZN|{area}',
+        f'Generation - Wind Onshore [MW] Intraday / BZN|{area}',
+    ]
+    # Assume required columns exist; fail fast if not
+    missing = [c for c in need_cols if c not in wind_forecast_df.columns]
+    if missing:
+        raise KeyError(f"Missing required wind forecast columns for area {area}: {missing}")
+    df = attach_wind_features(df, wind_forecast_df, area)
     
     # Consumption and production (t-4)
     consumption_df, production_df = load_consumption_production(ddir, cfg.include_2024, area)
@@ -684,10 +712,12 @@ def preprocess_all(cfg: Config | None = None,
     
     affr_df = load_afrr_data(ddir, cfg.include_2024, area)
     df = df.merge(affr_df, how='left', left_index=True, right_index=True)
-    try:
-        print(f"Final index range pre-dropna: {df.index.min()} -> {df.index.max()} (rows={len(df)})")
-    except Exception:
-        pass
+
+    # mFRR capacity market (contracted reserves, directional up/down)
+    cap_df = load_mfrr_capacity_data(ddir)
+    df = df.merge(cap_df, how='left', left_index=True, right_index=True)
+
+    print(f"Final index range pre-dropna: {df.index.min()} -> {df.index.max()} (rows={len(df)})")
     
     # Core engineered features (volatility, momentum, calendar, scarcity)
     df = add_core_derived_features(df)
@@ -712,6 +742,8 @@ def preprocess_all(cfg: Config | None = None,
     # print('Intraday prices shape:', id_df.shape)
     print('Intraday hourly stats shape:', id_hourly_df.shape)
     print('aFRR data shape:', affr_df.shape)
+    if 'cap_df' in locals():
+        print('mFRR capacity data shape:', cap_df.shape)
     print('flows shape:', physical_flow_df.shape)
     
 

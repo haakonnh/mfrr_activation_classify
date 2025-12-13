@@ -4,7 +4,7 @@ import os
 import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 import requests
@@ -163,19 +163,76 @@ def parse_nucs_points(xml_bytes: bytes) -> List[Dict[str, Any]]:
 
 
 def points_to_hourly(df_points: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate NUCS point-level DF to hourly.
+
+    If a ``flowDirection.direction`` column is present (A01/A02 for up/down),
+    we compute directional quantities and prices per hour:
+
+    - ``up_quantity`` / ``down_quantity``: sum of quantity per hour and direction
+    - ``up_price`` / ``down_price``: mean procurement_price per hour and direction
+
+    Fallback: if no flowDirection info is present, we return non-directional
+    columns ``procurement_price`` (mean) and ``quantity`` (sum).
+    """
     if df_points is None or df_points.empty:
         return pd.DataFrame(columns=['ts', 'procurement_price', 'quantity'])
-    hourly = (
-        df_points.dropna(subset=['ts'])
-                 .set_index('ts')
-                 .sort_index()
-                 .resample('1h')
-                 .agg(
-                     procurement_price=('procurement_price', 'mean'),
-                     quantity=('quantity', 'sum'),
-                 )
-                 .reset_index()
+
+    df = df_points.dropna(subset=['ts']).copy()
+    df['ts'] = pd.to_datetime(df['ts'])
+
+    if 'flowDirection.direction' not in df.columns:
+        hourly = (
+            df.set_index('ts')
+              .sort_index()
+              .resample('1h')
+              .agg(
+                  procurement_price=('procurement_price', 'mean'),
+                  quantity=('quantity', 'sum'),
+              )
+              .reset_index()
+        )
+        return hourly
+
+    # Directional up/down aggregation based on flowDirection.direction (A01/A02)
+    dir_map = {
+        'A01': 'up',
+        'A02': 'down',
+    }
+    df['dir'] = df['flowDirection.direction'].map(dir_map)
+
+    # First, aggregate per hour and direction
+    hourly_dir = (
+        df.dropna(subset=['dir'])
+          .set_index('ts')
+          .sort_index()
+          .groupby('dir')
+          .resample('1h')
+          .agg(
+              price=('procurement_price', 'mean'),
+              quantity=('quantity', 'sum'),
+          )
+          .reset_index()
     )
+
+    # Pivot to wide format with separate up/down columns
+    price_wide = hourly_dir.pivot(index='ts', columns='dir', values='price')
+    qty_wide = hourly_dir.pivot(index='ts', columns='dir', values='quantity')
+
+    # Ensure columns exist even if one direction is missing in some windows
+    for col in ['up', 'down']:
+        if col not in price_wide.columns:
+            price_wide[col] = pd.NA
+        if col not in qty_wide.columns:
+            qty_wide[col] = 0.0
+
+    hourly = pd.DataFrame({
+        'ts': price_wide.index,
+        'up_price': price_wide['up'],
+        'down_price': price_wide['down'],
+        'up_quantity': qty_wide['up'],
+        'down_quantity': qty_wide['down'],
+    }).reset_index(drop=True)
+
     return hourly
 
 

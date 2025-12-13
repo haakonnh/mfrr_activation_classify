@@ -1259,8 +1259,8 @@
       \endverb
     \endentry
     \entry{ClassImbalanceProblem}{misc}{}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.sciencedirect.com/topics/computer-science/class-imbalance-problem}
       \field{title}{Class {{Imbalance Problem}} - an Overview |{} {{ScienceDirect Topics}}}
@@ -1296,8 +1296,8 @@
       \strng{authornamehash}{e649e30e6a1d8d09b6de44946371b2da}
       \strng{authorfullhash}{e649e30e6a1d8d09b6de44946371b2da}
       \strng{authorfullhashraw}{e649e30e6a1d8d09b6de44946371b2da}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{As computer power grows and data collection technologies advance, a plethora of data is generated in almost every field where computers are used. The com puter generated data should be analyzed by computers; without the aid of computing technologies, it is certain that huge amounts of data collected will not ever be examined, let alone be used to our advantages. Even with today's advanced computer technologies (e. g. , machine learning and data mining sys tems), discovering knowledge from data can still be fiendishly hard due to the characteristics of the computer generated data. Taking its simplest form, raw data are represented in feature-values. The size of a dataset can be measUJ{$\cdot$}ed in two dimensions, number of features (N) and number of instances (P). Both Nand P can be enormously large. This enormity may cause serious problems to many data mining systems. Feature selection is one of the long existing methods that deal with these problems. Its objective is to select a minimal subset of features according to some reasonable criteria so that the original task can be achieved equally well, if not better. By choosing a minimal subset offeatures, irrelevant and redundant features are removed according to the criterion. When N is reduced, the data space shrinks and in a sense, the data set is now a better representative of the whole data population. If necessary, the reduction of N can also give rise to the reduction of P by eliminating duplicates.}
@@ -1324,8 +1324,8 @@
       \strng{authornamehash}{915af163e2107106fced5dd3164d9a8e}
       \strng{authorfullhash}{915af163e2107106fced5dd3164d9a8e}
       \strng{authorfullhashraw}{915af163e2107106fced5dd3164d9a8e}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Time Series data must be re-framed as a supervised learning dataset before we can start using machine learning algorithms. There is no concept of input and output features in time series. Instead, we must choose the variable to be predicted and use feature engineering to construct all of the inputs that will be used to [\dots ]}
@@ -1506,6 +1506,82 @@
       \verb C\:\\Users\\haako\\Zotero\\storage\\YJMN57TB\\Dorogush et al. - 2018 - CatBoost gradient boosting with categorical features support.pdf;C\:\\Users\\haako\\Zotero\\storage\\S2QZQDPE\\1810.html
       \endverb
       \keyw{Computer Science - Machine Learning,Computer Science - Mathematical Software,Statistics - Machine Learning}
+    \endentry
+    \entry{ericksonAutoGluonTabularRobustAccurate2020}{misc}{}{}
+      \name{author}{7}{}{%
+        {{hash=01d1b497cd1ee8b330a3c93801a05585}{%
+           family={Erickson},
+           familyi={E\bibinitperiod},
+           given={Nick},
+           giveni={N\bibinitperiod}}}%
+        {{hash=18bfb87c822518f97f37f8c7feab27a9}{%
+           family={Mueller},
+           familyi={M\bibinitperiod},
+           given={Jonas},
+           giveni={J\bibinitperiod}}}%
+        {{hash=84203ebb02bb74eefca0b6f3f002800e}{%
+           family={Shirkov},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+        {{hash=df428416bb33b1ea50cc8131fd7dd043}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Hang},
+           giveni={H\bibinitperiod}}}%
+        {{hash=5cd0df676825fac12deb6f6daff0bc40}{%
+           family={Larroy},
+           familyi={L\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=c4a02f87e51fc72ab3f841de1a3982a7}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Mu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1817acab40d9caaac71e1597049b7f5e}{%
+           family={Smola},
+           familyi={S\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{ce5f1345d467c3dd5ef1698e232a1084}
+      \strng{fullhash}{281d94d07450d40645483f39c2973326}
+      \strng{fullhashraw}{281d94d07450d40645483f39c2973326}
+      \strng{bibnamehash}{ce5f1345d467c3dd5ef1698e232a1084}
+      \strng{authorbibnamehash}{ce5f1345d467c3dd5ef1698e232a1084}
+      \strng{authornamehash}{ce5f1345d467c3dd5ef1698e232a1084}
+      \strng{authorfullhash}{281d94d07450d40645483f39c2973326}
+      \strng{authorfullhashraw}{281d94d07450d40645483f39c2973326}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{abstract}{We introduce AutoGluon-Tabular, an open-source AutoML framework that requires only a single line of Python to train highly accurate machine learning models on an unprocessed tabular dataset such as a CSV file. Unlike existing AutoML frameworks that primarily focus on model/hyperparameter selection, AutoGluon-Tabular succeeds by ensembling multiple models and stacking them in multiple layers. Experiments reveal that our multi-layer combination of many models offers better use of allocated training time than seeking out the best. A second contribution is an extensive evaluation of public and commercial AutoML platforms including TPOT, H2O, AutoWEKA, auto-sklearn, AutoGluon, and Google AutoML Tables. Tests on a suite of 50 classification and regression tasks from Kaggle and the OpenML AutoML Benchmark reveal that AutoGluon is faster, more robust, and much more accurate. We find that AutoGluon often even outperforms the best-in-hindsight combination of all of its competitors. In two popular Kaggle competitions, AutoGluon beat 99\% of the participating data scientists after merely 4h of training on the raw data.}
+      \field{eprintclass}{stat}
+      \field{eprinttype}{arXiv}
+      \field{month}{3}
+      \field{number}{arXiv:2003.06505}
+      \field{shorttitle}{{{AutoGluon-Tabular}}}
+      \field{title}{{{AutoGluon-Tabular}}: {{Robust}} and {{Accurate AutoML}} for {{Structured Data}}}
+      \field{urlday}{13}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \verb{doi}
+      \verb 10.48550/arXiv.2003.06505
+      \endverb
+      \verb{eprint}
+      \verb 2003.06505
+      \endverb
+      \verb{file}
+      \verb C\:\\Users\\haako\\Zotero\\storage\\WHR68NI5\\Erickson et al. - 2020 - AutoGluon-Tabular Robust and Accurate AutoML for Structured Data.pdf;C\:\\Users\\haako\\Zotero\\storage\\54B5Y4RP\\2003.html
+      \endverb
+      \keyw{Computer Science - Machine Learning,Statistics - Machine Learning}
     \endentry
   \enddatalist
 \endrefsection

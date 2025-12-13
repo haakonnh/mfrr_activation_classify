@@ -18,12 +18,10 @@ import os
 import sys
 
 import json
-from typing import Tuple, List, Dict, Optional
+from typing import List, Optional
 
 import numpy as np
 import pandas as pd
-from sklearn.metrics import classification_report, confusion_matrix, f1_score, accuracy_score
-from sklearn.utils.class_weight import compute_class_weight
 
 # Import of project modules regardless of current working dir
 THIS_DIR = os.path.dirname(__file__)
@@ -53,28 +51,6 @@ def _default_output_dir(task: str) -> str:
 # training utilities
 ###############################################################################
 
-def compute_sample_weights(
-    train_data: pd.DataFrame,
-    label: str,
-    class_weight_factors: Optional[Dict[str, float]] = None,
-) -> pd.Series | None:
-    """Balanced per-row sample weights as a pandas Series (or None on failure).
-
-    If class_weight_factors is provided (e.g., {'up': 1.5, 'down': 1.0, 'none': 0.7}),
-    the balanced weights are multiplied per-class by these factors to emphasize
-    or de-emphasize specific classes.
-    """
-    classes = np.array(sorted(train_data[label].unique().tolist()))
-    weights = compute_class_weight(class_weight='balanced', classes=classes, y=train_data[label].values)
-    w_map = {cls: float(w) for cls, w in zip(classes, weights)}
-    if class_weight_factors:
-        for cls, factor in class_weight_factors.items():
-            # Only apply if class present in training set
-            if cls in w_map and factor is not None:
-                w_map[cls] *= float(factor)
-    return train_data[label].map(w_map).astype(float)
-
-
 def fit_predictor(
     train_df: pd.DataFrame,
     val_df: pd.DataFrame,
@@ -86,7 +62,6 @@ def fit_predictor(
     time_limit: int,
     presets: str,
     model_preset: str,
-    class_weight_factors: Optional[Dict[str, float]] = None,
     num_bag_folds: int = 0,
     num_stack_levels: int = 0,
     hpo_trials: int = 0,
@@ -102,6 +77,7 @@ def fit_predictor(
         path=output_dir,
         problem_type=problem_type,
         eval_metric=eval_metric,
+        sample_weight="auto_weight"
     )
 
     fit_kwargs = dict(
@@ -116,11 +92,6 @@ def fit_predictor(
     # Ref: https://auto.gluon.ai/stable/api/autogluon.tabular.TabularPredictor.fit.html
     if problem_type == 'binary':
         fit_kwargs['calibrate_decision_threshold'] = True
-
-    # Sample weights
-    weights = compute_sample_weights(train_data, label, class_weight_factors)
-    if weights is not None:
-        fit_kwargs['ag_args_fit'] = {**fit_kwargs.get('ag_args_fit', {}), 'sample_weight': weights}
 
     # Model family selection
     hyperparameters = build_hyperparameters(model_preset, hpo_trials=hpo_trials)
@@ -145,7 +116,7 @@ def fit_predictor(
         fit_kwargs['num_bag_folds'] = int(num_bag_folds)
     if isinstance(num_stack_levels, int):
         fit_kwargs['num_stack_levels'] = int(num_stack_levels)
-
+    #fit_kwargs["auto_stack"] = True
     predictor.fit(**fit_kwargs)
     return predictor
 
@@ -180,7 +151,7 @@ def train_and_evaluate(
     num_stack_levels: int = 0,
     min_up_volume: Optional[float] = None,
     min_down_volume: Optional[float] = None,
-    tune_up_objective: str = 'macro',
+    tune_up_objective: str = 'up',
     hpo_trials: int = 0,
     hpo_searcher: str = 'random',
     hpo_scheduler: str = 'local',
@@ -193,13 +164,10 @@ def train_and_evaluate(
         
     # 1) Build dataset
     # Set default values
-    if not num_bag_folds:
-        num_bag_folds = 0
-    if not num_stack_levels:
-        num_stack_levels = 0
-    # If model preset left as 'auto', switch to the stacking-friendly preset
-    if model_preset == 'auto':
-        model_preset = 'rf_xt_boost_stack'
+    #if not num_bag_folds:
+        #num_bag_folds = 0
+    #if not num_stack_levels:
+        #num_stack_levels = 0
     
     cfg = Config(
         data_dir=data_dir,
@@ -293,16 +261,9 @@ def train_and_evaluate(
     os.makedirs(reports_df_dir, exist_ok=True)
 
     # 3) Fit
-    class_weight_factors = None
-    class_weight_factors = {
-        'up': weight_factor_up,
-        'down': weight_factor_down,
-        'none': weight_factor_none,
-    }
     predictor = fit_predictor(
         train_df, val_df, features, label, problem_type, eval_metric,
         output_dir, time_limit, presets, model_preset,
-        class_weight_factors=class_weight_factors,
         num_bag_folds=num_bag_folds,
         num_stack_levels=num_stack_levels,
         hpo_trials=hpo_trials,

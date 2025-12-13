@@ -1,4 +1,6 @@
 \babel@toc {british}{}\relax 
-\contentsline {table}{\numberline {1}{\ignorespaces Comparison of key studies on balancing market forecasting}}{12}{table.caption.15}%
-\contentsline {table}{\numberline {2}{\ignorespaces Summary statistics for wind-related features (2024--2025, NO1)}}{18}{table.caption.29}%
-\contentsline {table}{\numberline {3}{\ignorespaces Performance metrics for Extra Trees model on 2025 dataset at different thresholds.}}{28}{table.caption.52}%
+\contentsline {table}{\numberline {1}{\ignorespaces Overview of key forecasting and uncertainty-modelling studies}}{12}{table.caption.15}%
+\contentsline {table}{\numberline {2}{\ignorespaces Summary statistics for wind-related features (2024--2025, NO1)}}{19}{table.caption.29}%
+\contentsline {table}{\numberline {3}{\ignorespaces Classification report for the naive last-observed-class baseline model.}}{29}{table.caption.51}%
+\contentsline {table}{\numberline {4}{\ignorespaces CatBoost performance on validation and test sets (classes: down, none, up).}}{31}{table.caption.53}%
+\contentsline {table}{\numberline {5}{\ignorespaces Performance metrics for Extra Trees model on 2025 dataset at different thresholds.}}{33}{table.caption.57}%
