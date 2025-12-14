@@ -29,7 +29,7 @@ import os
 from dataclasses import dataclass
 import pandas as pd
 import numpy as np
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 from src.data.features import (
     add_temporal_and_regime_features,
     attach_wind_features,
@@ -64,6 +64,18 @@ class Config:
     # Optional minimum activation volumes to consider as genuine events
     min_up_volume: float | None = None
     min_down_volume: float | None = None
+
+
+def _load_preprocessed_df(path: str) -> pd.DataFrame:
+    df = pd.read_pickle(path)
+    if not isinstance(df, pd.DataFrame):
+        raise TypeError(f"Cached object at {path} is not a pandas DataFrame")
+    return df
+
+
+def _save_preprocessed_df(df: pd.DataFrame, path: str) -> None:
+    os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+    df.to_pickle(path)
 
 
 
@@ -640,11 +652,15 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
 
 
 
-def preprocess_all(cfg: Config | None = None,
-                   data_dir: str | None = None,
-                   include_2024: bool | None = None,
-                   heavy_interactions: bool | None = None,
-                   dropna: bool | None = None) -> pd.DataFrame:
+def preprocess_all(
+    cfg: Config | None = None,
+    data_dir: str | None = None,
+    include_2024: bool | None = None,
+    heavy_interactions: bool | None = None,
+    dropna: bool | None = None,
+    cache_path: Optional[str] = None,
+    force_recompute: bool = False,
+) -> pd.DataFrame:
     """
     Build the full feature DataFrame `df` following the notebook logic.
 
@@ -658,6 +674,13 @@ def preprocess_all(cfg: Config | None = None,
     Returns
     - df: pandas DataFrame indexed by time (15-minute frequency) with engineered features and target
     """
+    if cfg is None:
+        cfg = Config()
+
+    if cache_path and os.path.exists(cache_path) and not force_recompute:
+        print(f"Loading preprocessed DataFrame from cache: {cache_path}")
+        return _load_preprocessed_df(cache_path)
+
     # Resolve config values
     if data_dir is not None:
         cfg.data_dir = data_dir
@@ -755,12 +778,25 @@ def preprocess_all(cfg: Config | None = None,
         print("Number of NaNs before dropna:", df.isna().sum().sum())
         df.dropna(inplace=True)
     print('Final preprocessed DataFrame shape:', df.shape)
+
+    if cache_path:
+        try:
+            _save_preprocessed_df(df, cache_path)
+            print(f"Saved preprocessed DataFrame cache to: {cache_path}")
+        except Exception as e:
+            print(f"Warning: failed to save preprocess cache to {cache_path}: {e}")
+
     return df
 
 
-def build_dataset(cfg: Config, label_name: str = 'RegClass+4') -> Tuple[pd.DataFrame, List[str]]:
-    # 1) Build full preprocessed DataFrame
-    df = preprocess_all(cfg)
+def build_dataset(
+    cfg: Config,
+    label_name: str = 'RegClass+4',
+    preprocessed_path: Optional[str] = None,
+    force_recompute: bool = False,
+) -> Tuple[pd.DataFrame, List[str]]:
+    # 1) Build (or load) full preprocessed DataFrame
+    df = preprocess_all(cfg, cache_path=preprocessed_path, force_recompute=force_recompute)
     
     # 2) Drop rows with missing label (from shift) before splitting
     df = df[~df[label_name].isna()].copy()

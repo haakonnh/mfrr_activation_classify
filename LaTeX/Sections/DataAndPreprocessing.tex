@@ -2,31 +2,29 @@
 \section{Methodology}
 \subsection{Overview of Methodological Approach}
 The methodological approach adopted in this project is visualized in Figure
-\ref{fig:methodology_overview}. The first step, data collection, involves gathering
-relevant datasets from various sources, including Nord Pool, NUCS, and ENTSO-E. The
-collected data is then preprocessed and cleaned in the second step. These first steps
-are uniquely colored red in the figure to indicate that they are mostly one-time
-efforts required to set up the dataset for further.
+\ref{fig:methodology_overview}. The first step, data collection, involves
+gathering relevant datasets from various sources, including Nord Pool, NUCS, and
+ENTSO-E. The collected data is then preprocessed and cleaned in the second step.
+These first steps are uniquely colored red in the figure to indicate that they
+are mostly one-time efforts required to set up the dataset for further.
 
 The third step, feature engineering, involves creating and selecting relevant
-(\textbf{either introduce features here or make sure it has been introduced}) features,
-i.e. attributes in the dataset that help the model learn patterns related to
-mFRR activations. The feature-engineered dataset is subsequently sent to the model training
-algorithm. Here, machine learning techniques are applied to train classification models
-using the prepared dataset. Then, the trained models are evaluated with the relevant
-metrics to assess their predictive performance. These three steps are colored purple,
-indicating that they are iterative processes that make up the bulk of the work invested 
-in this project. 
+(\textbf{either introduce features here or make sure it has been introduced})
+features, i.e. attributes in the dataset that help the model learn patterns
+related to mFRR activations. The feature-engineered dataset is subsequently sent
+to the model training algorithm. Here, machine learning techniques are applied
+to train classification models using the prepared dataset. Then, the trained
+models are evaluated with the relevant metrics to assess their predictive
+performance. These three steps are colored purple, indicating that they are
+iterative processes that make up the bulk of the work invested in this project. 
 
-Evaluation results are interpreted 
-in the last step indicated by the blue box. This step is unique as it only involves deriving
-insights and conclusions from the previous steps. Methodological feedback loops flow
-from the interpretation step back to the feature engineering, model training,
-and evaluation steps. These feedback loops represent the iterative nature of the
-methodology, where insights gained from interpretation inform further refinements
-and improvements in the earlier stages of the process.
-
-
+Evaluation results are interpreted in the last step indicated by the blue box.
+This step is unique as it only involves deriving insights and conclusions from
+the previous steps. Methodological feedback loops flow from the interpretation
+step back to the feature engineering, model training, and evaluation steps.
+These feedback loops represent the iterative nature of the methodology, where
+insights gained from interpretation inform further refinements and improvements
+in the earlier stages of the process.
 
 
 \begin{figure}[H]
@@ -35,6 +33,16 @@ and improvements in the earlier stages of the process.
     \caption{Overview of the methodological approach used in this project.}
     \label{fig:methodology_overview}
 \end{figure}
+
+Methodological specifics are detailed in the subsequent sections, which follow
+the logical structure of the workflow illustrated in Figure
+\ref{fig:methodology_overview}. Each section elaborates on one stage of the
+approach, including data sources, preprocessing, feature construction, and model
+evaluation. While the methodology was implemented programmatically, the focus of
+the following sections is on the underlying methodological choices, assumptions,
+and constraints that govern the modeling process rather than on implementation
+details. 
+
 
 
 
@@ -121,6 +129,17 @@ are accessible. The data is available at an hourly resolution, with separate
 values for up- and down-regulation. This data provides insights into the amount 
 of balancing that is expected to be needed in the system. 
 
+\paragraph{mFRR CM.} Capacity market data for mFRR was hard to come by, but
+eventually, NUCS was found to provide historical mFRR capacity market prices and
+volumes for the NO1 bidding zone through their API. As discussed in the
+literature review, Svedlindh and Yngvesson
+\autocite{svedlindhPriceFormationForecasting2025} found that mFRR capacity
+market data was their most important feature for predicting mFRR activations.
+This study conducted day-ahead predictions, however, where capacity market data
+is more relevant. In a closer-to-real-time setting, the importance of capacity
+market data may be reduced, as the system state is better known closer to
+real-time. Still, mFRR capacity market data can provide valuable insights into
+the expected balancing needs in the system. 
 
 
 \subsubsection{ENTSO-E}
@@ -234,7 +253,8 @@ of activation vs. no activation, the classes would be approximately balanced.
 Distinguishing between up- and down-activations, however, makes the problem
 more nuanced and challenging.
 
-\paragraph{Temporal Activation Patterns}
+\paragraph{Temporal Activation Patterns.}
+
 
 \paragraph{Feature Distributions.}
 

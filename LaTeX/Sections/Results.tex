@@ -95,18 +95,20 @@ faster to train and evaluate, CatBoost models were used to explore various data
 and model configurations more extensively. Performance and evaluation of these
 models are presented in the following sections.
 
-\subsubsection{Model Performance}
+\subsubsection{Model Evaluation}
 Table \ref{tab:catboost-val-test} and Figure
 \ref{fig:catboost-confusion-val-test} show a classifcation report and confusion
 matrices for a CatBoost model trained on the final featured post-March 4th 2025
-dataset. Although scores improved slightly during model development, test set
-F1-macro scores consistently remained around 0.5-0.6. Across all model
-iterations, F1-macro scores never deviated significantly from the naive baseline
-model. The model does manage to catch notably more down-activations than the
-naive model, with a recall of 0.69 compared to 0.62. However, up-activation
-F1-scores are lowered. This highlights the imbalance challenge, and the
-up-class's lower predictability. No model iteration managed to significantly
-outperform the naive baseline on up-activation predictions.
+dataset. Although scores improved slightly during model development, validation
+and test set F1-macro scores consistently remained around 0.5-0.6. Across all
+model iterations, F1-macro scores never deviated significantly from the naive
+baseline model. Comparing the baseline and CatBoost test set confusion matrices
+underscore this point as they barely differ. The model does manage to catch
+notably more down-activations than the naive model, with a recall of 0.69
+compared to 0.62. However, up-activation F1-scores are lowered. This highlights
+the imbalance challenge, and the up-class's lower predictability. No model
+iteration managed to significantly outperform the naive baseline on
+up-activation predictions.
 
 
 \begin{table}[ht]
@@ -187,152 +189,86 @@ ability to predict non-persistent activation events.
     \label{fig:catboost-prev-to-pred-confusion-matrix}
 \end{figure}
 
+\subsubsection{Feature Importance}
+Figure \ref{fig:catboost-feature-importance-2025} shows the top 40 most
+important features based on their feature importance scores from the CatBoost
+model trained on the post-March 4th 2025 dataset. There is seemingly a diverse
+range of features contributing to the model's predictions. Lag features,
+particularly the nearest regulation direction lag features ($t-4$, $t-5$, $t-6$), 
+stand out as the most important. Persistence features are included in this particular 
+feature set, and they also rank highly. These are expected to be the most decisive 
+features as they explain the bulk of the auto-correlation patterns in the data.
 
-\subsection{The 2025 Dataset}
-
-Depending on the 
-specific metrics used for evaluation, different models perform best. It was
-quite early on discovered that Random Forest and Extra Trees models performed
-best overall, so the results focus on these two models. The models were trained
-and evaluated based on F1-score, with raw precision and recall also considered
-after training. The aforemontentioned transition metric is also used to evaluate
-the models, as it provides insight into the model's ability to predict
-activation transitions specifically.
-
-\subsubsection{Extra Trees}
-Figure \ref{fig:xt-2025-highf1} shows the Precision-Recall curve for an Extra Trees
-model trained on the 2025 dataset. Three dots are scattered on the curve, representing
-the precision-recall pairs for three interesting thresholds: the threshold given
-by the predictor leaderboard, the threshold that maximizes F1-score, and the threshold
-that gives a recall of 0.5. It is interesting that the leaderboard threshold gives a
-lower F1-score than the maximum F1-score threshold after training, as one would
-expect the leaderboard threshold to be optimal. Nevertheless, all three thresholds
-provide solid performance, with the maximum F1-score threshold achieving the best balance
-between precision and recall. The threshold that gives a recall of 0.5 sacrifices some 
-precision to achieve higher recall, while simultaneously improving the transition metric. 
-
+Day-ahead price-related features distinguish themselves as the most important
+non-persistence features. Features such as $\text{PriceUp} - \text{DA}$,
+$\text{PriceDown} - \text{DA}$, and $\text{PriceUp} / \text{DA}$ rank highly.
+These features represent the relationship between the day-ahead price and the
+($t-1$) up/down regulation prices. This suggests that the model leverages recent
+discrepency between day-ahead and balancing prices to inform its predictions.
+This makese sense, since big differences between regulation prices to day-ahead
+prices differences indicate big imbalances. The Up-Down Price Skew feature also
+ranks highly, further emphasizing the importance of recent price-related features.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/2025-highf1_xt.png}
-    \caption{Precision-Recall Curve for Extra Trees model trained on 2025 dataset with highest F1-score.}
-    \label{fig:xt-2025-highf1}
+    \includegraphics[width=0.8\textwidth]{Images/cat_importance.png}
+    \caption{Feature importance for the CatBoost model trained on the post-March 4th 2025 dataset.}
+    \label{fig:catboost-feature-importance-2025}
 \end{figure}
 
-\begin{table}[H]
-    % So i want a table consisting of the 3 thresholds and their respective precision, recall, f1-score and transition metric
-    % and also transition metric     
+\subsubsection{Price Difference Distribution}
+Market participants often consider the relationship between day-ahead prices and
+regulation prices when making bidding decisions. Figure \ref{fig:price-diff-cat}
+visualizes and Table \ref{tab:price-spread-stats} summarizes the distribution of
+the day-ahead to regulation price differences ($\text{PriceUp} - \text{DA}$ and
+$\text{PriceDown} - \text{DA}$) for correctly predicted up and down-activations,
+respectively. This visualization helps to understand how much market
+participants stand to gain from the correctly predicted activation times. There
+is, of course, the problem of actually being activated, as the activated volume
+is miniscule compared to the accepted volume. Separate bidding models is
+required to improve activation likelihood, which is outside the scope of this
+project. 
+
+However, assuming activation, the mean price difference for correctly predicted
+up-activations is 17.98 EUR/MWh, while for down-activations it is -12.34
+EUR/MWh. These price differences represent good opportunities for market
+participants to profit from their bids. The up-activation price differences are 
+higher in absolute terms than the down-activation differences, but as down-activations
+are more frequent and predictable, they are the more reliable source of profit. 
+Price differences are likely to vary over time, and as the current dataset is 
+relatively short, these statistics should be interpreted with caution as they 
+may not generalize well to other time periods.
+
+\begin{figure}[H]
     \centering
-    \begin{tabular}{lcccc}
-        \toprule
-        Threshold & Precision & Recall & F1-score & Transition Metric \\
-        \midrule
-        Leaderboard & 0.65 & 0.31 & 0.42 & 9.49\% \\
-        Max F1-score & 0.49 & 0.45 & 0.47 & 19.76\% \\
-        Recall = 0.5 & 0.41 & 0.50 & 0.45 & 28.06\% \\
-        \bottomrule
-    \end{tabular}
-    \caption{Performance metrics for Extra Trees model on 2025 dataset at different thresholds.}
-    \label{tab:xt-2025-metrics}
+    \includegraphics[width=0.8\textwidth]{Images/price_diff_cat_correct.png}
+    \caption{Distribution of Day-Ahead to Regulation Price Differences
+    ($\text{PriceUp} - \text{DA}$ and $\text{PriceDown} - \text{DA}$) across
+    activation classes in the post-March 4th 2025 dataset.}
+    \label{fig:price-diff-cat}
+\end{figure}
+
+
+\begin{table}[ht]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Metric & $n$ & mean & std & p05 & p25 & p50 & p75 & p95 \\
+\midrule
+Up Price -- DA (correct UP, delivery)               & 275  & 17.98 & 14.33 &  1.81 &  6.32 & 15.82 & 25.82 & 40.05 \\
+Down Price -- DA (correct DOWN, delivery)           & 1343 & -12.34 & 16.78 & -39.67 & -11.84 & -7.66 & -5.54 & -1.92 \\
+UP \% change vs DA (correct UP, delivery) [\%]      & 232  & 25.14 & 25.85 &  2.20 &  7.04 & 19.80 & 35.74 & 62.58 \\
+\bottomrule
+\end{tabular}
+\caption{Summary statistics for delivery-time spreads, restricted to correctly predicted UP/DOWN cases.}
+\label{tab:price-spread-stats}
 \end{table}
 
-Table \ref{tab:xt-2025-metrics} summarizes the performance metrics for the Extra Trees
-model on the 2025 dataset at the three different thresholds. The transition metric is
-highly correlated with recall, as expected, since higher recall means more activation
-events are correctly identified, leading to better transition detection. The recall-focused
-threshold achieves a transition success rate of 28.06\%, significantly higher than the 
-threshold proposed by the leaderboard, and 10\% higher than the maximum F1-score threshold.
-With a precision of 0.41 at this threshold, the model is relatively precise, not 
-overwhelmingly predicting activations, which is crucial.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{Images/2025-highf1_xt_fi.png}
-    \caption{Feature importance for Extra Trees model trained on 2025 dataset with highest F1-score.}
-    \label{fig:xt-2025-fI}
-\end{figure}
-
-Figure \ref{fig:xt-2025-fI} shows the feature importance for the Extra Trees model.
-An important concept to note is that feature importance is independent of the
-chosen threshold. The feature importance indicates which features the model
-contribute the most to the underlying probability estimates. Threshold adjustments
-merely shift the decision boundary without altering the relative importance of the features.
-The top three features are in this particular model all lag features, specifically
-persistency and singular activation lag features. This suggests that the model
-relies heavily on historical activation patterns to make its predictions. Although one of
-the goals was to reduce the reliance on lag features, it is still important to catch on
-to activation trends. Other important features include day-ahead price, intraday wind
-forecasts, time-related features such as peak hour and working day indicators, and
-various interaction features. All these features likely contribute to capturing the complex
-dynamics influencing activation events.
-
-\subsection{The 2024-2025 Dataset}
-Some extra preprocessing is necessary when including data from 2024, as data often come
-in yearly batches. Separate CSV (Comma Separated Values) files for 2024 and 2025
-are, therefore, merged into a single dataset before further handling. This dataset was
-used for most of the training and evaluation process, as it provides more data for the models
-to learn from, potentially leading to better generalization and performance. This comes at
-the cost of slightly inconsistent data. mFRR activation data, for instance, transitioned
-from hourly to 15-minute resolution in mid-2024 (\textbf{specify date perhaps}). 
-This introduces inconsistency and noise into the dataset, which could affect model performance.
-However, the benefits of having a larger dataset likely outweigh the this drawback.
-
-\subsubsection{CatBoost Models}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/CatBoost_Tuned-first.png}
-    \caption{Feature importance for CatBoost model trained on 2024-2025 dataset after
-     hyperparameter tuning.}
-    \label{fig:catboost-2024-2025-fI}
-\end{figure}
-
-\textbf{I probably want a kind of sweep over performances on different 
-hyperparamter combinations.}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/catboost_first_metrics.png}
-    \caption{Performance metrics for CatBoost model on 2024-2025 dataset at 
-    different thresholds.}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/up-down-price-minus-da-catboost.png}
-    \caption{Up/down price minus day-ahead price distribution for 
-    CatBoost model trained on 2024-2025 dataset. quick\_multiclass\_cat\_hpo}
-    \label{fig:catboost-2024-2025-updownprice}
-\end{figure}
-
-Figure \ref{fig:catboost-2025-4th-confidence-metrics} shows the performance metrics 
-for a CatBoost model trained on data from March 4th, 2025. The metrics are evaluated
-at specific dataset subsets determined by how confident the model is in its predictions.
-For instance, at a confidence threshold of 0.6, only predictions where the model's
-predicted probability for the chosen class is at least 0.6 are considered. This approach
-allows for an analysis of how the model's performance varies with its confidence level.
-As the confidence threshold increases, accuracy steadily improves. This is expected, as 
-higher confidence predictions should generally be more reliable. F1-macro score dips,
-however, at higher thresholds, especially beyond 0.7. The most likely reason for this is
-that the model rarely is very confident in predicting the less frequent classes (up- and 
-down-activations). Most of these predictions are no-activation predictions, resulting
-in good accruacy (0.778 in this case). Assume that all of these predictions are no-activation
-predictions (\textbf{can probably check this quickly}). Then, 22.2\% of the predictions
-are false negatives for the up- and down-activation classes, leading to low recall (0 
-in this case) and thus low F1-score for these classes. The overall F1-macro score, being
-the average of the F1-scores for all classes, consequently drops as well.
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/confidence_thresholds_metrics_cat_short.png}
-    \caption{Performance metrics for CatBoost model on 2025 March 4th dataset
-    at different confidence thresholds.}
-    \label{fig:catboost-2025-4th-confidence-metrics}
-\end{figure}
-
-\subsection{Correlation}
-I do not know where this will end up in the structure, but talking about correlation
-between features is key. Analysis has been done on correlation using different 
-methods. Explaining corelation. 
+\subsubsection{Correlation}
+Although feature importance analysis indicates contributions from various 
+seemingly non-persistence features, it is clear that many of these features are
+correlated with persistence. \textbf{Correlation analysis.}

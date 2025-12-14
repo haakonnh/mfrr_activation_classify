@@ -642,6 +642,13 @@ INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\ConfusionMatrix.png
+INPUT .\Images\data_splitting.png
+INPUT .\Images\data_splitting.png
+INPUT Images\data_splitting.png
+INPUT .\Images\data_splitting.png
+INPUT .\Images\data_splitting.png
+INPUT .\Images\data_splitting.png
+INPUT .\Images\data_splitting.png
 INPUT .\Images\pr-curve.png
 INPUT .\Images\pr-curve.png
 INPUT Images\pr-curve.png
@@ -683,48 +690,39 @@ INPUT .\Images\cat_prev_to_pred.png
 INPUT .\Images\cat_prev_to_pred.png
 INPUT .\Images\cat_prev_to_pred.png
 INPUT .\Images\cat_prev_to_pred.png
-INPUT .\Images\2025-highf1_xt.png
-INPUT .\Images\2025-highf1_xt.png
-INPUT Images\2025-highf1_xt.png
-INPUT .\Images\2025-highf1_xt.png
-INPUT .\Images\2025-highf1_xt.png
-INPUT .\Images\2025-highf1_xt.png
-INPUT .\Images\2025-highf1_xt.png
-INPUT .\Images\2025-highf1_xt_fi.png
-INPUT .\Images\2025-highf1_xt_fi.png
-INPUT Images\2025-highf1_xt_fi.png
-INPUT .\Images\2025-highf1_xt_fi.png
-INPUT .\Images\2025-highf1_xt_fi.png
-INPUT .\Images\2025-highf1_xt_fi.png
-INPUT .\Images\2025-highf1_xt_fi.png
-INPUT .\Images\CatBoost_Tuned-first.png
-INPUT .\Images\CatBoost_Tuned-first.png
-INPUT Images\CatBoost_Tuned-first.png
-INPUT .\Images\CatBoost_Tuned-first.png
-INPUT .\Images\CatBoost_Tuned-first.png
-INPUT .\Images\CatBoost_Tuned-first.png
-INPUT .\Images\CatBoost_Tuned-first.png
-INPUT .\Images\catboost_first_metrics.png
-INPUT .\Images\catboost_first_metrics.png
-INPUT Images\catboost_first_metrics.png
-INPUT .\Images\catboost_first_metrics.png
-INPUT .\Images\catboost_first_metrics.png
-INPUT .\Images\catboost_first_metrics.png
-INPUT .\Images\catboost_first_metrics.png
-INPUT .\Images\up-down-price-minus-da-catboost.png
-INPUT .\Images\up-down-price-minus-da-catboost.png
-INPUT Images\up-down-price-minus-da-catboost.png
-INPUT .\Images\up-down-price-minus-da-catboost.png
-INPUT .\Images\up-down-price-minus-da-catboost.png
-INPUT .\Images\up-down-price-minus-da-catboost.png
-INPUT .\Images\up-down-price-minus-da-catboost.png
-INPUT .\Images\confidence_thresholds_metrics_cat_short.png
-INPUT .\Images\confidence_thresholds_metrics_cat_short.png
-INPUT Images\confidence_thresholds_metrics_cat_short.png
-INPUT .\Images\confidence_thresholds_metrics_cat_short.png
-INPUT .\Images\confidence_thresholds_metrics_cat_short.png
-INPUT .\Images\confidence_thresholds_metrics_cat_short.png
-INPUT .\Images\confidence_thresholds_metrics_cat_short.png
+INPUT .\Images\cat_importance.png
+INPUT .\Images\cat_importance.png
+INPUT Images\cat_importance.png
+INPUT .\Images\cat_importance.png
+INPUT .\Images\cat_importance.png
+INPUT .\Images\cat_importance.png
+INPUT .\Images\cat_importance.png
+INPUT .\Images\price_diff_cat_correct.png
+INPUT .\Images\price_diff_cat_correct.png
+INPUT Images\price_diff_cat_correct.png
+INPUT .\Images\price_diff_cat_correct.png
+INPUT .\Images\price_diff_cat_correct.png
+INPUT .\Images\price_diff_cat_correct.png
+INPUT .\Images\price_diff_cat_correct.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib9.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy9.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm0900.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm0600.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmss10.tfm
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.out
@@ -745,6 +743,8 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb

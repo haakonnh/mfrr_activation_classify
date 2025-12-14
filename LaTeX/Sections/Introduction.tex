@@ -34,67 +34,48 @@ background information kind of fits in motivation.}
 
 \subsection{Motivation}
 mFRR activations have direct economic implications for market participants.
-Accurately anticipating whether up- or down-regulation is likely enables
-participants to choose between committing flexible resources to capacity
-markets or bidding directly into the activation market, where revenues depend
-on actual activations. Capacity markets provide stable income, whereas
-activation markets offer potentially higher but uncertain returns. Being able
-to accurately assess the likelihood of an activation therefore supports more
-informed and profitable bidding strategies.
+Capacity markets provide stable income, whereas energy activation markets offer
+higher but uncertain returns. Anticipating whether mFRR up- or down-regulation
+is likely therefore affects how flexible resources are allocated between
+capacity commitments and activation market participation.
 
-For aggregators of distributed flexible resources, such as electric vehicles,
-heat pumps, and batteries, predicting mFRR activations is particularly valuable.
-When commiting flexibility to the mFRR capacity market, the aggregator earns
-a fixed payment for being available to provide reserves. However, this also
-means the resources are locked up and cannot be used for other purposes during
-the committed period. Participation in the activation market locks resources for 
-shorter periods,
-allowing the aggregator to remain flexible. 
-The guaranteed income from capacity payments must thus be weighed 
-against the opportunity cost of missing out on potential revenues from the activation
-market. The correct choice depends on the likelihood of activations occurring, which
-is inherently uncertain.
+This trade-off is particularly relevant for aggregators managing distributed
+flexible assets such as electric vehicles, heat pumps, and batteries. Committing
+flexibility to the mFRR capacity market secures a fixed payment but binds
+resources for the contracted period. In contrast, participation in the
+activation market preserves greater operational flexibility, as resources are
+only constrained during actual activations. Aggregators must therefore balance
+guaranteed capacity revenues against the expected value of future activation
+opportunities, under substantial uncertainty.
 
-A reliable activation prediction model can substantially reduce this uncertainty
-by providing an predictions of whether up- or down-regulation is likely in
-future intervals. With such information, an aggregator can manage its portfolio
-more strategically, for example, by reserving flexibility for the activation
-market only when the probability of activation is sufficiently high, or by
-safely committing to the capacity market when activations appear unlikely.
-Accurate predictions therefore enable more efficient utilization of distributed
-resources and support more economically rational market participation.
+The transition to a 15-minute market time unit represents not only a structural
+change in market operation but also an opportunity for more informative
+short-term decision support. Finer temporal resolution allows activation signals
+to better reflect rapidly evolving system conditions, creating richer and more
+frequent market signals. At the same time, this increased granularity elevates
+the importance of forecasts, as market participants must make decisions over
+shorter horizons and under greater sensitivity to short-term system dynamics. As
+a result, short-term activation forecasting becomes both more relevant and
+potentially more valuable for participants seeking to adapt their bidding
+strategies to real-time market participation.
 
-
-The recent shift to 15-minute resolution further increases the relevance of such
-models. While higher time resolutions offer greater responsiveness, it also
-creates a shorter decision window and increases sensitivity to rapidly changing
-system conditions. This motivates data-driven prediction methods as an
-approach to support market bidding strategies.
-An
-interesting application is to use the predictions to inform reinforcement learning-based
-bidding strategies for aggregators of distributed flexible resources. Reinforcement learning
-agents can learn to make optimal decisions, but require a reliable model of the environment
-to base their strategies on. A well-performing mFRR activation prediction model could
-serve as this model of the environment, enabling the development of near-optimal
-bidding strategies that adapt to predicted market conditions.
-\textbf{Is this too much reinforcement learning talk for an introduction?}
+\textbf{Reinforcement learning motivation here?}
 
 
 
 \subsection{Research Question}
 
-The central research question of this study is: How well can mFRR up- and 
-down-regulation activations be predicted  at 15-minute resolution using only 
-real-time-available system state features and historical activation/price data?
-\textbf{Change this I suppose?}
+The central research question of this study is: To what extent can short-term
+mFRR activation direction (up-regulation, down-regulation, or no activation) be
+predicted at 15-minute resolution using only information available to market
+participants at decision time?
 
 \subsection{Outline}
 
-This report is structured as follows: Chapter 2 provides an overview 
-of the Nordic balancing markets and related work. Chapter 3 reviews existing literature 
-on imbalance and activation forecasting and identifies the research gaps addressed in 
-this study. Chapter 4 details the modelling methodology, including data preprocessing,
-feature engineering, and model evaluation and selection. 
-Chapter 5 presents the results, while Chapter 6 discusses implications, limitations, and 
-directions for 
-future work.
+This report is structured as follows: Chapter 2 provides an overview of the
+Nordic balancing markets and machine learning concepts. Chapter 3 reviews
+existing literature on imbalance and activation forecasting and identifies the
+research gaps addressed in this study. Chapter 4 details the project's
+methodology, including data preprocessing, feature engineering, and model
+evaluation and selection. Chapter 5 presents the results, while Chapter 6
+discusses implications, limitations, and directions for future work.

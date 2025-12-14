@@ -1,6 +1,6 @@
 \babel@toc {british}{}\relax 
-\contentsline {section}{List of Figures}{iii}{section*.2}%
-\contentsline {section}{List of Tables}{iv}{section*.3}%
+\contentsline {section}{List of Figures}{ii}{section*.2}%
+\contentsline {section}{List of Tables}{iii}{section*.3}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Background}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Motivation}{1}{subsection.1.2}%
@@ -8,14 +8,14 @@
 \contentsline {subsection}{\numberline {1.4}Outline}{2}{subsection.1.4}%
 \contentsline {section}{\numberline {2}Theory}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Electricity Balancing Market}{2}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Nordic Balancing Market Structure}{3}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Nordic Balancing Market Structure}{2}{subsubsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2.1.2}Reserve Market Concepts}{4}{subsubsection.2.1.2}%
 \contentsline {paragraph}{Capacity Markets}{4}{section*.7}%
 \contentsline {paragraph}{Energy Activation Markets (EAMs)}{4}{section*.8}%
 \contentsline {paragraph}{Imbalance Prices}{4}{section*.9}%
-\contentsline {paragraph}{mFRR Market in Norway (will refactor this or remove this)}{5}{section*.10}%
-\contentsline {subsection}{\numberline {2.2}Machine Learning Theory}{5}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Supervised Learning for Time-Dependent Classification}{5}{subsubsection.2.2.1}%
+\contentsline {paragraph}{mFRR Market in Norway (will refactor this or remove this)}{4}{section*.10}%
+\contentsline {subsection}{\numberline {2.2}Machine Learning Theory}{4}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Supervised Learning for Time-Dependent Classification}{4}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Class Imbalance}{5}{subsubsection.2.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.3}Tree-Based Models}{5}{subsubsection.2.2.3}%
 \contentsline {paragraph}{Random Forest / Extra Trees}{5}{section*.11}%
@@ -41,53 +41,49 @@
 \contentsline {paragraph}{Load and production data.}{15}{section*.19}%
 \contentsline {subsubsection}{\numberline {4.2.2}NUCS}{15}{subsubsection.4.2.2}%
 \contentsline {paragraph}{aFRR data.}{15}{section*.20}%
-\contentsline {subsubsection}{\numberline {4.2.3}ENTSO-E}{15}{subsubsection.4.2.3}%
-\contentsline {paragraph}{aFRR Activation Data}{15}{section*.21}%
+\contentsline {paragraph}{mFRR CM.}{15}{section*.21}%
+\contentsline {subsubsection}{\numberline {4.2.3}ENTSO-E}{16}{subsubsection.4.2.3}%
+\contentsline {paragraph}{aFRR Activation Data}{16}{section*.22}%
 \contentsline {subsection}{\numberline {4.3}Data Preprocessing and Analysis}{16}{subsection.4.3}%
 \contentsline {subsubsection}{\numberline {4.3.1}Dataset structure}{16}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}Resampling, Imputation, and Merging}{16}{subsubsection.4.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.3}Exploratory Data Analysis}{17}{subsubsection.4.3.3}%
-\contentsline {paragraph}{Target Class Imbalance.}{17}{section*.23}%
-\contentsline {paragraph}{Temporal Activation Patterns}{17}{section*.25}%
-\contentsline {paragraph}{Feature Distributions.}{17}{section*.26}%
-\contentsline {paragraph}{aFRR.}{19}{section*.30}%
-\contentsline {paragraph}{Correlation Analysis}{20}{section*.33}%
-\contentsline {paragraph}{Information Availability}{20}{section*.34}%
+\contentsline {paragraph}{Target Class Imbalance.}{17}{section*.24}%
+\contentsline {paragraph}{Temporal Activation Patterns.}{18}{section*.26}%
+\contentsline {paragraph}{Feature Distributions.}{18}{section*.27}%
+\contentsline {paragraph}{aFRR.}{19}{section*.31}%
+\contentsline {paragraph}{Correlation Analysis}{20}{section*.34}%
+\contentsline {paragraph}{Information Availability}{20}{section*.35}%
 \contentsline {subsection}{\numberline {4.4}Feature Engineering}{20}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Time Restrictions and Data Availability}{20}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1}Time Restrictions and Data Availability}{21}{subsubsection.4.4.1}%
 \contentsline {subsubsection}{\numberline {4.4.2}Lag features}{21}{subsubsection.4.4.2}%
-\contentsline {paragraph}{Activation lag features}{21}{section*.35}%
-\contentsline {paragraph}{Persistence (activation streak length)}{21}{section*.36}%
-\contentsline {subsubsection}{\numberline {4.4.3}Cross-zonal flow features}{21}{subsubsection.4.4.3}%
-\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{22}{section*.38}%
-\contentsline {subsubsection}{\numberline {4.4.4}Temporal features}{22}{subsubsection.4.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.5}Price features}{22}{subsubsection.4.4.5}%
+\contentsline {paragraph}{Activation lag features}{21}{section*.36}%
+\contentsline {paragraph}{Persistence (activation streak length)}{21}{section*.37}%
+\contentsline {subsubsection}{\numberline {4.4.3}Cross-zonal flow features}{22}{subsubsection.4.4.3}%
+\contentsline {paragraph}{Capacity-normalized cross-zonal flow.}{22}{section*.39}%
+\contentsline {subsubsection}{\numberline {4.4.4}Temporal features}{23}{subsubsection.4.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.5}Price features}{23}{subsubsection.4.4.5}%
 \contentsline {subsubsection}{\numberline {4.4.6}Production features}{23}{subsubsection.4.4.6}%
-\contentsline {subsubsection}{\numberline {4.4.7}Load features}{23}{subsubsection.4.4.7}%
-\contentsline {subsubsection}{\numberline {4.4.8}Interaction features}{23}{subsubsection.4.4.8}%
-\contentsline {subsubsection}{\numberline {4.4.9}Feature Correlation}{23}{subsubsection.4.4.9}%
+\contentsline {subsubsection}{\numberline {4.4.7}Load features}{24}{subsubsection.4.4.7}%
+\contentsline {subsubsection}{\numberline {4.4.8}Interaction features}{24}{subsubsection.4.4.8}%
+\contentsline {subsubsection}{\numberline {4.4.9}Feature Correlation}{24}{subsubsection.4.4.9}%
 \contentsline {subsection}{\numberline {4.5}Evaluation Framework}{24}{subsection.4.5}%
-\contentsline {paragraph}{Multiclass evaluation.}{24}{section*.40}%
-\contentsline {paragraph}{Confusion matrix.}{25}{section*.41}%
-\contentsline {paragraph}{Precision-recall trade-off.}{25}{section*.43}%
-\contentsline {paragraph}{The transition metric}{26}{section*.44}%
-\contentsline {paragraph}{Probability correctness.}{26}{section*.45}%
-\contentsline {subsubsection}{\numberline {4.5.1}Data Splitting}{26}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}Model Selection}{26}{subsubsection.4.5.2}%
-\contentsline {paragraph}{Random Forest and Extra Trees}{27}{section*.46}%
-\contentsline {paragraph}{CatBoost}{27}{section*.47}%
-\contentsline {paragraph}{XGBoost and LightGBM}{27}{section*.48}%
-\contentsline {subsubsection}{\numberline {4.5.3}Adjusting Classification Thresholds}{27}{subsubsection.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}Decision-bias tuning}{28}{subsubsection.4.5.4}%
-\contentsline {paragraph}{Intuition and benefits.}{28}{section*.50}%
-\contentsline {subsubsection}{\numberline {4.5.5}AutoGluon}{29}{subsubsection.4.5.5}%
+\contentsline {paragraph}{Multiclass evaluation.}{25}{section*.41}%
+\contentsline {paragraph}{Confusion matrix.}{25}{section*.42}%
+\contentsline {paragraph}{Precision-recall trade-off.}{26}{section*.44}%
+\contentsline {paragraph}{The transition metric.}{27}{section*.45}%
+\contentsline {paragraph}{Probability correctness.}{27}{section*.46}%
+\contentsline {subsubsection}{\numberline {4.5.1}Data Splitting}{27}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Model Selection}{27}{subsubsection.4.5.2}%
+\contentsline {paragraph}{Random Forest and Extra Trees}{28}{section*.48}%
+\contentsline {paragraph}{CatBoost}{28}{section*.49}%
+\contentsline {paragraph}{XGBoost and LightGBM}{28}{section*.50}%
+\contentsline {subsubsection}{\numberline {4.5.3}Adjusting Classification Thresholds}{28}{subsubsection.4.5.3}%
 \contentsline {section}{\numberline {5}Model Results}{29}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Naive Model}{29}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Machine Learning Model Results}{30}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Model Performance}{30}{subsubsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.3}The 2025 Dataset}{32}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Extra Trees}{32}{subsubsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.4}The 2024-2025 Dataset}{34}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}CatBoost Models}{35}{subsubsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.5}Correlation}{37}{subsection.5.5}%
-\contentsline {section}{Bibliography}{38}{section*.63}%
+\contentsline {subsubsection}{\numberline {5.2.1}Model Evaluation}{31}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Feature Importance}{32}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Price Difference Distribution}{33}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Correlation}{34}{subsubsection.5.2.4}%
+\contentsline {section}{Bibliography}{35}{section*.60}%

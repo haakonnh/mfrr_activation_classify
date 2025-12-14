@@ -160,6 +160,8 @@ def train_and_evaluate(
     disable_persistency_interactions: bool = False,
     only_persistency_features: bool = False,
     exclude_persistency_features: bool = False,
+    preprocessed_path: Optional[str] = None,
+    force_recompute_preprocess: bool = False,
 ):
         
     # 1) Build dataset
@@ -186,7 +188,12 @@ def train_and_evaluate(
 
     # Build dataset using label RegClass+4
     label = "RegClass+4"
-    df, (train_df, val_df, test_df), features = build_dataset(cfg, label_name=label)
+    df, (train_df, val_df, test_df), features = build_dataset(
+        cfg,
+        label_name=label,
+        preprocessed_path=preprocessed_path,
+        force_recompute=force_recompute_preprocess,
+    )
     #features = [f for f in features if f not in ('Activated', 'RegClass')]
     problem_type, eval_metric = 'multiclass', 'f1_macro'
 
@@ -324,4 +331,6 @@ if __name__ == '__main__':
         disable_persistency_interactions=args.disable_persistency_interactions,
         only_persistency_features=args.only_persistency_features,
         exclude_persistency_features=args.exclude_persistency_features,
+        preprocessed_path=args.preprocessed_path,
+        force_recompute_preprocess=args.recompute_preprocess,
     )

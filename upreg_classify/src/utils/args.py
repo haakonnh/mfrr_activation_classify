@@ -24,6 +24,19 @@ def parse_args():
     p.add_argument('--val_frac', type=float, default=0.2)
     p.add_argument('--test_frac', type=float, default=0.2)
     p.add_argument('--data_start', type=str, default=None, help="Optional ISO date (YYYY-MM-DD) to start dataset from; rows earlier than this are dropped before splitting")
+
+    # Optional preprocessing cache
+    p.add_argument(
+        '--preprocessed_path',
+        type=str,
+        default=None,
+        help='Optional path to a cached preprocessed dataframe (.pkl). If present and exists, training loads it instead of recomputing preprocessing.',
+    )
+    p.add_argument(
+        '--recompute_preprocess',
+        action='store_true',
+        help='If set, recompute preprocessing even if --preprocessed_path exists (and overwrite the cache).',
+    )
     p.add_argument('--importance_time_limit', type=int, default=200, help='Time limit (seconds) for permutation importance')
     p.add_argument('--importance_subsample', type=int, default=1000, help='Max rows for permutation importance')
     p.add_argument('--importance_top_n', type=int, default=40, help='Top-N features to plot and print')

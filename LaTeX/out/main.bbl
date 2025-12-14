@@ -60,8 +60,8 @@
       \strng{authornamehash}{aa40896ef78ad4b09b41f7dd7a598603}
       \strng{authorfullhash}{9cd6430d884447e110aae2206ac1fddd}
       \strng{authorfullhashraw}{9cd6430d884447e110aae2206ac1fddd}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{With the gradual replacement of synchronous generators by renewable energy sources, the power imbalance in the system is exacerbated by the fluctuations of renewable energy output. Simultaneously, traditional frequency regulation resources will become insufficient with the reduction of online capacity of thermal units. These trends both lead to a decrease in the performance of power system frequency regulation. The planning of power system generation, particularly frequency regulation resources, will significantly influence the future quality of frequency. This paper proposes a frequency-constrained generation planning method under a high-proportion renewable energy system. The performance of power system frequency regulation is analyzed based on the simulation of the load-frequency control dynamics, where both the frequency regulation from conventional generation and renewable energy are taken into consideration. Non-linear frequency constraints are extracted from the generated data set, and then embedded into the power system planning model by utilizing a sparse weighted oblique decision tree. The case study on HRP-38 system validates the effectiveness of the method. The influence of renewable energy frequency regulation on unit commitment is also investigated.}
@@ -93,8 +93,8 @@
       \strng{authornamehash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhash}{f7e45def0ca6a655fe5fe04f557fc749}
       \strng{authorfullhashraw}{f7e45def0ca6a655fe5fe04f557fc749}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{langid}{english}
@@ -107,8 +107,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{ConfirmationMFRREAM2025}{misc}{}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
       \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
@@ -126,8 +126,8 @@
       \endverb
     \endentry
     \entry{NordicPowerMarket}{misc}{}{}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{abstract}{This presents significant opportunities for flexible market participants, while also heightening risks for those less adaptable. Are you ready?}
       \field{howpublished}{https://www.volue.com/news/nordic-power-market-introduces-15min-balancing}
@@ -140,8 +140,8 @@
       \field{urldateera}{ce}
     \endentry
     \entry{EnergyTransitionOutlook}{misc}{}{}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labeltitlesource}{title}
       \field{abstract}{Energy Transition Outlook Norway 2024 is a forecast of Norway's energy system, including energy exports and emissions, through to 2050.}
       \field{howpublished}{https://www.norskindustri.no/siteassets/dokumenter/rapporter-og-brosjyrer/energy-transition-norway/energy-transition-norway-2024.pdf}
@@ -303,8 +303,8 @@
       \endverb
     \endentry
     \entry{BalancingMarketOutlook}{article}{}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{langid}{english}
       \field{title}{Balancing Market Outlook 2030}
@@ -313,8 +313,8 @@
       \endverb
     \endentry
     \entry{Transition15minuteMarket}{misc}{}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
       \field{abstract}{Nord Pool runs the leading power market in Europe, offering day-ahead and intraday markets to our customers. Trade power with us in 16 countries and benefit from related services such as compliance, data and knowledge-sharing.}
       \field{howpublished}{https://www.nordpoolgroup.com/en/trading/transition-to-15-minute-market-time-unit-mtu/}
@@ -668,8 +668,8 @@
       \strng{authornamehash}{9096c1a5850dbfd6b6f2d388d8fdb322}
       \strng{authorfullhash}{cda50e258b8d19e2410fef052afa86e9}
       \strng{authorfullhashraw}{cda50e258b8d19e2410fef052afa86e9}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{This paper investigates Frequency Restoration Reserve (FRR) allocation and dimensioning approaches in a multi-area context, focusing on the Nordic Load-Frequency Control (LFC) block. We aim to (i) provide a framework for multi-area FRR dimensioning ap}
@@ -699,8 +699,8 @@
       \strng{authornamehash}{ebee3c8b1f65c81c0420e0bb541565e2}
       \strng{authorfullhash}{ebee3c8b1f65c81c0420e0bb541565e2}
       \strng{authorfullhashraw}{ebee3c8b1f65c81c0420e0bb541565e2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{DiVA portal is a finding tool for research publications and student theses written at the following 50 universities and research institutions.}
@@ -899,8 +899,8 @@
       \strng{authornamehash}{fc1cf20a4bb1beecd76862d2ba340038}
       \strng{authorfullhash}{43a4d26edfcc26a14cb4878c7c6cd985}
       \strng{authorfullhashraw}{43a4d26edfcc26a14cb4878c7c6cd985}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Shift of the power system generation from the fossil to the variable renewables prompted the system operators to search for new sources of flexibility, i.e., new reserve providers. With the introduction of electric vehicles, smart charging emerged as one of the promising solutions. However, electric vehicle aggregators face the uncertainty both on the reserve activation and the electric vehicle availability. These uncertainties can have a detrimental effect on both the aggregators' profitability and users' comfort. State-of-the art literature mostly neglects the reserve activation or it's uncertainty. On top of that, they rarely model European markets which are different that those commonly addressed in the literature. This paper introduces a new method for modeling the reserve activation uncertainty, also termed as balancing energy procurement in the European context, based on the real historic data from the European power system. Three electric vehicle scheduling models were designed and tested: the deterministic, the stochastic and the robust. The results demonstrate that the current deterministic approaches inaccurately represent the activation uncertainty and that the proposed models that consider uncertainty, both the stochastic and the robust, substantially improve the results. Additionally, the sensitivity analysis for the robust model was performed and it demonstrates how a decision-maker can choose its level of conservativeness, portraying its risk-awareness.}
@@ -952,8 +952,8 @@
       \strng{authorfullhash}{901dfd8a0dbccf4e0b906821b5958a5d}
       \strng{authorfullhashraw}{901dfd8a0dbccf4e0b906821b5958a5d}
       \field{extraname}{2}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{In the trade-off between bidding in the day-ahead electricity market and the real time balancing market, producers need good forecasts for balancing market prices to make informed decisions. A range of earlier published models for forecasting of balancing market prices, including a few extensions, is benchmarked. The models are benchmarked both for 1~h-ahead and day-ahead forecast, and both point and interval forecasts are compared. None of the benchmarked models produce informative day-ahead point forecasts, suggesting that information available before the closing of the day-ahead market is efficiently reflected in the day-ahead market price rather than the balancing market price. Evaluation of the interval forecasts reveals that models without balancing state information overestimate variance, making them unsuitable for scenario generation.}
@@ -1200,8 +1200,8 @@
       \endverb
     \endentry
     \entry{PowerMarketData}{misc}{}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{abstract}{Access and integrate Nord Pool's Power Market Data for the Nordics, Baltics, CWE and the UK dating back to 1998.}
       \field{howpublished}{https://www.nordpoolgroup.com/en/services/power-market-data-services/}
@@ -1215,8 +1215,8 @@
       \endverb
     \endentry
     \entry{StaticContentNordic}{misc}{}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.nucs.net/content/static\_content/Static\%20content/data\%20repository/DataRepositoryGuide.html}
       \field{title}{Static {{Content}} |{} {{Nordic Unavailability Collection System}}}
@@ -1229,8 +1229,8 @@
       \endverb
     \endentry
     \entry{DataStandardisation}{misc}{}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{howpublished}{https://www.entsoe.eu/data/}
       \field{langid}{american}
@@ -1358,8 +1358,8 @@
       \strng{authornamehash}{3929533b5989d9638348e0f5bc4398e5}
       \strng{authorfullhash}{3929533b5989d9638348e0f5bc4398e5}
       \strng{authorfullhashraw}{3929533b5989d9638348e0f5bc4398e5}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Cyclical encoding provides your model with the same information using significantly fewer features}
@@ -1378,8 +1378,8 @@
       \endverb
     \endentry
     \entry{ClassificationAccuracyRecall}{misc}{}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Learn how to calculate three key classification metrics---accuracy, precision, recall---and how to choose the appropriate metric to evaluate a given binary classification model.}
       \field{howpublished}{https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall}
@@ -1424,8 +1424,8 @@
       \strng{authornamehash}{acbdc2c70dff8b7c63160f4e7597a26f}
       \strng{authorfullhash}{6221934c6fbf1b66ad11c3f44ba13304}
       \strng{authorfullhashraw}{6221934c6fbf1b66ad11c3f44ba13304}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Classification tasks in machine learning involving more than two classes are known by the name of "multi-class classification". Performance indicators are very useful when the aim is to evaluate and compare different classification models or machine learning techniques. Many metrics come in handy to test the ability of a multi-class classifier. Those metrics turn out to be useful at different stage of the development process, e.g. comparing the performance of two different models or analysing the behaviour of the same model by tuning different parameters. In this white paper we review a list of the most promising multi-class metrics, we highlight their advantages and disadvantages and show their possible usages during the development of a classification model.}
@@ -1506,6 +1506,23 @@
       \verb C\:\\Users\\haako\\Zotero\\storage\\YJMN57TB\\Dorogush et al. - 2018 - CatBoost gradient boosting with categorical features support.pdf;C\:\\Users\\haako\\Zotero\\storage\\S2QZQDPE\\1810.html
       \endverb
       \keyw{Computer Science - Machine Learning,Computer Science - Mathematical Software,Statistics - Machine Learning}
+    \endentry
+    \entry{33TuningDecision}{misc}{}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Classification is best divided into two parts: the statistical problem of learning a model to predict, ideally, class probabilities;, the decision problem to take concrete action based on those pro...}
+      \field{howpublished}{https://scikit-learn/stable/modules/classification\_threshold.html}
+      \field{journaltitle}{scikit-learn}
+      \field{langid}{english}
+      \field{title}{3.3. {{Tuning}} the Decision Threshold for Class Prediction}
+      \field{urlday}{14}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\QJ79XTBY\classification_threshold.html
+      \endverb
     \endentry
     \entry{ericksonAutoGluonTabularRobustAccurate2020}{misc}{}{}
       \name{author}{7}{}{%
