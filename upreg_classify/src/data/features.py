@@ -172,8 +172,6 @@ def add_interactions(df: pd.DataFrame, connected_zones: List[str], heavy_interac
     df = df.copy()
     # Guard against duplicate column labels which can break arithmetic alignment
     if df.columns.duplicated().any():
-        dupes = df.columns[df.columns.duplicated()].tolist()
-        print(f"[add_interactions] Dropping duplicate columns to avoid reindex errors: {dupes}")
         df = df.loc[:, ~df.columns.duplicated()]
     if 'Price Diff' in df.columns:
         if 'Wind Share' in df.columns:
@@ -260,7 +258,14 @@ def add_interactions(df: pd.DataFrame, connected_zones: List[str], heavy_interac
     # Safe categorical * numeric interactions for aFRR activation category vs mFRR RegLag direction.
     # Map categorical aFRR activation ('up','down','none') to numeric (+1,-1,0) before combining.
     cat_map = {'up': 1, 'down': -1, 'none': 0}
-    for lag in (4, 5, 6, 7, 8):
+    # Convert any available aFRR_ActCat-* lags (e.g., 4..20) into numeric direction columns.
+    lags = []
+    for c in df.columns:
+        if isinstance(c, str) and c.startswith('aFRR_ActCat-'):
+            suffix = c.rsplit('-', 1)[-1]
+            if suffix.isdigit():
+                lags.append(int(suffix))
+    for lag in sorted(set(lags)):
         cat_col = f'aFRR_ActCat-{lag}'
         if cat_col in df.columns:
             num_col = f'aFRR_ActDirNum-{lag}'

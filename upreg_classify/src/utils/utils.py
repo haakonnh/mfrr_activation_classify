@@ -30,7 +30,7 @@ import numpy as np
 _THIS_DIR = os.path.dirname(__file__)
 _REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, '..', '..'))
 if _REPO_ROOT not in sys.path:
-        sys.path.append(_REPO_ROOT)
+    sys.path.append(_REPO_ROOT)
 
 
 # Column names in BalanceMarket CSVs (confirmed by user)
@@ -40,7 +40,7 @@ DOWN_COL = 'NO1 Activated Down Volume (MW)'
 
 def _read_csv(path: str, **kwargs) -> pd.DataFrame:
     if not os.path.exists(path):
-            raise FileNotFoundError(f"Missing file: {path}")
+                raise FileNotFoundError(f"Missing file: {path}")
     return pd.read_csv(path, **kwargs)
 
 
@@ -52,14 +52,13 @@ def load_balance_market(data_dir: str, include_2024: bool) -> pd.DataFrame:
     bm_2024 = os.path.join(data_dir, 'balancing', 'BalanceMarket_2024_NO1_EUR_None_MW.csv')
     mfrr_df = _read_csv(bm_2025, delimiter=';')
     if include_2024:
-            mfrr_df_2024 = _read_csv(bm_2024, delimiter=';')
-            mfrr_df = pd.concat([mfrr_df_2024, mfrr_df], ignore_index=True)
+        mfrr_df_2024 = _read_csv(bm_2024, delimiter=';')
+        mfrr_df = pd.concat([mfrr_df_2024, mfrr_df], ignore_index=True)
     mfrr_df.rename(columns={"Delivery Start (CET)": "Time"}, inplace=True)
     # Parse time and set index
     mfrr_df['Time'] = pd.to_datetime(mfrr_df['Time'], format='%d.%m.%Y %H:%M:%S')
     mfrr_df.set_index('Time', inplace=True)
     # Remove duplicates and sort
-    print("Loaded BalanceMarket data with shape:", mfrr_df.shape)
     mfrr_df = mfrr_df[~mfrr_df.index.duplicated(keep='first')]
     mfrr_df.sort_index(inplace=True)
     return mfrr_df

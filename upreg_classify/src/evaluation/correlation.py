@@ -33,14 +33,14 @@ from scipy.spatial.distance import squareform
 # Optional deps, guard imports
 try:
 	from statsmodels.stats.outliers_influence import variance_inflation_factor
-except Exception:
+except ImportError:
 	variance_inflation_factor = None
 
 try:
 	from sklearn.decomposition import PCA
 	from sklearn.inspection import permutation_importance
 	from sklearn.metrics import make_scorer, f1_score
-except Exception:
+except ImportError:
 	PCA = None
 	permutation_importance = None
 	make_scorer = None
@@ -97,7 +97,6 @@ def compute_correlation_clusters(X: pd.DataFrame, fig_out: Path) -> Tuple[pd.Ser
 	# Numeric-only for correlation
 	Xn = X.select_dtypes(include=[np.number]).copy()
 	if Xn.empty:
-		print('No numeric features available for correlation.')
 		return pd.Series(dtype=int), pd.DataFrame()
 	corr = Xn.corr().abs()
 	# Plot cluster map
@@ -106,8 +105,8 @@ def compute_correlation_clusters(X: pd.DataFrame, fig_out: Path) -> Tuple[pd.Ser
 		plt.title('Feature correlation (abs) with hierarchical clustering')
 		plt.savefig(fig_out, bbox_inches='tight')
 		plt.close()
-	except Exception as e:
-		print('Correlation heatmap failed:', e)
+	except Exception:
+		pass
 	# Hierarchical clustering (use condensed distance)
 	dist = 1 - corr.values
 	np.fill_diagonal(dist, 0.0)
@@ -127,11 +126,9 @@ def compute_correlation_clusters(X: pd.DataFrame, fig_out: Path) -> Tuple[pd.Ser
 
 def compute_vif(X: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:
 	if variance_inflation_factor is None:
-		print('statsmodels not available; skipping VIF.')
 		return pd.DataFrame()
 	Xn = X.select_dtypes(include=[np.number]).copy()
 	if Xn.empty:
-		print('No numeric features available for VIF.')
 		return pd.DataFrame()
 	# Standardize
 	X_std = (Xn - Xn.mean()) / (Xn.std(ddof=0).replace(0, np.nan))
@@ -156,21 +153,15 @@ def compute_vif(X: pd.DataFrame, top_n: int = 30) -> pd.DataFrame:
 		return 'low(<5)'
 	df['bucket'] = df['VIF'].apply(_bucket)
 	df = df.sort_values('VIF', ascending=False)
-	# Console summary
-	counts = df['bucket'].value_counts().to_dict()
-	print('VIF buckets:', counts)
-	print('Top (by VIF):')
-	print(df.head(top_n).to_string(index=False))
+	# Keep only data (caller can print)
 	return df
 
 
 def compute_pca_plot(X: pd.DataFrame, fig_out: Path) -> Optional[np.ndarray]:
 	if PCA is None:
-		print('sklearn PCA not available; skipping PCA.')
 		return None
 	Xn = X.select_dtypes(include=[np.number]).copy()
 	if Xn.empty:
-		print('No numeric features available for PCA.')
 		return None
 	X_std = (Xn - Xn.mean()) / (Xn.std(ddof=0).replace(0, np.nan))
 	X_std = X_std.fillna(0.0)
@@ -200,7 +191,6 @@ class _PredictorWrapper:
 
 def compute_permutation_importance(predictor, X: pd.DataFrame, y: pd.Series, out_csv: Path, n_repeats: int = 10, max_rows: int = 1000) -> pd.Series:
 	if permutation_importance is None or make_scorer is None or f1_score is None:
-		print('sklearn not available; skipping permutation importance.')
 		return pd.Series(dtype=float)
 	# Sample rows for speed
 	df = X.copy()
@@ -216,16 +206,13 @@ def compute_permutation_importance(predictor, X: pd.DataFrame, y: pd.Series, out
 	try:
 		out_csv.parent.mkdir(parents=True, exist_ok=True)
 		imp.to_csv(out_csv, index=True)
-	except Exception as e:
-		print('Saving permutation importance failed:', e)
-	print('Top permutation importance features:')
-	print(imp.head(30).to_string())
+	except Exception:
+		pass
 	return imp
 
 
 def compute_shap_importance(predictor, X: pd.DataFrame, out_csv: Path, max_rows: int = 2000) -> pd.Series:
 	if not _shap_available:
-		print('shap not available; skipping SHAP importance.')
 		return pd.Series(dtype=float)
 	# Sample rows
 	Xs = X
@@ -242,7 +229,6 @@ def compute_shap_importance(predictor, X: pd.DataFrame, out_csv: Path, max_rows:
 	except Exception:
 		model_obj = None
 	if model_obj is None:
-		print('Underlying CatBoost model not accessible; skipping SHAP.')
 		return pd.Series(dtype=float)
 	# Import shap lazily to avoid editor import warnings
 	import shap  # type: ignore
@@ -265,10 +251,8 @@ def compute_shap_importance(predictor, X: pd.DataFrame, out_csv: Path, max_rows:
 	try:
 		out_csv.parent.mkdir(parents=True, exist_ok=True)
 		imp.to_csv(out_csv, index=True)
-	except Exception as e:
-		print('Saving SHAP importance failed:', e)
-	print('Top SHAP mean|abs| features:')
-	print(imp.head(30).to_string())
+	except Exception:
+		pass
 	return imp
 
 
@@ -298,15 +282,16 @@ def main(models_dir: str, max_rows: int = 5000):
 		)
 		groups['size'] = groups['feature'].apply(len)
 		groups = groups.sort_values('size', ascending=False)
-		print('Largest clusters:')
+		# Keep console output compact
+		print('Largest clusters (top 5):')
 		for _, row in groups.head(5).iterrows():
-			print(f"  cluster {int(row[cluster_map.name])} (n={row['size']}): {', '.join(row['feature'][:10])}{' ...' if row['size']>10 else ''}")
+			features_preview = ', '.join(row['feature'][:8])
+			suffix = ' ...' if row['size'] > 8 else ''
+			print(f"  n={row['size']}: {features_preview}{suffix}")
 	# Top correlated pairs
 	if not top_pairs.empty:
 		high = top_pairs[top_pairs['corr'] >= 0.8].copy()
-		print('Top correlated pairs (abs>=0.8):')
-		for _, r in high.head(20).iterrows():
-			print(f"  {r['feature_a']} ~ {r['feature_b']}: {r['corr']:.3f}")
+		print(f"High-correlation pairs (abs>=0.8): {len(high)}")
 		# Save CSV
 		(REPORTS_DF_DIR / 'corr_top_pairs.csv').parent.mkdir(parents=True, exist_ok=True)
 		high.to_csv(REPORTS_DF_DIR / 'corr_top_pairs.csv', index=False)
@@ -317,6 +302,7 @@ def main(models_dir: str, max_rows: int = 5000):
 		vif_out = REPORTS_DF_DIR / 'vif.csv'
 		vif_out.parent.mkdir(parents=True, exist_ok=True)
 		vif_df.to_csv(vif_out, index=False)
+		print(f"VIF saved: {vif_out.name} (rows={len(vif_df)})")
 
 	print('\n=== PCA Explained Variance ===')
 	pca_fig = REPORTS_FIG_DIR / 'pca_explained_variance.png'
@@ -329,13 +315,17 @@ def main(models_dir: str, max_rows: int = 5000):
 	print('\n=== Permutation Importance (sklearn) ===')
 	if y is not None:
 		perm_csv = REPORTS_DF_DIR / 'permutation_importance.csv'
-		compute_permutation_importance(predictor, X, y, perm_csv, n_repeats=10, max_rows=1000)
+		imp = compute_permutation_importance(predictor, X, y, perm_csv, n_repeats=10, max_rows=1000)
+		if len(imp):
+			print(f"Permutation importance saved: {perm_csv.name} (top={imp.index[:5].tolist()})")
 	else:
 		print('Skipped: label not present in dataset snapshot.')
 
 	print('\n=== SHAP Importance (CatBoost) ===')
 	shap_csv = REPORTS_DF_DIR / 'shap_importance.csv'
-	compute_shap_importance(predictor, X, shap_csv, max_rows=2000)
+	shap_imp = compute_shap_importance(predictor, X, shap_csv, max_rows=2000)
+	if len(shap_imp):
+		print(f"SHAP importance saved: {shap_csv.name} (top={shap_imp.index[:5].tolist()})")
 
 	# Final summary
 	print('\n=== Outputs ===')

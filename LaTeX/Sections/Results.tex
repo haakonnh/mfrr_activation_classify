@@ -3,9 +3,8 @@ During the project's course, various models were developed and trained on
 differing datasets and feature sets. Much experimentation went into determining
 the best combination of factors to optimize practical performance and utility.
 Model iterations are evaluated based on practical metrics as well as comparisons
-to a naive baseline model. \textbf{Should naive model be mentioned earlier?}  This model
-serves as a benchmark, providing a reference point against which more complex
-models can be compared. 
+to a naive baseline model. This model serves as a benchmark, providing a
+reference point against which more complex models can be compared. 
 
 Two dataset timeframes were primarily used for model training and evaluation:
 a post-March 4th 2025 dataset and a combined 2024-2025 dataset. The two-year 
@@ -18,15 +17,15 @@ and during the project, models were trained and evaluated on both to assess thei
 performance under different conditions. 
 
 
-\subsection{Naive Model}\label{sec:naive-model-results}
-The naive model simply predicts that the activation state at time $t+4$ is the
-same as at time $t-4$, representing a strictly persistence-based approach. This
-approach is inspired by findings in literature discussed in Section
-\ref{sec:literature-review}, which highlight the auto-correlated nature of
-activation patterns \autocite{backePredictionsPricesVolumes2023}. Much of the 
-motivation for this project is to explore whether more sophisticated models
-can outperform auto-correlation-based baselines by capturing additional relevant
-information from various features.
+\subsection{Naive Model}\label{sec:naive-model-results} The naive model simply
+predicts that the activation state at time $t+4$ is the same as at time $t-4$,
+representing a strictly persistence-based approach. This approach is inspired by
+findings in literature discussed in Section \ref{sec:literature-review}, which
+highlight the auto-correlated nature of activation patterns
+\autocite{backePredictionsPricesVolumes2023}. Much of the motivation for this
+project is to explore whether more sophisticated models are able to outperform
+auto-correlation-based baselines by capturing additional relevant information
+from various features.
 
 
 Table \ref{tab:naive_baseline} shows the classification report for the naive
@@ -34,13 +33,13 @@ model on the post-March 4th 2025 dataset test split. The model performs well,
 with a F1-macro score of 0.55. One can directly infer from the metrics that, in
 the test split at least, 62\% of down-activations, 61\% of no-activations, and
 43\% of up-activations are persistent from $t-4$ to $t+4$. This does not
-guarantee that it is persistent between these two time steps, but it is a strong
-auto-correlation indicator. Similar persistence values were observed in the
-entire dataset with 66\%, 64\%, and 39\%, respectively. Down and no-activations
-are more persistent than up-activations, which makes up-activations even more
-challenging to predict. The "up" class is already the least frequent class, so
-the model has less data to learn from, and the lower persistence further
-complicates accurate predictions. 
+guarantee that persistence is upheld inbetween intervalsq, but it is a strong
+auto-correlation indicator. Similar persistence values were observed when
+evaluated on the entire dataset with 66\%, 64\%, and 39\%, respectively. Down
+and no-activations are more persistent than up-activations, further increasing
+the challenge of predicting up-activations. The "up" class is already the least
+frequent class, so the model has less data to learn from, and the lower
+persistence further complicates accurate predictions. 
 
 Interestingly, precision and recall are equal for all
 classes. This can also be seen in the confusion matrix in Figure
@@ -72,7 +71,7 @@ weighted avg & 0.59 & 0.59 & 0.59 & 5272 \\
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/naive_model_confusion.png}
+    \includegraphics[width=0.6\textwidth]{Images/naive_model_confusion.png}
     \caption{Confusion matrix (row-normalized) for naive model on post-March 4th 
     2025 dataset.}
     \label{fig:naive-model-confusion-matrix}
@@ -166,20 +165,21 @@ relies on persistence patterns. Precision and recall vary across classes, unlike
 the naive model. Higher recall and same precision for down-activations indicates
 that the model captures some down-activations that occur non-persistently, while
 maintaining precision. This is promising as it indicates that the dataset
-contain useful information beyond persistence patterns. Figure
-\ref{fig:catboost-prev-to-pred-confusion-matrix} shows a cross-tabulation of
-predicted classes at $t+4$ against actual classes at $t-4$, with accuracies for
-each entry in parantheses. This visualization essentially shows how many
+contain useful information beyond persistence patterns. 
+
+Figure \ref{fig:catboost-prev-to-pred-confusion-matrix} shows a cross-tabulation
+of predicted classes at $t+4$ against actual classes at $t-4$, with accuracies
+for each entry in parantheses. This visualization essentially shows how many
 predictions the model makes based on persistence versus non-persistence, and how
 accurate these predictions are. Most predictions are indeed based on
 persistence, as indicated by the high values along the diagonal. However, there
 are cases where the model predicts a different class than the one observed at
-$t-4$. It is clear to see that the model struggles most with predicting
-up-activations, as many of its attempt to predict transitions from none/down to
-up fail (0.23 and 0.19 accuracy, respectively). However, the model manages to,
-for instance, catch transitions from down to none with 0.66 accuracy. This is
-promising, but it is clear that more work is needed to improve the model's
-ability to predict non-persistent activation events.
+$t-4$, thus attempting to predict transitions. It is clear to see that the model
+struggles most with predicting up-activations, as many of its attempt to predict
+transitions from none/down to up fail (0.23 and 0.19 accuracy, respectively).
+However, the model manages to, for instance, catch transitions from down to none
+with 0.66 accuracy. This is promising, but it is clear that more work is needed
+to improve the model's ability to predict non-persistent activation events.
 
 \begin{figure}[H]
     \centering
@@ -188,6 +188,11 @@ ability to predict non-persistent activation events.
     2025 dataset.}
     \label{fig:catboost-prev-to-pred-confusion-matrix}
 \end{figure}
+
+\textbf{I have previously made code which indicates sort of how accurate the model 
+is at certain "internal probability thresholds". So, for instance, the model is quite 
+accurate when probabilities for one class are $>$0.6 etc. This could be interesting to
+include here? Stand-in for more robust probabilistic modeling?}
 
 \subsubsection{Feature Importance}
 Figure \ref{fig:catboost-feature-importance-2025} shows the top 40 most
@@ -216,7 +221,8 @@ ranks highly, further emphasizing the importance of recent price-related feature
     \label{fig:catboost-feature-importance-2025}
 \end{figure}
 
-\subsubsection{Price Difference Distribution}
+\subsubsection{Price Difference Distribution}\label{sec:price-diff-results}
+\textbf{Impact on decisions}
 Market participants often consider the relationship between day-ahead prices and
 regulation prices when making bidding decisions. Figure \ref{fig:price-diff-cat}
 visualizes and Table \ref{tab:price-spread-stats} summarizes the distribution of
@@ -232,12 +238,12 @@ project.
 However, assuming activation, the mean price difference for correctly predicted
 up-activations is 17.98 EUR/MWh, while for down-activations it is -12.34
 EUR/MWh. These price differences represent good opportunities for market
-participants to profit from their bids. The up-activation price differences are 
-higher in absolute terms than the down-activation differences, but as down-activations
-are more frequent and predictable, they are the more reliable source of profit. 
-Price differences are likely to vary over time, and as the current dataset is 
-relatively short, these statistics should be interpreted with caution as they 
-may not generalize well to other time periods.
+participants to profit from their bids. The up-activation price differences are
+higher in absolute terms than the down-activation differences, but as
+down-activations are more frequent and predictable, they are the more reliable
+source of profit. Price differences are likely to vary over time, and as the
+current dataset is relatively short, these statistics should be interpreted with
+caution as they may not generalize well to other time periods.
 
 \begin{figure}[H]
     \centering
@@ -257,9 +263,8 @@ may not generalize well to other time periods.
 \toprule
 Metric & $n$ & mean & std & p05 & p25 & p50 & p75 & p95 \\
 \midrule
-Up Price -- DA (correct UP, delivery)               & 275  & 17.98 & 14.33 &  1.81 &  6.32 & 15.82 & 25.82 & 40.05 \\
-Down Price -- DA (correct DOWN, delivery)           & 1343 & -12.34 & 16.78 & -39.67 & -11.84 & -7.66 & -5.54 & -1.92 \\
-UP \% change vs DA (correct UP, delivery) [\%]      & 232  & 25.14 & 25.85 &  2.20 &  7.04 & 19.80 & 35.74 & 62.58 \\
+Up Price -- DA (correct UP)               & 275  & 17.98 & 14.33 &  1.81 &  6.32 & 15.82 & 25.82 & 40.05 \\
+Down Price -- DA (correct DOWN)           & 1343 & -12.34 & 16.78 & -39.67 & -11.84 & -7.66 & -5.54 & -1.92 \\
 \bottomrule
 \end{tabular}
 \caption{Summary statistics for delivery-time spreads, restricted to correctly predicted UP/DOWN cases.}
@@ -268,7 +273,108 @@ UP \% change vs DA (correct UP, delivery) [\%]      & 232  & 25.14 & 25.85 &  2.
 
 
 
-\subsubsection{Correlation}
-Although feature importance analysis indicates contributions from various 
-seemingly non-persistence features, it is clear that many of these features are
-correlated with persistence. \textbf{Correlation analysis.}
+\subsubsection{Feature Correlation}\label{sec:feature-correlation-results}
+Although feature importance analysis indicates contributions from various
+features, it is important to assess whether these features provide information
+beyond persistence. It turns out that many features exhibit high correlation
+with persistence, suggesting that their predictive power may be partially
+redundant. Figure \ref{fig:feature-importance-correlaton} visualizes an
+important concept: models trained on only persistence features attribute high
+importance to few persistence features, while models trained on the full feature
+set distribute importance more evenly across many features. In practise, this
+means that even though many features appear important, most of them only convey
+information that is already captured by persistence features. Thus, features
+that are thought to only convey redundant information can be pruned without
+significant loss of information, simplifying the model. Lag featues were
+initially included up to $t-20$ (5 hours), indicated by figure
+\ref{fig:time-restrictions}, but many of these were pruned as the models 
+showed better performance with only the nearest lag features included.
+This relationship is quite obvious for activation lag and persistence features,
+as they are directly derived from past activation states. However, correlation
+may also be prominent among the remaining features. The information carried by
+wind production- and forecast-related features, for instance, may already be 
+captured by persistence patterns. The same applies to cross-zonal flows, 
+consumption, and price features. 
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/ImportanceCorrelation.jpg}
+    \caption{Visualization of feature importance correlation with persistence fatures.
+    }
+    \label{fig:feature-importance-correlaton}
+\end{figure}
+
+
+\paragraph{Pairwise Feature Correlation.} To quantify feature redundancy,
+pairwise Pearson correlation coefficients
+\autocite{CorrelationCoefficientSimple} were computed for all features in the
+final dataset. Table \ref{tab:top_corr_pairs_060} lists feature pairs with
+absolute correlation coefficients greater than or equal to 0.60 on an already
+pruned feature set. Some feature pairs, such as consumption and residual load,
+and raw wind production and wind share, exhibit extremely high correlation
+($\geq 0.98$), indicating near-redundancy. Other pairs, such as various lagged
+regulation features, also show high correlation ($\geq 0.66$), but not so high
+as to be redundant. Some less obvious correlations are also present, such as
+between day-ahead price and import features, confirming correlations across
+different system state indicators. 
+
+\begin{table}[htbp]
+\centering
+\caption{Top correlated feature pairs (absolute Pearson correlation $\ge 0.60$).}
+\label{tab:top_corr_pairs_060}
+\begin{tabular}{llr}
+\toprule
+Feature A & Feature B & $|\rho|$ \\
+\midrule
+Consumption & Residual Load & 0.997733 \\
+Accepted Imbalance Ratio & Accepted Up Share & 0.994552 \\
+Wind Production & Wind Share & 0.989141 \\
+Consumption / Production & Residual Load & 0.957463 \\
+Consumption & Consumption / Production & 0.956545 \\
+wind\_error\_t+2 & wind\_error\_t+4 & 0.947148 \\
+PriceDown\_t-1 & PriceUp\_t-1 & 0.888687 \\
+month\_cos & month\_sin & 0.884542 \\
+DA Price & PriceDown\_t-1 & 0.850790 \\
+DA/ID Price Ratio & Price Symm Rel Diff & 0.841696 \\
+DA Price & PriceUp\_t-1 & 0.837728 \\
+Consumption & Import/Consumption & 0.786014 \\
+Import/Consumption & Residual Load & 0.782683 \\
+Consumption / Production & Import/Consumption & 0.782593 \\
+HOD & hour\_sin & 0.775928 \\
+Net Import & PriceDown\_t-1 & 0.699544 \\
+PriceDown\_t-1 & Total Imports & 0.672832 \\
+Net Import & PriceUp\_t-1 & 0.661550 \\
+RegLag-4 & RegLag-6 & 0.660286 \\
+RegLag-6 & RegLag-8 & 0.660251 \\
+RegLag-10 & RegLag-8 & 0.660216 \\
+RegLag-10 & RegLag-12 & 0.660180 \\
+Net Import & Total Imports & 0.650611 \\
+DA Price & Net Import & 0.643849 \\
+ID Price 3 & ID3 Mom\_1h & 0.643338 \\
+PriceDown - DA & PriceUp - DA & 0.623193 \\
+Net Import & Residual Load & 0.608814 \\
+DA Price & Total Imports & 0.606887 \\
+Consumption & Net Import & 0.605301 \\
+PriceUp\_t-1 & Total Imports & 0.600970 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Principal Component Analysis (PCA).} PCA is used in machine learning 
+to reduce the dimensionality of datasets while preserving as much variance as
+possible (cite) by transforming the original features into a new set of 
+uncorrelated variables called principal components. In this project, PCA is not 
+applied as such, but rather as an analytic tool to assess feature redundancy.
+Figure \ref{fig:pca-projection} shows a PCA projection of the post-March 4th
+2025 dataset. According to PCA, 90\% of the variance in the dataset can be
+explained by 23 principal components. Given that the dataset contains 
+93 features, this indicates a high degree of redundancy among the features.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/PCA_test.png}
+    \caption{PCA projection of the post-March 4th 2025 dataset.}
+    \label{fig:pca-projection}
+\end{figure}

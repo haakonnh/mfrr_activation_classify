@@ -201,7 +201,7 @@ def train_and_evaluate(
     if data_start:
         try:
             start_ts = pd.Timestamp(data_start)
-        except Exception as e:
+        except (ValueError, TypeError) as e:
             raise ValueError(f"Invalid --data_start value '{data_start}': {e}")
         
         df_filtered = df[df.index >= start_ts].copy()
@@ -217,8 +217,10 @@ def train_and_evaluate(
         val_df = df_filtered.iloc[t_end:v_end].copy()
         test_df = df_filtered.iloc[v_end:].copy() if test_frac > 0 else df_filtered.iloc[v_end:v_end].copy()
         df = df_filtered
-        print(f"Applied dataset start filter: from {data_start} -> rows: {len(df)} (train {len(train_df)}, val {len(val_df)}, test {len(test_df)})")
-        print(f"Last timestamp in dataset: {df.index.max()}")
+        print(
+            f"Data window from {data_start}: n={len(df)} "
+            f"(train={len(train_df)}, val={len(val_df)}, test={len(test_df)}), last_ts={df.index.max()}"
+        )
     # Optionally swap numeric RegLag-* for categorical RegLagCat-* in the feature set
     if use_categorical_reglag:
         # Identify available lags
@@ -286,9 +288,13 @@ def train_and_evaluate(
         tune_up_objective=tune_up_objective,
     )
 
-    print('Training complete.')
-    print('Metrics:', json.dumps(metrics, indent=2))
-    print('Model path:', output_dir)
+    summary_keys = [
+        'val_f1_macro', 'test_f1_macro',
+        'val_accuracy', 'test_accuracy',
+        'val_f1', 'test_f1',
+    ]
+    summary = {k: metrics.get(k) for k in summary_keys if k in metrics}
+    print(f"Training done: {summary} | model_dir={output_dir}")
 
     # Note: persistency-interaction feature filtering is applied before training above.
 

@@ -60,10 +60,18 @@ class Config:
     val_frac: float = 0.2
     test_frac: float = 0.2
     activation_lag_start: int = 4
+    # Max 15-min lag horizon to materialize for lag-stack features (e.g., RegLag-4..RegLag-12)
+    max_lag: int = 12
+    # Max lag horizon for mFRR capacity quantity lag stacks (t-1..t-k). Kept smaller by default.
+    capacity_max_lag: int = 10
+    # Max lag horizon for BM accepted volume/price lag stacks (t-1..t-k). Keep smaller to limit feature explosion.
+    accepted_max_lag: int = 4
     single_persistence: bool = False
     # Optional minimum activation volumes to consider as genuine events
     min_up_volume: float | None = None
     min_down_volume: float | None = None
+    # Optional rolling history of mFRR activation (past-only). Disabled by default to preserve legacy feature set.
+    enable_mfrr_activation_history_features: bool = False
 
 
 def _load_preprocessed_df(path: str) -> pd.DataFrame:
@@ -171,31 +179,45 @@ def load_and_prepare_flows(data_dir: str, include_2024: bool, area: str) -> tupl
     for col in list(physical_flow_df.columns):
         if '->' in col and 'Export (MW)' in col:
             # e.g., "NO1 NO1->NO2 Export (MW)" -> key area->zone
-            try:
-                left = col.split(' Export')[0]
-                # left: "NO1 NO1->NO2"
-                a_to_b = left.split()[-1]
-                a, b = a_to_b.split('->')
-                if a == area:
-                    rename_map[col] = f'{a}-{b}'
-            except Exception:
-                pass
+            left = col.split(' Export', 1)[0]
+            parts = left.split()
+            if not parts:
+                continue
+            a_to_b = parts[-1]
+            if '->' not in a_to_b:
+                continue
+            a, b = a_to_b.split('->', 1)
+            if a == area and b:
+                rename_map[col] = f'{a}-{b}'
         elif '->' in col and 'Import (MW)' in col:
             # e.g., "NO1 NO2->NO1 Import (MW)" -> key zone->area
-            try:
-                left = col.split(' Import')[0]
-                a_to_b = left.split()[-1]
-                a, b = a_to_b.split('->')
-                if b == area:
-                    rename_map[col] = f'{a}-{b}'
-            except Exception:
-                pass
+            left = col.split(' Import', 1)[0]
+            parts = left.split()
+            if not parts:
+                continue
+            a_to_b = parts[-1]
+            if '->' not in a_to_b:
+                continue
+            a, b = a_to_b.split('->', 1)
+            if b == area and a:
+                rename_map[col] = f'{a}-{b}'
     present_cols = [c for c in rename_map.keys() if c in physical_flow_df.columns]
     physical_flow_df = physical_flow_df[present_cols].rename(columns=rename_map)
 
     # Ensure numeric
     for c in physical_flow_df.columns:
         physical_flow_df[c] = pd.to_numeric(physical_flow_df[c], errors='coerce')
+
+    # Some source files can contain multiple columns that map to the same canonical
+    # interconnector name (e.g. repeated measurements). Consolidate those before
+    # building ratio features to avoid duplicate *_ratio columns.
+    if physical_flow_df.columns.duplicated().any():
+        dup_names = physical_flow_df.columns[physical_flow_df.columns.duplicated()].unique().tolist()
+        try:
+            physical_flow_df = physical_flow_df.T.groupby(level=0).sum(min_count=1).T
+        except TypeError:
+            # Older pandas: min_count not supported
+            physical_flow_df = physical_flow_df.T.groupby(level=0).sum().T
     # Resample to 15-min grid
     physical_flow_df = physical_flow_df.resample('15min').ffill()
     
@@ -262,9 +284,39 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     df['Activation Volume'] = pd.to_numeric(mfrr_df[up_col], errors='coerce')
     df['Activated Down Volume'] = pd.to_numeric(mfrr_df[down_col], errors='coerce')
     df['Activated'] = df['Activation Volume'].fillna(0).gt(0)
+
+    if bool(getattr(cfg, 'enable_mfrr_activation_history_features', False)):
+        # Rolling recent activation amount (past-only; shifted by horizon).
+        # Convert 15-min MW to MWh per interval (MW * 0.25h), sum abs up+down.
+        interval_hours = 0.25
+        act_energy_mwh = (
+            df['Activation Volume'].abs().fillna(0)
+            + df['Activated Down Volume'].abs().fillna(0)
+        ) * interval_hours
+        act_any = (
+            df['Activation Volume'].fillna(0).gt(0)
+            | df['Activated Down Volume'].fillna(0).gt(0)
+        ).astype(int)
+
+        horizon = int(getattr(cfg, 'horizon', 4))
+        if horizon < 0:
+            horizon = 0
+        act_energy_mwh = act_energy_mwh.shift(horizon).fillna(0.0)
+        act_any = act_any.shift(horizon).fillna(0).astype(int)
+
+        df['mFRR_ActEnergy_7D'] = act_energy_mwh.rolling('7D', min_periods=1).sum()
+        df['mFRR_ActEnergy_28D'] = act_energy_mwh.rolling('28D', min_periods=1).sum()
+        df['mFRR_ActCount_7D'] = act_any.rolling('7D', min_periods=1).sum()
+        df['mFRR_ActCount_28D'] = act_any.rolling('28D', min_periods=1).sum()
     
     # Engineered accepted volumes and up/down prices (decision-time aligned, t-1)
-    # Use ratios/skew rather than raw lag stacks
+    # Keep ratios/skew, and provide a *limited* lag stack for accepted/prices.
+    max_lag = int(getattr(cfg, 'max_lag', activation_lag_start + 10))
+    if max_lag < 1:
+        max_lag = 1
+    accepted_lag_max = int(getattr(cfg, 'accepted_max_lag', 4))
+    if accepted_lag_max < 1:
+        accepted_lag_max = 1
     accepted_up = pd.to_numeric(mfrr_df[f'{area} Accepted Up Volume (MW)'], errors='coerce').shift(1)
     accepted_down = pd.to_numeric(mfrr_df[f'{area} Accepted Down Volume (MW)'], errors='coerce').shift(1)
     vol_denom = (accepted_up.abs() + accepted_down.abs())
@@ -273,6 +325,12 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     df['Accepted Up Share'] = (accepted_up / (accepted_up + accepted_down + vol_eps)).clip(lower=0.0, upper=1.0)
     df['Accepted Imbalance Ratio'] = (accepted_up - accepted_down) / (accepted_up + accepted_down + vol_eps)
 
+    # Accepted volume lag stack (t-1..t-accepted_lag_max), where t-k means information observed k*15min ago.
+    # Note: accepted_up/down are already shifted(1) so k=1 aligns to original t-1 values.
+    for k in range(1, min(accepted_lag_max, max_lag) + 1):
+        df[f'AcceptedVolUp_t-{k}'] = accepted_up.shift(k - 1)
+        df[f'AcceptedVolDown_t-{k}'] = accepted_down.shift(k - 1)
+
     price_up = pd.to_numeric(mfrr_df[f'{area} Up Price (EUR)'], errors='coerce').shift(1)
     price_down = pd.to_numeric(mfrr_df[f'{area} Down Price (EUR)'], errors='coerce').shift(1)
     price_denom = price_up.abs() + price_down.abs()
@@ -280,12 +338,14 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     p_eps = 1.0 if not np.isfinite(p_eps) or p_eps <= 0 else p_eps
     df['Up-Down Price Skew'] = 2.0 * (price_up - price_down) / (price_denom + p_eps)
     # Keep the shifted raw prices to allow DA comparison later in ratioization helper
-    df['PriceUp_t-1'] = price_up
-    df['PriceDown_t-1'] = price_down
+    # Price lag stack (t-1..t-accepted_lag_max); k=1 aligns to original shifted(1) values.
+    for k in range(1, min(accepted_lag_max, max_lag) + 1):
+        df[f'PriceUp_t-{k}'] = price_up.shift(k - 1)
+        df[f'PriceDown_t-{k}'] = price_down.shift(k - 1)
     
     # Create ternary direction-at-lag features: RegLag-<k> in {-1: down, 0: none, +1: up}
-    # Use volume tie-break when both sides are positive
-    for lag in range(activation_lag_start, activation_lag_start + 11, 1):
+    # Use volume tie-break when both sides are positive.
+    for lag in range(int(activation_lag_start), max_lag + 1, 1):
         up_vol_lag = df['Activation Volume'].shift(lag).fillna(0)
         down_vol_lag = df['Activated Down Volume'].shift(lag).fillna(0)
         has_up = up_vol_lag.gt(0)
@@ -301,8 +361,6 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
         if both.any():
             reglag[both] = np.where(up_vol_lag[both] >= down_vol_lag[both], 1, -1)
         df[f'RegLag-{lag}'] = reglag
-        # Also provide a categorical version for experiments
-        #df[f'RegLagCat-{lag}'] = reglag.map({1: 'up', -1: 'down', 0: 'none'}).astype('category')
 
     # Retain a single numeric up-volume lag for potential interactions/scale
     #df['Activation Volume-3'] = df['Activation Volume'].shift(3)
@@ -314,8 +372,8 @@ def attach_mfrr_features(df: pd.DataFrame, data_dir: str, include_2024: bool,
     none_bool = (~df['Activated']) & (~df['Activated Down Volume'].gt(0))
     df['PersistenceNone'] = _persistency_from_bool(none_bool, shift_lag=cfg.horizon)
     # Backward-compatible aliases if downstream expects old names
-    df['Persistency'] = df['PersistenceUp']
-    df['PersistencyDown'] = df['PersistenceDown']
+    #df['Persistency'] = df['PersistenceUp']
+    #df['PersistencyDown'] = df['PersistenceDown']
 
     
     # Drop raw volumes after constructing features to avoid accidental leakage as features
@@ -516,7 +574,7 @@ def load_intraday_hourly_stats(data_dir: str, include_2024: bool, area: str) -> 
     return id_hourly_df
 
 
-def load_mfrr_capacity_data(data_dir: str) -> pd.DataFrame:
+def load_mfrr_capacity_data(data_dir: str, max_lag: int = 20) -> pd.DataFrame:
     """Load directional mFRR capacity (contracted reserves) from NUCS hourly CSV.
 
     Expects a file like
@@ -553,8 +611,11 @@ def load_mfrr_capacity_data(data_dir: str) -> pd.DataFrame:
         'down_quantity': 'mFRR Cap Down Quantity',
     }, inplace=True)
 
-    # Lag features for up/down quantities at t-1 to t-9 and their average
-    for lag in range(1, 10):
+    # Lag features for up/down quantities at t-1..t-max_lag (15-min steps)
+    max_lag = int(max_lag)
+    if max_lag < 1:
+        max_lag = 1
+    for lag in range(1, max_lag + 1):
         cap_df[f'mFRR Cap Up Quantity Lag-{lag}'] = cap_df['mFRR Cap Up Quantity'].shift(lag)
         cap_df[f'mFRR Cap Down Quantity Lag-{lag}'] = cap_df['mFRR Cap Down Quantity'].shift(lag)
         cap_df[f'mFRR Cap Quantity Lag-{lag}'] = (
@@ -564,7 +625,7 @@ def load_mfrr_capacity_data(data_dir: str) -> pd.DataFrame:
 
     return cap_df
 
-def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame:
+def load_afrr_data(data_dir: str, include_2024: bool, area: str, max_lag: int = 20) -> pd.DataFrame:
     afrr = os.path.join(data_dir, 'afrr', 'nucs_hourly_2024_2025_updown.csv')
     afrr_df = _read_csv(afrr)
     afrr_df.rename(columns={"ts": "Time"}, inplace=True)
@@ -606,8 +667,6 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
         affr_act_24 = os.path.join(data_dir, 'afrr', f'GUI_BALANCING_OFFERS_AND_RESERVES_202501010000-202601010000_{area}.csv')
         affr_act_24_df = pd.read_csv(affr_act_24, delimiter=',')
         affr_act_df = pd.concat([affr_act_24_df, affr_act_df], ignore_index=True)
-    print(f"aFRR activation data rows before processing: {len(affr_act_df)}")
-    print(f'aFRR price data rows before processing: {len(afrr_df)}')
     affr_act_df.rename(columns={'ISP (UTC)': 'Time'}, inplace=True)
     affr_act_df['Time'] = pd.to_datetime(affr_act_df['Time'].astype(str).str[:16], format='%d/%m/%Y %H:%M', errors='coerce')
     # Drop rows with invalid timestamps and ensure chronological order before indexing
@@ -630,10 +689,13 @@ def load_afrr_data(data_dir: str, include_2024: bool, area: str) -> pd.DataFrame
     affr_act_df['aFRR Activated Down'] = pd.to_numeric(affr_act_df['aFRR Activated Down'], errors='coerce')
     affr_act_df = resample_to_15min(affr_act_df)
 
-    # Build categorical lag features from t-4 to t-8 (5 features): up / down / none
+    # Build categorical lag features from t-4 to t-max_lag (15-min steps): up / down / none
     # This uses UN-SHIFTED activation volumes (past information only)
     cat_cols = {}
-    for k in range(4, 9, 2):  # 4,6,8
+    max_lag = int(max_lag)
+    if max_lag < 4:
+        max_lag = 4
+    for k in range(4, max_lag + 1, 1):
         up_lag = affr_act_df['aFRR Activated Up'].shift(k).fillna(0)
         down_lag = affr_act_df['aFRR Activated Down'].shift(k).fillna(0)
         cat = pd.Series('none', index=affr_act_df.index, dtype='string')
@@ -678,7 +740,7 @@ def preprocess_all(
         cfg = Config()
 
     if cache_path and os.path.exists(cache_path) and not force_recompute:
-        print(f"Loading preprocessed DataFrame from cache: {cache_path}")
+        print(f"Loaded preprocessed cache: {cache_path}")
         return _load_preprocessed_df(cache_path)
 
     # Resolve config values
@@ -695,7 +757,6 @@ def preprocess_all(
     area = cfg.area
     # Flows and ratios
     physical_flow_df, df, connected_zones = load_and_prepare_flows(ddir, cfg.include_2024, area)
-    print(f"Flow index range: {physical_flow_df.index.min()} -> {physical_flow_df.index.max()} (rows={len(physical_flow_df)})")
 
     # mFRR activations and lags/persistency
     df = attach_mfrr_features(df, ddir, cfg.include_2024,
@@ -722,8 +783,6 @@ def preprocess_all(
     consumption_df, production_df = load_consumption_production(ddir, cfg.include_2024, area)
     if consumption_df is not None and production_df is not None:
         df = attach_consumption_production(df, consumption_df, production_df, area)
-    else:
-        print('Skipping Consumption/Production attachment due to missing inputs for area', area)
     
     # Intraday hourly statistics (t+4)
     id_hourly_df = load_intraday_hourly_stats(ddir, cfg.include_2024, area)
@@ -733,14 +792,14 @@ def preprocess_all(
     da_df, id_df = load_prices(ddir, cfg.include_2024, area)
     df = attach_price_features(df, da_df, id_df, area, include_id=False)
     
-    affr_df = load_afrr_data(ddir, cfg.include_2024, area)
+    affr_df = load_afrr_data(ddir, cfg.include_2024, area, max_lag=cfg.max_lag)
     df = df.merge(affr_df, how='left', left_index=True, right_index=True)
 
     # mFRR capacity market (contracted reserves, directional up/down)
-    cap_df = load_mfrr_capacity_data(ddir)
+    cap_lag_max = int(getattr(cfg, 'capacity_max_lag', cfg.max_lag))
+    cap_df = load_mfrr_capacity_data(ddir, max_lag=cap_lag_max)
     df = df.merge(cap_df, how='left', left_index=True, right_index=True)
 
-    print(f"Final index range pre-dropna: {df.index.min()} -> {df.index.max()} (rows={len(df)})")
     
     # Core engineered features (volatility, momentum, calendar, scarcity)
     df = add_core_derived_features(df)
@@ -750,32 +809,24 @@ def preprocess_all(
     
     # Imports, net imports, residuals and ramps
     df = attach_imports_and_residuals(df, physical_flow_df, area)
-    
 
-
-    # Interactions
+        # Interactions
     #df = add_interactions(df, connected_zones, cfg.heavy_interactions, area)
-    
-    """ print('Wind forecast shape:', wind_forecast_df.shape) """
-    if 'consumption_df' in locals() and consumption_df is not None:
-        print('Consumption shape:', consumption_df.shape)
-    if 'production_df' in locals() and production_df is not None:
-        print('Production shape:', production_df.shape)
-    print('Day-ahead prices shape:', da_df.shape)
-    # print('Intraday prices shape:', id_df.shape)
-    print('Intraday hourly stats shape:', id_hourly_df.shape)
-    print('aFRR data shape:', affr_df.shape)
-    if 'cap_df' in locals():
-        print('mFRR capacity data shape:', cap_df.shape)
-    print('flows shape:', physical_flow_df.shape)
-    
 
     # Ensure unique columns for downstream frameworks
     df = _ensure_unique_columns(df)
 
+    # Remove duplicate-suffixed cross-zonal flow ratio columns (e.g. "NO1-NO2_ratio_dup1").
+    # These arise when raw source files contain repeated measurements that survive upstream merges.
+    # Keep the first occurrence (unsuffixed) and drop only interconnector ratio dup columns.
+    flow_ratio_dup_cols = df.columns.astype(str).str.match(r"^[A-Z0-9]+-[A-Z0-9]+_ratio_dup\d+$")
+    if flow_ratio_dup_cols.any():
+        drop_cols = df.columns[flow_ratio_dup_cols].tolist()
+        print(f"[flows] Dropped {len(drop_cols)} duplicate-suffixed ratio columns")
+        df = df.drop(columns=drop_cols)
+
     # Final NA handling
     if cfg.dropna:
-        print("Number of NaNs before dropna:", df.isna().sum().sum())
         df.dropna(inplace=True)
     print('Final preprocessed DataFrame shape:', df.shape)
 
@@ -784,7 +835,7 @@ def preprocess_all(
             _save_preprocessed_df(df, cache_path)
             print(f"Saved preprocessed DataFrame cache to: {cache_path}")
         except Exception as e:
-            print(f"Warning: failed to save preprocess cache to {cache_path}: {e}")
+            print(f"Warning: failed to save preprocess cache: {e}")
 
     return df
 

@@ -3,47 +3,45 @@
 The increasing share of weather-dependent renewable energy sources has reduced
 the inertia of modern power systems and made short-term system imbalances more 
 frequent and difficult to predict \autocite{caiLowInertiaPower2023}. To maintain
-frequency quality, Nordic transmision system operators (TSO) rely on on various
+frequency quality, Nordic transmision system operators (TSO) rely on various
 balancing resources, among which manual Frequency Restoration Reserves (mFRR) play
 a key role. The mFRR energy activation market (mFRR EAM) enables market participants
 to offer up- and down-regulation reserves that the TSO can activate when sustained
 imbalances occur \autocite{entso-eNoricBalancingPhilosophy2024}.
 
-Historically, mFRR activations were manual and scheduled on an hourly basis.
-On 4 March 2025, the Nordic region introduced a new automatic mFRR activation
-platform with a 15-minute resolution \autocite{ConfirmationMFRREAM2025}. This reform
-aligns the Nordic system with European balancing-market standards and allows
-activation signals to more closely follow real-time system conditions. Automated
-activation of mFRR reserves enables faster response times, making it possible 
-to adress quarter-hourly imbalances effectively \autocite{NordicPowerMarket}.
-
+Historically, mFRR activations were manual and scheduled on an hourly basis. On
+March 4th 2025, the Nordic region introduced a new automatic mFRR activation
+platform with a 15-minute resolution \autocite{ConfirmationMFRREAM2025}. This
+reform aligns the Nordic system with European balancing-market standards and
+allows activation signals to more closely follow real-time system conditions.
+Automated activation of mFRR reserves enables faster response times to
+imbalances \autocite{NordicPowerMarket}. This change also means that market 
+participants must now make bidding decisions at a finer temporal granularity,
+magnifying the importance of quality short-term forecasting.
 
 
 \begin{figure}[H]
     \includegraphics[width=0.8\textwidth]{Images/dnv_electricity_supply_by_source.png}
     \centering
     \caption{Norway electricity supply by power station and net imports with 
-    projections to 2050 \
-    \autocite{EnergyTransitionOutlook}}
+    projections to 2050
+    \autocite{EnergyTransitionOutlook}.}
     \label{fig:dnv-electricity-supply-by-source}
 \end{figure}
-
-\textbf{Struggling with what to include in background as I feel like much of interesting
-background information kind of fits in motivation.}
 
 
 \subsection{Motivation}
 mFRR activations have direct economic implications for market participants.
 Capacity markets provide stable income, whereas energy activation markets offer
 higher but uncertain returns. Anticipating whether mFRR up- or down-regulation
-is likely therefore affects how flexible resources are allocated between
+is likely therefore affects how flexible resources should be allocated between
 capacity commitments and activation market participation.
 
 This trade-off is particularly relevant for aggregators managing distributed
 flexible assets such as electric vehicles, heat pumps, and batteries. Committing
 flexibility to the mFRR capacity market secures a fixed payment but binds
 resources for the contracted period. In contrast, participation in the
-activation market preserves greater operational flexibility, as resources are
+activation market preserves operational flexibility, as resources are
 only constrained during actual activations. Aggregators must therefore balance
 guaranteed capacity revenues against the expected value of future activation
 opportunities, under substantial uncertainty.
@@ -53,22 +51,86 @@ change in market operation but also an opportunity for more informative
 short-term decision support. Finer temporal resolution allows activation signals
 to better reflect rapidly evolving system conditions, creating richer and more
 frequent market signals. At the same time, this increased granularity elevates
-the importance of forecasts, as market participants must make decisions over
-shorter horizons and under greater sensitivity to short-term system dynamics. As
-a result, short-term activation forecasting becomes both more relevant and
-potentially more valuable for participants seeking to adapt their bidding
-strategies to real-time market participation.
-
-\textbf{Reinforcement learning motivation here?}
+the importance of short-term forecasts, as market participants must make
+decisions over shorter horizons and under greater sensitivity to short-term
+system dynamics. As a result, short-term activation forecasting becomes both
+more relevant and potentially more valuable for participants seeking to adapt
+their bidding strategies to real-time market participation. 
 
 
+The majority of literature on balancing activation forecasting focuses on
+direct volume and price prediction
+\autocite{backePredictionsPricesVolumes2023},
+\autocite{azarangMachineLearningBasedPrediction},
+\autocite{plakasPredictionImbalancePrices2025},
+\autocite{bankeforsDayaheadModellingElectricity},
+\autocite{singhNovelDynamicImbalance2025}. Volumes are particularly relevant for
+system operators, while imbalance prices are of interest for select market
+participants. However, for many participants, especially demand-side aggregators
+of flexible distributed resources with near-zero marginal costs, the direction
+of activation (up-regulation, down-regulation, or no activation) is the most
+critical market signal. These participants do not care about volumes nor prices,
+because so long as regulation happens in the expected direction, they will be
+activated with high probability due to their low bid prices. The importance of 
+this use-case is amplified as the need for demand-side aggregators continues to
+grow in response to increasing renewable penetration and system flexibility needs
+\autocite{caiLowInertiaPower2023}, \autocite{soaresRoleAggregatorsEnergy2025}.
 
-\subsection{Research Question}
 
-The central research question of this study is: To what extent can short-term
-mFRR activation direction (up-regulation, down-regulation, or no activation) be
-predicted at 15-minute resolution using only information available to market
-participants at decision time?
+Much of the existing work on mFRR activation volumes take the TSO perspective
+\autocite{singhNovelDynamicImbalance2025},
+\autocite{azarangMachineLearningBasedPrediction}. Due to the difference in data
+access and decision contexts between TSOs and market participants, one must be
+cautious when applying TSO-focused findings to participant-relevant processes.
+Market participants are constrained to using only information available at bid
+close, which may exclude certain real-time system signals accessible to TSOs.
+This availability concern motivates a participant-centric approach to activation
+direction forecasting, ensuring that developed models and insights are directly
+applicable to the decision-making contexts of mFRR EAM market participants. 
+
+
+Activation direction foresight is, in addition to its direct relevance for
+demand-side aggregators, also a useful intermediate step towards full volume and
+price forecasting. Activation volume and price targets are noisy and difficult
+to predict directly. Additionally, because mFRR activation volumes are
+zero-inflated, regression-based models tend to struggle as it must learn to
+predict both the occurrence and the magnitude of activations simultaneously. An
+important insight arises from this: \textbf{activation volumes and prices are
+conditional on activation direction.} If the direction of activation is known in
+advance, volume and price forecasting can be simplified to a conditional
+regression problem, where only non-zero activations need to be predicted. 
+The zero-inflation problem is thus avoided, as the activation direction 
+model effectively acts as a filter that separates zero from non-zero
+activations. Regression-based models can then focus solely on predicting
+activation price and volume magnitudes, given that an activation in a specific
+direction is likely to occur. 
+
+
+This project is motivated by the need for improved short-term activation
+direction foresight among market participants, particularly demand-side
+aggregators of flexible resources. The transition to an automated 15-minute mFRR
+market creates both the need and the opportunity for enhanced short-term
+forecasting capabilities. By focusing on activation direction prediction, this
+study aims to provide insights that are directly relevant for select market
+participants, and lays the groundwork for more accurate volume and
+price forecasting in future work. While these are specific motivations, the
+methodological insights gained from this study may also have broader applicability
+to other market participant-relevant processes.  
+
+\subsection{Research Statement (or Question?)}
+This study investigates the feasibility of short-term forecasting of mFRR energy
+activation direction — up-regulation, down-regulation, or no activation — at a
+15-minute resolution using only information available to market participants
+under the Nordic automated 15-minute mFRR energy activation market design. The
+focus is on a participant-centric perspective, reflecting the information
+availability constraints and decision contexts faced by aggregators of flexible
+distributed resources in the mFRR EAM. By treating activation direction as the primary
+forecasting target, the study aims to assess whether meaningful predictive
+signals exist at short time horizons following the transition to automated mFRR
+activation, and whether such forecasts can serve as practical decision support
+for market participants. In addition, the study evaluates the role of activation
+direction forecasting as an intermediate step toward more accurate conditional
+forecasting of activation volumes and prices in future work.
 
 \subsection{Outline}
 
@@ -78,4 +140,5 @@ existing literature on imbalance and activation forecasting and identifies the
 research gaps addressed in this study. Chapter 4 details the project's
 methodology, including data preprocessing, feature engineering, and model
 evaluation and selection. Chapter 5 presents the results, while Chapter 6
-discusses implications, limitations, and directions for future work.
+discusses implications, limitations, and directions for future work. Finally, 
+Chapter 7 concludes the report. 

@@ -503,13 +503,13 @@ INPUT Sections\Theory.tex
 INPUT .\Sections\Theory.tex
 INPUT .\Sections\Theory.tex
 INPUT Sections\Theory.tex
-INPUT .\Images\reserves_hierarchy_entsoe.png
-INPUT .\Images\reserves_hierarchy_entsoe.png
-INPUT Images\reserves_hierarchy_entsoe.png
-INPUT .\Images\reserves_hierarchy_entsoe.png
-INPUT .\Images\reserves_hierarchy_entsoe.png
-INPUT .\Images\reserves_hierarchy_entsoe.png
-INPUT .\Images\reserves_hierarchy_entsoe.png
+INPUT .\Images\TimeProducts.drawio.png
+INPUT .\Images\TimeProducts.drawio.png
+INPUT Images\TimeProducts.drawio.png
+INPUT .\Images\TimeProducts.drawio.png
+INPUT .\Images\TimeProducts.drawio.png
+INPUT .\Images\TimeProducts.drawio.png
+INPUT .\Images\TimeProducts.drawio.png
 INPUT .\Images\reserve_types_graph.png
 INPUT .\Images\reserve_types_graph.png
 INPUT Images\reserve_types_graph.png
@@ -538,12 +538,18 @@ INPUT .\Images\uncertainty_ranges.png
 INPUT .\Images\uncertainty_ranges.png
 INPUT .\Images\uncertainty_ranges.png
 INPUT .\Images\uncertainty_ranges.png
-INPUT .\Sections\DataAndPreprocessing.tex
-INPUT .\Sections\DataAndPreprocessing.tex
-INPUT Sections\DataAndPreprocessing.tex
-INPUT .\Sections\DataAndPreprocessing.tex
-INPUT .\Sections\DataAndPreprocessing.tex
-INPUT Sections\DataAndPreprocessing.tex
+INPUT .\Sections\Methodology.tex
+INPUT .\Sections\Methodology.tex
+INPUT Sections\Methodology.tex
+INPUT .\Sections\Methodology.tex
+INPUT .\Sections\Methodology.tex
+INPUT Sections\Methodology.tex
+INPUT .\Sections\.\DataAndPreprocessing.tex
+INPUT .\Sections\.\DataAndPreprocessing.tex
+INPUT .\Sections\.\DataAndPreprocessing.tex
+INPUT .\Sections\.\DataAndPreprocessing.tex
+INPUT .\Sections\.\DataAndPreprocessing.tex
+INPUT .\Sections\.\DataAndPreprocessing.tex
 INPUT .\Images\MethodologyDiagram.png
 INPUT .\Images\MethodologyDiagram.png
 INPUT Images\MethodologyDiagram.png
@@ -602,12 +608,19 @@ INPUT .\Images\nucs_afrr_hourly_prices.png
 INPUT .\Images\nucs_afrr_hourly_prices.png
 INPUT .\Images\nucs_afrr_hourly_prices.png
 INPUT .\Images\nucs_afrr_hourly_prices.png
-INPUT .\Sections\FeatureEngineering.tex
-INPUT .\Sections\FeatureEngineering.tex
-INPUT Sections\FeatureEngineering.tex
-INPUT .\Sections\FeatureEngineering.tex
-INPUT .\Sections\FeatureEngineering.tex
-INPUT Sections\FeatureEngineering.tex
+INPUT .\Sections\.\FeatureEngineering.tex
+INPUT .\Sections\.\FeatureEngineering.tex
+INPUT .\Sections\.\FeatureEngineering.tex
+INPUT .\Sections\.\FeatureEngineering.tex
+INPUT .\Sections\.\FeatureEngineering.tex
+INPUT .\Sections\.\FeatureEngineering.tex
+INPUT .\Images\TimeDiagram.jpg
+INPUT .\Images\TimeDiagram.jpg
+INPUT Images\TimeDiagram.jpg
+INPUT .\Images\TimeDiagram.jpg
+INPUT .\Images\TimeDiagram.jpg
+INPUT .\Images\TimeDiagram.jpg
+INPUT .\Images\TimeDiagram.jpg
 INPUT .\Images\Persistence.png
 INPUT .\Images\Persistence.png
 INPUT Images\Persistence.png
@@ -629,12 +642,28 @@ INPUT .\Images\wind_share_impact_activation.png
 INPUT .\Images\wind_share_impact_activation.png
 INPUT .\Images\wind_share_impact_activation.png
 INPUT .\Images\wind_share_impact_activation.png
-INPUT .\Sections\Evaluation.tex
-INPUT .\Sections\Evaluation.tex
-INPUT Sections\Evaluation.tex
-INPUT .\Sections\Evaluation.tex
-INPUT .\Sections\Evaluation.tex
-INPUT Sections\Evaluation.tex
+INPUT .\Sections\.\Evaluation.tex
+INPUT .\Sections\.\Evaluation.tex
+INPUT .\Sections\.\Evaluation.tex
+INPUT .\Sections\.\Evaluation.tex
+INPUT .\Sections\.\Evaluation.tex
+INPUT .\Sections\.\Evaluation.tex
+INPUT .\Images\Data Splitting.png
+INPUT .\Images\Data Splitting.png
+INPUT Images\Data Splitting.png
+INPUT .\Images\Data Splitting.png
+INPUT .\Images\Data Splitting.png
+INPUT .\Images\Data Splitting.png
+INPUT .\Images\Data Splitting.png
+INPUT .\Images\TrueFalsePosinegs.drawio
+INPUT .\Images\TrueFalsePosinegs.drawio
+INPUT Images\TrueFalsePosinegs.drawio
+INPUT .\Images\TrueFalsePosinegs.drawio.png
+INPUT Images\TrueFalsePosinegs.drawio.png
+INPUT .\Images\TrueFalsePosinegs.drawio.png
+INPUT .\Images\TrueFalsePosinegs.drawio.png
+INPUT .\Images\TrueFalsePosinegs.drawio.png
+INPUT .\Images\TrueFalsePosinegs.drawio.png
 INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\ConfusionMatrix.png
 INPUT Images\ConfusionMatrix.png
@@ -642,13 +671,6 @@ INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\ConfusionMatrix.png
 INPUT .\Images\ConfusionMatrix.png
-INPUT .\Images\data_splitting.png
-INPUT .\Images\data_splitting.png
-INPUT Images\data_splitting.png
-INPUT .\Images\data_splitting.png
-INPUT .\Images\data_splitting.png
-INPUT .\Images\data_splitting.png
-INPUT .\Images\data_splitting.png
 INPUT .\Images\pr-curve.png
 INPUT .\Images\pr-curve.png
 INPUT Images\pr-curve.png
@@ -723,6 +745,32 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm0900.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm0600.tfm
+INPUT .\Images\ImportanceCorrelation.jpg
+INPUT .\Images\ImportanceCorrelation.jpg
+INPUT Images\ImportanceCorrelation.jpg
+INPUT .\Images\ImportanceCorrelation.jpg
+INPUT .\Images\ImportanceCorrelation.jpg
+INPUT .\Images\ImportanceCorrelation.jpg
+INPUT .\Images\ImportanceCorrelation.jpg
+INPUT .\Images\PCA_test.png
+INPUT .\Images\PCA_test.png
+INPUT Images\PCA_test.png
+INPUT .\Images\PCA_test.png
+INPUT .\Images\PCA_test.png
+INPUT .\Images\PCA_test.png
+INPUT .\Images\PCA_test.png
+INPUT .\Sections\Discussion.tex
+INPUT .\Sections\Discussion.tex
+INPUT Sections\Discussion.tex
+INPUT .\Sections\Discussion.tex
+INPUT .\Sections\Discussion.tex
+INPUT Sections\Discussion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT Sections\Conclusion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT Sections\Conclusion.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmss10.tfm
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.out

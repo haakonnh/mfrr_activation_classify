@@ -35,7 +35,7 @@ def _predict_labels_with_policy(
             if cls in adj.columns and m is not None:
                 try:
                     adj[str(cls)] = adj[str(cls)] * float(m)
-                except Exception:
+                except (TypeError, ValueError):
                     pass
         return adj.idxmax(axis=1)
     else:
@@ -48,13 +48,16 @@ def _tune_up_multiplier_obj(
     label: str,
     candidates: List[float] = [0.75, 0.9, 1, 1.1, 1.175, 1.25, 1.3, 1.375, 1.45, 1.5, 1.75, 2.0, 2.5, 3.0, 3.5, 4, 5.0],
     optimize_for: str = 'up',  # 'macro' | 'up'
+    verbose: bool = False,
 ) -> tuple[float, Dict[str, float | str]]:
     """Grid-search a bias multiplier for 'up'. Optimizes for macro F1 by default.
 
     Returns (best_alpha, policy) where policy={'type': 'multiplier', 'up': alpha}.
     """
     
-    optimize_for = 'up'
+    optimize_for = str(optimize_for or 'up').lower()
+    if optimize_for not in {'macro', 'up'}:
+        optimize_for = 'up'
     if val_df is None or len(val_df) == 0:
         return 1.0, {}
     X = val_df[features]
@@ -69,12 +72,13 @@ def _tune_up_multiplier_obj(
         y_pred = adj.idxmax(axis=1)
         f1_up = f1_score((y_true == 'up'), (y_pred == 'up'), zero_division=0)
         f1_macro = f1_score(y_true, y_pred, average='macro', zero_division=0)
-        print(f'Tuning up-multiplier alpha={alpha:.2f}: F1(up)={f1_up:.4f}, F1(macro)={f1_macro:.4f}')
+        if verbose:
+            print(f'Tuning up-multiplier alpha={alpha:.2f}: F1(up)={f1_up:.4f}, F1(macro)={f1_macro:.4f}')
         obj = f1_macro if optimize_for == 'macro' else f1_up
         if obj > best_obj:
             best_obj, best_alpha = obj, alpha
     obj_name = 'f1_macro' if optimize_for == 'macro' else 'f1_up'
-    print(f'Selected up-multiplier alpha={best_alpha:.2f} optimizing {obj_name}={best_obj:.4f}')
+    print(f'Selected up-multiplier alpha={best_alpha:.2f} ({obj_name}={best_obj:.4f})')
     return float(best_alpha), {'type': 'multiplier', 'up': float(best_alpha)}
 
 
@@ -108,7 +112,14 @@ def evaluate_and_report(
     policy: Dict[str, float | str] | None = None
     if tune_up_bias and problem_type == 'multiclass':
         eval_base = val_df if len(val_df) else train_df
-        alpha, policy = _tune_up_multiplier_obj(predictor, eval_base, features, label, optimize_for=tune_up_objective)
+        alpha, policy = _tune_up_multiplier_obj(
+            predictor,
+            eval_base,
+            features,
+            label,
+            optimize_for=tune_up_objective,
+            verbose=False,
+        )
         with open(os.path.join(output_dir, 'class_multipliers.json'), 'w', encoding='utf-8') as f:
             json.dump({'up': alpha}, f, indent=2)
 
@@ -172,39 +183,12 @@ def evaluate_and_report(
         try:
             proba_df = predictor.predict_proba(X)
             if problem_type == 'multiclass' and isinstance(proba_df, pd.DataFrame):
-                # Compute post-hoc confidence/uncertainty diagnostics
-                # Top-1 confidence
                 conf_top1 = proba_df.max(axis=1)
-                # Probability assigned to the true class
                 y_true_str = y_true.astype(str)
                 col_idx = proba_df.columns.get_indexer(y_true_str)
-                # Safe gather of true probabilities
                 p_true = pd.Series(proba_df.to_numpy()[np.arange(len(proba_df)), col_idx], index=proba_df.index)
-                # Rank of true class (1 if correct & top-1)
-                def _rank_true(row_probs: pd.Series, true_label: str) -> int:
-                    # Descending sort by prob; rank is 1-based
-                    order = row_probs.sort_values(ascending=False).index.tolist()
-                    return order.index(true_label) + 1 if true_label in order else len(order)
-                rank_true = proba_df.apply(lambda r: _rank_true(r, str(y_true.loc[r.name])), axis=1)
-                # Whether true class is in top-2
-                top2_has_true = rank_true <= 2
-                # Margin to true (how far from flipping to true)
-                margin_to_true = conf_top1 - p_true
-                # Entropy of predicted distribution
-                entropy = -(proba_df.clip(lower=1e-12).apply(np.log) * proba_df.clip(lower=1e-12)).sum(axis=1)
-                # Minimal alpha multiplier needed on true class to overturn the current top-1
-                def _alpha_needed(row_probs: pd.Series, true_label: str) -> float:
-                    t = row_probs.get(true_label, 0.0)
-                    if t <= 0:
-                        return float('inf')
-                    # best other prob (exclude true class)
-                    others = row_probs.drop(labels=[true_label]) if true_label in row_probs.index else row_probs
-                    best_other = others.max() if len(others) else 0.0
-                    # alpha * t >= best_other => alpha >= best_other / t
-                    return float(best_other / t) if best_other > 0 else 0.0
-                alpha_needed_true = proba_df.apply(lambda r: _alpha_needed(r, str(y_true.loc[r.name])), axis=1)
 
-                # Attach proba columns and diagnostics
+                # Attach proba columns and minimal diagnostics
                 proba_renamed = proba_df.rename(columns={c: f'p_{str(c)}' for c in proba_df.columns})
                 out_pred = pd.concat([
                     out_pred,
@@ -212,11 +196,6 @@ def evaluate_and_report(
                     pd.DataFrame({
                         'conf_top1': conf_top1,
                         'p_true': p_true,
-                        'margin_to_true': margin_to_true,
-                        'rank_true': rank_true,
-                        'top2_has_true': top2_has_true,
-                        'entropy': entropy,
-                        'alpha_needed_true': alpha_needed_true,
                     })
                 ], axis=1)
 
@@ -267,36 +246,11 @@ def evaluate_and_report(
     imp_df.to_csv(os.path.join(output_dir, 'feature_importance.csv'), index=False)
     fi_png = os.path.join(reports_fig_dir, 'feature_importance.png')
     plot_feature_importance(imp_df, top_n=importance_top_n, output_path=fi_png)
-    # Console preview
-    top = imp_df.sort_values('importance', ascending=False).head(importance_top_n)
-    print('Top feature importances:')
-    for _, row in top.iterrows():
-        print(f"  {row['feature']}: {row['importance']:.6f}")
-
-    # Print evaluation artifacts below feature importance
-    def _print_cm(cm_arr: np.ndarray, labels: Optional[List[str]]):
-        # Ensure 3x3 shape for ternary; if not, print as-is
-        try:
-            import numpy as _np
-            arr = _np.asarray(cm_arr)
-            if arr.ndim == 2:
-                # Print header if labels provided
-                if labels and len(labels) == arr.shape[1]:
-                    print('Labels:', ', '.join([str(x) for x in labels]))
-                for r in arr:
-                    print('  ' + ' '.join(f"{int(x):6d}" for x in r))
-            else:
-                print(arr)
-        except Exception:
-            print(cm_arr)
-
-    for split_name in ['val', 'test']:
-        art = printed_artifacts.get(split_name)
-        if not art:
-            continue
-        print(f"\n=== {split_name.upper()} Classification Report ===")
-        print(art['classification_report'])
-        print(f"=== {split_name.upper()} Confusion Matrix ===")
-        _print_cm(art['confusion_matrix'], art.get('labels'))
+    # Console preview (compact)
+    top_n = int(min(15, max(1, importance_top_n)))
+    top = imp_df.sort_values('importance', ascending=False).head(top_n)
+    if not top.empty and {'feature', 'importance'}.issubset(top.columns):
+        print('Top feature importances:')
+        print(top[['feature', 'importance']].to_string(index=False))
 
     return metrics

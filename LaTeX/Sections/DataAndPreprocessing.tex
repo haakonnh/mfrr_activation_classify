@@ -1,5 +1,4 @@
-\newpage
-\section{Methodology}
+
 \subsection{Overview of Methodological Approach}
 The methodological approach adopted in this project is visualized in Figure
 \ref{fig:methodology_overview}. The first step, data collection, involves
@@ -24,7 +23,17 @@ the previous steps. Methodological feedback loops flow from the interpretation
 step back to the feature engineering, model training, and evaluation steps.
 These feedback loops represent the iterative nature of the methodology, where
 insights gained from interpretation inform further refinements and improvements
-in the earlier stages of the process.
+in the earlier stages of the process. 
+
+Performance is difficult to evaluate in a vacuum. A \textit{naive} baseline model 
+was therefore developed to provide a reference point for assessing the
+performance of more sophisticated models. The naive model assumes the target
+$t+4$ to equal the most recent known activation direction, i.e. at $t-4$. 
+This approach captures the persistence often observed in mFRR activations, where
+future activations tend to correlate with recent activations. The naive model's
+performance is evaluated using the same metrics as the more complex models,
+allowing for direct comparison. 
+
 
 
 \begin{figure}[H]
@@ -110,17 +119,16 @@ require mFRR activations.
 
 \subsubsection{NUCS}
 NUCS, or the Nordic Unavailability Collection System, is a service for
-collection of data on unavailable data in the Nordic power system. NUCS
-is an important part of this project, as it provides otherwise unavailable
-data that served as features in the models. NUCS is unique from the other 
-data sources used in this project, as it provides data through an API (Application
-Programming Interface) 
-\autocite{StaticContentNordic}. This allows for automated data retrieval, which is
-especially useful for real-time applications. This project does
-not have access to comprehensive real-time data, and the NUCS API was thus only used
-to gather historical data for the training and evaluation of the models. An algorithm
-was developed, however, to automatically retrieve up-to-date data from the NUCS API
-for potential future real-time applications.
+collection of data on unavailable data in the Nordic power system. NUCS is an
+important part of this project, as it provides otherwise unavailable data that
+served as features in the models. NUCS is unique from the other data sources
+used in this project, as it provides data through an API (Application
+Programming Interface) \autocite{StaticContentNordic}. This allows for automated
+data retrieval, which is especially useful for real-time applications. This
+project does not have access to comprehensive real-time data, and the NUCS API
+was thus only used to gather historical data for the training and evaluation of
+the models. An algorithm was developed, however, to automatically retrieve
+real-time data from the NUCS API for potential future real-time applications.
 
 \paragraph{aFRR data.} aFRR data is not available through Nord Pool, but
  through the NUCS API,
@@ -205,16 +213,17 @@ constant within the hour, but is now available at the desired 15-minute resoluti
 \end{figure}
 
 The handling, or \textit{imputation}, of missing values, is an important step in
-data preprocessing. In time-dependent data, simply removing the rows with missing values
-is problematic, as it would break the time continuity. Most of the datasets used in this
-project do not have significant issues with missing values, but for the few that do,
-interpolation or forward/backward filling techniques are used to estimate the
-missing values based on surrounding data points. Interpolation is often preferred, as it
-can provide smoother estimates, as it considers both previous and subsequent data points.
-Backward filling is used when missing values are at the beginning of the dataset, 
-as there are no previous data points to reference. Otherwise, forward filling is
-used as the default method, as it maintains the most recent known value, thus 
-preventing time leakage from future data points.
+data preprocessing. In time-dependent data, simply removing the rows with
+missing values is problematic, as it would break the time continuity. Most of
+the datasets used in this project do not have significant issues with missing
+values, but for the few that do, interpolation or forward/backward filling
+techniques are used to estimate the missing values based on surrounding data
+points. Interpolation is often preferred, as it can provide smoother estimates,
+as it considers both previous and subsequent data points. Backward filling is
+used when missing values are at the beginning of the dataset, as there are no
+previous data points to reference. Otherwise, forward filling is used as the
+default method, as it maintains the most recent known value, thus preventing
+time leakage from future data points \autocite{ribeiroMissingDataTime2022}.
 
 After resampling and handling missing values, the various datasets are merged
 into a single dataset. A successful merge requires that all datasets share a common
@@ -229,19 +238,24 @@ ready for feature engineering and model training.
 
 \subsubsection{Exploratory Data Analysis}
 
-\paragraph{Target Class Imbalance.}\label{sec:class_imbalance}
-Figure 
-\ref{fig:mFRR_activation_distribution} displays the distribution of mFRR activations
-over the dataset period. The figure especially highlights the infrequent nature 
-of up-activations, which occur far less often than down-activations. This 
-phenomenon induces a \textit{class imbalance} in the prediction task, which 
-in general makes it more challenging for models to accurately predict the minority
-class \autocite{ClassImbalanceProblem}. 
+\paragraph{Activation Direction Imbalance.}\label{sec:class_imbalance} Figure
+\ref{fig:mFRR_activation_distribution} displays the distribution of mFRR
+activations over the dataset period. The figure especially highlights the
+infrequent nature of up-activations, which occur far less often than
+down-activations. This class imbalance is a critical consideration for the
+prediction task, which in general makes it more challenging for models to
+accurately predict the minority class \autocite{ClassImbalanceProblem}. The
+predominance of no-activation contextualizes the zero-inflated nature of the 
+imbalance volumes, as discussed in the literature review. The classification 
+formulation adopted in this project makes zero-volume intervals a discrete target 
+class, reducing noise from volume magnitude variations within activation classes.
+\textbf{I like this, but does it fit here or in discussion? Perhaps both.}
+
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Images/mfrr_distribution.png}
-    \caption{mFRR activation distribution.}
+    \includegraphics[width=0.7\textwidth]{Images/mfrr_distribution.png}
+    \caption{mFRR activation direction distribution.}
     \label{fig:mFRR_activation_distribution}
 \end{figure}
 
@@ -305,24 +319,35 @@ whilst the other connections are primarily used for imports into NO1.
     \label{fig:cross_zonal_flows_side_by_side}
 \end{figure}
 
-\textbf{Production}
-May or may not include production data EDA here.
+\textbf{Production.}
+Table \ref{tab:wind_feature_stats} summarizes key statistics for NO1 wind-related
+features in the dataset (from 2024 to 2025). The statistics include mean,
+standard deviation, minimum, various percentiles (P10, P50, P90), maximum, and the number of
+observations for each feature. The features encompass day-ahead and intraday
+wind forecasts, actual wind production, forecast revisions, forecast errors, 
+and the share of wind in total production. The mean wind production revision 
+(from intraday to day-ahead) is 12.59 MW, with a standard deviation of 15.27 MW. 
+When compared with the mean actual production of 120.38 MW, this indicates that
+wind errors are quite significant. This is a positive sign for the relevance
+of wind-related features in predicting mFRR activations, as intraday-day-ahead
+discrepencies can lead to imbalances requiring mFRR activations.
+
 \begin{table}[H]
 \centering
 \caption{Summary statistics for wind-related features (2024--2025, NO1)}
 \begin{tabular}{lrrrrrrrr}
 \toprule
-Metric & Mean & Std & Min & P10 & P50 & P90 & Max & Count \\
+Metric & Mean & Std & Min & P10 & P50 & P90 & Max\\
 \midrule
-Wind DA Forecast        & 121.64 & 96.34 & 0.0   & 16.0   & 95.0   & 274.0  & 370.0  & 62,680 \\
-Wind Intraday Forecast  & 135.80 & 104.55 & 0.0  & 15.0   & 111.0  & 294.0  & 376.0  & 38,972 \\
-Wind Actual Production  & 120.38 & 102.72 & 0.0  & 8.0    & 91.0   & 283.0  & 380.0  & 65,568 \\
-Wind Revision (ID--DA)  & 12.59  & 15.27  & 0.0  & 1.0    & 7.0    & 30.0   & 151.0  & 38,972 \\
-DA--Actual Error        & 0.03   & 38.85  & -250.0& -44.0  & -2.0   & 47.0   & 221.0  & 62,680 \\
-ID--Actual Error        & 2.97   & 35.30  & -227.0& -38.0  & 1.0    & 46.0   & 189.7  & 38,972 \\
-Abs DA Error (\%)       & 0.58   & 0.99   & 0.0  & 0.038  & 0.24   & 1.36   & 5.0    & 61,486 \\
-Abs ID Error (\%)       & 0.42   & 0.75   & 0.0  & 0.032  & 0.19   & 0.92   & 5.0    & 38,370 \\
-Wind Share              & 0.054  & 0.047  & 0.0  & 0.0036 & 0.040  & 0.128  & 0.228  & 65,568 \\
+Wind DA Forecast        & 121.64 & 96.34 & 0.0   & 16.0   & 95.0   & 274.0  & 370.0  \\
+Wind Intraday Forecast  & 135.80 & 104.55 & 0.0  & 15.0   & 111.0  & 294.0  & 376.0  \\
+Wind Actual Production  & 120.38 & 102.72 & 0.0  & 8.0    & 91.0   & 283.0  & 380.0   \\
+Wind Revision (ID--DA)  & 12.59  & 15.27  & 0.0  & 1.0    & 7.0    & 30.0   & 151.0  \\
+DA--Actual Error        & 0.03   & 38.85  & -250.0& -44.0  & -2.0   & 47.0   & 221.0   \\
+ID--Actual Error        & 2.97   & 35.30  & -227.0& -38.0  & 1.0    & 46.0   & 189.7   \\
+Abs DA Error (\%)       & 0.58   & 0.99   & 0.0  & 0.038  & 0.24   & 1.36   & 5.0  \\
+Abs ID Error (\%)       & 0.42   & 0.75   & 0.0  & 0.032  & 0.19   & 0.92   & 5.0   \\
+Wind Share              & 0.054  & 0.047  & 0.0  & 0.0036 & 0.040  & 0.128  & 0.228  \\
 \bottomrule
 \end{tabular}
 \label{tab:wind_feature_stats}
@@ -339,9 +364,7 @@ intermittent missing values rather than large gaps of missing data, indicated by
 time series plot. Interpolation is thus a suitable imputation method, as it can estimate
 the missing values based on surrounding data points. This may miss out on some 
 extreme price spikes, but is still expected to provide a reasonable estimate.
-The data appears complete after this date. \textbf{Short discussion on price levels
-and patterns here would be good. ALSO be specific on up/down.} 
-
+The data appears complete after this date. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/nucs_afrr_hourly_hist.png}
@@ -356,8 +379,3 @@ bidding zone from NUCS data.}
     \caption{Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}
     \label{fig:nucs_afrr_hourly_prices}
 \end{figure}
-
-
-\paragraph{Correlation Analysis}
-
-\paragraph{Information Availability}

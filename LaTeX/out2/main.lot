@@ -1,0 +1,7 @@
+\babel@toc {british}{}\relax 
+\contentsline {table}{\numberline {1}{\ignorespaces Overview of key forecasting and uncertainty-modelling studies}}{12}{table.caption.13}%
+\contentsline {table}{\numberline {2}{\ignorespaces Summary statistics for wind-related features (2024--2025, NO1)}}{19}{table.caption.28}%
+\contentsline {table}{\numberline {3}{\ignorespaces Market data release and availability times relative to delivery day $D$ \blx@tocontentsinit {0}\autocite {IntradayAuctionsSIDC}.}}{22}{table.caption.34}%
+\contentsline {table}{\numberline {4}{\ignorespaces Classification report for the naive last-observed-class baseline model.}}{30}{table.caption.51}%
+\contentsline {table}{\numberline {5}{\ignorespaces CatBoost performance on validation and test sets (classes: down, none, up).}}{32}{table.caption.53}%
+\contentsline {table}{\numberline {6}{\ignorespaces Summary statistics for delivery-time spreads, restricted to correctly predicted UP/DOWN cases.}}{35}{table.caption.58}%

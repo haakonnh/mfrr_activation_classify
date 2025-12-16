@@ -1,27 +1,28 @@
+\newpage
 \section{Theory}
 \subsection{Electricity Balancing Market}
 
-Electricity balancing markets are mechanisms designed to ensure the stability
-and reliability of the power grid by managing supply and demand in real-time.
-These markets facilitate the procurement of balancing services, which are
-necessary to maintain the equilibrium between electricity supply and demand.
-Balancing markets operate on the principle of economic efficiency, where
-market participants can offer their flexibility to the grid operator in
-exchange for compensation.
+In the Nordics, the electricity balancing markets are part of a joint
+Transmission System Operator (TSO) project called the Nordic Balancing Model
+(NBM) \autocite{Nordicbalancingmodel}. These markets, operated by the respective
+TSOs (Statnett in Norway), are designed to ensure the stability of the power
+grid by managing supply and demand imbalances in real-time
+\autocite{WholesaleMarketTimeframes}. These markets facilitate the procurement
+of balancing services, which are necessary to maintain the equilibrium between
+electricity supply and demand. 
 
 
 \subsubsection{Nordic Balancing Market Structure}
-In Nordic countries, the balancing hierarchy consists of several layers,
-each serving a specific purpose in maintaining grid stability. Figure
-\ref{fig:nordic_balancing_hierarchy} illustrates the different reserve types, 
-their activation times, and their place in the hierarchy.
+In the NBM, the balancing hierarchy consists of several layers, each serving a
+specific purpose in maintaining grid stability. Figure
+\ref{fig:nordic_balancing_hierarchy} illustrates the market products and
+their required activation times. The fastest reserves are at the top of the hierarchy,
+with slower reserves at the bottom. 
 
-\textbf{Not manual anymore, I will make my own figure.}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/reserves_hierarchy_entsoe.png}
-    \caption[The Nordic balancing market hierarchy, illustrating the different reserve types and their activation times.]{The Nordic balancing market hierarchy, illustrating the different
-    reserve types and their activation times \autocite{entso-eNoricBalancingPhilosophy2024}.}
+    \includegraphics[width=0.8\textwidth]{Images/TimeProducts.drawio.png}
+    \caption{The Nordic balancing market response time requirement hierarchy.}
     \label{fig:nordic_balancing_hierarchy}
 \end{figure}
 
@@ -62,6 +63,8 @@ of minutes to ensure that the frequency is restored to its normal operating
 level. Manual Frequency Restoration Reserves (mFRR) then relieves aFRR 
 and maintains the balance until normal operations are restored.
 
+\textbf{mFRR theory?}
+
 \subsubsection{Reserve Market Concepts}
 Reserve markets are platforms where market participants can offer their
 balancing services to the grid operator. These markets operate on the principle
@@ -74,20 +77,21 @@ discussed further, as they are the most relevant for this study.
 
 
 
-\paragraph{Capacity Markets}
+\paragraph{Capacity Markets (CM).}
 Capacity is a market mechanism that ensures the availability of sufficient
-resources to maintain grid stability and reliability. Capacities are 
-procured prior to real-time operation to guarantee the availability of
-balancing resources at the time of operation
-\autocite{entso-eNoricBalancingPhilosophy2024}. BSPs can offer their capacities 
-to the grid operator through the Nordic aFRR capacity market or in the 
-national (Statnett in Norway) mFRR capacity markets. Capacity market 
-participants are compensated for making their resources available to the
-grid operator, regardless of whether their resources are activated or not.
-They are, however, obligated to deliver the offered capacity when called upon
-by the grid operator.
+resources to maintain grid stability and reliability. Capacities are procured
+prior to real-time operation to guarantee the availability of balancing
+resources at the time of operation
+\autocite{entso-eNoricBalancingPhilosophy2024}. Balance Service Providers (BSP),
+market participants that provide balancing services
+\autocite{BalancingServiceProvider2024}, can offer their capacities to the grid
+operator through the Nordic aFRR capacity market or in the national mFRR
+capacity markets. Capacity market participants are compensated for making their
+resources available to the grid operator, regardless of whether their resources
+are activated or not. They are, however, obligated to deliver the offered
+capacity when called upon by the grid operator.
 
-\paragraph{Energy Activation Markets (EAMs)}
+\paragraph{Energy Activation Markets (EAM).}\label{par:energy-activation-markets}
 Activation markets operate closer to real-time and are designed to procure
 balancing energy to address immediate imbalances in the power grid. In the Nordic
 region, the aFRR and mFRR activation markets serve this purpose. In the 
@@ -99,23 +103,25 @@ provides the activation volumes for the operational quarter-hour. Statnett
 then activates the selected bids based on the activation volumes provided
 by Nordic Libra AOF \autocite{statnettVilkarMFRRAktiveringsmarked2024}.
 
-The mFRR EAM underwent a significant reform March 4th 2025, transitioning
-from national mFRR activation systems to a Nordic-wide mFRR activation market.
-The previously hourly resolution was also changed to a quarter-hourly resolution.
-This resolution change allows for more precise balancing, introducing more
-nuanced price signals. 
 
-\paragraph{Imbalance Prices}
+%\paragraph{Imbalance Price.} The imbalance price is the price used for
+%settlement in the balancing market, reflecting the cost of correcting imbalances
+%in the power system caused by discrepencies between supply and demand. A single
+%imbalance price is calculated for a given imbalance period. The price is thus
+%dependent on the imbalance direction, either up-regulation, down-regulation, or
+%no activation. For up- and down-regulation, the imbalance price is determined
+%based on the up- and down-regulation prices, respectively, or the
+%volume-weighted aFRR energy up- and down-regulation prices if applicable. If
+%there is no activation, a Value of Avoided Activation (VoAA) along with the
+%incentivizing component (IC) is used
+%\autocite{esettNordicImbalanceSettlement2024}.
 
 
+%\textbf{I am not quite steady on imbalance price, is this actually only used 
+%to settle imbalances for balance responsible parties (BRP) and not BSPs in
+%the mFRR market?}
 
 
-\paragraph{mFRR Market in Norway (will refactor this or remove
-this)}
-In Norway, the mFRR market plays a crucial role in maintaining the
-stability of the power grid. Market participants can offer their
-flexibility to the grid operator through both activation and capacity
-markets. 
 
 \subsection{Machine Learning Theory}
 
@@ -123,50 +129,67 @@ Machine learning (ML) is a subset of artificial intelligence (AI) that focuses
 on developing algorithms and statistical models that enable computers to perform
 specific tasks without explicit instructions. Instead, these algorithms learn
 from data, identifying patterns and making decisions based on the information
-provided. In this project, machine learning techniques are employed to predict the
-occurrence of mFRR activations in NO1 based on historical data and relevant system 
-state indicators.
+provided. 
 
 \subsubsection{Supervised Learning for Time-Dependent Classification}
-Supervised learning is a machine learning paradigm where models are trained
-to map input data to specific outputs based on example input-output pairs. In 
-this project, the input data consists of information about the current state
-relevant to the occurence mFRR activations. The output is a ternary
-label indicating whether an up-regulation, down-regulation, or no activation
-occurs. Thus, the output variable is categorical, making this a classification task,
-where the goal is to assign input data points to one of several predefined classes.
-However, the problem at hand is not a standard supervised learning task, as
-the data is ordered and time-dependent. This is often referred to as \textit{event
-prediction}, where \textit{events} are defined as nontrivial occurrences in specific 
-locations and time \autocite{zhaoEventPredictionBig2022}. In this project, location 
-is fixed to the NO1 bidding zone, while time is discretized into quarter-hourly
-intervals. 
+Supervised learning is a machine learning paradigm where models are trained to
+map input data to specific outputs based on example input-output pairs. In this
+project, the input data consists of information about the current state relevant
+to the occurence mFRR activations.
+The output is a ternary label indicating
+whether an up-regulation, down-regulation, or no activation occurs. Thus, the
+output variable is categorical, making it a classification task, where the
+goal is to assign input data points to one of several predefined classes.
 
-The chronological structure has wideranging implications for model training and
-evaluation. Standard supervised learning techniques often assume that data points
-are independent and identically distributed (i.i.d.), which is not the case
-for time-dependent data. Temporal dependencies must be accounted for, as past events can
-influence future outcomes. This calls for specialized model and data engineering
-techniques that can effectively capture and leverage these relationships.
-Perhaps most importantly, the evaluation methodology must respect the temporal order
-of the data to avoid data leakage and ensure that the model's performance is assessed
-in a realistic manner. The model would, for instance, produce over-optimistic results 
-if it has access to future data points when making predictions for a given time step.
+Supervised learning is a machine learning paradigm in which models are trained
+to learn a mapping from input variables to target outputs based on labeled
+example pairs. When the target variable takes values from a set of predefined
+discrete categories, the task is formulated as a classification problem, where
+the objective is to assign each input instance to one of the several predefined
+classes. However, standard supervised learning is not applicable in this
+project, as the data is ordered and time-dependent. This is often referred to as
+\textit{event prediction}, where \textit{events} are defined as nontrivial
+occurrences in specific locations and time
+\autocite{zhaoEventPredictionBig2022}. 
 
-\subsubsection{Class Imbalance}
-\textbf{Perhaps not introduce this yet? It is quite an important topic, though, 
-as it introduces one of the biggest challenges.}
-mFRR up activations are particularly rare events in the NO1 bidding zone compared 
-to down activations and non-activations. This \textit{class imbalance} presents a 
-significant challenge for model training and evaluation. Most ML algorithms are designed
-to optimize overall accuracy, which can lead to models that are biased towards the
-majority class, since correctly predicting the majority class contributes more to 
-overall performance. If the minority class is important, as is the case with mFRR up 
-activations, special considerations must be taken to ensure that the model learns to
-effectively recognize and predict these rare events.
+Chronological structure has wideranging implications for model training and
+evaluation. Standard supervised learning techniques often assume that data
+points are independent and identically distributed (i.i.d.), which is not the
+case for time-dependent data. Temporal dependencies must be accounted for, as
+past events can influence future outcomes. This calls for specialized model and
+data engineering techniques that can effectively capture and leverage these
+relationships. Perhaps most importantly, the evaluation methodology must respect
+the temporal order of the data to avoid data leakage and ensure that the model's
+performance is assessed in a realistic manner. The model would, for instance,
+produce unrealistic results if it has access to future data points when making
+predictions for a given time step.
+
+\subsubsection{Class Imbalance}\label{sec:theory-class-imbalance}
+Class imbalance is a common challenge in classification tasks, particularly in
+real-world applications where certain classes occur much more frequently than
+others \autocite{ClassImbalanceProblem}. This class imbalance
+presents a significant challenge for model training and evaluation. Most ML
+algorithms are designed to optimize overall accuracy, which can lead to models
+that are biased towards the majority class, since correctly predicting the
+majority class contributes more to overall performance. If the minority class is
+important, special considerations must
+be taken to ensure that the model learns to effectively recognize and predict
+these rare events.
 
 \subsubsection{Tree-Based Models}
 
-\paragraph{Random Forest / Extra Trees}
+Given the characteristics of the problem, tree-based machine learning models are
+well suited for activation direction prediction. Such models can capture
+nonlinear relationships and complex interactions between features without
+requiring strong parametric assumptions. They are also robust to differences in
+feature scale and can naturally accommodate heterogeneous inputs, including
+prices, flows, forecasts, and lagged indicators.
 
-\paragraph{Gradient Boosting}
+Importantly, tree-based models integrate effectively with feature-engineering
+approaches that encode temporal information through lagged values and
+persistence measures. Rather than modeling sequential dynamics explicitly, these
+models infer temporal structure indirectly from engineered features that
+summarize recent system behavior. This makes them particularly suitable for
+settings where direct access to high-resolution real-time data is limited.
+
+

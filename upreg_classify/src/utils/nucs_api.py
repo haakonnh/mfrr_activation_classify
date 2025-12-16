@@ -24,7 +24,7 @@ def parse_iso_duration(text: str) -> timedelta:
     if not m:
         try:
             return timedelta(seconds=int(text))
-        except Exception:
+        except (TypeError, ValueError):
             return timedelta(hours=1)
     h = int(m.group("h") or 0)
     m_ = int(m.group("m") or 0)
@@ -68,8 +68,6 @@ class NucsClient:
         q = {"securityToken": self.token}
         q.update(params or {})
         r = requests.get(self._api_url(), params=q, timeout=timeout)
-        # Surface useful context in logs
-        print("NUCS URL:", r.url)
         r.raise_for_status()
         return r.content
 
@@ -102,13 +100,13 @@ def parse_nucs_points(xml_bytes: bytes) -> List[Dict[str, Any]]:
             if s_el is not None and s_el.text:
                 try:
                     start_dt = pd.to_datetime(s_el.text)
-                except Exception:
+                except (ValueError, TypeError):
                     start_dt = None
             if start_dt is None and ti.text and '/' in ti.text:
                 a, _ = ti.text.split('/', 1)
                 try:
                     start_dt = pd.to_datetime(a)
-                except Exception:
+                except (ValueError, TypeError):
                     start_dt = None
         if start_dt is None:
             continue
@@ -129,7 +127,7 @@ def parse_nucs_points(xml_bytes: bytes) -> List[Dict[str, Any]]:
                 continue
             try:
                 position = int(pos_el.text)
-            except Exception:
+            except (TypeError, ValueError):
                 continue
 
             # price: any descendant tag with 'price' in its localname
@@ -140,7 +138,7 @@ def parse_nucs_points(xml_bytes: bytes) -> List[Dict[str, Any]]:
                     try:
                         price_val = float(el.text)
                         break
-                    except Exception:
+                    except (TypeError, ValueError):
                         pass
 
             qty_val: Optional[float] = None
@@ -148,7 +146,7 @@ def parse_nucs_points(xml_bytes: bytes) -> List[Dict[str, Any]]:
             if q_el is not None:
                 try:
                     qty_val = float(q_el.text)
-                except Exception:
+                except (TypeError, ValueError):
                     qty_val = None
 
             ts_point = pd.to_datetime(start_dt) + (position - 1) * pd.to_timedelta(delta)
@@ -261,7 +259,6 @@ def fetch_df09_points(
     periods = build_periods(period_start, period_end, chunk_days)
     rows: List[Dict[str, Any]] = []
     for win in periods:
-        print(win)
         params = {
             "documentType": "A81",  # DF09
             "type_marketagreement.type": cfg.market_agreement_type,
@@ -282,15 +279,16 @@ def fetch_df09_points(
                 print(msg)
                 continue
             raise
-        except Exception as e:
-            print(f"Warning: request failed for window {win['periodStart']}..{win['periodEnd']}: {e}")
+        except (requests.RequestException, ValueError) as e:
+            print(f"Warning: request failed for {win['periodStart']}..{win['periodEnd']}: {e}")
             continue
         try:
             pts = parse_nucs_points(xml_bytes)
         except Exception as e:
-            print(f"Warning: parse error for window {win['periodStart']}..{win['periodEnd']}: {e}")
+            print(f"Warning: parse error for {win['periodStart']}..{win['periodEnd']}: {e}")
             continue
-        print(f" -> {len(pts)} points from {win['periodStart']} to {win['periodEnd']}")
+        # Compact progress signal (kept intentionally)
+        print(f"DF09 {win['periodStart']}..{win['periodEnd']}: {len(pts)} points")
         rows.extend(pts)
     return pd.DataFrame(rows)
 
@@ -340,8 +338,10 @@ def get_mfrr_contracted_hourly(
     if save_csv:
         os.makedirs(os.path.dirname(save_csv), exist_ok=True)
         hourly.to_csv(save_csv, index=False)
-        print("Saved CSV:", save_csv)
     if not hourly.empty:
         last_hour = pd.to_datetime(hourly['ts']).max()
-        print("Last hour fetched:", pd.to_datetime(last_hour).floor('h'))
+        msg = f"NUCS hourly: rows={len(hourly)}, last_hour={pd.to_datetime(last_hour).floor('h')}"
+        if save_csv:
+            msg += f", csv={save_csv}"
+        print(msg)
     return points, hourly

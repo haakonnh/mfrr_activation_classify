@@ -1,0 +1,86 @@
+\newpage
+\section{Discussion}
+This section discusses the main findings of the study, their practical
+implications, and limitations that affect how the results should be interpreted.
+
+\subsection{Summary of Findings}
+Across the evaluated models and feature sets, the results indicate that
+short-term mFRR activation behaviour exhibits strong persistence. A naive
+persistence baseline is difficult to beat in macro-averaged classification
+performance. Feature analysis indicates that none of the at-bid-close available
+features used in this study provide sufficient additional signal to
+substantially improve predictive performance beyond what is captured by recent
+activation states. 
+
+
+\subsection{Implications and Limitations}
+Several factors can explain why performance gains over a persistence baseline are
+limited:
+(i) class imbalance;
+(ii) mFRR activations exhibit strong auto-correlation;
+(iii) information constraints at bid close, which remove the most informative
+recent observations;
+(iv) varying data availability and granularity; and
+(v) lack of data span and representativeness. 
+
+Class imbalance was addressed through decision threshold tuning, but more
+sophisticated rebalancing techniques could have been explored. It seems,
+however, that the "up" class is inherently more difficult to predict due to it
+being more sporadic and less persistent than the other classes. The strong
+auto-correlation in activation patterns, especially for down- and
+no-activations, means that recent activation states are highly predictive of
+future states. Other more nuanced features may provide only marginal, and 
+potentially noisy, signals that model may not value highgly. Persistence 
+features may have therefore over-shadowed other potentially useful features.
+Attempts were made to exclude persistence features to force models to learn from
+other signals, but this led to substantially worse performance. This suggests 
+that other features do not contain sufficient predictive information beyond
+what is already captured by persistence.
+
+The information constraints at bid close are a significant limitation.
+Activation directions are predicted an hour in advance, thus no real-time
+signals are guaranteed to represent system conditions at the time of activation.
+This creates an information gap that models cannot bridge. Recent activations
+are the largest exceptions as they often persist across the gap. Varying data
+granularity also poses challenges, as some features are only available at hourly
+resolution and must be resampled. This removes important intra-hour dynamics
+that could aid prediction. Some data streams have the additonal limitation of
+being released at specific times during the day, limiting availability dependent
+on time of day (see Section \ref{fig:time-restrictions}).
+
+It is difficult to know whether or not the dataset used in this study is
+representative enough to capture a sufficient variety of patterns. The final
+sample period covers 10 months at 15-minute resolution, amounting to $28 800$
+data points. This is not a small dataset per se, but as the dataset consists of
+under a year of data, seasonal patterns may not be fully captured. Features that
+indicate seasonality or patterns that may repeat annually are not possible to
+learn from this dataset. Dataset on such short timeframes also risk being poorly
+generalizable to future periods. A similarly featured dataset trained over
+multiple years may yield better results. It is also important to note that this
+study only considers the price area NO1. Other areas may have different
+characteristics that could affect predictability, such as less imbalance, less
+persistence, or differing system dynamics.
+
+\textbf{What positive implications come? Down is quite predictable.}
+The results indicate that down-activations are more predictable than
+up-activations. Combined with the price difference analysis in Section
+\ref{sec:price-diff-results}, this suggests that the down-activation market may
+be the better opportunity for market participants to profit from in NO1.
+Up-activations are less predictable, and the price discrepency does not seem to
+compensate for this. However, this conclusion may not generalize to other
+time periods or price areas.
+
+
+\subsection{Future Work}
+\textbf{Question is whether or not the persistence-based naive model alone 
+actually is good enough to used in a two-stage imbalance volume forecaster.
+}
+
+Future work can focus on (a) improving minority-class performance through
+rebalancing and cost-sensitive learning \autocite{2CostsensitiveLearning}, (b)
+incorporating richer real-time signals (where available) to reduce the
+information gap at bid close, and (c) 
+
+explicitly modelling direction uncertainty
+as a first-stage classification problem, potentially followed by conditional
+modelling of expected volumes.

@@ -1,3 +1,29 @@
+\subsection{Data Splitting}
+Proper data splitting is crucial for reliably evaluating machine learning
+models. In this study, the dataset is partitioned into training, validation, and
+test sets in chronological order, with proportions of 60\%, 20\%, and 20\%,
+respectively (see Figure~\ref{fig:data-splitting}). This temporal split is
+essential to avoid data leakage and to ensure that model performance is assessed
+on truly unseen future data. The training set is used to fit the models, the
+validation set is used for tuning and model selection during development, and
+the test set is held out until the end for an unbiased final evaluation of
+predictive performance.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/Data Splitting.png}
+    \caption{Temporal data splitting into training, validation, and test sets.}
+    \label{fig:data-splitting}
+\end{figure}
+
+Some variation of cross-validation has the potential provide more generalizable
+results, as singular validation splits may not fully capture the variability in
+time series data. Porras (2025) applied a time series cross-validation, ensuring
+that the models were always trained on past data and validated on future data
+\autocite{porrasShortTermForecastingMFRR}. An analysis of this is presented 
+in the results chapter.
+
+
 
 \subsection{Evaluation Framework}
 Classification problems are often evaluated using accuracy, precision,
@@ -8,7 +34,7 @@ recall, and F1-score. These metrics are defined as follows
     the total observations. It is calculated as:
     \[ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} \]
     where TP is true positives, TN is true negatives, FP is false positives,
-    and FN is false negatives.
+    and FN is false negatives \textbf{explain what these mean}.
     \item \textbf{Precision}: The ratio of correctly predicted positive
     observations to the total predicted positive observations. It is
     calculated as:
@@ -21,6 +47,13 @@ recall, and F1-score. These metrics are defined as follows
     \[ \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} \]   
 
 \end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/TrueFalsePosinegs.drawio}
+    \caption{Confusion matrix illustrating true/false positives/negatives.}
+    \label{fig:true-false-positives-negatives}
+\end{figure}
 
 While accuracy is a commonly used metric, it can be misleading in cases of
 imbalanced datasets. For instance, if only 5\% of the data points belong to
@@ -133,13 +166,12 @@ novel insights into mFRR activations, potentially providing a competitive edge i
 market participation. 
 
 \paragraph{The transition metric.}
-is one more evaluation metric which is important to consider for this specific
-problem: how often the model manages to predict \textit{transitions} between 
-classes. This is measured by looking at all sequential time interval pairs 
-$t-4 and t+4$ with differing class labels. If the model predicted the class
-label for time interval $t+4$ correctly, it is counted as a successfully
-predicted transition. This is a crucial metric as it indicates its non-persistence
-predictive capabilities. 
+The transition metric evaluates the model's ability to predict
+\textit{transitions} between classes. This is measured by looking at all
+sequential time interval pairs $t-4$ and $t+4$ with different class labels. If
+the model predicted the class label for time interval $t+4$ correctly, it is
+counted as a successfully predicted transition. This is a crucial metric as it
+indicates its non-persistence predictive capabilities. 
 
 \paragraph{Probability correctness.} Although the models make hard
 classifications, they do so based on predicted probabilities for each class. It
@@ -149,38 +181,14 @@ probability of 0.8 and an activation does not occur, this should be considered a
 more severe error than if the model falsely predicted an activation when the
 predicted probabilities were more evenly distributed. 
 
-\subsubsection{Data Splitting}
-Proper data splitting is crucial for reliably evaluating machine learning
-models. In this study, the dataset is partitioned into training, validation, and
-test sets in chronological order, with proportions of 60\%, 20\%, and 20\%,
-respectively (see Figure~\ref{fig:data-splitting}). This temporal split is
-essential to avoid data leakage and to ensure that model performance is assessed
-on truly unseen future data. The training set is used to fit the models, the
-validation set is used for tuning and model selection during development, and
-the test set is held out until the end for an unbiased final evaluation of
-predictive performance.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/data_splitting.png}
-    \caption{Temporal data splitting into training, validation, and test sets.}
-    \label{fig:data-splitting}
-\end{figure}
-
-Some variation of cross-validation has the potential provide more generalizable
-results, as singular validation splits may not fully capture the variability in
-time series data. Porras (2025) applied a time series cross-validation, ensuring
-that the models were always trained on past data and validated on future data
-\autocite{porrasShortTermForecastingMFRR}. An analysis of this is presented 
-in the results chapter.
-
-
-\subsubsection{Model Selection}
-Many different models were considered and tested during the project. The main models
-that were evaluated include Random Forest, Extra Trees, LightGBM, XGBoost, CatBoost, and
-neural network models implemented using AutoGluon. Each model has its strengths and 
-weaknesses, and their performance can vary depending on the specific characteristics of the
-dataset and the problem at hand. \textbf{Section not finished.}
+\subsection{Model Selection}
+Many different models were considered and tested during the project. The main
+models that were evaluated include Random Forest, Extra Trees, LightGBM,
+XGBoost, CatBoost, and neural network models implemented using AutoGluon. Each
+model has its strengths and weaknesses, and their performance can vary depending
+on the specific characteristics of the dataset and the problem at hand.
+\textbf{Section not finished.}
 
 \paragraph{Random Forest and Extra Trees}
 Random Forest and Extra Trees are ensemble learning methods that combine multiple
@@ -237,7 +245,7 @@ automatic F1-macro score maximization procedure by method of up-weighting the
 Thus, the ''up'' class is predicted more often to the extent that the overall
 F1-macro score is maximized on the validation set.
 
-The rationale behind this methos is that the model picks up on up-activation
+The rationale behind this method is that the model picks up on up-activation
 patterns to some extent, but as these patterns occur infrequently, the model is
 not confident enough to predict the ``up'' class often enough. By up-weighting
 the predicted probabilities for the ``up'' class, the model is encouraged to
@@ -246,7 +254,4 @@ has the to be detrimental to other class predictions, but if the trade-off is
 optimized for F1-macro score, the overall performance across all classes can be
 improved. There is no guarantee that this tuning will generalize onto the test
 set, but it provides a systematic way to address the underprediction of the
-minority class based on validation set performance. \textbf{Discuss somehwere in
-the report that perhaps some internal cross-validation-based tuning could be
-better.}
-
+minority class based on validation set performance. 

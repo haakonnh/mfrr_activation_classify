@@ -254,9 +254,10 @@ def plot_imbalance_vs_spot_price(
     stats = price_spread_stats(result)
     if print_stats:
         sc = stats["sign_checks"]
-        print("negatives in UP spread:", sc["negatives_in_up_spread"])
-        print("positives in DOWN spread:", sc["positives_in_down_spread"])
-        print(stats["summary"].to_string(index=False))
+        print(
+            "Price spread stats: "
+            f"neg_up={sc['negatives_in_up_spread']}, pos_down={sc['positives_in_down_spread']}"
+        )
 
     fig, ax = plt.subplots(figsize=(10, 5))
 
