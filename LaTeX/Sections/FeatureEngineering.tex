@@ -50,7 +50,7 @@ prediction time.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/TimeDiagram.jpg}
+    \includegraphics[width=0.9\textwidth]{Images/TimeDiagram.drawio.png}
     \caption{Illustration of time restrictions on feature availability for
     predicting mFRR activations at time $t+4$ based on data available at time
     $t$.}
@@ -59,22 +59,23 @@ prediction time.
 
 An additonal complication is that some data sources are made available only on
 certain times of the day. mFRR capacity market data for the following day, for
-instance, is published after the capacity market gate closure at 23:00
-(\textbf{check}) each day. At 01:00 the next day, capacity market data is 
-available for the entire day ahead, but at 22:00 the same day, only data for
-the next two hours is available. This data is thus not only available for 
-target time $t+4$. This complicates feature engineering, as the model must be
-able to handle features that are only partially available depending on the time
-of day. Table \ref{tab:data_availability} summarizes the release times of
-various market datasets relative to the delivery day $D$. In this project,
-these timing constraints are not taken into account when engineering features,
-but they should be considered in future work to ensure that models can operate
-under real-world data availability conditions. \textbf{I can implement this,
-but i dont know if time allows it.}
+instance, is published after the capacity market gate closure at 23:00 each day.
+At 01:00 the next day, capacity market data is available for the entire day
+ahead, but at 22:00 the same day, only data for the next two hours is available.
+This data is thus not only available for target time $t+4$. This complicates
+feature engineering, as the model must be able to handle features that are only
+partially available depending on the time of day. Table
+\ref{tab:data_availability} summarizes the gate closure times of various market
+datasets relative to the delivery day $D$. Market gate closure may not align
+perfectly with actual market participant availability and release times, but
+they provide a good approximation. In this project, these data release timing
+constraints are not taken into account when engineering features, but they
+should be considered in future work to ensure that models can operate under
+real-world data availability conditions. 
 
 \begin{table}[h]
 \centering
-\caption{Market data release and availability times relative to delivery day $D$
+\caption{Market gate closures and availability times relative to delivery day $D$
 \autocite{IntradayAuctionsSIDC}.}
 \label{tab:data_availability}
 \begin{tabular}{lll}
@@ -89,12 +90,13 @@ Intraday Auction 3 (IDA3) & 10:00 & $D$   \\
 \hline
 \end{tabular}
 \end{table}
-\textbf{Check when it srelease}
 
+During the course of this project, it seems that many data sources and their 
+availabilities have change slightly. Balance market market activation data 
+is, for instance, now available for $t-3$ instead of $t-4$. Such changes should
+be taken into account in future work, but it is unlikely that they will have
+a major impact on the overall findings of this study.
 
-
-\textbf{Actually activation: t-2, production/flows t - 2, consumption t-3?
-Also is this the optimal ordering of sections?}
 
 
 \paragraph{Activation lag features.}

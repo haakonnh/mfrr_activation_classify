@@ -443,6 +443,12 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
 INPUT C:\Users\haako\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
+INPUT .\Sections\Abstract.tex
+INPUT .\Sections\Abstract.tex
+INPUT Sections\Abstract.tex
+INPUT .\Sections\Abstract.tex
+INPUT .\Sections\Abstract.tex
+INPUT Sections\Abstract.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.toc
@@ -614,13 +620,13 @@ INPUT .\Sections\.\FeatureEngineering.tex
 INPUT .\Sections\.\FeatureEngineering.tex
 INPUT .\Sections\.\FeatureEngineering.tex
 INPUT .\Sections\.\FeatureEngineering.tex
-INPUT .\Images\TimeDiagram.jpg
-INPUT .\Images\TimeDiagram.jpg
-INPUT Images\TimeDiagram.jpg
-INPUT .\Images\TimeDiagram.jpg
-INPUT .\Images\TimeDiagram.jpg
-INPUT .\Images\TimeDiagram.jpg
-INPUT .\Images\TimeDiagram.jpg
+INPUT .\Images\TimeDiagram.drawio.png
+INPUT .\Images\TimeDiagram.drawio.png
+INPUT Images\TimeDiagram.drawio.png
+INPUT .\Images\TimeDiagram.drawio.png
+INPUT .\Images\TimeDiagram.drawio.png
+INPUT .\Images\TimeDiagram.drawio.png
+INPUT .\Images\TimeDiagram.drawio.png
 INPUT .\Images\Persistence.png
 INPUT .\Images\Persistence.png
 INPUT Images\Persistence.png
@@ -655,9 +661,7 @@ INPUT .\Images\Data Splitting.png
 INPUT .\Images\Data Splitting.png
 INPUT .\Images\Data Splitting.png
 INPUT .\Images\Data Splitting.png
-INPUT .\Images\TrueFalsePosinegs.drawio
-INPUT .\Images\TrueFalsePosinegs.drawio
-INPUT Images\TrueFalsePosinegs.drawio
+INPUT .\Images\TrueFalsePosinegs.drawio.png
 INPUT .\Images\TrueFalsePosinegs.drawio.png
 INPUT Images\TrueFalsePosinegs.drawio.png
 INPUT .\Images\TrueFalsePosinegs.drawio.png

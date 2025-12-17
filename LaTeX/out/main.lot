@@ -1,9 +1,9 @@
 \babel@toc {british}{}\relax 
-\contentsline {table}{\numberline {1}{\ignorespaces Overview of key forecasting and uncertainty-modelling studies}}{14}{table.caption.16}%
+\contentsline {table}{\numberline {1}{\ignorespaces Overview of key forecasting and uncertainty-modelling studies}}{14}{table.caption.17}%
 \contentsline {table}{\numberline {2}{\ignorespaces Summary statistics for wind-related features (2024--2025, NO1)}}{21}{table.caption.31}%
-\contentsline {table}{\numberline {3}{\ignorespaces Market data release and availability times relative to delivery day $D$ \blx@tocontentsinit {0}\autocite {IntradayAuctionsSIDC}.}}{24}{table.caption.36}%
+\contentsline {table}{\numberline {3}{\ignorespaces Market gate closures and availability times relative to delivery day $D$ \blx@tocontentsinit {0}\autocite {IntradayAuctionsSIDC}.}}{24}{table.caption.36}%
 \contentsline {table}{\numberline {4}{\ignorespaces Overview of engineered price features and their intuition.}}{26}{table.caption.41}%
-\contentsline {table}{\numberline {5}{\ignorespaces Classification report for the naive last-observed-class baseline model.}}{33}{table.caption.55}%
-\contentsline {table}{\numberline {6}{\ignorespaces CatBoost performance on validation and test sets (classes: down, none, up).}}{35}{table.caption.57}%
-\contentsline {table}{\numberline {7}{\ignorespaces Summary statistics for delivery-time spreads, restricted to correctly predicted UP/DOWN cases.}}{38}{table.caption.62}%
-\contentsline {table}{\numberline {8}{\ignorespaces Top correlated feature pairs (absolute Pearson correlation $\ge 0.60$).}}{39}{table.caption.65}%
+\contentsline {table}{\numberline {5}{\ignorespaces Classification report for the naive last-observed-class baseline model.}}{33}{table.caption.52}%
+\contentsline {table}{\numberline {6}{\ignorespaces CatBoost performance on validation and test sets (classes: down, none, up).}}{34}{table.caption.54}%
+\contentsline {table}{\numberline {7}{\ignorespaces Summary statistics for delivery-time spreads, restricted to correctly predicted UP/DOWN cases.}}{37}{table.caption.59}%
+\contentsline {table}{\numberline {8}{\ignorespaces Top correlated feature pairs (absolute Pearson correlation $\ge 0.60$).}}{38}{table.caption.62}%

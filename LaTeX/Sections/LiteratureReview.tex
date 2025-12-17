@@ -19,18 +19,18 @@ market price, and vice versa for down-regulating activations
 it lucrative for participants to predict activation events accurately, as
 successful predictions can lead to significant financial gains. 
 
-
-In 2022, Klæboe et al. \autocite{klaeboeDayaheadMarketBidding2022} analyzed
-day-ahead market bidding strategies for flexible generators taking the balancing
-power market into account. They found near-zero gains from incorporating
-balancing market predictions into day-ahead bidding strategies. They note,
-however, that the need for balancing services will increase in the future, and
-that such strategies will therefore become more relevant and profitable. In
-Svenska Kraftnät's balancing market outlook 2030
-\autocite{BalancingMarketOutlook} they report that mFRR capacity demand has
-increased and will continue to increase. The report also suggests that since the automated
-mFRR EAM is only an intermediate step for connecting to MARI (Manually Activated
-Reserves Initiative), which is an upcoming European-wide mFRR market, further
+In 2022, day-ahead market bidding strategies incorporating balancing market
+predictions were analyzed in the context of the Nordic market
+\autocite{klaeboeDayaheadMarketBidding2022}. The gains from incorporating
+balancing market predictions into day-ahead bidding strategies were found to be
+near-zero. It was noted, however, that the need for balancing services will
+increase in the future, and that such strategies will therefore become more
+relevant and profitable. In a balancing market outlook for 2030, mFRR capacity
+demands was reported to have increased significantly in recent years and will
+continue to increase \autocite{BalancingMarketOutlook}. The report also suggests
+that since the automated mFRR EAM is only an intermediate step for connecting to
+MARI (Manually Activated Reserves Initiative), which is an upcoming
+European-wide mFRR market \autocite{ManuallyActivatedReserves}, further
 increases in mFRR demand are to be expected. This suggests that predicting mFRR
 activations will become increasingly important for market participants seeking
 to optimize their market strategies.
@@ -46,11 +46,11 @@ could not be reflected optimally in activation decisions. Moving to a 15-minute
 resolution reduces this discretization effect
 \autocite{kallsetImprovingBalancingActivation2025}.
 
-
-A study by Kallset and Farahmand found that increased resolution significantly
-reduces such structural imbalances and achieves about 60\% of the possible
-reduction in total balancing, compared to a 5-minute resolution ideal
-\autocite{kallsetImprovingBalancingActivation2025}. Their findings imply that
+In a recent study examining the effects of increased temporal resolution on
+balancing activation patterns, it was found that increased resolution
+significantly reduces structural imbalances and achieves about 60\% of the
+possible reduction in total balancing, compared to a 5-minute resolution ideal
+\autocite{kallsetImprovingBalancingActivation2025}. The findings imply that
 imbalances are now corrected more accurately and efficiently on shorter time
 scales, making activation patterns more sensitive to rapid system changes.
 Consequently, the dynamics of the mFRR energy activation market have become more
@@ -68,21 +68,32 @@ of non-zero volumes is different in up- and down-regulating events. When
 direction is not modelled explicitly, the target distribution becomes a mixture
 of up-, down-, and no-activation regimes, which can inflate apparent noise and
 reduce the usefulness of forecasts for decision-making. Consequently, modelling
-activation-direction uncertainty explicitly is an important component of
+activation direction uncertainty explicitly is an important component of
 balancing-market forecasting.
-
 
 To address this challenge, the literature proposes various modelling approaches
 for representing activation uncertainty. These approaches differ in how
-uncertainty is represented. For clarity, these methods are grouped into six
-families:
+uncertainty is represented. For clarity, these methods are grouped into seven
+families, where the first two families only model activation direction
+implicitly, and the remaining five address activation direction uncertainty
+explicitly:
 \begin{enumerate}
-    \item Scenario-based activation models, which simulate possible future imbalance trajectories;
-    \item Activation-ratio or expected-activation models, which derive expected activation ratios from historical data;
-    \item Activation-probability and chance-constraint models, which enforce reliability requirements based on probabilistic imbalance representations;
-    \item Activation-range or interval-uncertainty models, which define bounded sets of feasible activation magnitudes;
-    \item Regressor-based activation models, including machine-learning methods that explicitly predict activation direction; and
-    \item Markov activation models, which represent activation direction as a stochastic process characterized by transition probabilities.
+    \item Direct imbalance or activation volume forecasting models, which
+    produce point or probabilistic predictions of continuous imbalance or
+    activation volumes;
+    \item Scenario-based activation models, which simulate discrete sets of
+    possible future imbalance trajectories;
+    \item Activation-ratio or expected-activation models, which derive expected
+    activation ratios from historical data;
+    \item Activation-probability and chance-constraint models, which enforce
+    reliability requirements based on probabilistic imbalance representations;
+    \item Activation-range or interval-uncertainty models, which define bounded
+    sets of feasible activation magnitudes;
+    \item Markov activation models, which represent activation direction as a
+    stochastic process characterized by transition probabilities; and
+    \item Regressor-based activation direction classification models, including
+    machine-learning methods that explicitly predict activation direction
+    (upward, downward, or none).
 \end{enumerate}
 
 The following sections review these modelling families, beginning with direct
@@ -91,24 +102,34 @@ uncertainty-modelling approach handles, or fails to handle, the discrete
 up/down/none activation decision relevant for mFRR energy markets.
 
 \subsubsection{Direct Imbalance and Activation Volume Forecasting}
+First, it is important to distinguish between \textit{imbalance} and
+\textit{activation} volumes. Imbalance refers to the net difference between
+generation and consumption in the power system, while activation volumes refer
+to the specific amounts of energy that the TSO activates in reserve and
+balancing markets to correct these imbalances. In this literature review, both
+imbalance and activation volume forecasting studies are covered, though
+activation volume studies are more directly relevant for market participants.
+Imbalance forecasting studies are included because they often address similar
+challenges and can provide transferable insights.
 
-\textbf{Differentiate imbalance-activation}
 
 At the system-operator end of the spectrum, a substantial body of literature
 focuses on point forecasting of continuous system \textit{imbalance} volumes,
-with the primary purpose of improving TSO operational decisions. Singh et al.
-\autocite{singhNovelDynamicImbalance2025} exemplify this class of work through a
-regression-based model for short-term imbalance forecasting in Belgium. They
-argue that increasing renewable variability, combined with the 15-minute
-activation window, necessitates accurate short-horizon forecasts to allow TSOs
-to anticipate system deviations more effectively. Their best-performing model
-reduces balancing costs by 44.51\% relative to TSO benchmarks, driven by
-reductions in energy-not-supplied, excess energy, and correction costs.
+with the primary purpose of improving TSO operational decisions. In a 2025
+study, this class of work is exemplified through a regression-based model for
+short-term imbalance forecasting in Belgium
+\autocite{singhNovelDynamicImbalance2025}. It is argued that increasing renewable
+variability, combined with the 15-minute activation window, necessitates
+accurate short-horizon forecasts to allow TSOs to anticipate system deviations
+more effectively. Their best-performing model reduces balancing costs by 44.51\%
+relative to TSO benchmarks, driven by reductions in energy-not-supplied, excess
+energy, and correction costs.
 
-Related work in the Nordic region highlights similar challenges. Edling and
-Azarang (2025) forecast short-term mFRR \textit{activation} volumes across the four
-Swedish bidding zones using LSTM models
-\autocite{azarangMachineLearningBasedPrediction}. Their results reveal strong
+Related work in the Nordic region highlights similar challenges. In a recent
+study on machine-learning based mFRR forecasting, short-term mFRR
+\textit{activation} volume forecasting across the four Swedish bidding zones
+using LSTM models was conducted
+\autocite{azarangMachineLearningBasedPrediction}. The results reveal strong
 geographical heterogeneity in predictability: SE2 exhibits comparatively high
 accuracy, while SE3 and SE4 show limited predictability due to the prevalence of
 zero-activation intervals. This distinction highlights an important structural
@@ -116,44 +137,41 @@ feature of the Nordic system: regions with frequent imbalances do not
 necessarily experience frequent activations. Because Sweden's flexible
 hydropower capacity is concentrated in SE1 and SE2, the TSO often activates
 reserves there even when imbalances originate in other zones, provided network
-constraints permit it. Earlier results by Overmaat
-\autocite{overmaatBalancingContributionsNordic} confirm that SE1 and SE2
-historically provide the majority of balancing energy on short and medium time
-scales.
+constraints permit it. Earlier results confirm that SE1 and SE2 historically
+provide the majority of balancing energy on short and medium time scales
+\autocite{overmaatBalancingContributionsNordic}.
 
-While Edling and Azarang approach the problem from a TSO perspective, Backe et
-al. in the KoBas project \autocite{backePredictionsPricesVolumes2023} examine
-activation volume forecasting from a market-participant-oriented standpoint.
-They also develop a LSTM model covering several Nordic bidding zones. Their
-analysis yields three relevant insights. First, balancing volumes are relatively
-autocorrelated: past activations contain predictive information about short-term
-activations. Second, they note that forecast accuracy could likely be improved
-by incorporating weather-related variables. Third, they stress that
-zero-regulation dominates the dataset, meaning the model must infer relatively
-infrequent activation events from a mostly inactive baseline. \textbf{This is an
-inherent limitation when direction is not modelled explicitly.} 
+From a market-participant perspective, activation volume forecasting has been
+studied using LSTM models across several Nordic bidding zones
+\autocite{backePredictionsPricesVolumes2023}. The analysis yields three relevant
+insights. First, balancing volumes are relatively autocorrelated: past
+activations contain predictive information about short-term activations. Second,
+forecast accuracy could likely be improved by incorporating weather-related
+variables. Third, zero-regulation dominates the dataset, meaning the model must
+infer relatively infrequent activation events from a mostly inactive baseline.
+\textbf{This is an inherent limitation when direction is not modelled
+explicitly.} 
 
-Plakas et al. \autocite{plakasPredictionImbalancePrices2025} focus on
-market-participant perspectives as well, proposing a two-stage probabilistic
-framework for forecasting imbalance volumes and prices sequentially in the Greek
-balancing market. The first stage employs quantile regression to generate
-probabilistic forecasts of system imbalances. The second stage leverages the
-quantiles to predict imbalance prices. Plakas et al. find that system imbalance
-volumes are critical predictors of imbalance prices, underscoring the
-correlation between these two variables. By extending from imbalance volume
-point forecasts to price forecasting, Plakas et al. provide more actionable
-insights for market participants seeking to capitalize on opportunities in the
-balancing market. Their results show that imbalance volumes strongly influence
-imbalance prices, indicating that system-state indicators provide valuable
-information for bidders seeking to anticipate balancing-market outcomes.
+A recent study adopts a market-participant perspective, proposing a two-stage
+probabilistic framework for sequentially forecasting imbalance volumes and
+prices in the Greek balancing market
+\autocite{plakasPredictionImbalancePrices2025}. The first stage employs quantile
+regression to generate probabilistic forecasts of system imbalances, while the
+second stage uses these quantiles to predict imbalance prices. The findings
+indicate that system imbalance volumes are critical predictors of imbalance
+prices, underscoring the strong dependence of prices on system state. By
+extending from imbalance-volume point forecasts to price forecasting, this line
+of work illustrates how imbalance forecasts can be translated into more directly
+actionable price information for balancing-market participants.
 
-In a similar vein, Bankefors (2024) applies linear machine-learning-based time
-series models (ARIMAX, SARIMAX) to predict signed mFRR activation volumes
-\autocite{bankeforsDayaheadModellingElectricity}. Bankefors concludes that while
-activation volume forecasting is challenging, the models showed
-promise in implicitly predicting activation direction. He suggests that future
-work could explore classification-based approaches to directly predict
-activation direction rather than inferring it from volume forecasts.
+Linear machine-learning-based time series models (ARIMAX, SARIMAX) have also
+been applied to predict signed mFRR activation volumes in Sweden
+\autocite{bankeforsDayaheadModellingElectricity}. The study concludes that while
+activation volume forecasting is challenging, the models showed promise in
+implicitly predicting activation direction. He suggests that future work could
+explore classification-based approaches to directly predict activation direction
+rather than inferring it from volume forecasts.
+
 
 Together, these studies highlight a structural limitation of direct imbalance
 volume forecasting: the sign and magnitude of imbalances depend on activation
@@ -176,9 +194,9 @@ dimensioning \autocite{khodadadiInvestigatingReserveDimensioning} and stochastic
 scheduling or bidding frameworks
 \autocite{hagstromOptimizingRiskAwareBidding2025}.
 
-In \autocite{habergStochasticMixedInteger2017}, Håberg and Doorman model
-activation uncertainty using three discrete scenarios: high, median, and low, as
-illustrated in Figure \ref{fig:imbalance_scenarios}. The scenarios are
+In 2017, a study modeled uncertain imbalance volumes using three discrete 
+scenarios: high, median, and low, as illustrated in figure \ref{fig:imbalance_scenarios} 
+\autocite{habergStochasticMixedInteger2017}. The scenarios are
 represented as forecasted continuous imbalance volumes over a 40-minute horizon.
 The imbalance forecast scenarios were generated from probability distributions
 based on historical imbalance data. 
@@ -212,7 +230,7 @@ uncertainty.
 Some studies model activation uncertainty using constant activation ratios or
 expected activations. A common approach is to estimate the probability of
 activation in each direction (upward, downward, none) based on historical
-activation frequencies. Irrmann (2023) applied this method to analyze and model the
+activation frequencies. This method was applied in 2023 to analyze and model the 
 Nordic balancing markets \autocite{irrmannAnalysisModellingBalancing2023}. In
 this study, \textit{regulation states} (up, down, none) are sampled based on
 historical frequencies, before activation volumes are drawn from a modelled
@@ -226,43 +244,44 @@ this by estimating separate probabilities for each month of the year, but this
 coarse temporal segmentation is unlikely to capture the full dynamics.
 
 \paragraph{Activation Probability and Chance Constraints.}
-Chance constraints are a mathematical optimization technique used to
-handle uncertainty by ensuring that certain constraints are satisfied with a
-specified probability. Papavasiliou et al. (2022)
-\autocite{papavasiliouMultiAreaReserveDimensioning2022} apply chance-constrained
-optimization to the problem of reserve dimensioning in a multi-area power
-system. Here, uncertainty described by scenarios is revealed in the form of
-continuous imbalances. The chance constraints impose reliability limits for up
-and downward reserves, ensuring that the procured reserves can cover imbalances
-with a certain probability. This is an application of chance constraints to
-balancing markets, but it is geared towards TSO reserve dimensioning rather than
-participant-side activation forecasting. Additionally, activation direction is,
-similar to Håberg and Doorman's scenario-based approach
-\autocite{habergStochasticMixedInteger2017}, only modelled implicitly through
-the sign of the continuous imbalance scenarios. 
+Chance constraints are a mathematical optimization technique used to handle
+uncertainty by ensuring that certain constraints are satisfied with a specified
+probability. A 2022 study applied chance-constrained optimization to the problem
+of reserve dimensioning in a multi-area power system
+\autocite{papavasiliouMultiAreaReserveDimensioning2022}. Here, uncertainty
+described by scenarios is revealed in the form of continuous imbalances. The
+chance constraints impose reliability limits for up and downward reserves,
+ensuring that the procured reserves can cover imbalances with a certain
+probability. This is an application of chance constraints to balancing markets,
+but it is geared towards TSO reserve dimensioning rather than participant-side
+activation forecasting. Additionally, activation direction is, similar to the
+scenario-based approach \autocite{habergStochasticMixedInteger2017}, only
+modelled implicitly through the sign of the continuous imbalance scenarios. 
 
-Browell (2018) \autocite{RiskConstrainedTrading} develops risk-constrained
-trading strategies for stochastic generators in the UK balancing market. In this
-study, \textit{system length}, i.e. the net imbalance direction, is modelled
-probabilistically by a logistic regression model. Then, chance, or risk,
-constraints are imposed to ensure that trading strategies meet certain
-performance criteria with high probability. This study is tailored particularly
-to stochastic generators, whose production uncertainty directly influences their
-balancing market participation. Thus, the method and results will not generalize
-perfectly to other applications, but this paper marks an early and important
-attempt to explicitly model activation/imbalance direction uncertainty.  
+
+From the UK balancing market context, a notable study emerged, developing
+risk-constrained trading strategies for stochastic generators
+\autocite{RiskConstrainedTrading}. In this study, \textit{system length}, i.e.
+the net imbalance direction, is modelled probabilistically by a logistic
+regression model. Then, chance, or risk, constraints are imposed to ensure that
+trading strategies meet certain performance criteria with high probability. This
+study is tailored particularly to stochastic generators, whose production
+uncertainty directly influences their balancing market participation. Thus, the
+method and results will not generalize perfectly to other applications, but this
+paper marks an early and important attempt to explicitly model
+activation/imbalance direction uncertainty.  
 
 
 
 \paragraph{Activation Uncertainty Ranges.}
-Pavi\'c et al. (2023) argue that deterministic reserve activation models
-inaccurately represent activation uncertainty. Thus, they present a
-stochastic model, but more interestingly, they also propose a robust electric
-vehicle aggregator scheduling model using uncertain bounded activation ranges
+In a 2023 study, it is argued that deterministic reserve activation models
+inaccurately represent activation uncertainty. Thus, a stochastic model is
+presented, but more interestingly, a robust electric vehicle aggregator
+scheduling model using uncertain bounded activation ranges is proposed
 \autocite{pavicElectricVehicleAggregator2023}. They use \textit{reserve
 activation} (RA) as input for activation uncertainty, which is defined as the
 ratio of activated reserve energy to the accepted reserve capacity. Their
-analysis is limited to 30-minute FCR and aFRR reserve data for 2018. Activation
+analysis is limited to 30-minute FCR and aFRR reserve data. Activation
 data are gathered and probability distributions are constructed as in Figure
 \ref{fig:activation_uncertainty_ranges}, representing the likelihood of
 different activation ratios. Relevant statistics, such as the mean, max, and
@@ -271,12 +290,10 @@ quantiles, are used as inputs for their models.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Images/uncertainty_ranges.png}
-    \caption{Activation ratio uncertainty ranges for aFRR up.}
+    \caption{Activation ratio uncertainty ranges for aFRR up\autocite{pavicElectricVehicleAggregator2023}.}
     \label{fig:activation_uncertainty_ranges}
 \end{figure}
 
-Figure \ref{fig:activation_uncertainty_ranges} is reproduced from Pav\'ic et al.
-\autocite{pavicElectricVehicleAggregator2023}.
 
 Using activation ranges to represent uncertainty is an interesting approach, as
 it directly models the fraction of accepted reserves that are likely to be
@@ -286,7 +303,7 @@ ranges imply worst-case, best-case, and expected activation scenarios, which can
 be used to inform robust models attempting to remain feasible under uncertainty.
 Such uncertainty sets may be more appropriate than probabilistic and
 deterministic frameworks for flexible demand-side market participants, who must
-ensure feasibility at all costs. Pavi\'c et al. operate in the context of FCR and
+ensure feasibility at all costs. The reviewed study operates in the context of FCR and
 aFRR reserves, where there is always an activated imbalance in one direction
 \autocite{pavicElectricVehicleAggregator2023}. mFRR balancing, on the other
 hand, often requires no activation at all. This is not a problem per se, but it
@@ -296,7 +313,7 @@ probability mass would be located at zero activation.
 
 
 \paragraph{Markov Activation Models.}
-In 2015 time-series-based forecasting models for electricity balancing markets
+In 2015, time-series-based forecasting models for electricity balancing markets
 were benchmarked \autocite{klaeboeBenchmarkingTimeSeries2015}. In this study,
 relevant work is separated into two families: models explicitly modelling
 balancing state and those modelling it implicitly. Various implicit and explicit
@@ -332,39 +349,39 @@ persistence in activation patterns, which are known to be important
 \paragraph{Activation Direction Classification Models.}
 
 Whereas imbalance forecasting estimates continuous system imbalance magnitudes,
-activation-direction forecasting seeks to predict the discrete TSO decision to
+activation direction forecasting seeks to predict the discrete TSO decision to
 activate upward, downward, or no mFRR energy. With the Nordic system's transition to
 15-minute activation intervals, short-term direction forecasting has become more
 important. However, the academic literature that treats direction as a primary
 target remains sparse.
 
 
-Svedlindh and Yngveson \autocite{svedlindhPriceFormationForecasting2025} examine
-the general price formation in intraday and mFRR markets. Among other
-explorations, they develop logistic regression and ANN (Artificial Neural
-Network) models to make day-ahead predictions for activation direction in the
+In a recent study, the general price formation in intraday and mFRR markets was
+examined \autocite{svedlindhPriceFormationForecasting2025}. Among other
+explorations, logistic regression and ANN (Artificial Neural Network) models
+were developed to make day-ahead predictions for activation direction in the
 mFRR activation market. The ANN model outperforms the logistic regression,
 achieving solid \textit{accuracy} and \textit{F1-scores}. They identify,
 however, that \textit{class imbalance} poses a significant challenge, as
 no-activation events dominate the dataset. This imbalance skews model
 performance, making it difficult to accurately predict the less frequent upward
-and downward activations. Despite these acknowledged challenges, Svedlindh and
-Yngveson achieve promising results. They find that mFRR capacity market prices
-and procured volumes are informative predictors of day-ahead activation
-direction. In conclusion, they suggest that closer-to-real-time predictions could
-likely provide insights to market participants.
+and downward activations. Despite these acknowledged challenges, the results
+were promising. They find that mFRR capacity market prices and procured volumes
+are informative predictors of day-ahead activation direction. In conclusion,
+they suggest that closer-to-real-time predictions could likely provide insights
+to market participants.
 
-Porras (2025) \autocite{porrasShortTermForecastingMFRR} applies an XGBoost
-two-stage model to sequentially forecast activation direction and imbalance
-prices at hourly resolution in SE2. The study demonstrates the potential of
-tree-based methods, but it also exposes two practical limitations for
+In a slightly different approach to balancing market forecasting, a two-stage
+model with sequential forecasts of activation direction (XGBoost) and prices at
+hourly resolution in SE2 was proposed
+\autocite{porrasShortTermForecastingMFRR}. The study demonstrates the potential
+of tree-based methods, but it also exposes two practical limitations for
 participant-oriented forecasting: (i) the model operates at hourly resolution,
 and it remains unclear how well the approach would perform at the new 15-minute
 resolution; and (ii) its most important predictor is “balance-direction at
 \(t-0\)” that appears to be unavailable to market participants at the time of
 bidding. This represents a form of feature leakage (use of variables that would
 not be accessible in real decision-making) and likely inflates performance.
-
 
 
 \subsection{Literature Synthesis}
@@ -391,7 +408,7 @@ temporal resolution, and uncertainty-modelling approach.
 \autocite{azarangMachineLearningBasedPrediction} (2025) & mFRR activation volume & 1-hour & ML point forecast
 (LSTM) \\
 \midrule
-\autocite{backePredictionsPricesVolumes2023}\ (KoBas) (2023) & Balancing volume & 1-hour & Probabilistic LSTM;
+\autocite{backePredictionsPricesVolumes2023}\  (2023) & Balancing volume & 1-hour & Probabilistic LSTM;
 implicit direction \\
 \midrule
 \autocite{plakasPredictionImbalancePrices2025}.\ (2025) & Imbalance volume and price & 1-hour & Probabilistic

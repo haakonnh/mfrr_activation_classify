@@ -27,14 +27,15 @@ in the results chapter.
 
 \subsection{Evaluation Framework}
 Classification problems are often evaluated using accuracy, precision,
-recall, and F1-score. These metrics are defined as follows 
+recall, and F1-score. These metrics are defined as follows, based on definitions 
+visualized in figure \ref{fig:true-false-positives-negatives} 
 \autocite{ClassificationAccuracyRecall}:
 \begin{itemize}
     \item \textbf{Accuracy}: The ratio of correctly predicted observations to
     the total observations. It is calculated as:
     \[ \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN} \]
     where TP is true positives, TN is true negatives, FP is false positives,
-    and FN is false negatives \textbf{explain what these mean}.
+    and FN is false negatives.
     \item \textbf{Precision}: The ratio of correctly predicted positive
     observations to the total predicted positive observations. It is
     calculated as:
@@ -48,9 +49,9 @@ recall, and F1-score. These metrics are defined as follows
 
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{Images/TrueFalsePosinegs.drawio}
+    \includegraphics[width=0.4\textwidth]{Images/TrueFalsePosinegs.drawio.png}
     \caption{Confusion matrix illustrating true/false positives/negatives.}
     \label{fig:true-false-positives-negatives}
 \end{figure}
@@ -181,30 +182,6 @@ probability of 0.8 and an activation does not occur, this should be considered a
 more severe error than if the model falsely predicted an activation when the
 predicted probabilities were more evenly distributed. 
 
-
-\subsection{Model Selection}
-Many different models were considered and tested during the project. The main
-models that were evaluated include Random Forest, Extra Trees, LightGBM,
-XGBoost, CatBoost, and neural network models implemented using AutoGluon. Each
-model has its strengths and weaknesses, and their performance can vary depending
-on the specific characteristics of the dataset and the problem at hand.
-\textbf{Section not finished.}
-
-\paragraph{Random Forest and Extra Trees}
-Random Forest and Extra Trees are ensemble learning methods that combine multiple
-decision trees to improve predictive performance and reduce overfitting. 
-
-\paragraph{CatBoost}
-CatBoost is a gradient boosting algorithm that was found to perform well with particular
-feature sets and hyperparameter configurations 
-\autocite{dorogushCatBoostGradientBoosting2018}. Random Forest and Extra Trees were generally
-favoured throughout the project, but CatBoost provided competitive results in some scenarios.
-Since 
-
-\paragraph{XGBoost and LightGBM}
-\textbf{Need to check this out - haven't really given them a real chance with hyperparameter
-tuning and such yet, as they are suspected to not be ideal for contiguous time-series data.}
-
 \subsubsection{Adjusting Classification Thresholds}
 Decision thresholds are the thresholds at which a model assigns class labels
 based on predicted probabilities. Although classification models output discrete
@@ -255,3 +232,18 @@ optimized for F1-macro score, the overall performance across all classes can be
 improved. There is no guarantee that this tuning will generalize onto the test
 set, but it provides a systematic way to address the underprediction of the
 minority class based on validation set performance. 
+
+
+
+\subsection{Model Selection}\label{sec:model-selection} AutoGluon was used as
+the main machine learning framework for model training and evaluation. When
+AutoGluon is given a featured dataset, it automatically trains and tunes
+multiple stacked and ensembled models using different algorithms and
+hyperparameter settings. It then evaluates the performance of each model on a
+validation set and selects the best performing model based on a specified
+metric, such as F1-macro \autocite{ericksonAutoGluonTabularRobustAccurate2020}.
+This automated approach simplified the model selection process for this project,
+allowing for more efficient experimentation and iteration over different dataset
+and feature configurations. As such, selection of specific models was not a
+primary focus, but rather the overall framework and methodology.
+

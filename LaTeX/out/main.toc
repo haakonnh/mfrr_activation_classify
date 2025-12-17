@@ -1,53 +1,53 @@
 \babel@toc {british}{}\relax 
-\contentsline {section}{List of Figures}{ii}{section*.2}%
-\contentsline {section}{List of Tables}{iii}{section*.3}%
+\contentsline {section}{List of Figures}{iii}{section*.3}%
+\contentsline {section}{List of Tables}{iv}{section*.4}%
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Background}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Motivation}{1}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Research Statement (or Question?)}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.2}Motivation}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Research Statement (or Question?)}{3}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Outline}{3}{subsection.1.4}%
 \contentsline {section}{\numberline {2}Theory}{4}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Electricity Balancing Market}{4}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Nordic Balancing Market Structure}{4}{subsubsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2.1.2}Reserve Market Concepts}{5}{subsubsection.2.1.2}%
-\contentsline {paragraph}{Capacity Markets (CM).}{5}{section*.7}%
-\contentsline {paragraph}{Energy Activation Markets (EAM).}{5}{section*.8}%
-\contentsline {subsection}{\numberline {2.2}Machine Learning Theory}{6}{subsection.2.2}%
+\contentsline {paragraph}{Capacity Markets (CM).}{5}{section*.8}%
+\contentsline {paragraph}{Energy Activation Markets (EAM).}{5}{section*.9}%
+\contentsline {subsection}{\numberline {2.2}Machine Learning Theory}{5}{subsection.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.1}Supervised Learning for Time-Dependent Classification}{6}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Class Imbalance}{6}{subsubsection.2.2.2}%
 \contentsline {subsubsection}{\numberline {2.2.3}Tree-Based Models}{6}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}AutoGluon}{7}{subsubsection.2.2.4}%
 \contentsline {section}{\numberline {3}Literature Review}{8}{section.3}%
 \contentsline {subsection}{\numberline {3.1}mFRR Energy Activation Market Characteristics}{8}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Balancing Market Forecasting}{8}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Direct Imbalance and Activation Volume Forecasting}{9}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Scenario-Based Models}{10}{subsubsection.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Activation Uncertainty Modelling Approaches}{11}{subsubsection.3.2.3}%
-\contentsline {paragraph}{Activation Ratio or Expected Activation.}{11}{section*.10}%
-\contentsline {paragraph}{Activation Probability and Chance Constraints.}{11}{section*.11}%
-\contentsline {paragraph}{Activation Uncertainty Ranges.}{11}{section*.12}%
-\contentsline {paragraph}{Markov Activation Models.}{12}{section*.14}%
-\contentsline {paragraph}{Activation Direction Classification Models.}{13}{section*.15}%
+\contentsline {paragraph}{Activation Ratio or Expected Activation.}{11}{section*.11}%
+\contentsline {paragraph}{Activation Probability and Chance Constraints.}{11}{section*.12}%
+\contentsline {paragraph}{Activation Uncertainty Ranges.}{11}{section*.13}%
+\contentsline {paragraph}{Markov Activation Models.}{12}{section*.15}%
+\contentsline {paragraph}{Activation Direction Classification Models.}{13}{section*.16}%
 \contentsline {subsection}{\numberline {3.3}Literature Synthesis}{13}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Research Gap}{15}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Methodology}{16}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Overview of Methodological Approach}{16}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Data Sources}{16}{subsection.4.2}%
 \contentsline {subsubsection}{\numberline {4.2.1}Nord Pool}{17}{subsubsection.4.2.1}%
-\contentsline {paragraph}{mFRR activation data.}{17}{section*.18}%
-\contentsline {paragraph}{Cross-zonal flows.}{17}{section*.19}%
-\contentsline {paragraph}{Load and production data.}{17}{section*.20}%
+\contentsline {paragraph}{mFRR activation data.}{17}{section*.19}%
+\contentsline {paragraph}{Cross-zonal flows.}{17}{section*.20}%
+\contentsline {paragraph}{Load and production data.}{17}{section*.21}%
 \contentsline {subsubsection}{\numberline {4.2.2}NUCS}{17}{subsubsection.4.2.2}%
-\contentsline {paragraph}{aFRR data.}{17}{section*.21}%
-\contentsline {paragraph}{mFRR CM.}{18}{section*.22}%
+\contentsline {paragraph}{aFRR data.}{17}{section*.22}%
+\contentsline {paragraph}{mFRR CM.}{18}{section*.23}%
 \contentsline {subsubsection}{\numberline {4.2.3}ENTSO-E}{18}{subsubsection.4.2.3}%
-\contentsline {paragraph}{aFRR Activation Data}{18}{section*.23}%
+\contentsline {paragraph}{aFRR Activation Data}{18}{section*.24}%
 \contentsline {subsection}{\numberline {4.3}Data Preprocessing and Analysis}{18}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Dataset structure}{18}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1}Dataset Structure}{18}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}Resampling, Imputation, and Merging}{18}{subsubsection.4.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.3}Exploratory Data Analysis}{19}{subsubsection.4.3.3}%
-\contentsline {paragraph}{Activation Direction Imbalance.}{19}{section*.25}%
-\contentsline {paragraph}{Temporal Activation Patterns.}{20}{section*.27}%
-\contentsline {paragraph}{Feature Distributions.}{20}{section*.28}%
+\contentsline {paragraph}{Activation Direction Imbalance.}{19}{section*.26}%
+\contentsline {paragraph}{Cross-zonal Flows.}{20}{section*.28}%
 \contentsline {paragraph}{aFRR.}{21}{section*.32}%
 \contentsline {subsection}{\numberline {4.4}Feature Engineering}{23}{subsection.4.4}%
 \contentsline {subsubsection}{\numberline {4.4.1}Time Restrictions and Data Availability}{23}{subsubsection.4.4.1}%
@@ -62,28 +62,25 @@
 \contentsline {subsubsection}{\numberline {4.4.7}Interaction features}{27}{subsubsection.4.4.7}%
 \contentsline {subsection}{\numberline {4.5}Data Splitting}{27}{subsection.4.5}%
 \contentsline {subsection}{\numberline {4.6}Evaluation Framework}{28}{subsection.4.6}%
-\contentsline {paragraph}{Multiclass evaluation.}{28}{section*.45}%
+\contentsline {paragraph}{Multiclass evaluation.}{29}{section*.45}%
 \contentsline {paragraph}{Confusion matrix.}{29}{section*.46}%
-\contentsline {paragraph}{Precision-recall trade-off.}{30}{section*.48}%
-\contentsline {paragraph}{The transition metric.}{31}{section*.49}%
-\contentsline {paragraph}{Probability correctness.}{31}{section*.50}%
-\contentsline {subsection}{\numberline {4.7}Model Selection}{31}{subsection.4.7}%
-\contentsline {paragraph}{Random Forest and Extra Trees}{31}{section*.51}%
-\contentsline {paragraph}{CatBoost}{31}{section*.52}%
-\contentsline {paragraph}{XGBoost and LightGBM}{31}{section*.53}%
-\contentsline {subsubsection}{\numberline {4.7.1}Adjusting Classification Thresholds}{31}{subsubsection.4.7.1}%
+\contentsline {paragraph}{Precision-recall trade-off.}{29}{section*.48}%
+\contentsline {paragraph}{The transition metric.}{30}{section*.49}%
+\contentsline {paragraph}{Probability correctness.}{30}{section*.50}%
+\contentsline {subsubsection}{\numberline {4.6.1}Adjusting Classification Thresholds}{31}{subsubsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.7}Model Selection}{32}{subsection.4.7}%
 \contentsline {section}{\numberline {5}Model Results}{32}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Naive Model}{33}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Machine Learning Model Results}{34}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}Model Evaluation}{34}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}Feature Importance}{36}{subsubsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.3}Price Difference Distribution}{37}{subsubsection.5.2.3}%
-\contentsline {subsubsection}{\numberline {5.2.4}Feature Correlation}{38}{subsubsection.5.2.4}%
-\contentsline {paragraph}{Pairwise Feature Correlation.}{39}{section*.64}%
-\contentsline {paragraph}{Principal Component Analysis (PCA).}{39}{section*.66}%
-\contentsline {section}{\numberline {6}Discussion}{41}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Summary of Findings}{41}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Implications and Limitations}{41}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Future Work}{42}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Conclusion}{43}{section.7}%
-\contentsline {section}{Bibliography}{44}{section*.68}%
+\contentsline {subsection}{\numberline {5.1}Naive Model}{32}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Machine Learning Model Results}{33}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Model Evaluation}{33}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}Feature Importance}{35}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Price Difference Distribution}{36}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}Feature Correlation}{37}{subsubsection.5.2.4}%
+\contentsline {paragraph}{Pairwise Feature Correlation.}{38}{section*.61}%
+\contentsline {paragraph}{Principal Component Analysis (PCA).}{38}{section*.63}%
+\contentsline {section}{\numberline {6}Discussion}{40}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Summary of Findings}{40}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Implications and Limitations}{40}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Future Work}{41}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Conclusion}{42}{section.7}%
+\contentsline {section}{Bibliography}{43}{section*.65}%

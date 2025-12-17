@@ -8,7 +8,6 @@ These first steps are uniquely colored red in the figure to indicate that they
 are mostly one-time efforts required to set up the dataset for further.
 
 The third step, feature engineering, involves creating and selecting relevant
-(\textbf{either introduce features here or make sure it has been introduced})
 features, i.e. attributes in the dataset that help the model learn patterns
 related to mFRR activations. The feature-engineered dataset is subsequently sent
 to the model training algorithm. Here, machine learning techniques are applied
@@ -75,8 +74,7 @@ issue for this project and research as real-time data is not required for
 model training and evaluation. If the models were to be deployed in a
 real-time setting, however, access to real-time data through the API would be 
 essential. The following subsections describe the specific datasets obtained
-from Nord Pool. \textbf{This is not really relevant right here, but it is 
-an important point to make somewhere.}
+from Nord Pool. 
 
 
 \paragraph{mFRR activation data.}
@@ -173,7 +171,7 @@ manner as other 1-hour resolution data, resampled with forward filling to match 
 
 \subsection{Data Preprocessing and Analysis}\label{sec:data_preprocessing_and_analysis}
 
-\subsubsection{Dataset structure}\label{sec:dataset_structure}
+\subsubsection{Dataset Structure}\label{sec:dataset_structure}
 The data is represented as a time series, where each record in the dataset
 consists of a set of attributes connected to one point in time. More
 specifically, the data contains a sequence of 15-minute interval time
@@ -240,21 +238,21 @@ ready for feature engineering and model training.
 
 \paragraph{Activation Direction Imbalance.}\label{sec:class_imbalance} Figure
 \ref{fig:mFRR_activation_distribution} displays the distribution of mFRR
-activations over the dataset period. The figure especially highlights the
-infrequent nature of up-activations, which occur far less often than
-down-activations. This class imbalance is a critical consideration for the
+activations over the dataset period (2024-2025). The figure especially
+highlights the infrequent nature of up-activations, which occur far less often
+than down-activations. This class imbalance is a critical consideration for the
 prediction task, which in general makes it more challenging for models to
 accurately predict the minority class \autocite{ClassImbalanceProblem}. The
-predominance of no-activation contextualizes the zero-inflated nature of the 
-imbalance volumes, as discussed in the literature review. The classification 
-formulation adopted in this project makes zero-volume intervals a discrete target 
-class, reducing noise from volume magnitude variations within activation classes.
-\textbf{I like this, but does it fit here or in discussion? Perhaps both.}
+predominance of no-activation contextualizes the zero-inflated nature of the
+imbalance volumes, as discussed in the literature review. The classification
+formulation adopted in this project makes zero-volume intervals a discrete
+target class, reducing noise from volume magnitude variations within activation
+classes.
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{Images/mfrr_distribution.png}
+    \includegraphics[width=0.85\textwidth]{Images/mfrr_distribution.png}
     \caption{mFRR activation direction distribution.}
     \label{fig:mFRR_activation_distribution}
 \end{figure}
@@ -267,19 +265,13 @@ of activation vs. no activation, the classes would be approximately balanced.
 Distinguishing between up- and down-activations, however, makes the problem
 more nuanced and challenging.
 
-\paragraph{Temporal Activation Patterns.}
-
-
-\paragraph{Feature Distributions.}
+\paragraph{Cross-zonal Flows.}
 
 Figure \ref{fig:cross_zonal_flows_dist} shows the distribution of cross-zonal flow
 directions for the NO1 bidding zone. The figure indicates that flows between NO1
 and NO3, NO5, and SE3 are drastically skewed towards imports into NO1, while flows 
 between NO1 and NO2 are reversely skewed. NO1-NO3 and NO1-NO5 show the most
 pronounced skewness, with very few occurrences of exports from NO1 to these zones.
-\textbf{This might be interesting to talk about later, as imbalance here may
-make the directionality more predictive.}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/cross_zonal_flows_distribution_bar.png}
@@ -357,18 +349,21 @@ Wind Share              & 0.054  & 0.047  & 0.0  & 0.0036 & 0.040  & 0.128  & 0.
 
 
 Figure \ref{fig:nucs_afrr_hourly_hist} and \ref{fig:nucs_afrr_hourly_prices} show
-a histogram and time series plot of the hourly NO1 aFRR procurement prices between
+a histogram and time series plot of the hourly NO1 aFRR "up" procurement prices between
 January 1, 2024, and \lastDate. Both figures highlight a problem in pre-July 2024
 data, as this period contains many missing values. The problem seeems to be 
 intermittent missing values rather than large gaps of missing data, indicated by the 
 time series plot. Interpolation is thus a suitable imputation method, as it can estimate
 the missing values based on surrounding data points. This may miss out on some 
 extreme price spikes, but is still expected to provide a reasonable estimate.
-The data appears complete after this date. 
+The data appears complete after this date. This phenomenon is consistent for 
+both up- and down-regulation prices and volumes.
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/nucs_afrr_hourly_hist.png}
-    \caption{A histogram of hourly aFRR procurement prices for the NO1
+    \caption{A histogram of hourly aFRR "up" procurement prices for the NO1
 bidding zone from NUCS data.}
     \label{fig:nucs_afrr_hourly_hist}
 \end{figure}
@@ -376,6 +371,6 @@ bidding zone from NUCS data.}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{Images/nucs_afrr_hourly_prices.png}
-    \caption{Hourly aFRR procurement prices for the NO1 bidding zone from NUCS data.}
+    \caption{Hourly aFRR "up" procurement prices for the NO1 bidding zone from NUCS data.}
     \label{fig:nucs_afrr_hourly_prices}
 \end{figure}

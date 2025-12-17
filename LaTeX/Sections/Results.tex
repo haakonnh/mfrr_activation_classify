@@ -210,7 +210,7 @@ $\text{PriceDown} - \text{DA}$, and $\text{PriceUp} / \text{DA}$ rank highly.
 These features represent the relationship between the day-ahead price and the
 ($t-1$) up/down regulation prices. This suggests that the model leverages recent
 discrepency between day-ahead and balancing prices to inform its predictions.
-This makese sense, since big differences between regulation prices to day-ahead
+This is reasonable, since big differences between regulation prices to day-ahead
 prices differences indicate big imbalances. The Up-Down Price Skew feature also
 ranks highly, further emphasizing the importance of recent price-related features.
 
@@ -227,7 +227,7 @@ Market participants often consider the relationship between day-ahead prices and
 regulation prices when making bidding decisions. Figure \ref{fig:price-diff-cat}
 visualizes and Table \ref{tab:price-spread-stats} summarizes the distribution of
 the day-ahead to regulation price differences ($\text{PriceUp} - \text{DA}$ and
-$\text{PriceDown} - \text{DA}$) for correctly predicted up and down-activations,
+$\text{PriceDown} - \text{DA}$) for \textbf{correctly predicted} up and down-activations,
 respectively. This visualization helps to understand how much market
 participants stand to gain from the correctly predicted activation times. There
 is, of course, the problem of actually being activated, as the activated volume

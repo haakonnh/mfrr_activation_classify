@@ -63,7 +63,6 @@ of minutes to ensure that the frequency is restored to its normal operating
 level. Manual Frequency Restoration Reserves (mFRR) then relieves aFRR 
 and maintains the balance until normal operations are restored.
 
-\textbf{mFRR theory?}
 
 \subsubsection{Reserve Market Concepts}
 Reserve markets are platforms where market participants can offer their
@@ -193,3 +192,15 @@ summarize recent system behavior. This makes them particularly suitable for
 settings where direct access to high-resolution real-time data is limited.
 
 
+
+\subsubsection{AutoGluon}
+AutoGluon-Tabular is an open-source AutoML framework developed by Amazon
+\autocite{ericksonAutoGluonTabularRobustAccurate2020}. The framework is designed
+to simplify the process of building and deploying machine learning models for
+tabular data. AutoGluon-Tabular has the ability to greatly simplify data
+preprocessing, feature engineering, model selection, and hyperparameter tuning
+through automation. It succeeeds by \textit{ensembling} multiple models and
+\textit{stacking} them in multiple layers. Experiments has shown that such
+multi-layer combination of many models offers better use of allocated traning
+time than seeking out a single best model
+\autocite{ericksonAutoGluonTabularRobustAccurate2020}.
