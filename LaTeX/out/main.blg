@@ -1,15 +1,15 @@
-[1] Config.pm:328> INFO - This is Biber 2.21
-[1] Config.pm:331> INFO - Logfile is 'out/main.blg'
-[468] biber-MSWIN64:342> INFO - === 
-[653] Biber.pm:421> INFO - Reading 'out/main.bcf'
-[1064] Biber.pm:1002> INFO - Found 53 citekeys in bib section 0
-[1115] Biber.pm:4487> INFO - Processing section 0
-[1171] Biber.pm:4678> INFO - Looking for bibtex file 'zotero_project.bib' for section 0
-[1451] bibtex.pm:1713> INFO - LaTeX decoding ...
-[1779] bibtex.pm:1519> INFO - Found BibTeX data source 'zotero_project.bib'
-[2360] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[2361] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[2361] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-GB'
-[2361] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-GB'
-[2511] bbl.pm:676> INFO - Writing 'out/main.bbl' with encoding 'UTF-8'
-[2547] bbl.pm:779> INFO - Output to out/main.bbl
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'out/main.blg'
+[107] biber-MSWIN64:342> INFO - === 
+[146] Biber.pm:421> INFO - Reading 'out/main.bcf'
+[260] Biber.pm:1002> INFO - Found 53 citekeys in bib section 0
+[273] Biber.pm:4487> INFO - Processing section 0
+[283] Biber.pm:4678> INFO - Looking for bibtex file 'zotero_project.bib' for section 0
+[355] bibtex.pm:1713> INFO - LaTeX decoding ...
+[451] bibtex.pm:1519> INFO - Found BibTeX data source 'zotero_project.bib'
+[680] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[680] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[680] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-GB'
+[680] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-GB'
+[706] bbl.pm:676> INFO - Writing 'out/main.bbl' with encoding 'UTF-8'
+[730] bbl.pm:779> INFO - Output to out/main.bbl

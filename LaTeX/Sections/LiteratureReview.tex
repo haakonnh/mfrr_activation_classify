@@ -195,7 +195,7 @@ scheduling or bidding frameworks
 \autocite{hagstromOptimizingRiskAwareBidding2025}.
 
 In 2017, a study modeled uncertain imbalance volumes using three discrete 
-scenarios: high, median, and low, as illustrated in figure \ref{fig:imbalance_scenarios} 
+scenarios: high, median, and low, as illustrated in Figure \ref{fig:imbalance_scenarios} 
 \autocite{habergStochasticMixedInteger2017}. The scenarios are
 represented as forecasted continuous imbalance volumes over a 40-minute horizon.
 The imbalance forecast scenarios were generated from probability distributions
@@ -204,12 +204,11 @@ based on historical imbalance data.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{Images/imbalance_scenarios_so.png}
-    \caption{Imbalance forecast scenarios.}
+    \caption{Imbalance forecast scenarios
+    \autocite{habergStochasticMixedInteger2017}.}
     \label{fig:imbalance_scenarios}
 \end{figure}
 
-Figure \ref{fig:imbalance_scenarios} is reproduced from H\aa{}berg and Doorman
-\autocite{habergStochasticMixedInteger2017}.
 
 \textbf{A key limitation of this modelling family is that activation direction is not
 modelled explicitly, but arises solely from the sign of the scenario imbalance
@@ -393,66 +392,53 @@ uncertainty modelling. Literature is organized by authors, target variable,
 temporal resolution, and uncertainty-modelling approach. 
 
 
-\begin{table}[!htbp]
+\begin{table}[H]
 \centering
 \caption{Overview of key forecasting and uncertainty-modelling studies}
 \label{tab:literature-overview}
-\begin{tabular}{p{3.2cm} p{3.2cm} p{1.8cm} p{4.0cm}}
+\begin{tabular}{p{3.0cm} p{1.2cm} p{3.0cm} p{1.8cm} p{3.6cm}}
 \toprule
-\textbf{Study} & \textbf{Target Variable} & \textbf{Resolution} &
+\textbf{Study} & \textbf{Year} & \textbf{Target Variable} & \textbf{Resolution} &
 \textbf{Uncertainty Model} \\
 \midrule
-\autocite{singhNovelDynamicImbalance2025} (2025) & Imbalance volume  & 15-min & Point forecast (regression)
-\\
+\autocite{singhNovelDynamicImbalance2025} & 2025 & Imbalance volume  & 15-min & Point forecast (regression) \\
 \midrule
-\autocite{azarangMachineLearningBasedPrediction} (2025) & mFRR activation volume & 1-hour & ML point forecast
-(LSTM) \\
+\autocite{azarangMachineLearningBasedPrediction} & 2025 & mFRR activation volume & 1-hour & ML point forecast (LSTM) \\
 \midrule
-\autocite{backePredictionsPricesVolumes2023}\  (2023) & Balancing volume & 1-hour & Probabilistic LSTM;
-implicit direction \\
+\autocite{backePredictionsPricesVolumes2023} & 2023 & Balancing volume & 1-hour & Probabilistic LSTM; implicit direction \\
 \midrule
-\autocite{plakasPredictionImbalancePrices2025}.\ (2025) & Imbalance volume and price & 1-hour & Probabilistic
-(quantile regression) \\
-\autocite{bankeforsDayaheadModellingElectricity} (2024) & Signed activation volume & 1-hour & Linear ML time-series;
-implicit direction \\
-%\midrule
-%Håberg \& Doorman (2017) & Imbalance scenarios; reserve needs & 40-min horizon &
-%Scenario-based uncertainty (discrete imbalance trajectories) \\
+\autocite{plakasPredictionImbalancePrices2025} & 2025 & Imbalance volume and price & 1-hour & Probabilistic (quantile regression) \\
 \midrule
-\autocite{irrmannAnalysisModellingBalancing2023} (2023) & Activation direction and volumes & 1-hour & Expected activation ratios;
-sampled regulation states \\
+\autocite{bankeforsDayaheadModellingElectricity} & 2024 & Signed activation volume & 1-hour & Linear ML time-series; implicit direction \\
 \midrule
-\autocite{papavasiliouMultiAreaReserveDimensioning2022}\ (2022) & Reserve dimensioning & Scenario-based & Chance
-constraints on imbalance scenarios \\
+\autocite{irrmannAnalysisModellingBalancing2023} & 2023 & Activation direction and volumes & 1-hour & Expected activation ratios; sampled regulation states \\
 \midrule
-\autocite{RiskConstrainedTrading} (2018) & System length (direction) & 1-hour & Probabilistic logistic
-model with risk constraints \\
+\autocite{papavasiliouMultiAreaReserveDimensioning2022} & 2022 & Reserve dimensioning & Scenario-based & Chance constraints on imbalance scenarios \\
 \midrule
-\autocite{pavicTightRobustFormulation2021}\ (2023) & Reserve activation (RA ratio) & 30-min (FCR/aFRR) &
-Activation ranges / bounded uncertainty sets \\
+\autocite{RiskConstrainedTrading} & 2018 & System length (direction) & 1-hour & Probabilistic logistic model with risk constraints \\
 \midrule
-\autocite{klaeboeDayaheadMarketBidding2022}\ (2015) & Balancing state
-(up/down/none) & 1-hour & Markov transition probabilities
-(duration/hour-specific) \\
+\autocite{pavicTightRobustFormulation2021} & 2023 & Reserve activation (RA ratio) & 30-min (FCR/aFRR) & Activation ranges / bounded uncertainty sets \\
 \midrule
-\autocite{svedlindhPriceFormationForecasting2025} (2025) & Activation direction (day-ahead) & 1-hour &
-Classification (logistic, ANN) \\
+\autocite{klaeboeDayaheadMarketBidding2022} & 2015 & Balancing state (up/down/none) & 1-hour & Markov transition probabilities (duration/hour-specific) \\
 \midrule
-\autocite{porrasShortTermForecastingMFRR} (2025) & Activation direction and price & 1-hour & Classification
-(XGBoost); sequential predictive model \\
+\autocite{svedlindhPriceFormationForecasting2025} & 2025 & Activation direction (day-ahead) & 1-hour & Classification (logistic, ANN) \\
+\midrule
+\autocite{porrasShortTermForecastingMFRR} & 2025 & Activation direction and price & 1-hour & Classification (XGBoost); sequential predictive model \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-In summary, regressor-based approaches show promise for explicit direction
-forecasting, but current studies leave questions yet to be answered: Can
-direction be predicted reliably at 15-minute resolution with only available
-information? And can sparse up/down events be predicted with useful precision?
-The present study addresses these questions by evaluating multiple classifier
-families under strict participant-feasible information constraints and at the
-updated 15-minute resolution.
-
-\textbf{Should I remove this as it is kind of research-gappy?}
+In summary, the reviewed literature shows steady progress in forecasting
+imbalances, activation volumes, and (more recently) activation direction, using
+methods ranging from regression and time-series models to probabilistic
+frameworks, scenario-based representations, bounded uncertainty sets, Markov
+state models, and modern classifiers. Across these families, a recurring theme
+is the difficulty posed by zero-inflation and regime switching between up, down,
+and no activation---effects that often reduce performance when direction is only
+handled implicitly. Recent classification-based studies indicate that explicit
+direction modelling can be feasible and informative, but evidence is still
+largely based on hourly resolution and, in some cases, on information that may
+not be available to market participants at decision time.
 
 \newpage
 \subsection{Research Gap}

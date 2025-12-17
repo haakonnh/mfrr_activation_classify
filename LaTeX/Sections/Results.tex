@@ -194,6 +194,23 @@ is at certain "internal probability thresholds". So, for instance, the model is 
 accurate when probabilities for one class are $>$0.6 etc. This could be interesting to
 include here? Stand-in for more robust probabilistic modeling?}
 
+\subsubsection{Classification Threshold Adjustment Impact}\label{sec:classification-threshold-adjustment-results}
+The classification threshold adjustment methodology described in Section
+\ref{sec:classification-threshold-adjustment} made among the most significant
+improvements to model performance during development. With default thresholds,
+most models avoided predicting up-activations to a major extent. By up-scaling
+up-activation probabilities post-training, the model is encouraged to put more
+weight on up-activation indicators. The thresholds were tuned on the validation
+set, configured to optimize F1-macro score. Figure
+\ref{fig:catboost-confusion-val-test} and Table \ref{tab:catboost-val-test} show
+results for the CatBoost model with adjusted thresholds. Pre-adjustment models
+consistently showed very low recall for up-activations (often $<$0.2), lowering
+F1-macro scores significantly. Threshold adjustments, though tuned on a
+particular validation set, generalized well to the test set, improving
+up-activation recall notably without sacrificing too much precision.
+ 
+
+
 \subsubsection{Feature Importance}
 Figure \ref{fig:catboost-feature-importance-2025} shows the top 40 most
 important features based on their feature importance scores from the CatBoost
@@ -286,7 +303,7 @@ means that even though many features appear important, most of them only convey
 information that is already captured by persistence features. Thus, features
 that are thought to only convey redundant information can be pruned without
 significant loss of information, simplifying the model. Lag featues were
-initially included up to $t-20$ (5 hours), indicated by figure
+initially included up to $t-20$ (5 hours), indicated by Figure
 \ref{fig:time-restrictions}, but many of these were pruned as the models 
 showed better performance with only the nearest lag features included.
 This relationship is quite obvious for activation lag and persistence features,
@@ -378,3 +395,13 @@ explained by 23 principal components. Given that the dataset contains
     \caption{PCA projection of the post-March 4th 2025 dataset.}
     \label{fig:pca-projection}
 \end{figure}
+
+
+\section*{Code Availability}
+The entire codebase for data processing, feature engineering, model training, and
+evaluation is available in a public GitHub repository: 
+\url{https://github.com/haakonnh/mfrr_activation_classify}. The repository is 
+segmented into various modules, each corresponding to different stages of the
+project workflow. Comprehensive documentation is provided within the repository,
+including a README file that outlines the project structure, dependencies, and
+instructions for reproducing the results presented in this report. 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  17 DEC 2025 13:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.21)  17 DEC 2025 19:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1158,7 +1158,7 @@ Package gensymb Info: Using \textmu for \micro on input line 10.
 
 \c@lstlisting=\count516
 (./title.tex
-<./Images/NTNU_logo.png, id=242, 426.393pt x 110.5731pt>
+<./Images/NTNU_logo.png, id=254, 426.393pt x 110.5731pt>
 File: ./Images/NTNU_logo.png Graphic file (type png)
 <use ./Images/NTNU_logo.png>
 Package pdftex.def Info: ./Images/NTNU_logo.png  used on input line 10.
@@ -1208,10 +1208,10 @@ Overfull \hbox (0.34828pt too wide) in paragraph at lines 11--11
 
 
 [5] (Sections/Introduction.tex
-<Images/dnv_electricity_supply_by_source.png, id=430, 551.81157pt x 417.05812pt>
+<Images/dnv_electricity_supply_by_source.png, id=448, 551.81157pt x 417.05812pt>
 File: Images/dnv_electricity_supply_by_source.png Graphic file (type png)
 <use Images/dnv_electricity_supply_by_source.png>
-Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on input line 67.
+Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on input line 50.
 (pdftex.def)             Requested size: 277.41176pt x 209.67403pt.
 
 
@@ -1219,18 +1219,18 @@ Package pdftex.def Info: Images/dnv_electricity_supply_by_source.png  used on in
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.92 
+l.75 
       [1 <./Images/dnv_electricity_supply_by_source.png>]
 
 [2]) (Sections/Theory.tex
 
 [3]
-<Images/TimeProducts.drawio.png, id=468, 1529.715pt x 394.47375pt>
+<Images/TimeProducts.drawio.png, id=487, 1529.715pt x 394.47375pt>
 File: Images/TimeProducts.drawio.png Graphic file (type png)
 <use Images/TimeProducts.drawio.png>
 Package pdftex.def Info: Images/TimeProducts.drawio.png  used on input line 24.
 (pdftex.def)             Requested size: 341.43436pt x 88.0425pt.
-<Images/reserve_types_graph.png, id=471, 508.14844pt x 208.52907pt>
+<Images/reserve_types_graph.png, id=490, 508.14844pt x 208.52907pt>
 File: Images/reserve_types_graph.png Graphic file (type png)
 <use Images/reserve_types_graph.png>
 Package pdftex.def Info: Images/reserve_types_graph.png  used on input line 53.
@@ -1248,7 +1248,7 @@ Package pdftex.def Info: Images/reserve_types_graph.png  used on input line 53.
 [8]
 
 [9]
-<Images/imbalance_scenarios_so.png, id=551, 237.88875pt x 108.405pt>
+<Images/imbalance_scenarios_so.png, id=569, 237.88875pt x 108.405pt>
 File: Images/imbalance_scenarios_so.png Graphic file (type png)
 <use Images/imbalance_scenarios_so.png>
 Package pdftex.def Info: Images/imbalance_scenarios_so.png  used on input line 206.
@@ -1256,128 +1256,143 @@ Package pdftex.def Info: Images/imbalance_scenarios_so.png  used on input line 2
 
 
 [10 <./Images/imbalance_scenarios_so.png>]
-<Images/uncertainty_ranges.png, id=568, 207.77625pt x 133.24782pt>
+<Images/uncertainty_ranges.png, id=585, 207.77625pt x 133.24782pt>
 File: Images/uncertainty_ranges.png Graphic file (type png)
 <use Images/uncertainty_ranges.png>
-Package pdftex.def Info: Images/uncertainty_ranges.png  used on input line 292.
+Package pdftex.def Info: Images/uncertainty_ranges.png  used on input line 291.
 (pdftex.def)             Requested size: 298.75262pt x 191.61441pt.
 
 
 [11]
 
 [12 <./Images/uncertainty_ranges.png>]
-Overfull \hbox (2.3555pt too wide) in paragraph at lines 402--402
+Overfull \hbox (2.3555pt too wide) in paragraph at lines 401--401
 []|\OT1/cmr/bx/n/10 Resolution| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--408
+Underfull \hbox (badness 10000) in paragraph at lines 406--406
 []|\OT1/cmr/m/n/10 mFRR ac-tiv-a-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--410
+Underfull \hbox (badness 10000) in paragraph at lines 406--407
 []|\OT1/cmr/m/n/10 ML point fore-cast
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 414--414
+Underfull \hbox (badness 10000) in paragraph at lines 408--409
+[]|\OT1/cmr/m/n/10 Probabilistic LSTM;
+ []
+
+
+Underfull \hbox (badness 5832) in paragraph at lines 410--410
 []|\OT1/cmr/m/n/10 Imbalance volume
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--416
+Underfull \hbox (badness 2671) in paragraph at lines 410--411
+[]|\OT1/cmr/m/n/10 Probabilistic (quantile
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 412--412
 []|\OT1/cmr/m/n/10 Signed ac-tiv-a-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 416--421
-[]|\OT1/cmr/m/n/10 Linear ML time-series;
+Underfull \hbox (badness 10000) in paragraph at lines 414--414
+[]|\OT1/cmr/m/n/10 Activation dir-ec-
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 422--422
-[]|\OT1/cmr/m/n/10 Activation dir-ec-tion
+Underfull \hbox (badness 2229) in paragraph at lines 414--415
+\OT1/cmr/m/n/10 tios; sampled reg-u-la-
  []
 
 
-Underfull \hbox (badness 3724) in paragraph at lines 422--424
-[]|\OT1/cmr/m/n/10 Expected ac-tiv-a-tion ra-
- []
-
-
-Underfull \hbox (badness 1082) in paragraph at lines 422--424
-\OT1/cmr/m/n/10 tios; sampled reg-u-la-tion
- []
-
-
-Underfull \hbox (badness 7030) in paragraph at lines 425--425
-[]|\OT1/cmr/m/n/10 Reserve di-men-sion-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 425--425
+Underfull \hbox (badness 10000) in paragraph at lines 416--416
 []|\OT1/cmr/m/n/10 Scenario-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--430
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
 []|\OT1/cmr/m/n/10 Probabilistic lo-gistic
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--430
+Underfull \hbox (badness 1502) in paragraph at lines 418--419
 \OT1/cmr/m/n/10 model with risk con-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--431
+Underfull \hbox (badness 3417) in paragraph at lines 420--420
 []|\OT1/cmr/m/n/10 Reserve ac-tiv-a-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--431
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
 []|\OT1/cmr/m/n/10 30-min
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 431--431
+Underfull \hbox (badness 10000) in paragraph at lines 420--420
 \OT1/cmr/m/n/10 (FCR/a-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 432--433
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 []|\OT1/cmr/m/n/10 Activation ranges /
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 435--437
-[]|\OT1/cmr/m/n/10 Markov trans-ition prob-
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
+\OT1/cmr/m/n/10 bounded un-cer-tainty
  []
 
 
-Underfull \hbox (badness 7504) in paragraph at lines 435--437
-\OT1/cmr/m/n/10 ab-il-it-ies (duration/hour-
+Underfull \hbox (badness 10000) in paragraph at lines 422--422
+[]|\OT1/cmr/m/n/10 Balancing state
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 438--438
-[]|\OT1/cmr/m/n/10 Activation dir-ec-tion
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
+[]|\OT1/cmr/m/n/10 Markov trans-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--440
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 ition prob-ab-il-it-ies
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
+\OT1/cmr/m/n/10 (duration/hour-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--424
+[]|\OT1/cmr/m/n/10 Activation dir-ec-
+ []
+
+
+Underfull \hbox (badness 1308) in paragraph at lines 424--425
 []|\OT1/cmr/m/n/10 Classification (lo-gistic,
  []
 
 
-Underfull \hbox (badness 1178) in paragraph at lines 441--441
-[]|\OT1/cmr/m/n/10 Activation dir-ec-tion
+Underfull \hbox (badness 10000) in paragraph at lines 426--426
+[]|\OT1/cmr/m/n/10 Activation dir-ec-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 441--443
-\OT1/cmr/m/n/10 se-quen-tial pre-dict-ive
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
+[]|\OT1/cmr/m/n/10 Classification (XG-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
+\OT1/cmr/m/n/10 Boost); se-quen-tial
  []
 
 
@@ -1387,7 +1402,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 441--443
 [14]) (Sections/Methodology.tex
 
 [15] (./Sections/./DataAndPreprocessing.tex
-<./Images/MethodologyDiagram.png, id=630, 1081.8819pt x 217.0509pt>
+<./Images/MethodologyDiagram.png, id=647, 1081.8819pt x 217.0509pt>
 File: ./Images/MethodologyDiagram.png Graphic file (type png)
 <use ./Images/MethodologyDiagram.png>
 Package pdftex.def Info: ./Images/MethodologyDiagram.png  used on input line 40.
@@ -1397,7 +1412,7 @@ Package pdftex.def Info: ./Images/MethodologyDiagram.png  used on input line 40.
 [16 <./Images/MethodologyDiagram.png>]
 
 [17]
-<./Images/resampling_viz.png, id=654, 1259.907pt x 231.0231pt>
+<./Images/resampling_viz.png, id=671, 1259.907pt x 231.0231pt>
 File: ./Images/resampling_viz.png Graphic file (type png)
 <use ./Images/resampling_viz.png>
 Package pdftex.def Info: ./Images/resampling_viz.png  used on input line 207.
@@ -1405,7 +1420,7 @@ Package pdftex.def Info: ./Images/resampling_viz.png  used on input line 207.
 
 
 [18]
-<./Images/mfrr_distribution.png, id=667, 1040.688pt x 572.3784pt>
+<./Images/mfrr_distribution.png, id=684, 1040.688pt x 572.3784pt>
 File: ./Images/mfrr_distribution.png Graphic file (type png)
 <use ./Images/mfrr_distribution.png>
 Package pdftex.def Info: ./Images/mfrr_distribution.png  used on input line 255.
@@ -1413,17 +1428,17 @@ Package pdftex.def Info: ./Images/mfrr_distribution.png  used on input line 255.
 
 
 [19 <./Images/resampling_viz.png> <./Images/mfrr_distribution.png>]
-<./Images/cross_zonal_flows_distribution_bar.png, id=678, 722.7pt x 361.35pt>
+<./Images/cross_zonal_flows_distribution_bar.png, id=695, 722.7pt x 361.35pt>
 File: ./Images/cross_zonal_flows_distribution_bar.png Graphic file (type png)
 <use ./Images/cross_zonal_flows_distribution_bar.png>
 Package pdftex.def Info: ./Images/cross_zonal_flows_distribution_bar.png  used on input line 277.
 (pdftex.def)             Requested size: 426.79134pt x 213.39867pt.
-<./Images/import_utilization.png, id=681, 722.7pt x 361.35pt>
+<./Images/import_utilization.png, id=698, 722.7pt x 361.35pt>
 File: ./Images/import_utilization.png Graphic file (type png)
 <use ./Images/import_utilization.png>
 Package pdftex.def Info: ./Images/import_utilization.png  used on input line 298.
 (pdftex.def)             Requested size: 209.1301pt x 104.56274pt.
-<./Images/export_utilization.png, id=682, 722.7pt x 361.35pt>
+<./Images/export_utilization.png, id=699, 722.7pt x 361.35pt>
 File: ./Images/export_utilization.png Graphic file (type png)
 <use ./Images/export_utilization.png>
 Package pdftex.def Info: ./Images/export_utilization.png  used on input line 305.
@@ -1431,12 +1446,12 @@ Package pdftex.def Info: ./Images/export_utilization.png  used on input line 305
 
 
 [20 <./Images/cross_zonal_flows_distribution_bar.png> <./Images/import_utilization.png> <./Images/export_utilization.png>]
-<./Images/nucs_afrr_hourly_hist.png, id=695, 650.43pt x 289.08pt>
+<./Images/nucs_afrr_hourly_hist.png, id=712, 650.43pt x 289.08pt>
 File: ./Images/nucs_afrr_hourly_hist.png Graphic file (type png)
 <use ./Images/nucs_afrr_hourly_hist.png>
 Package pdftex.def Info: ./Images/nucs_afrr_hourly_hist.png  used on input line 365.
 (pdftex.def)             Requested size: 426.79134pt x 189.69063pt.
-<./Images/nucs_afrr_hourly_prices.png, id=696, 867.24pt x 289.08pt>
+<./Images/nucs_afrr_hourly_prices.png, id=713, 867.24pt x 289.08pt>
 File: ./Images/nucs_afrr_hourly_prices.png Graphic file (type png)
 <use ./Images/nucs_afrr_hourly_prices.png>
 Package pdftex.def Info: ./Images/nucs_afrr_hourly_prices.png  used on input line 373.
@@ -1446,7 +1461,7 @@ Package pdftex.def Info: ./Images/nucs_afrr_hourly_prices.png  used on input lin
 [21 <./Images/nucs_afrr_hourly_hist.png>]
 
 [22 <./Images/nucs_afrr_hourly_prices.png>]
-<./Images/TimeDiagram.drawio.png, id=710, 1924.18875pt x 704.6325pt>
+<./Images/TimeDiagram.drawio.png, id=727, 1924.18875pt x 704.6325pt>
 File: ./Images/TimeDiagram.drawio.png Graphic file (type png)
 <use ./Images/TimeDiagram.drawio.png>
 Package pdftex.def Info: ./Images/TimeDiagram.drawio.png  used on input line 53.
@@ -1454,7 +1469,7 @@ Package pdftex.def Info: ./Images/TimeDiagram.drawio.png  used on input line 53.
 
 
 [23 <./Images/TimeDiagram.drawio.png>]
-<./Images/Persistence.png, id=719, 894.9435pt x 172.9662pt>
+<./Images/Persistence.png, id=736, 894.9435pt x 172.9662pt>
 File: ./Images/Persistence.png Graphic file (type png)
 <use ./Images/Persistence.png>
 Package pdftex.def Info: ./Images/Persistence.png  used on input line 132.
@@ -1464,7 +1479,7 @@ Package pdftex.def Info: ./Images/Persistence.png  used on input line 132.
 [24]
 
 [25 <./Images/Persistence.png>]
-<./Images/actual_wind_doesnt_impact_prediction.png, id=739, 1040.688pt x 572.3784pt>
+<./Images/actual_wind_doesnt_impact_prediction.png, id=756, 1040.688pt x 572.3784pt>
 File: ./Images/actual_wind_doesnt_impact_prediction.png Graphic file (type png)
 <use ./Images/actual_wind_doesnt_impact_prediction.png>
 Package pdftex.def Info: ./Images/actual_wind_doesnt_impact_prediction.png  used on input line 288.
@@ -1474,7 +1489,7 @@ Underfull \hbox (badness 2469) in paragraph at lines 290--290
 []\OT1/cmr/m/n/9 (a) |Real-ized wind pro-duc-tion plot-ted against
  []
 
-<./Images/wind_share_impact_activation.png, id=740, 1040.688pt x 572.3784pt>
+<./Images/wind_share_impact_activation.png, id=757, 1040.688pt x 572.3784pt>
 File: ./Images/wind_share_impact_activation.png Graphic file (type png)
 <use ./Images/wind_share_impact_activation.png>
 Package pdftex.def Info: ./Images/wind_share_impact_activation.png  used on input line 296.
@@ -1482,7 +1497,7 @@ Package pdftex.def Info: ./Images/wind_share_impact_activation.png  used on inpu
 
 
 [26]) (./Sections/./Evaluation.tex
-<./Images/Data Splitting.png, id=748, 939.51pt x 291.9708pt>
+<./Images/Data Splitting.png, id=765, 939.51pt x 291.9708pt>
 File: ./Images/Data Splitting.png Graphic file (type png)
 <use ./Images/Data Splitting.png>
 Package pdftex.def Info: ./Images/Data Splitting.png  used on input line 14.
@@ -1490,7 +1505,7 @@ Package pdftex.def Info: ./Images/Data Splitting.png  used on input line 14.
 
 
 [27 <./Images/actual_wind_doesnt_impact_prediction.png> <./Images/wind_share_impact_activation.png>]
-<./Images/TrueFalsePosinegs.drawio.png, id=758, 849.1725pt x 849.1725pt>
+<./Images/TrueFalsePosinegs.drawio.png, id=775, 849.1725pt x 849.1725pt>
 File: ./Images/TrueFalsePosinegs.drawio.png Graphic file (type png)
 <use ./Images/TrueFalsePosinegs.drawio.png>
 Package pdftex.def Info: ./Images/TrueFalsePosinegs.drawio.png  used on input line 54.
@@ -1498,7 +1513,7 @@ Package pdftex.def Info: ./Images/TrueFalsePosinegs.drawio.png  used on input li
 
 
 [28 <./Images/Data Splitting.png> <./Images/TrueFalsePosinegs.drawio.png>]
-<./Images/ConfusionMatrix.png, id=769, 1105.731pt x 744.381pt>
+<./Images/ConfusionMatrix.png, id=786, 1105.731pt x 744.381pt>
 File: ./Images/ConfusionMatrix.png Graphic file (type png)
 <use ./Images/ConfusionMatrix.png>
 Package pdftex.def Info: ./Images/ConfusionMatrix.png  used on input line 105.
@@ -1508,7 +1523,7 @@ Package pdftex.def Info: ./Images/ConfusionMatrix.png  used on input line 105.
 [29 <./Images/ConfusionMatrix.png>]
 
 [30]
-<./Images/pr-curve.png, id=787, 499.3857pt x 395.3169pt>
+<./Images/pr-curve.png, id=804, 499.3857pt x 395.3169pt>
 File: ./Images/pr-curve.png Graphic file (type png)
 <use ./Images/pr-curve.png>
 Package pdftex.def Info: ./Images/pr-curve.png  used on input line 207.
@@ -1518,7 +1533,7 @@ Package pdftex.def Info: ./Images/pr-curve.png  used on input line 207.
 [31 <./Images/pr-curve.png>])) (Sections/Results.tex
 
 [32]
-<Images/naive_model_confusion.png, id=805, 317.988pt x 282.5757pt>
+<Images/naive_model_confusion.png, id=822, 317.988pt x 282.5757pt>
 File: Images/naive_model_confusion.png Graphic file (type png)
 <use Images/naive_model_confusion.png>
 Package pdftex.def Info: Images/naive_model_confusion.png  used on input line 74.
@@ -1526,12 +1541,12 @@ Package pdftex.def Info: Images/naive_model_confusion.png  used on input line 74
 
 
 [33 <./Images/naive_model_confusion.png>]
-<Images/cat_confusion_val.png, id=814, 317.988pt x 282.5757pt>
+<Images/cat_confusion_val.png, id=831, 317.988pt x 282.5757pt>
 File: Images/cat_confusion_val.png Graphic file (type png)
 <use Images/cat_confusion_val.png>
 Package pdftex.def Info: Images/cat_confusion_val.png  used on input line 146.
 (pdftex.def)             Requested size: 204.85802pt x 182.04218pt.
-<Images/cat_confusion_test.png, id=815, 317.988pt x 282.5757pt>
+<Images/cat_confusion_test.png, id=832, 317.988pt x 282.5757pt>
 File: Images/cat_confusion_test.png Graphic file (type png)
 <use Images/cat_confusion_test.png>
 Package pdftex.def Info: Images/cat_confusion_test.png  used on input line 153.
@@ -1539,50 +1554,53 @@ Package pdftex.def Info: Images/cat_confusion_test.png  used on input line 153.
 
 
 [34 <./Images/cat_confusion_val.png> <./Images/cat_confusion_test.png>]
-<Images/cat_prev_to_pred.png, id=823, 339.669pt x 282.5757pt>
+<Images/cat_prev_to_pred.png, id=840, 339.669pt x 282.5757pt>
 File: Images/cat_prev_to_pred.png Graphic file (type png)
 <use Images/cat_prev_to_pred.png>
 Package pdftex.def Info: Images/cat_prev_to_pred.png  used on input line 186.
 (pdftex.def)             Requested size: 298.75262pt x 248.54233pt.
-<Images/cat_importance.png, id=825, 570.933pt x 860.013pt>
-File: Images/cat_importance.png Graphic file (type png)
-<use Images/cat_importance.png>
-Package pdftex.def Info: Images/cat_importance.png  used on input line 219.
-(pdftex.def)             Requested size: 341.43436pt x 514.33208pt.
 
 
 [35 <./Images/cat_prev_to_pred.png>]
+<Images/cat_importance.png, id=850, 570.933pt x 860.013pt>
+File: Images/cat_importance.png Graphic file (type png)
+<use Images/cat_importance.png>
+Package pdftex.def Info: Images/cat_importance.png  used on input line 236.
+(pdftex.def)             Requested size: 341.43436pt x 514.33208pt.
+
 
 [36 <./Images/cat_importance.png>]
-<Images/price_diff_cat_correct.png, id=838, 715.473pt x 354.123pt>
+<Images/price_diff_cat_correct.png, id=858, 715.473pt x 354.123pt>
 File: Images/price_diff_cat_correct.png Graphic file (type png)
 <use Images/price_diff_cat_correct.png>
-Package pdftex.def Info: Images/price_diff_cat_correct.png  used on input line 250.
+Package pdftex.def Info: Images/price_diff_cat_correct.png  used on input line 267.
 (pdftex.def)             Requested size: 341.43436pt x 168.98827pt.
-<Images/ImportanceCorrelation.jpg, id=841, 432.61626pt x 161.60374pt>
+<Images/ImportanceCorrelation.jpg, id=861, 432.61626pt x 161.60374pt>
 File: Images/ImportanceCorrelation.jpg Graphic file (type jpg)
 <use Images/ImportanceCorrelation.jpg>
-Package pdftex.def Info: Images/ImportanceCorrelation.jpg  used on input line 303.
+Package pdftex.def Info: Images/ImportanceCorrelation.jpg  used on input line 320.
 (pdftex.def)             Requested size: 213.39566pt x 79.71422pt.
 
 
 [37 <./Images/price_diff_cat_correct.png>]
 
 [38 <./Images/ImportanceCorrelation.jpg>]
-<Images/PCA_test.png, id=859, 570.933pt x 281.853pt>
+<Images/PCA_test.png, id=878, 570.933pt x 281.853pt>
 File: Images/PCA_test.png Graphic file (type png)
 <use Images/PCA_test.png>
-Package pdftex.def Info: Images/PCA_test.png  used on input line 377.
+Package pdftex.def Info: Images/PCA_test.png  used on input line 394.
 (pdftex.def)             Requested size: 256.0774pt x 126.4198pt.
 ) (Sections/Discussion.tex
 
 [39 <./Images/PCA_test.png>]
 
-[40]) (Sections/Conclusion.tex
+[40]
 
-[41])
+[41]) (Sections/Conclusion.tex
 
-[42]
+[42])
+
+[43]
 Underfull \hbox (badness 10000) in paragraph at lines 56--56
 \OT1/cmr/m/n/10 stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-
  []
@@ -1629,14 +1647,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--56
 
 
 
-[43]
+[44]
 Overfull \hbox (68.20012pt too wide) in paragraph at lines 56--56
 []\OT1/cmr/m/it/10 Transition to 15-minute Mar-ket Time Unit (MTU)\OT1/cmr/m/n/10 , https://www.nordpoolgroup.com/en/trading/transition-
  []
 
 
 
-[44]
+[45]
 Underfull \hbox (badness 7907) in paragraph at lines 56--56
 []\OT1/cmr/m/it/10 Power Mar-ket Data\OT1/cmr/m/n/10 , https://www.nordpoolgroup.com/en/services/power-market-data-
  []
@@ -1683,29 +1701,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--56
 
 
 
-[45] (c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux)
+[46] (c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 40939149BEEA59A750BFD9E9D51FBDBE;9841.
+(rerunfilecheck)             Checksum: 2C53585FDD53ABEB017C0C3E0F400185;10280.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42731 strings out of 468081
- 881377 string characters out of 5435855
- 1695753 words of memory out of 5000000
- 70453 multiletter control sequences out of 15000+600000
- 642700 words of font info for 93 fonts, out of 8000000 for 9000
+ 42744 strings out of 468081
+ 881618 string characters out of 5435855
+ 1695942 words of memory out of 5000000
+ 70460 multiletter control sequences out of 15000+600000
+ 643300 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,12n,121p,2963b,3426s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\haako\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (51 pages, 1971362 bytes).
+Output written on c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.pdf (52 pages, 1984063 bytes).
 PDF statistics:
- 1044 PDF objects out of 1200 (max. 8388607)
- 232 named destinations out of 1000 (max. 500000)
- 635 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1072 PDF objects out of 1200 (max. 8388607)
+ 237 named destinations out of 1000 (max. 500000)
+ 659 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -503,6 +503,7 @@ INPUT .\Images\dnv_electricity_supply_by_source.png
 INPUT .\Images\dnv_electricity_supply_by_source.png
 INPUT .\Images\dnv_electricity_supply_by_source.png
 INPUT .\Images\dnv_electricity_supply_by_source.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT .\Sections\Theory.tex
 INPUT .\Sections\Theory.tex
 INPUT Sections\Theory.tex
@@ -523,7 +524,6 @@ INPUT .\Images\reserve_types_graph.png
 INPUT .\Images\reserve_types_graph.png
 INPUT .\Images\reserve_types_graph.png
 INPUT .\Images\reserve_types_graph.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT .\Sections\LiteratureReview.tex
 INPUT .\Sections\LiteratureReview.tex
 INPUT Sections\LiteratureReview.tex
@@ -763,19 +763,21 @@ INPUT .\Images\PCA_test.png
 INPUT .\Images\PCA_test.png
 INPUT .\Images\PCA_test.png
 INPUT .\Images\PCA_test.png
-INPUT .\Sections\Discussion.tex
-INPUT .\Sections\Discussion.tex
-INPUT Sections\Discussion.tex
-INPUT .\Sections\Discussion.tex
-INPUT .\Sections\Discussion.tex
-INPUT Sections\Discussion.tex
-INPUT .\Sections\Conclusion.tex
-INPUT .\Sections\Conclusion.tex
-INPUT Sections\Conclusion.tex
-INPUT .\Sections\Conclusion.tex
-INPUT .\Sections\Conclusion.tex
-INPUT Sections\Conclusion.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmss10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmss8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmss8.tfm
+INPUT .\Sections\Discussion.tex
+INPUT .\Sections\Discussion.tex
+INPUT Sections\Discussion.tex
+INPUT .\Sections\Discussion.tex
+INPUT .\Sections\Discussion.tex
+INPUT Sections\Discussion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT Sections\Conclusion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT .\Sections\Conclusion.tex
+INPUT Sections\Conclusion.tex
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.aux
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.out
 INPUT c:\PythonProjects\rl_reserve_markets\LaTeX\out\main.out

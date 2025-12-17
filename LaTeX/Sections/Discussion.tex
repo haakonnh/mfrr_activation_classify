@@ -1,41 +1,134 @@
 \newpage
 \section{Discussion}
-This section discusses the main findings of the study, their practical
-implications, and limitations that affect how the results should be interpreted.
 
 \subsection{Summary of Findings}
-Across the evaluated models and feature sets, the results indicate that
-short-term mFRR activation behaviour exhibits strong persistence. A naive
-persistence baseline is difficult to beat in macro-averaged classification
-performance. Feature analysis indicates that none of the at-bid-close available
-features used in this study provide sufficient additional signal to
-substantially improve predictive performance beyond what is captured by recent
-activation states. 
+
+This study demonstrates that short-term mFRR activation direction at a 15-minute
+resolution is predictable to a limited but meaningful extent using only
+participant-feasible information available at bid close. Across all evaluated
+models, short-term predictability is dominated by temporal persistence in recent
+activation states, with a simple persistence-based baseline proving difficult to
+outperform in macro-averaged classification performance.
+
+Clear differences in predictability are observed across activation classes.
+Down-activations are the most consistently predictable class: on the test set,
+69\% of all down-activations, which constitute 37.2\% of all activations, are
+correctly identified by the best-performing model, with 62\% precision
+(Table \ref{fig:catboost-confusion-val-test}). Up-activations are comparatively
+less predictable, reflecting their more sporadic and less persistent nature.
+
+Other at-bid-close features, including prices, cross-zonal flows, and production
+and load forecasts, provide only marginal incremental value once persistence is
+accounted for. Overall, the results indicate that activation direction forecasting
+under strict information constraints is most effective when treated as a
+short-horizon, persistence-aware classification problem, and that class-conditional
+performance differences are critical for assessing practical usefulness.
 
 
-\subsection{Implications and Limitations}
+\subsection{Answers to Research Questions}
+
+\textbf{RQ1: To what extent can mFRR energy activation direction be predicted at a 15-minute 
+resolution using only information available to market participants at gate closure?}
+
+The results indicate that mFRR activation direction is predictable to a limited
+but non-negligible extent at bid close when evaluated at a 15-minute resolution.
+Across all evaluated models, short-term predictability is primarily driven by
+temporal persistence in recent activation states. Models are able to correctly
+classify a substantial share of down-activation events, with the best-performing
+model correctly predicting 69\% of all down-activations in the test set with
+62\% precision. Up-activations are more difficult to predict, with lower
+recall and precision. 
+
+
+\textbf{RQ2: Which categories of participant-feasible features contribute most to the 
+short-term predictability of mFRR activation direction?}
+
+Feature importance analyses show that short-term temporal persistence features
+dominate the predictive signal. Recent activation states consistently emerge as
+the most influential predictors across the models, reflecting strong
+auto-correlation in mFRR activation behavior. Other feature categories,
+including prices, cross-zonal flows, and production and load forecasts, provide
+only marginal incremental information once persistence is accounted for. Feature
+correlation analyses further suggest that many of these additional features
+correlate with recent activation states, limiting their unique predictive value.
+PCA results corroborate these findings, indicating that most variance in the
+feature set can be captured by a significantly reduced number of components.
+
+\textbf{RQ3: Does explicit forecasting of mFRR activation direction provide 
+value over simple persistence-based baselines, and can it serve as an intermediate step 
+toward conditional forecasting of volumes and prices?}
+
+Explicit activation direction forecasting provides limited but potentially
+meaningful incremental value over a pure persistence baseline, particularly in
+class-specific performance and decision-relevant contexts. While overall macro
+performance gains are modest, the models demonstrate improved discrimination for
+certain activation states, most notably down-activations, relative to the naive
+baseline. Combined with the observed price differences conditional on correctly
+predicted activation direction, this suggests that direction forecasting can
+support participant decision-making in settings where correct directional
+signals entail economic value. Furthermore, treating activation direction as a
+separate classification problem provides a conceptually and methodologically
+useful intermediate layer for future conditional forecasting of activation
+volumes and prices, where direction uncertainty otherwise complicates direct
+regression approaches.
+
+\subsection{Implications}
+
+A central implication of this study is that \textbf{mFRR down-activation direction
+exhibits relatively strong short-term predictability under participant-feasible
+information constraints in NO1}. The evaluated models achieve materially higher
+recall and precision for down-activations than for up-activations, indicating that
+down-regulation events tend to persist over short horizons and are therefore more
+amenable to anticipation at bid close.
+
+These findings are particularly relevant for demand-side aggregators of flexible
+resources, for whom short-term activation direction constitutes a key operational
+signal. For such participants, the results suggest that forecast-driven decision
+support is most reliable when used to \textbf{prioritize down-regulation-oriented
+mFRR strategies}. Directional forecasts can serve as a filtering mechanism that
+helps identify intervals with elevated likelihood of down-activation, supporting
+decisions on whether flexibility should be reserved for mFRR participation or
+allocated to alternative uses.
+
+While correct up-activation predictions are associated with larger deviations from
+day-ahead prices and therefore potentially higher value per event, the lower
+predictability of up-activations makes such opportunities more difficult to
+exploit consistently under bid-close information constraints. As a result,
+down-regulation strategies are likely to offer more robust and repeatable decision
+support for demand-side aggregators in practice.
+
+More broadly, the strong role of persistence implies that simple heuristics remain
+competitive, and any activation forecasting model should be benchmarked against a
+persistence-based baseline. The limited incremental value of other at-bid-close
+features further suggests that performance improvements are more likely to arise
+from richer temporal modelling of activation regimes or access to better-aligned
+information closer to real time, rather than from incremental expansion of coarse
+bid-close feature sets.
+
+
+
+
+\subsection{Limitations}
 Several factors can explain why performance gains over a persistence baseline are
-limited:
-(i) class imbalance;
-(ii) mFRR activations exhibit strong auto-correlation;
-(iii) information constraints at bid close, which remove the most informative
-recent observations;
-(iv) varying data availability and granularity; and
-(v) lack of data span and representativeness. 
+limited: (i) class imbalance; (ii) mFRR activations exhibit strong
+auto-correlation; (iii) information constraints at bid close, which remove the
+most informative recent observations; (iv) varying data availability and
+granularity; and (v) limited data span and representativeness.
 
 Class imbalance was addressed through decision threshold tuning, but more
 sophisticated rebalancing techniques could have been explored. It seems,
-however, that the "up" class is inherently more difficult to predict due to it
-being more sporadic and less persistent than the other classes. The strong
-auto-correlation in activation patterns, especially for down- and
+however, that the ``up'' class is inherently more difficult to predict due to it
+being more sporadic and less persistent than the other classes.
+
+The strong auto-correlation in activation patterns, especially for down- and
 no-activations, means that recent activation states are highly predictive of
-future states. Other more nuanced features may provide only marginal, and 
-potentially noisy, signals that model may not value highgly. Persistence 
-features may have therefore over-shadowed other potentially useful features.
+future states. Other more nuanced features may provide only marginal, and
+potentially noisy, signals that a model may not value highly. Persistence
+features may therefore have overshadowed other potentially useful features.
 Attempts were made to exclude persistence features to force models to learn from
-other signals, but this led to substantially worse performance. This suggests 
-that other features do not contain sufficient predictive information beyond
-what is already captured by persistence.
+other signals, but this led to substantially worse performance. This suggests
+that other features do not contain sufficient predictive information beyond what
+is already captured by persistence.
 
 The information constraints at bid close are a significant limitation.
 Activation directions are predicted an hour in advance, thus no real-time
@@ -44,43 +137,46 @@ This creates an information gap that models cannot bridge. Recent activations
 are the largest exceptions as they often persist across the gap. Varying data
 granularity also poses challenges, as some features are only available at hourly
 resolution and must be resampled. This removes important intra-hour dynamics
-that could aid prediction. Some data streams have the additonal limitation of
+that could aid prediction. Some data streams have the additional limitation of
 being released at specific times during the day, limiting availability dependent
-on time of day (see Section \ref{fig:time-restrictions}).
+on time of day (see Figure \ref{fig:time-restrictions}).
 
 It is difficult to know whether or not the dataset used in this study is
 representative enough to capture a sufficient variety of patterns. The final
-sample period covers 10 months at 15-minute resolution, amounting to $28 800$
+sample period covers 10 months at 15-minute resolution, amounting to $28\,800$
 data points. This is not a small dataset per se, but as the dataset consists of
 under a year of data, seasonal patterns may not be fully captured. Features that
 indicate seasonality or patterns that may repeat annually are not possible to
-learn from this dataset. Dataset on such short timeframes also risk being poorly
-generalizable to future periods. A similarly featured dataset trained over
-multiple years may yield better results. It is also important to note that this
-study only considers the price area NO1. Other areas may have different
+learn from this dataset. Datasets on such short timeframes also risk being
+poorly generalizable to future periods. A similarly featured dataset trained
+over multiple years may yield better results. It is also important to note that
+this study only considers the price area NO1. Other areas may have different
 characteristics that could affect predictability, such as less imbalance, less
 persistence, or differing system dynamics.
 
-\textbf{What positive implications come? Down is quite predictable.}
-The results indicate that down-activations are more predictable than
-up-activations. Combined with the price difference analysis in Section
-\ref{sec:price-diff-results}, this suggests that the down-activation market may
-be the better opportunity for market participants to profit from in NO1.
-Up-activations are less predictable, and the price discrepency does not seem to
-compensate for this. However, this conclusion may not generalize to other
-time periods or price areas.
-
-
 \subsection{Future Work}
-\textbf{Question is whether or not the persistence-based naive model alone 
-actually is good enough to used in a two-stage imbalance volume forecaster.
-}
+Section \ref{sec:classification-threshold-adjustment-results} showed that
+adjusting classification thresholds post-training can improve minority-class and
+macro performance. Future work could explore other class imbalance techniques,
+such as integrating cost-sensitive learning directly into model training to
+better handle class imbalance \autocite{2CostsensitiveLearning}. There is also
+room for improved upsampling or downsampling techniques to rebalance the
+training data.
 
-Future work can focus on (a) improving minority-class performance through
-rebalancing and cost-sensitive learning \autocite{2CostsensitiveLearning}, (b)
-incorporating richer real-time signals (where available) to reduce the
-information gap at bid close, and (c) 
+Although this study incorporated a diverse set of features available at bid
+close and machine learning-based models, future research could explore: (a) more
+nuanced weather-related features to better capture wind power production
+deviations and intermittency effects; (b) a more thorough investigation of the
+predictability of non-persistence-driven features for mFRR activations; and (c)
+alternative model architectures, such as recurrent neural networks or
+transformers, that may better capture temporal dependencies.
 
-explicitly modelling direction uncertainty
-as a first-stage classification problem, potentially followed by conditional
-modelling of expected volumes.
+This project focused on predicting discrete mFRR activation direction at a
+15-minute resolution. Future work could extend this to a probabilistic
+classification framework, providing likelihood estimates for each activation
+direction. Such frameworks are perhaps more difficult to evaluate, but could
+provide more useful information for market participants. Additionally, more
+comprehensive bidding strategy architectures, such as reinforcement
+learning-based agents, could utilize probabilistic distributions to inform
+optimal decisions under uncertainty.
+

@@ -28,7 +28,7 @@ in the results chapter.
 \subsection{Evaluation Framework}
 Classification problems are often evaluated using accuracy, precision,
 recall, and F1-score. These metrics are defined as follows, based on definitions 
-visualized in figure \ref{fig:true-false-positives-negatives} 
+visualized in Figure \ref{fig:true-false-positives-negatives} 
 \autocite{ClassificationAccuracyRecall}:
 \begin{itemize}
     \item \textbf{Accuracy}: The ratio of correctly predicted observations to
@@ -95,7 +95,7 @@ the specific types of errors the model makes. For instance, in a three-class
 classification problem, the confusion matrix can reveal if the model tends to
 confuse certain classes more than others. 
 An example confusion matrix for a three-class classification problem is shown in
-figure \ref{fig:confusion-matrix}. In this example, the model performs well on the 
+Figure \ref{fig:confusion-matrix}. In this example, the model performs well on the 
 'down' class and 'none' class, capturing most of the true instances while making few
 false predictions. The 'up' class has four correct predictions but also three 
 misclassifications as 'none' and one as 'down', indicating that the model struggles
@@ -182,7 +182,7 @@ probability of 0.8 and an activation does not occur, this should be considered a
 more severe error than if the model falsely predicted an activation when the
 predicted probabilities were more evenly distributed. 
 
-\subsubsection{Adjusting Classification Thresholds}
+\subsubsection{Adjusting Classification Thresholds}\label{sec:classification-threshold-adjustment}
 Decision thresholds are the thresholds at which a model assigns class labels
 based on predicted probabilities. Although classification models output discrete
 class labels, they do so based on underlying predicted probabilities for each

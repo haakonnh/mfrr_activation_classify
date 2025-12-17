@@ -20,14 +20,14 @@
       "type": "shell",
       "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
       "args": [
-        "upreg_classify\\scripts\\nucs_fetch.py",
+        "mfrr_classify\\scripts\\nucs_fetch.py",
         "--base-url", "${env:NUCS_BASE_URL}",
         "--token", "${env:NUCS_TOKEN}",
         "--start", "202501010000",
         "--end", "202512162200",
         "--chunk-days", "50",
-        "--out-csv", "upreg_classify\\reports\\dataframes\\nucs_hourly.csv",
-        "--plots-dir", "upreg_classify\\reports\\plots"
+        "--out-csv", "mfrr_classify\\reports\\dataframes\\nucs_hourly.csv",
+        "--plots-dir", "mfrr_classify\\reports\\plots"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -39,7 +39,7 @@
       "type": "shell",
       "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
       "args": [
-        "upreg_classify\\src\\models\\train.py",
+        "mfrr_classify\\src\\train\\train.py",
         "--task", "multiclass",
         "--time_limit", "${input:timeLimit}",
         "--model_preset", "rf_xt_priority",
@@ -56,7 +56,7 @@
       "type": "shell",
       "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
       "args": [
-        "upreg_classify\\src\\models\\train.py",
+        "mfrr_classify\\src\\train\\train.py",
         "--task", "multiclass_stack",
         "--time_limit", "${input:timeLimit}",
         "--model_preset", "rf_xt_boost_stack",
@@ -75,7 +75,7 @@
       "type": "shell",
       "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
       "args": [
-        "upreg_classify\\scripts\\run_time_curve.py",
+        "mfrr_classify\\scripts\\run_time_curve.py",
         "--budgets", "${input:budgetsList}",
   "--tune_up_bias",
   "--single_persistence",
@@ -91,7 +91,7 @@
       "type": "shell",
       "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
       "args": [
-        "upreg_classify\\scripts\\wipe_logs.py",
+        "mfrr_classify\\scripts\\wipe_logs.py",
         "--dry-run",
         "--keep-results",
         "--keep-latest", "1"
@@ -106,7 +106,7 @@
       "type": "shell",
       "command": "${workspaceFolder}\\.venv1\\Scripts\\python.exe",
       "args": [
-        "upreg_classify\\scripts\\wipe_logs.py",
+        "mfrr_classify\\scripts\\wipe_logs.py",
         "--yes"
       ],
       "options": {
