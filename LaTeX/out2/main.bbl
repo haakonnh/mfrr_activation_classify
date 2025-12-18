@@ -97,9 +97,10 @@
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{shorttitle}
+      \field{howpublished}{https://www.entsoe.eu/publications/system-operations-reports/}
       \field{langid}{english}
       \field{shorttitle}{Nordic {{Balancing Philosophy}}}
-      \field{title}{Noric {{Balancing Philosophy ENTSOE}}}
+      \field{title}{Nordic {{Balancing Philosophy ENTSOE}}}
       \field{urlday}{13}
       \field{urlmonth}{11}
       \field{urlyear}{2025}
@@ -331,7 +332,6 @@
       \strng{authornamehash}{a9ccb7ef62e052f35c00982a4089659f}
       \strng{authorfullhash}{a9ccb7ef62e052f35c00982a4089659f}
       \strng{authorfullhashraw}{a9ccb7ef62e052f35c00982a4089659f}
-      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -443,8 +443,6 @@
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labeltitlesource}{title}
-      \field{howpublished}{https://nordicbalancingmodel.net/}
-      \field{journaltitle}{Nordic Balancing Model}
       \field{langid}{american}
       \field{title}{Nordicbalancingmodel}
       \field{urlday}{16}
@@ -752,6 +750,16 @@
       \verb C:\Users\haako\Zotero\storage\7ZUQDVBI\Klæboe et al. - 2022 - Day-ahead market bidding taking the balancing power market into account.pdf
       \endverb
     \endentry
+    \entry{BalancingMarketOutlook}{article}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{langid}{english}
+      \field{title}{Balancing Market Outlook 2030}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\WPWRA3BR\Balancing market outlook 2030.pdf
+      \endverb
+    \endentry
     \entry{ManuallyActivatedReserves}{misc}{}{}
       \field{sortinit}{3}
       \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
@@ -827,44 +835,6 @@
       \endverb
       \keyw{Continuous-time optimization,Europe,Load modeling,Optimization,Optimization models,Power system stability,real-time system balancing,Resource management,Schedules,structural imbalances,Switches,Thermal loading,Thermal stability}
     \endentry
-    \entry{edlingMachineLearningBasedPrediction2025a}{book}{}{}
-      \name{author}{2}{}{%
-        {{hash=bc9a6686064b9fabfe0f2756d2e3d3d8}{%
-           family={Edling},
-           familyi={E\bibinitperiod},
-           given={Carl},
-           giveni={C\bibinitperiod}}}%
-        {{hash=9f428b81017008a8bfe8b69633889b23}{%
-           family={Azarang},
-           familyi={A\bibinitperiod},
-           given={Dena},
-           giveni={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{f77c8887e34d85ed15b8686d57bd10b9}
-      \strng{fullhash}{f77c8887e34d85ed15b8686d57bd10b9}
-      \strng{fullhashraw}{f77c8887e34d85ed15b8686d57bd10b9}
-      \strng{bibnamehash}{f77c8887e34d85ed15b8686d57bd10b9}
-      \strng{authorbibnamehash}{f77c8887e34d85ed15b8686d57bd10b9}
-      \strng{authornamehash}{f77c8887e34d85ed15b8686d57bd10b9}
-      \strng{authorfullhash}{f77c8887e34d85ed15b8686d57bd10b9}
-      \strng{authorfullhashraw}{f77c8887e34d85ed15b8686d57bd10b9}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{abstract}{The Swedish electricity market faces increasing complexity driven by variable renewable energy~integration. As the system transitions toward carbon neutrality by 2045, accurate forecasting of~manua ...}
-      \field{langid}{english}
-      \field{shorttitle}{Machine {{Learning-Based Prediction}} and {{Key Drivers}} of {{mFRR Activations}}}
-      \field{title}{Machine {{Learning-Based Prediction}} and {{Key Drivers}} of {{mFRR Activations}} : {{A Swedish Balancing Market Study}}}
-      \field{urlday}{18}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
-      \field{year}{2025}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\78V44QNS\Edling and Azarang - 2025 - Machine Learning-Based Prediction and Key Drivers of mFRR Activations A Swedish Balancing Market S.pdf
-      \endverb
-    \endentry
     \entry{overmaatBalancingContributionsNordic}{article}{}{}
       \name{author}{1}{}{%
         {{hash=a4c6849f8305833f0bf72dade3a58c6b}{%
@@ -889,40 +859,6 @@
       \field{title}{Balancing {{Contributions}} in the {{Nordic Electricity System}}}
       \verb{file}
       \verb C:\Users\haako\Zotero\storage\EN69YVIM\Overmaat - Balancing Contributions in the Nordic Electricity System.pdf
-      \endverb
-    \endentry
-    \entry{bankeforsDayaheadModellingElectricity2024}{book}{}{}
-      \name{author}{1}{}{%
-        {{hash=a9ccb7ef62e052f35c00982a4089659f}{%
-           family={Bankefors},
-           familyi={B\bibinitperiod},
-           given={John},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{a9ccb7ef62e052f35c00982a4089659f}
-      \strng{fullhash}{a9ccb7ef62e052f35c00982a4089659f}
-      \strng{fullhashraw}{a9ccb7ef62e052f35c00982a4089659f}
-      \strng{bibnamehash}{a9ccb7ef62e052f35c00982a4089659f}
-      \strng{authorbibnamehash}{a9ccb7ef62e052f35c00982a4089659f}
-      \strng{authornamehash}{a9ccb7ef62e052f35c00982a4089659f}
-      \strng{authorfullhash}{a9ccb7ef62e052f35c00982a4089659f}
-      \strng{authorfullhashraw}{a9ccb7ef62e052f35c00982a4089659f}
-      \field{extraname}{2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{abstract}{The study aimed to define and investigate relevant parameters affecting manual frequency restoration reserve (mFRR) volumes of the balancing market in the Finnish price area. It also aimed to find ...}
-      \field{langid}{english}
-      \field{shorttitle}{Day-Ahead Modelling of the Electricity Balancing Market}
-      \field{title}{Day-Ahead Modelling of the Electricity Balancing Market : {{A}} Study of Linear Machine Learning Models Used for Modelling Predictions of {{mFRR}} Volumes}
-      \field{urlday}{18}
-      \field{urlmonth}{12}
-      \field{urlyear}{2025}
-      \field{year}{2024}
-      \field{urldateera}{ce}
-      \verb{file}
-      \verb C:\Users\haako\Zotero\storage\F7LVHV4S\Bankefors - 2024 - Day-ahead modelling of the electricity balancing market A study of linear machine learning models.pdf
       \endverb
     \endentry
     \entry{khodadadiInvestigatingReserveDimensioning}{article}{}{}
@@ -1833,7 +1769,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{svenskakraftnatBalancingMarketOutlook2024}
 \endrefsection
 \endinput
 

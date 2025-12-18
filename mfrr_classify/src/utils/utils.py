@@ -13,7 +13,7 @@ Outputs:
     - attach_ternary_labels(...): adds RegClass and RegClass+4 to a DF
     - build_multiclass_dataset(...): returns df, (train_df, val_df, test_df), features, label
 
-Usage (from repo root / upreg_classify working dir):
+Usage (from repo root):
         from src.data.ternary import build_multiclass_dataset
         df, (train_df, val_df, test_df), features, label = build_multiclass_dataset()
 
@@ -26,7 +26,7 @@ import sys
 import pandas as pd
 import numpy as np
 
-# Ensure we can import preprocess.py from repo root (upreg_classify/)
+# Ensure we can import preprocess.py from repo root (mfrr_classify/)
 _THIS_DIR = os.path.dirname(__file__)
 _REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, '..', '..'))
 if _REPO_ROOT not in sys.path:

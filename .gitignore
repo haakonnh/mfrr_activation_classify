@@ -1,5 +1,5 @@
-/upreg_classify/models/
-/upreg_classify/AutogluonModels/
+/mfrr_classify/models/
+/mfrr_classify/AutogluonModels/
 /**/models/
 *.pkl
 *.pt
@@ -10,3 +10,5 @@
 /blackjack/
 /tictactoe/
 /windygridworld/
+/upreg_classify/
+/.idea/

@@ -1,18 +1,18 @@
 """
-Training script for mFRR activation prediction.
+Training entry point for mFRR activation classification (NO1/NO2).
 
-Supports:
-- Binary: predict Activated+4 (True/False)
-- Multiclass (ternary): predict RegClass+4 ('up', 'down', 'none')
+Supported tasks:
+- Binary: Activated+4 (True/False)
+- Multiclass: RegClass+4 ('up', 'down', 'none')
 
-It reuses the preprocessing pipelines in src/data:
-- Binary: preprocess.preprocess_all + build_feature_list
-- Multiclass: data/ternary.build_multiclass_dataset
+Pipeline:
+- Uses preprocessing routines in `src/data` to build time-indexed features
+- Trains tabular models via AutoGluon Tabular within a specified time budget
 
 Outputs:
-- AutoGluon model directory in --output_dir
-- metrics.csv (summary) and classification_report.txt
-- confusion matrices and predictions CSVs for val/test
+- Model directory under `--output_dir`
+- `metrics.csv` summary and `classification_report.txt`
+- Confusion matrices and prediction CSVs for validation/test splits
 """
 import os
 import sys

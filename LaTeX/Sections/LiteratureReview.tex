@@ -27,7 +27,7 @@ near-zero. It was noted, however, that the need for balancing services will
 increase in the future, and that such strategies will therefore become more
 relevant and profitable. In a balancing market outlook for 2030, mFRR capacity
 demands was reported to have increased significantly in recent years and will
-continue to increase \autocite{BalancingMarketOutlook}. The report also suggests
+continue to increase \autocite{svenskakraftnatBalancingMarketOutlook2024}. The report also suggests
 that since the automated mFRR EAM is only an intermediate step for connecting to
 MARI (Manually Activated Reserves Initiative), which is an upcoming
 European-wide mFRR market \autocite{ManuallyActivatedReserves}, further
@@ -129,7 +129,7 @@ Related work in the Nordic region highlights similar challenges. In a recent
 study on machine-learning based mFRR forecasting, short-term mFRR
 \textit{activation} volume forecasting across the four Swedish bidding zones
 using LSTM models was conducted
-\autocite{azarangMachineLearningBasedPrediction}. The results reveal strong
+\autocite{edlingMachineLearningBasedPrediction2025a} . The results reveal strong
 geographical heterogeneity in predictability: SE2 exhibits comparatively high
 accuracy, while SE3 and SE4 show limited predictability due to the prevalence of
 zero-activation intervals. This distinction highlights an important structural
@@ -166,7 +166,7 @@ actionable price information for balancing-market participants.
 
 Linear machine-learning-based time series models (ARIMAX, SARIMAX) have also
 been applied to predict signed mFRR activation volumes in Sweden
-\autocite{bankeforsDayaheadModellingElectricity}. The study concludes that while
+\autocite{bankeforsDayaheadModellingElectricity2024}. The study concludes that while
 activation volume forecasting is challenging, the models showed promise in
 implicitly predicting activation direction. He suggests that future work could
 explore classification-based approaches to directly predict activation direction
@@ -273,12 +273,12 @@ activation/imbalance direction uncertainty.
 
 
 \paragraph{Activation Uncertainty Ranges.}
-In a 2023 study, it is argued that deterministic reserve activation models
-inaccurately represent activation uncertainty. Thus, a stochastic model is
+In a 2023 study, it was argued that deterministic reserve activation models
+inaccurately represent activation uncertainty. Thus, a stochastic model was
 presented, but more interestingly, a robust electric vehicle aggregator
-scheduling model using uncertain bounded activation ranges is proposed
+scheduling model using uncertain bounded activation ranges was proposed
 \autocite{pavicElectricVehicleAggregator2023}. They use \textit{reserve
-activation} (RA) as input for activation uncertainty, which is defined as the
+activation} (RA) as input for activation uncertainty, defined as the
 ratio of activated reserve energy to the accepted reserve capacity. Their
 analysis is limited to 30-minute FCR and aFRR reserve data. Activation
 data are gathered and probability distributions are constructed as in Figure
@@ -396,20 +396,20 @@ temporal resolution, and uncertainty-modelling approach.
 \centering
 \caption{Overview of key forecasting and uncertainty-modelling studies}
 \label{tab:literature-overview}
-\begin{tabular}{p{3.0cm} p{1.2cm} p{3.0cm} p{1.8cm} p{3.6cm}}
+\begin{tabular}{p{1.0cm} p{1.2cm} p{3.0cm} p{1.8cm} p{3.6cm}}
 \toprule
 \textbf{Study} & \textbf{Year} & \textbf{Target Variable} & \textbf{Resolution} &
 \textbf{Uncertainty Model} \\
 \midrule
 \autocite{singhNovelDynamicImbalance2025} & 2025 & Imbalance volume  & 15-min & Point forecast (regression) \\
 \midrule
-\autocite{azarangMachineLearningBasedPrediction} & 2025 & mFRR activation volume & 1-hour & ML point forecast (LSTM) \\
+\autocite{edlingMachineLearningBasedPrediction2025a} & 2025 & mFRR activation volume & 1-hour & ML point forecast (LSTM) \\
 \midrule
 \autocite{backePredictionsPricesVolumes2023} & 2023 & Balancing volume & 1-hour & Probabilistic LSTM; implicit direction \\
 \midrule
 \autocite{plakasPredictionImbalancePrices2025} & 2025 & Imbalance volume and price & 1-hour & Probabilistic (quantile regression) \\
 \midrule
-\autocite{bankeforsDayaheadModellingElectricity} & 2024 & Signed activation volume & 1-hour & Linear ML time-series; implicit direction \\
+\autocite{bankeforsDayaheadModellingElectricity2024} & 2024 & Signed activation volume & 1-hour & Linear ML time-series; implicit direction \\
 \midrule
 \autocite{irrmannAnalysisModellingBalancing2023} & 2023 & Activation direction and volumes & 1-hour & Expected activation ratios; sampled regulation states \\
 \midrule
@@ -440,7 +440,6 @@ direction modelling can be feasible and informative, but evidence is still
 largely based on hourly resolution and, in some cases, on information that may
 not be available to market participants at decision time.
 
-\newpage
 \subsection{Research Gap}
 Despite notable progress and coverage of balancing-market forecasting, a couple
 of gaps emerge from the literature. The simplest observation is that most

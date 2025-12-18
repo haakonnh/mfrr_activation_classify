@@ -41,7 +41,7 @@ def parse_args():
     p.add_argument('--importance_subsample', type=int, default=1000, help='Max rows for permutation importance')
     p.add_argument('--importance_top_n', type=int, default=40, help='Top-N features to plot and print')
     p.add_argument('--activation_lag_start', type=int, default=4, help='Lag index to start retaining activation volume features from')
-    p.add_argument('--single_persistence', action='store_true', help='Use single persistence model as baseline')
+    p.add_argument('--single_persistence', action='store_true', help='Include single-persistence reference model')
     # Explicit stacking / bagging controls (optional). If >0, forces stacking/bagging.
     p.add_argument('--num_bag_folds', type=int, default=0, help='Number of bagging folds (0 = AutoGluon default)')
     p.add_argument('--num_stack_levels', type=int, default=0, help='Number of stack levels (0 = AutoGluon default)')

@@ -1,10 +1,10 @@
-\newpage
+
 \subsection{Feature Engineering}
 Features are attributes in a dataset that describe each data point. A dataset
 for predicting a person's income could, for instance, have features like gender,
 job type, and age. Then, each data point represents a person and relevant
-information about the person in terms of the a target variable, e.g., income .
-In this project, each data point represents a specific time stamp in the mFRR
+information about the person in terms of a target variable, e.g., income.
+In this project, each data point represents a specific timestamp in the mFRR
 activation dataset, and the features describe the system state at that time.
 This includes information such as electricity demand, generation capacity, and
 market prices, all of which can influence mFRR activations.
@@ -32,18 +32,18 @@ recent system data at prediction time. mFRR EAM bidding for a specific MTU
 closes 45 minutes prior, so at time $t$ we can only act on predictions for the
 interval $t+4$ and later. This restriction causes a great amount of uncertainty.
 Even the best approximation of the current system state is several 15-minute
-intervals old at the target delievery time.
+intervals old at the target delivery time.
 
 Many data sources have reporting delays, meaning that the most recent data
 points are not yet published at prediction time. For example, mFRR EAM
 activation data is available with a delay of approximately one hour. This means
 that at time $t$, the most recent activation data available is from time $t-4$.
-However, since mFRR imbalance volumes are known to be highly auto-correlated
+However, since mFRR imbalance volumes are known to be highly autocorrelated
 \autocite{backePredictionsPricesVolumes2023}, even delayed activation data can
 provide valuable information about current trends. Figure
 \ref{fig:time-restrictions} illustrates the time restrictions on feature
 availability for predicting mFRR activations at time $t+4$ based on data
-available at time $t$. Most real-time-relevant information is delayed by an
+available at time $t$. Most real-time relevant information is delayed by an
 hour, while accepted balance market activation volume and price are available at
 $t-1$, making it the most recent activation-related data point accessible at
 prediction time.
@@ -57,12 +57,12 @@ prediction time.
     \label{fig:time-restrictions}
 \end{figure}
 
-An additonal complication is that some data sources are made available only on
+An additional complication is that some data sources are made available only at
 certain times of the day. mFRR capacity market data for the following day, for
 instance, is published after the capacity market gate closure at 23:00 each day.
 At 01:00 the next day, capacity market data is available for the entire day
 ahead, but at 22:00 the same day, only data for the next two hours is available.
-This data is thus not only available for target time $t+4$. This complicates
+This data is thus not only available for the target time $t+4$. This complicates
 feature engineering, as the model must be able to handle features that are only
 partially available depending on the time of day. Table
 \ref{tab:data_availability} summarizes the gate closure times of various market
@@ -92,7 +92,7 @@ Intraday Auction 3 (IDA3) & 10:00 & $D$   \\
 \end{table}
 
 During the course of this project, it seems that many data sources and their 
-availabilities have change slightly. Balance market market activation data 
+availabilities have changed slightly. Balance market activation data 
 is, for instance, now available for $t-3$ instead of $t-4$. Such changes should
 be taken into account in future work, but it is unlikely that they will have
 a major impact on the overall findings of this study.
@@ -114,13 +114,13 @@ happened in the most recent intervals, but they do not express whether the
 system has been in a sustained activation phase. For the model to understand
 such trends, it would need to look at several lagged activation features
 simultaneously and infer whether there has been a streak of up- or
-down-activations. To capture this behaviour succinctly, a set of persistence
+Down-activations. To capture this behavior succinctly, a set of persistence
 features is included. These measure how long the latest sequence of up-, down-,
-or no-activations has lasted, based only on the activation data that are
+or no activations has lasted, based only on the activation data that are
 available at bid time. The idea is straightforward: if down-activations occurred
 in several consecutive intervals leading up to and including $t-4$, the
 down-persistence value reflects the length of that streak, as visualized in
-Figure 13. The same applies for up-activations and no-activations. These
+Figure \ref{fig:persistence_illustration}. The same applies for up-activations and no activations. These
 persistence features aim to capture the tendency for mFRR activations to occur
 in clusters, as periods of system stress often lead to repeated activations. By
 condensing this pattern into a single value for each direction, the model is
@@ -130,14 +130,14 @@ indicators alone can provide.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Images/Persistence.png}
-    \caption{ Illustration of down persistence feature calculation based on
+    \caption{Illustration of down-persistence feature calculation based on
 lagged activation features. Here, the down persistence at time $t$ is 2, as there
 have been down-activations in the two most recent intervals ($t-4$ and $t-5$),
 before an interval with no activation at $t-6$.}
     \label{fig:persistence_illustration}
 \end{figure}
 
-Persistence feature capture consecutive activation trends effectively, but they
+Persistence features capture consecutive activation trends effectively, but they
 do have limitations. Singular lagged activation features are still useful in the
 case of intermittent activations that do not form long streaks. Additionally,
 persistence features do not convey the magnitude of recent activations, only
@@ -147,7 +147,7 @@ development.
 
 \subsubsection{Cross-zonal flow features}
 Cross-zonal flow features capture information about electricity flows between
-different zones or regions in the power grid- in this case, in and out of the
+different zones or regions in the power grid---in this case, in and out of the
 NO1 bidding zone. These flows can indicate the grid's stress level and influence
 mFRR activations. For instance, high inflows into NO1 may signal increased
 demand or generation shortages, potentially causing upregulating activations.
@@ -158,10 +158,10 @@ capacity provides a picture of how close the grid is to its operational limits.
 For instance, if the inflow into NO1 is close to the maximum available transfer
 capacity, only a small margin remains for additional inflows, which could
 increase the likelihood of upregulating activations. Such situations often occur
-in zones that are short, i.e. zones where consumption exceeds production. In
+in zones that are short, i.e., zones where consumption exceeds production. In
 such cases, the grid operator may need to activate expensive mFRRreserves to
 maintain grid stability when no more cheap imports are possible. It is important
-that the models developed in this project are able to capture these kind of
+that the models developed in this project are able to capture these kinds of
 relationships as they are among the most valuable for a potential user of the
 models.
 
@@ -188,7 +188,7 @@ capacity.
 
 \subsubsection{Temporal features}
 Temporal features capture time-related patterns in the data. These features help
-the model un derstand how mFRR activations vary with time, such as daily or
+the model understand how mFRR activations vary with time, such as daily or
 weekly cycles. Basic temporal features include hour of the day, day of the week,
 and month of the year. These features allow the model to learn patterns related
 to specific times. mFRR activations could, for instance, be caused by completely
@@ -217,10 +217,10 @@ Monthly features are encoded similarly, using 12 as the divisor instead of 24.
 \subsubsection{Price features}
 Price features capture information about the various electricity market prices.
 The mFRR activation market is closely linked to other electricity markets, such
-as the day-ahead market, the intraday market, and the aFRR market. Most prices
-may not have direct impacts on activations, but constructing features that
-capture relationships between prices, the model may be able to infer
-system stress levels that could lead to mFRR activations. Large discrepencies
+as the day-ahead market, the intraday market, and the aFRR market. While most prices
+may not directly impact activations, by constructing features that
+capture relationships between prices, the model may infer
+system stress levels that could lead to mFRR activations. Large discrepancies
 between day-ahead prices and intraday prices may, for instance, indicate
 unexpected changes in supply or demand, which should correlate with mFRR
 activations. Similarly, the difference between aFRR prices and mFRR prices may
@@ -271,15 +271,14 @@ Production features capture information about electricity generation,
 particularly from renewable sources like wind power. Wind power production
 features were considered promising candidates for predicting mFRR activations,
 as wind power is intermittent and can cause sudden changes in supply. Figures
-14a and 14b show values of realized wind production and wind share (wind
+\ref{fig:realized_wind_mfrr} and \ref{fig:wind_share_mfrr} show values of realized wind production and wind share (wind
 production as a fraction of total production) plotted against the distribution
 of mFRR activations. These figures indicate that there is no direct correlation
 between wind production and mFRR activations. The existence of such a
 correlation would have made it easy for the model to leverage wind production
 features for predicting activations. The hope is, however, that wind production
 features will prove useful when combined with other features, as the model
-captures complex relationships between features. \textbf{Should be in 
-EDA?}
+captures complex relationships between features.
 
 \begin{figure}[H]
     \centering
@@ -294,7 +293,7 @@ distribution.}
     \begin{subfigure}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{Images/wind_share_impact_activation.png}
-        \caption{Forecasted wind production plotted against mFRR activation
+        \caption{Wind share plotted against mFRR activation
 distribution.}
         \label{fig:wind_share_mfrr}
     \end{subfigure}

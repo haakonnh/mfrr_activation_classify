@@ -115,7 +115,7 @@ Much of the existing work on mFRR activation volumes take the TSO perspective
 azarangMachineLearningBasedPrediction}. Due to the difference in data access and
 decision contexts between TSOs and market participants, one must be cautious
 when applying TSO-focused findings to participant-relevant processes. Market
-participants are constrained to using only information available at bid close,
+participants are constrained to using only information available at gate closure,
 which may exclude certain real-time system signals accessible to TSOs. This
 availability concern motivates a participant-centric approach to activation
 direction forecasting, ensuring that developed models and insights are directly
@@ -137,6 +137,9 @@ zero-inflation problem is thus avoided, as the activation direction model
 effectively acts as a filter that separates zero from non-zero activations.
 
 
+
+\subsection{Research Questions}
+
 This project is motivated by the need for improved short-term activation
 direction foresight among market participants, particularly demand-side
 aggregators of flexible resources. The transition to an automated 15-minute mFRR
@@ -152,9 +155,6 @@ grander bidding strategy frameworks that seek to optimize participant revenues
 in various reserve and balancing markets under uncertainty. Reinforced 
 learning-based bidding strategies could potentially leverage activation direction
 forecasts as part of their state representation to improve decision-making.
-
-
-\subsection{Research Questions}
 The research questions for this study are:
 
 \textbf{RQ1:} To what extent can mFRR energy activation direction

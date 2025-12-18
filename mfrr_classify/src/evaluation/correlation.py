@@ -4,14 +4,14 @@ for a trained AutoGluon predictor.
 
 Usage (Windows cmd):
   c:\PythonProjects\rl_reserve_markets\.venv1\Scripts\python.exe \
-	upreg_classify\src\evaluation\correlation.py \
-	--models-dir c:\PythonProjects\rl_reserve_markets\upreg_classify\models\quick_exclude_persistency_check \
+	mfrr_classify\src\evaluation\correlation.py \
+	--models-dir c:\PythonProjects\rl_reserve_markets\mfrr_classify\models\quick_exclude_persistency_check \
 	--max-rows 5000
 
 Outputs:
-  - Figures saved under `upreg_classify/reports/figures/multiclass`:
+	- Figures saved under `mfrr_classify/reports/figures/multiclass`:
 	  correlation_cluster.png, pca_explained_variance.png
-  - CSVs saved under `upreg_classify/reports/dataframes`:
+	- CSVs saved under `mfrr_classify/reports/dataframes`:
 	  permutation_importance.csv, shap_importance.csv
   - Console prints: top clusters, VIF table head, permutation/shap top features
 """
@@ -51,8 +51,8 @@ _shap_available = _importlib_util.find_spec('shap') is not None
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-REPORTS_FIG_DIR = REPO_ROOT / 'upreg_classify' / 'reports' / 'figures' / 'multiclass'
-REPORTS_DF_DIR = REPO_ROOT / 'upreg_classify' / 'reports' / 'dataframes'
+REPORTS_FIG_DIR = REPO_ROOT / 'mfrr_classify' / 'reports' / 'figures' / 'multiclass'
+REPORTS_DF_DIR = REPO_ROOT / 'mfrr_classify' / 'reports' / 'dataframes'
 
 
 def _load_predictor(models_dir: Path):

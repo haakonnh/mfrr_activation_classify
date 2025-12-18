@@ -642,8 +642,8 @@ if __name__ == "__main__":
     parser.add_argument("--process-type", type=str, default="A51", help="A51=aFRR, A47=mFRR")
     parser.add_argument("--market-agreement-type", type=str, default="A01")
     parser.add_argument("--business-type", type=str, default=None, help="Optional businessType filter: A96=aFRR, A97=mFRR")
-    parser.add_argument("--out-csv", type=str, default=str(os.path.join("upreg_classify","reports","dataframes","nucs_hourly.csv")))
-    parser.add_argument("--plots-dir", type=str, default=str(os.path.join("upreg_classify","reports","plots")))
+    parser.add_argument("--out-csv", type=str, default=str(os.path.join("mfrr_classify","reports","dataframes","nucs_hourly.csv")))
+    parser.add_argument("--plots-dir", type=str, default=str(os.path.join("mfrr_classify","reports","plots")))
     parser.add_argument("--stem", type=str, default="nucs_hourly")
     args = parser.parse_args()
 
@@ -660,7 +660,7 @@ if __name__ == "__main__":
             return os.environ.get(env_key, v)
         return v
 
-    # Minimal .env loader: try repo root and upreg_classify/.env
+    # Minimal .env loader: try repo root and mfrr_classify/.env
     def _load_env_file(path: str) -> None:
         try:
             if os.path.exists(path):
@@ -680,7 +680,7 @@ if __name__ == "__main__":
 
     cwd = os.getcwd()
     _load_env_file(os.path.join(cwd, ".env"))
-    _load_env_file(os.path.join(cwd, "upreg_classify", ".env"))
+    _load_env_file(os.path.join(cwd, "mfrr_classify", ".env"))
 
     base_url = _resolve_env(args.base_url, "NUCS_BASE_URL")
     # Accept either NUCS_TOKEN or NUCS_API_KEY as token source

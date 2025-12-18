@@ -5,7 +5,7 @@
 
 This study demonstrates that short-term mFRR activation direction at a 15-minute
 resolution is predictable to a limited but meaningful extent using only
-participant-feasible information available at bid close. Across all evaluated
+participant-feasible information available at gate closure. Across all evaluated
 models, short-term predictability is dominated by temporal persistence in recent
 activation states, with a simple persistence-based baseline proving difficult to
 outperform in macro-averaged classification performance.
@@ -17,7 +17,7 @@ correctly identified by the best-performing model, with 62\% precision
 (Table \ref{fig:catboost-confusion-val-test}). Up-activations are comparatively
 less predictable, reflecting their more sporadic and less persistent nature.
 
-Other at-bid-close features, including prices, cross-zonal flows, and production
+Other at-gate-closure features, including prices, cross-zonal flows, and production
 and load forecasts, provide only marginal incremental value once persistence is
 accounted for. Overall, the results indicate that activation direction forecasting
 under strict information constraints is most effective when treated as a
@@ -31,7 +31,7 @@ performance differences are critical for assessing practical usefulness.
 resolution using only information available to market participants at gate closure?}
 
 The results indicate that mFRR activation direction is predictable to a limited
-but non-negligible extent at bid close when evaluated at a 15-minute resolution.
+but non-negligible extent at gate closure when evaluated at a 15-minute resolution.
 Across all evaluated models, short-term predictability is primarily driven by
 temporal persistence in recent activation states. Models are able to correctly
 classify a substantial share of down-activation events, with the best-performing
@@ -93,17 +93,17 @@ allocated to alternative uses.
 While correct up-activation predictions are associated with larger deviations from
 day-ahead prices and therefore potentially higher value per event, the lower
 predictability of up-activations makes such opportunities more difficult to
-exploit consistently under bid-close information constraints. As a result,
+exploit consistently under gate-closure information constraints. As a result,
 down-regulation strategies are likely to offer more robust and repeatable decision
 support for demand-side aggregators in practice.
 
 More broadly, the strong role of persistence implies that simple heuristics remain
 competitive, and any activation forecasting model should be benchmarked against a
-persistence-based baseline. The limited incremental value of other at-bid-close
+persistence-based baseline. The limited incremental value of other at-gate-closure
 features further suggests that performance improvements are more likely to arise
 from richer temporal modelling of activation regimes or access to better-aligned
 information closer to real time, rather than from incremental expansion of coarse
-bid-close feature sets.
+gate-closure feature sets.
 
 
 
@@ -111,7 +111,7 @@ bid-close feature sets.
 \subsection{Limitations}
 Several factors can explain why performance gains over a persistence baseline are
 limited: (i) class imbalance; (ii) mFRR activations exhibit strong
-auto-correlation; (iii) information constraints at bid close, which remove the
+auto-correlation; (iii) information constraints at gate closure, which remove the
 most informative recent observations; (iv) varying data availability and
 granularity; and (v) limited data span and representativeness.
 
@@ -130,7 +130,7 @@ other signals, but this led to substantially worse performance. This suggests
 that other features do not contain sufficient predictive information beyond what
 is already captured by persistence.
 
-The information constraints at bid close are a significant limitation.
+The information constraints at gate closure are a significant limitation.
 Activation directions are predicted an hour in advance, thus no real-time
 signals are guaranteed to represent system conditions at the time of activation.
 This creates an information gap that models cannot bridge. Recent activations
@@ -158,18 +158,19 @@ persistence, or differing system dynamics.
 Section \ref{sec:classification-threshold-adjustment-results} showed that
 adjusting classification thresholds post-training can improve minority-class and
 macro performance. Future work could explore other class imbalance techniques,
-such as integrating cost-sensitive learning directly into model training to
+such as \textbf{integrating cost-sensitive learning} directly into model training to
 better handle class imbalance \autocite{2CostsensitiveLearning}. There is also
 room for improved upsampling or downsampling techniques to rebalance the
 training data.
 
-Although this study incorporated a diverse set of features available at bid
-close and machine learning-based models, future research could explore: (a) more
-nuanced weather-related features to better capture wind power production
-deviations and intermittency effects; (b) a more thorough investigation of the
-predictability of non-persistence-driven features for mFRR activations; and (c)
-alternative model architectures, such as recurrent neural networks or
-transformers, that may better capture temporal dependencies.
+Although this study incorporated a diverse set of features available at gate
+closure and machine learning-based models, future research could explore: (a) more
+nuanced \textbf{weather in feature engineering} weather-related features to
+better capture wind power production deviations and intermittency effects; (b) a
+more thorough investigation of the predictability of non-persistence-driven
+features for mFRR activations; and (c) alternative model architectures, such as
+recurrent neural networks or transformers, that may better capture temporal
+dependencies.
 
 This project focused on predicting discrete mFRR activation direction at a
 15-minute resolution. Future work could extend this to a probabilistic

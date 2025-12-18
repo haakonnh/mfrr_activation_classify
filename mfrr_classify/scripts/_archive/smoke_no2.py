@@ -1,5 +1,5 @@
 import os, sys, importlib.util
-PKG_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))  # upreg_classify
+PKG_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))  # mfrr_classify
 if PKG_ROOT not in sys.path:
     sys.path.append(PKG_ROOT)
 PREPROCESS_PATH = os.path.join(PKG_ROOT, 'src', 'data', 'preprocess.py')
@@ -13,7 +13,7 @@ Config = preprocess.Config
 build_dataset = preprocess.build_dataset
 
 cfg = Config(
-    data_dir=os.path.join('upreg_classify','data','raw'),
+    data_dir=os.path.join('mfrr_classify','data','raw'),
     area='NO2',
     include_2024=True,
     dropna=True,
