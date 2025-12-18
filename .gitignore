@@ -21,3 +21,7 @@
 /LaTeX/
 /LaTeX/**
 
+# Ignore outer preprocessed data cache
+/data/preprocessed/
+/data/preprocessed/**
+
