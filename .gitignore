@@ -6,6 +6,7 @@
 *.h5
 *.pickle
 *.joblib
+/mfrr_classify/.env
 
 /blackjack/
 /tictactoe/
@@ -15,3 +16,4 @@
 
 **/_archive/
 **/_archive/**
+

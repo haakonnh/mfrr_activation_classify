@@ -1,4 +1,4 @@
-# mFRR Activation Prediction in NO1 — Specialization Project
+# mFRR Activation Forecasting in NO1 — Specialization Project
 
 This repository contains code and configuration to build and evaluate classifiers for mFRR activation direction (up / down / none) in the Norwegian NO1 price area. It is part of a specialization project, with an emphasis on reproducible baselines and clear experiment outputs.
 
@@ -20,17 +20,11 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-If any build wheels fail (e.g., LightGBM), upgrade pip and retry:
-
-```
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
+Upgrade pip if it fails.
 
 ## Data
 
-- Raw market data (NO1 focus) is expected under `mfrr_classify\data\raw\`
+- Raw market data (NO1 focus) is under `mfrr_classify\data\raw\`
 - Preprocessed caches are written to `mfrr_classify\data\preprocessed\`
 - Reports (figures and CSVs) are written to `mfrr_classify\reports\`
 
@@ -45,10 +39,10 @@ set NUCS_TOKEN=your-token
 
 ## Training
 
-Run a short multiclass experiment (NO1, 1‑minute budget) to validate the full path from preprocessing to evaluation:
+Run a short multiclass experiment (NO1, 1‑minute time limit, random forest/extra trees priority) to validate the full path from preprocessing to evaluation:
 
 ```
-.venv\Scripts\python.exe mfrr_classify\src\train\train.py --task multiclass --time_limit 60 --model_preset rf_xt_priority --tune_up_bias --single_persistence
+.venv\Scripts\python.exe mfrr_classify\src\train\train.py --task multiclass --time_limit 60 --model_preset rf_xt_priority --tune_up_bias
 ```
 
 Outputs include:
