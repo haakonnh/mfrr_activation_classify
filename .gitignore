@@ -17,3 +17,7 @@
 **/_archive/
 **/_archive/**
 
+# Ignore LaTeX project and outputs
+/LaTeX/
+/LaTeX/**
+
