@@ -188,7 +188,7 @@ Day ahead price data, for instance, transitioned to 15-minute market time units
 (MTU) on September 30th 2025 \autocite{Transition15minuteMarketa}. Consequently, 
 data before this date is at an hourly resolution, while data after this date is at a
 15-minute resolution. mFRR activation data transitioned to 15-minute MTU on
-March 4th 2025 \autocite{ConfirmationMFRREAM2025}, but Nord Pool has updated 
+\autocite{statnettConfirmationMFRREAM2025}, but Nord Pool has updated 
 their historical data to be at a 15-minute resolution for the entire dataset
 period. 
 
@@ -323,6 +323,13 @@ When compared with the mean actual production of 120.38 MW, this indicates that
 wind errors are quite significant. This is a positive sign for the relevance
 of wind-related features in predicting mFRR activations, as intraday-day-ahead
 discrepencies can lead to imbalances requiring mFRR activations.
+
+While wind-related variables capture an important weather-driven source of
+uncertainty, additional meteorological features (e.g., temperature, precipitation,
+wind speed/gusts, and pressure forecasts) could plausibly improve performance by
+explaining variation in both demand and renewable production. Such features were
+not included in this study due to scope and data integration constraints, and are
+left as a natural extension for future work.
 
 \begin{table}[H]
 \centering

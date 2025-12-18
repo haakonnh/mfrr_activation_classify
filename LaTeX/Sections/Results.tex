@@ -12,7 +12,7 @@ a post-March 4th 2025 dataset and a combined 2024-2025 dataset. The two-year
 dataset provides more data for training, potentially improving model performance
 and generalization. However, it also introduces some inconsistencies due to
 changes in data resolution over time, and the March 4th 2025 mFRR market transition 
-\autocite{ConfirmationMFRREAM2025}. The shorter dataset avoids these issues but
+\autocite{statnettConfirmationMFRREAM2025}. The shorter dataset avoids these issues but
 offers less data for training. Both datasets have their advantages and drawbacks,
 and during the project, models were trained and evaluated on both to assess their
 performance under different conditions. 
@@ -284,11 +284,37 @@ Up Price -- DA (correct UP)               & 275  & 17.98 & 14.33 &  1.81 &  6.32
 Down Price -- DA (correct DOWN)           & 1343 & -12.34 & 16.78 & -39.67 & -11.84 & -7.66 & -5.54 & -1.92 \\
 \bottomrule
 \end{tabular}
-\caption{Summary statistics for delivery-time spreads, restricted to correctly predicted UP/DOWN cases.}
+\caption{Summary statistics for delivery-time spreads (CatBoost), restricted to correctly predicted UP/DOWN cases on test set.}
 \label{tab:price-spread-stats}
 \end{table}
 
+\begin{table}[ht]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Metric & $n$ & mean & std & p05 & p25 & p50 & p75 & p95 \\
+\midrule
+Up Price -- DA (correct UP)     &  340 &  15.83 & 13.50 & 1.21&  6.50 & 13.82 & 22.80 & 37.4 \\
+Down Price -- DA (correct DOWN) & 1219 & -11.34 & 15.50 & -38.03 & -12.50 & -7.21 & -4.50 & -0.60 \\
+\bottomrule
+\end{tabular}
+\caption{Summary statistics for delivery-time spreads (Naive Model), restricted to correctly predicted UP/DOWN cases on test set.}
+\label{tab:price-spread-stats-tail20}
+\end{table}
 
+\paragraph{Comparison with Naive Model.}\label{sec:price-diff-naive-results}
+ To assess whether the machine learning
+model captures more profitable activation opportunities than the naive model,
+the same price difference analysis was performed for the naive model's correct
+predictions. Table \ref{tab:price-spread-stats-tail20}, when compared with Table
+\ref{tab:price-spread-stats} on the test set, shows that the machine learning
+model captures more profitable up-activations (mean 17.98 EUR/MWh vs 15.83
+EUR/MWh) and down-activations (mean -12.34 EUR/MWh vs -11.34 EUR/MWh) than the
+naive model. This indicates that the machine learning model is able to identify
+more lucrative activation opportunities beyond what is captured by simple
+persistence patterns. 
 
 \subsubsection{Feature Correlation}\label{sec:feature-correlation-results}
 Although feature importance analysis indicates contributions from various
@@ -337,6 +363,24 @@ as to be redundant. Some less obvious correlations are also present, such as
 between day-ahead price and import features, confirming correlations across
 different system state indicators. 
 
+\paragraph{Principal Component Analysis (PCA).} PCA is used in machine learning 
+to reduce the dimensionality of datasets while preserving as much variance as
+possible (cite) by transforming the original features into a new set of 
+uncorrelated variables called principal components. In this project, PCA is not 
+applied as such, but rather as an analytic tool to assess feature redundancy.
+Figure \ref{fig:pca-projection} shows a PCA projection of the post-March 4th
+2025 dataset. According to PCA, 90\% of the variance in the dataset can be
+explained by 23 principal components. Given that the dataset contains 
+93 features, this indicates a high degree of redundancy among the features.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/PCA_test.png}
+    \caption{PCA projection of the post-March 4th 2025 dataset.}
+    \label{fig:pca-projection}
+\end{figure}
+
+
 \begin{table}[htbp]
 \centering
 \caption{Top correlated feature pairs (absolute Pearson correlation $\ge 0.60$).}
@@ -379,24 +423,8 @@ PriceUp\_t-1 & Total Imports & 0.600970 \\
 \end{tabular}
 \end{table}
 
-\paragraph{Principal Component Analysis (PCA).} PCA is used in machine learning 
-to reduce the dimensionality of datasets while preserving as much variance as
-possible (cite) by transforming the original features into a new set of 
-uncorrelated variables called principal components. In this project, PCA is not 
-applied as such, but rather as an analytic tool to assess feature redundancy.
-Figure \ref{fig:pca-projection} shows a PCA projection of the post-March 4th
-2025 dataset. According to PCA, 90\% of the variance in the dataset can be
-explained by 23 principal components. Given that the dataset contains 
-93 features, this indicates a high degree of redundancy among the features.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{Images/PCA_test.png}
-    \caption{PCA projection of the post-March 4th 2025 dataset.}
-    \label{fig:pca-projection}
-\end{figure}
-
-
+\newpage
 \section*{Code Availability}
 The entire codebase for data processing, feature engineering, model training, and
 evaluation is available in a public GitHub repository: 

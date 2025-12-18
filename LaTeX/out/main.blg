@@ -1,17 +1,15 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'out/main.blg'
-[99] biber-MSWIN64:342> INFO - === 
-[136] Biber.pm:421> INFO - Reading 'out/main.bcf'
-[244] Biber.pm:1002> INFO - Found 55 citekeys in bib section 0
-[257] Biber.pm:4487> INFO - Processing section 0
-[268] Biber.pm:4678> INFO - Looking for bibtex file 'zotero_project.bib' for section 0
-[341] bibtex.pm:1713> INFO - LaTeX decoding ...
-[437] bibtex.pm:1519> INFO - Found BibTeX data source 'zotero_project.bib'
-[663] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[664] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[664] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-GB'
-[664] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-GB'
-[690] bbl.pm:676> INFO - Writing 'out/main.bbl' with encoding 'UTF-8'
-[716] bbl.pm:779> INFO - Output to out/main.bbl
-[717] Biber.pm:132> WARN - I didn't find a database entry for 'svenskakraftnatBalancingMarketOutlook2024' (section 0)
-[717] Biber.pm:134> INFO - WARNINGS: 1
+[103] biber-MSWIN64:342> INFO - === 
+[143] Biber.pm:421> INFO - Reading 'out/main.bcf'
+[253] Biber.pm:1002> INFO - Found 55 citekeys in bib section 0
+[266] Biber.pm:4487> INFO - Processing section 0
+[276] Biber.pm:4678> INFO - Looking for bibtex file 'zotero_project.bib' for section 0
+[339] bibtex.pm:1713> INFO - LaTeX decoding ...
+[435] bibtex.pm:1519> INFO - Found BibTeX data source 'zotero_project.bib'
+[685] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[685] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[686] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-GB'
+[686] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-GB'
+[718] bbl.pm:676> INFO - Writing 'out/main.bbl' with encoding 'UTF-8'
+[747] bbl.pm:779> INFO - Output to out/main.bbl

@@ -99,20 +99,35 @@
       \field{labeltitlesource}{shorttitle}
       \field{langid}{english}
       \field{shorttitle}{Nordic {{Balancing Philosophy}}}
-      \field{title}{Noric {{Balancing Philosophy ENTSOE}}}
+      \field{title}{Nordic {{Balancing Philosophy ENTSOE}}}
       \field{urlday}{13}
       \field{urlmonth}{11}
       \field{urlyear}{2025}
       \field{year}{2024}
       \field{urldateera}{ce}
     \endentry
-    \entry{ConfirmationMFRREAM2025}{misc}{}{}
+    \entry{statnettConfirmationMFRREAM2025}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e008486c2a54bb45cdfeda629da840c2}{%
+           family={{Statnett}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{fullhash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{fullhashraw}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{bibnamehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authorbibnamehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authornamehash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authorfullhash}{e008486c2a54bb45cdfeda629da840c2}
+      \strng{authorfullhashraw}{e008486c2a54bb45cdfeda629da840c2}
+      \field{extraname}{1}
       \field{sortinit}{7}
       \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{The Nordic transmission system operators (TSOs) can confirm that the automated Nordic mFRR energy activation market (mFRR EAM) with 15 minutes activation resolution will go live on Tuesday, March 4, 2025.}
       \field{howpublished}{https://www.statnett.no/en/for-stakeholders-in-the-power-industry/news-for-the-power-industry/confirmation-of-mfrr-eam-go-live-march-4th-2025/}
-      \field{journaltitle}{Statnett}
+      \field{journaltitle}{Confirmation of mFRR EAM go live March 4th 2025}
       \field{langid}{english}
       \field{month}{10}
       \field{title}{Confirmation of {{mFRR EAM}} Go Live {{March}} 4th 2025}
@@ -526,6 +541,7 @@
       \strng{authornamehash}{e008486c2a54bb45cdfeda629da840c2}
       \strng{authorfullhash}{e008486c2a54bb45cdfeda629da840c2}
       \strng{authorfullhashraw}{e008486c2a54bb45cdfeda629da840c2}
+      \field{extraname}{2}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
@@ -750,6 +766,39 @@
       \endverb
       \verb{file}
       \verb C:\Users\haako\Zotero\storage\7ZUQDVBI\Klæboe et al. - 2022 - Day-ahead market bidding taking the balancing power market into account.pdf
+      \endverb
+    \endentry
+    \entry{svenskakraftnatBalancingMarketOutlook2024a}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=2897fedb88455264e2387317b9e6923d}{%
+           family={{Svenska Kraftnät}},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{2897fedb88455264e2387317b9e6923d}
+      \strng{fullhash}{2897fedb88455264e2387317b9e6923d}
+      \strng{fullhashraw}{2897fedb88455264e2387317b9e6923d}
+      \strng{bibnamehash}{2897fedb88455264e2387317b9e6923d}
+      \strng{authorbibnamehash}{2897fedb88455264e2387317b9e6923d}
+      \strng{authornamehash}{2897fedb88455264e2387317b9e6923d}
+      \strng{authorfullhash}{2897fedb88455264e2387317b9e6923d}
+      \strng{authorfullhashraw}{2897fedb88455264e2387317b9e6923d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Svenska kraftnät's report Balancing market outlook 2030 provides information and insights about recent and future developments of ancillary services in Sweden.}
+      \field{howpublished}{https://www.svk.se/en/stakeholders-portal/electricity-market/provision-of-ancillary-services/balancing-market-outlook-2030/}
+      \field{journaltitle}{Balancing market outlook 2030}
+      \field{langid}{english}
+      \field{month}{12}
+      \field{title}{Balancing Market Outlook 2030}
+      \field{urlday}{18}
+      \field{urlmonth}{12}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \verb{file}
+      \verb C:\Users\haako\Zotero\storage\3PLCCBRR\balancing-market-outlook-2030.html
       \endverb
     \endentry
     \entry{ManuallyActivatedReserves}{misc}{}{}
@@ -1719,7 +1768,7 @@
       \field{labeltitlesource}{shorttitle}
       \field{abstract}{Learn how to calculate three key classification metrics---accuracy, precision, recall---and how to choose the appropriate metric to evaluate a given binary classification model.}
       \field{howpublished}{https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall}
-      \field{journaltitle}{Google for Developers}
+      \field{journaltitle}{Classification: Accuracy, recall, precision, and related metrics}
       \field{langid}{english}
       \field{shorttitle}{Classification}
       \field{title}{Classification: {{Accuracy}}, Recall, Precision, and Related Metrics |{} {{Machine Learning}}}
@@ -1833,7 +1882,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{svenskakraftnatBalancingMarketOutlook2024}
 \endrefsection
 \endinput
 

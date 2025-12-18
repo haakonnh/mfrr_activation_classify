@@ -24,6 +24,14 @@ under strict information constraints is most effective when treated as a
 short-horizon, persistence-aware classification problem, and that class-conditional
 performance differences are critical for assessing practical usefulness.
 
+Finally, when comparing economic relevance via the price difference analysis, the
+machine learning model captures more profitable activations than the naive model
+among its correct predictions. On the test set, Table \ref{tab:price-spread-stats-tail20}
+compared with Table \ref{tab:price-spread-stats} shows higher mean price spreads for
+both up-activations (17.98 EUR/MWh vs 15.83 EUR/MWh) and down-activations (-12.34
+EUR/MWh vs -11.34 EUR/MWh), suggesting that the model identifies more lucrative
+opportunities beyond what is explained by simple persistence patterns.
+
 
 \subsection{Answers to Research Questions}
 
@@ -130,16 +138,25 @@ other signals, but this led to substantially worse performance. This suggests
 that other features do not contain sufficient predictive information beyond what
 is already captured by persistence.
 
-The information constraints at gate closure are a significant limitation.
-Activation directions are predicted an hour in advance, thus no real-time
-signals are guaranteed to represent system conditions at the time of activation.
-This creates an information gap that models cannot bridge. Recent activations
-are the largest exceptions as they often persist across the gap. Varying data
+The information constraints at gate closure are a significant limitation. This
+study deliberately restricts inputs to publicly available information, while
+actual market participants may have access to additional and more recent
+proprietary signals, which could improve short-horizon predictability beyond
+what is achievable here. Activation directions are predicted an hour in advance,
+thus no real-time signals are guaranteed to represent system conditions at the
+time of activation. This creates an information gap that models cannot bridge.
+Recent activations are the largest exceptions as they often persist across the
+gap. In addition, data publication delays can change over time: during early
+stages of this project, Nord Pool data appeared to be released with a delay of
+four 15-minute time slots, whereas it now seems to be published with a delay of
+two time slots. Such changes affect what is realistically
+``participant-feasible'' at gate closure and can influence both model
+performance and the comparability of results across periods. Varying data
 granularity also poses challenges, as some features are only available at hourly
 resolution and must be resampled. This removes important intra-hour dynamics
 that could aid prediction. Some data streams have the additional limitation of
 being released at specific times during the day, limiting availability dependent
-on time of day (see Figure \ref{fig:time-restrictions}).
+on time of day (see Table \ref{tab:data_availability}).
 
 It is difficult to know whether or not the dataset used in this study is
 representative enough to capture a sufficient variety of patterns. The final
@@ -165,7 +182,7 @@ training data.
 
 Although this study incorporated a diverse set of features available at gate
 closure and machine learning-based models, future research could explore: (a) more
-nuanced \textbf{weather in feature engineering} weather-related features to
+nuanced weather-related features to
 better capture wind power production deviations and intermittency effects; (b) a
 more thorough investigation of the predictability of non-persistence-driven
 features for mFRR activations; and (c) alternative model architectures, such as
@@ -173,8 +190,8 @@ recurrent neural networks or transformers, that may better capture temporal
 dependencies.
 
 This project focused on predicting discrete mFRR activation direction at a
-15-minute resolution. Future work could extend this to a probabilistic
-classification framework, providing likelihood estimates for each activation
+15-minute resolution. Future work could extend this to a \textbf{probabilistic
+classification framework}, providing likelihood estimates for each activation
 direction. Such frameworks are perhaps more difficult to evaluate, but could
 provide more useful information for market participants. Additionally, more
 comprehensive bidding strategy architectures, such as reinforcement
