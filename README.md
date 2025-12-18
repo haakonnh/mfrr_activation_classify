@@ -28,7 +28,7 @@ Upgrade pip if it fails.
 - Preprocessed caches are written to `mfrr_classify\data\preprocessed\`
 - Reports (figures and CSVs) are written to `mfrr_classify\reports\`
 
-If NUCS access is available, hourly aFRR up/down prices and volumes can be fetched as follows:
+If NUCS access is available, hourly aFRR up/down prices and volumes can be fetched with a valid NUCS token, using environment variables:
 
 ```
 set NUCS_BASE_URL=https://your-api
