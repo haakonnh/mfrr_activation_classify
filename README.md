@@ -156,7 +156,7 @@ mfrr_classify/
 │   ├── train/
 │   |   ├── hyperparameters.py
 │   │   └── train.py
-│   ├── utils/
+│   └── utils/
 │       ├── args.py
 │       ├── datapreprocessing_utils.py
 │       ├── evaluation_utils.py
