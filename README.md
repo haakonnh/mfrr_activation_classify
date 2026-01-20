@@ -134,27 +134,40 @@ The pipeline is structured to support extension toward:
 ## Repository Structure
 
 ```text
-src/
+mfrr_classify/
 ├── data/
-│   ├── preprocess.py        # Resampling, alignment, merging, target creation
-│   └── features.py         # Feature engineering logic
+│   ├── preprocessed/
+│   │   └── preprocessed_df.csv
+│   └── raw/
+│       ├── afrr/
+│       ├── balancing/
+│       ├── capacity_market/
+│       ├── flows/
+│       ├── load/
+│       ├── prices/
+│       └── production/
 │
-├── train/
-│   ├── train.py            # Model training and orchestration
-│   └── hyperparameters.py # Model and training configuration
-│
-├── evaluation/
-│   ├── feature_analysis.py
-│   ├── correlation.py
-│   ├── pca.py
-│   └── price_spread_analysis.py
-│
-├── artifacts/
-│   ├── models/            # Trained models and ensembles
-│   ├── metrics/          # Evaluation outputs
-│   └── datasets/         # Preprocessed datasets
-│
-└── README.md
+├── src/
+│   ├── evaluation/
+│   |   ├── correlation.py
+│   |   ├── evaluation.py
+│   │   └── price_spread.py
+|   |   
+│   ├── train/
+│   |   ├── hyperparameters.py
+│   │   └── train.py
+│   ├── utils/
+│       ├── args.py
+│       ├── datapreprocessing_utils.py
+│       ├── evaluation_utils.py
+│       ├── nucs_api.py
+│       ├── plotting.py
+│       └── utils.py
+├── models/
+├── notebooks/
+├── scripts/
+└── reports/
+
 ```
 
 
