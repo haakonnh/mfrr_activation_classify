@@ -25,25 +25,21 @@ The task is framed as a **time-dependent multiclass classification problem** und
 ---
 
 ## System Architecture
-Raw Market Data
-   |
-   v
-Preprocessing & Alignment
-   |
-   v
-Feature Engineering
-   |
-   v
-Temporal Train / Validation / Test Split
-   |
-   v
-ML Model Training (AutoGluon / CatBoost)
-   |
-   v
-Evaluation & Diagnostics
-   |
-   v
-Model Artifacts / Research Outputs
+flowchart TD
+    A[Raw Market Data<br/>(Nord Pool / NUCS / ENTSO-E)]
+    B[Preprocessing & Alignment<br/>(Resampling, Time Zones, Imputation)]
+    C[Feature Engineering<br/>(Persistence, Prices, Flows, Production, Load)]
+    D[Temporal Splitting<br/>(Train / Validation / Test)]
+    E[ML Model Training<br/>(AutoGluon / CatBoost)]
+    F[Evaluation & Diagnostics<br/>(Metrics, Explainability, Analysis)]
+    G[Model Artifacts<br/>(Models, Metrics, Datasets)]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
 
 ---
 
