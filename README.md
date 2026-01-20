@@ -26,25 +26,24 @@ The task is framed as a **time-dependent multiclass classification problem** und
 
 ## System Architecture
 Raw Market Data
-│
-▼
+   |
+   v
 Preprocessing & Alignment
-│
-▼
+   |
+   v
 Feature Engineering
-│
-▼
+   |
+   v
 Temporal Train / Validation / Test Split
-│
-▼
+   |
+   v
 ML Model Training (AutoGluon / CatBoost)
-│
-▼
+   |
+   v
 Evaluation & Diagnostics
-│
-▼
+   |
+   v
 Model Artifacts / Research Outputs
-
 
 ---
 
@@ -134,23 +133,25 @@ The pipeline is structured to support extension toward:
 ## Repository Structure
 src/
 ├── data/
-│ ├── preprocess.py # Resampling, alignment, merging, target creation
-│ └── features.py # Feature engineering logic
+│   ├── preprocess.py        # Resampling, alignment, merging, target creation
+│   └── features.py         # Feature engineering logic
 │
 ├── train/
-│ ├── train.py # Model training and orchestration
-│ └── hyperparameters.py
+│   ├── train.py            # Model training and orchestration
+│   └── hyperparameters.py # Model and training configuration
 │
 ├── evaluation/
-│ ├── feature_analysis.py
-│ ├── correlation.py
-│ ├── pca.py
-│ └── price_spread_analysis.py
+│   ├── feature_analysis.py
+│   ├── correlation.py
+│   ├── pca.py
+│   └── price_spread_analysis.py
 │
 ├── artifacts/
-│ ├── models/ # Trained models and ensembles
-│ ├── metrics/ # Evaluation outputs
-│ └── datasets/ # Preprocessed datasets
+│   ├── models/            # Trained models and ensembles
+│   ├── metrics/          # Evaluation outputs
+│   └── datasets/         # Preprocessed datasets
+│
+└── README.md
 
 
 ---
