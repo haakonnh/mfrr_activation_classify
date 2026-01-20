@@ -25,21 +25,49 @@ The task is framed as a **time-dependent multiclass classification problem** und
 ---
 
 ## System Architecture
-flowchart TD
-    A[Raw Market Data<br/>(Nord Pool / NUCS / ENTSO-E)]
-    B[Preprocessing & Alignment<br/>(Resampling, Time Zones, Imputation)]
-    C[Feature Engineering<br/>(Persistence, Prices, Flows, Production, Load)]
-    D[Temporal Splitting<br/>(Train / Validation / Test)]
-    E[ML Model Training<br/>(AutoGluon / CatBoost)]
-    F[Evaluation & Diagnostics<br/>(Metrics, Explainability, Analysis)]
-    G[Model Artifacts<br/>(Models, Metrics, Datasets)]
+<svg width="700" height="520" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: #f6f8fa; stroke: #24292f; stroke-width: 1.5; rx: 8; ry: 8; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; fill: #24292f; text-anchor: middle; dominant-baseline: middle; }
+    .arrow { stroke: #24292f; stroke-width: 1.5; marker-end: url(#arrowhead); }
+  </style>
 
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#24292f"/>
+    </marker>
+  </defs>
+
+  <!-- Boxes -->
+  <rect class="box" x="200" y="20" width="300" height="50"/>
+  <text class="text" x="350" y="45">Raw Market Data (Nord Pool / NUCS / ENTSO-E)</text>
+
+  <rect class="box" x="200" y="90" width="300" height="50"/>
+  <text class="text" x="350" y="115">Preprocessing & Alignment</text>
+
+  <rect class="box" x="200" y="160" width="300" height="50"/>
+  <text class="text" x="350" y="185">Feature Engineering</text>
+
+  <rect class="box" x="200" y="230" width="300" height="50"/>
+  <text class="text" x="350" y="255">Temporal Split (Train / Val / Test)</text>
+
+  <rect class="box" x="200" y="300" width="300" height="50"/>
+  <text class="text" x="350" y="325">ML Training (AutoGluon / CatBoost)</text>
+
+  <rect class="box" x="200" y="370" width="300" height="50"/>
+  <text class="text" x="350" y="395">Evaluation & Diagnostics</text>
+
+  <rect class="box" x="200" y="440" width="300" height="50"/>
+  <text class="text" x="350" y="465">Model Artifacts (Models / Metrics / Data)</text>
+
+  <!-- Arrows -->
+  <line class="arrow" x1="350" y1="70" x2="350" y2="90"/>
+  <line class="arrow" x1="350" y1="140" x2="350" y2="160"/>
+  <line class="arrow" x1="350" y1="210" x2="350" y2="230"/>
+  <line class="arrow" x1="350" y1="280" x2="350" y2="300"/>
+  <line class="arrow" x1="350" y1="350" x2="350" y2="370"/>
+  <line class="arrow" x1="350" y1="420" x2="350" y2="440"/>
+</svg>
 
 ---
 
